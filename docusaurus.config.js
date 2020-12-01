@@ -1,7 +1,7 @@
 module.exports = {
   title: 'Zeitgeist Documentation',
   tagline: 'Learn how to integrate with the Zeitgeist network.',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://docs.zeitgeist.pm',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
