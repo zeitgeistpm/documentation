@@ -31,11 +31,11 @@ module.exports = {
           items: [
             {
               label: 'Getting Started',
-              to: 'docs/',
+              to: '/',
             },
             {
               label: 'Zeitgeist SDK',
-              to: 'docs/doc2/',
+              to: '/doc2/',
             },
           ],
         },
