@@ -35,7 +35,7 @@ module.exports = {
             },
             {
               label: 'Zeitgeist SDK',
-              to: '/doc2/',
+              to: '/sdk/',
             },
           ],
         },
