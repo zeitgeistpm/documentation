@@ -2,4 +2,3 @@
 id: applications
 title: Applications
 ---
-
