@@ -2,6 +2,7 @@ module.exports = {
   someSidebar: {
     Documentation: [
       'getting-started',
+      'battery-park',
       'faq',
       'prediction-markets',
       'governance',
