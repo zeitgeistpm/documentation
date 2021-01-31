@@ -5,7 +5,8 @@ title: Roadmap
 
 ## Where are we now?
 
-Currently Zeitgeist is in pre-alpha with its [Battery Park](./battery-park) testnet.
+Currently Zeitgeist is in pre-alpha with its [Battery Park](./battery-park)
+testnet.
 
 ## Where are we going?
 
@@ -30,7 +31,8 @@ Items and priorities are liable to change.
 #### Q3
 
 - Launch of the Zeitgeist mainnet and of the ZTG token.
-- Start work on Zeitgeist DAOs that can use the same futarchy methods that govern Zeitgeist.
+- Start work on Zeitgeist DAOs that can use the same futarchy methods that
+  govern Zeitgeist.
 - Explore new trading methods.
 
 #### Q4
@@ -39,5 +41,5 @@ Items and priorities are liable to change.
 - Implement DAO framework on Zeitgeist.
 - Implement crosschain functionality through becoming a Kusama parachain.
 
-For a more granular exposition of the roadmap please follow the development
-on the GitHub repositories.
+For a more granular exposition of the roadmap please follow the development on
+the GitHub repositories.
