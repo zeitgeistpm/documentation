@@ -19,13 +19,13 @@ market, of which Zeitgeist is one example.
 
 ## Background
 
-Prediction markets can be traced back to writings of Ludwig von Mises and
-Frederik Hayek, however it is the economist Robin Hansen that is perhaps the
-best known proponent of them today. Hansen's writings have a very significant
-theoretic implication on how to implement prediction markets in a blockchain
-setting. He posits that the primary problem that can be solved is that of "info
-problems", that is the difficulty of aggregating information among many
-individuals with all different views of the subject.
+Prediction markets can be traced back to writings of [Ludwig von Mises][mises]
+and [Frederik Hayek][hayek], however it is the economist Robin Hansen that is
+perhaps the best known proponent of them today. Hansen's writings have a very
+significant theoretic implication on how to implement prediction markets in a
+blockchain setting. He posits that the primary problem that can be solved is
+that of "info problems", that is the difficulty of aggregating information among
+many individuals with all different views of the subject.
 
 ### Info Problems
 
@@ -41,3 +41,7 @@ points out that speculative markets show striking success in their ability to
 aggregate information. He says "That is, active speculative markets do very well
 at inducing people to acquire info, share it via trades, and collect that info
 into consensus prices that persuade wider audiences."
+
+[mises]:
+  https://cdn.mises.org/Economic%20Calculation%20in%20the%20Socialist%20Commonwealth_Vol_2_3.pdf
+[hayek]: https://www.kysq.org/docs/Hayek_45.pdf
