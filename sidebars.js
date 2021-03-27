@@ -13,6 +13,7 @@ module.exports = {
     ],
     Technology: [
       'guides',
+      'market-metadata',
       'sdk'
     ],
   },
