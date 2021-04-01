@@ -14,7 +14,7 @@ Zeitgeist metadata for clients to successfully pull and populate this data on fr
 The metadata structure is extensible, but the following three fields are always required:
 
 ```ts
-type MarketMedata = {
+type MarketMetadata = {
     title: string;
     description: string;
     categories?: string[];
