@@ -54,7 +54,7 @@ the `target/release` folder. You can start a node for Battery Park from the root
 of the directory like so:
 
 ```sh
-./target/release/zeitgeist --chain battery_park
+./target/release/zeitgeist --chain battery_park --bootnodes /ip4/139.162.171.58/tcp/30333/p2p/12D3KooWPvu5rpH2FNYnAmiQ8X8XqkMiuSFTjH2jwMCSjoam7RGQ
 ```
 
 You should see your node begin to sync blocks.
