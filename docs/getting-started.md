@@ -28,7 +28,7 @@ out.
 If you want to just jump in and start using Zeitgeist, then check out our great
 [guides][].
 
-Happy predicting! 🔮
+Happy predicting!!! 🔮
 
 [prediction markets]: prediction-markets.md
 [governance protocol]: governance.md
