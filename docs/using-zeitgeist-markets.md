@@ -58,6 +58,7 @@ It is recommended, instead, only to use the market's _canonical pool_, which wil
 It is possible to add either varying weights of standard assets (the market's outcome assets and ZTG) or other individual assets to any existing pool.
 
 
+:)
 
 
 
