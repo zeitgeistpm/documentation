@@ -31,3 +31,8 @@ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
 ```
 
 If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+
+## Formatting MarkDown
+
+This repository uses `prettier` to maintain a consistent code style. After writing the content, you can use the `yarn fmt`
+script to format the markdown using `prettier`.

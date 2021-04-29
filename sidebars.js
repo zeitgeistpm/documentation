@@ -5,6 +5,7 @@ module.exports = {
       'battery-park',
       'faq',
       'prediction-markets',
+      'using-zeitgeist-markets',
       'governance',
       'court',
       'futarchy',
