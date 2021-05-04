@@ -8,11 +8,12 @@ This page will describe some CLI commands to access a Zeitgeist chain.
 You can either run a Zeitgeist chain instance locally for testing purposes or interact with the live chain. 
 By default, the local chain endows the well-known account `\\Alice` with test ZTG and you don't need to do anything to fund this account or obtain the private seed.
 On the live chain, we will assume that you have the private seed to an account which is funded with sufficient ZBP (or ZTG) as appropriate for the chain.
-Note that you will need over 100 ZTG or equivalent on the chain you are using if you want to interact with a market you have created.
+You will need over 100 ZTG or equivalent on the chain you are using if you want to interact with a market you have created.
 
-If you are using a local chain instance, follow the instructions to install and start the chain in the [zeitgeistpm/zeitgeist repo](https://github.com/zeitgeistpm/zeitgeist). Note that compilation may take around 30-60 minutes.
+If you are using a local chain instance, follow the instructions to install and start the chain in the [zeitgeistpm/zeitgeist repo](https://github.com/zeitgeistpm/zeitgeist). Compilation may take around 30-60 minutes.
 
-In order to use the CLI, clone the [zeitgeistpm/tools repo](https://github.com/zeitgeistpm/tools) and install using `yarn`. Note that installation using `npm` may not be complete.
+In order to use the CLI, clone the [zeitgeistpm/tools repo](https://github.com/zeitgeistpm/tools) and install using `yarn`. 
+installation using `npm` may not be complete.
 ```
 git clone 
 cd tools
@@ -66,7 +67,7 @@ We could create the same  market on a local testnet, by specifying an endpoint
  zgcli createMarket "Zeitgeist a hit?" "Will Zeitgeist be a hit?" 5HBjqZByJz36LPpod2p5ZbeM84yUywj2U1EP9WjZwDp7S4pk 125000 --endpoint ws://localhost:9944
 ```
 
-Note that we didn't specify a seed here - we could have done, but the CLI will use the private seed for `\\Alice` by default, and this account in endowed with a balance by default on the local chain instance.
+We didn't specify a seed here - we could have done, but the CLI will use the private seed for `\\Alice` by default and, on the local chain instance, this account in endowed with a balance by default.
 Make a note of the `marketId` if creation of the market was successful. (Here we'll use `0`).
 
 As well as being funded, the `\\Alice` account has sudo permissions on the local instance, so we can approve our own market! :
@@ -86,4 +87,5 @@ We can then use `deployPool` to be the first to deploy a liquidity pool for mark
 zgcli buyCompleteSet 0 3000000000000 --endpoint ws://localhost:9944
 zgcli deployPool 0 --endpoint ws://localhost:9944
 ```
+Make a note of the `PoolId` if deploying the pool was successful. (Here we'll use `0` again but be aware: `marketId`s and `PoolId`s are not interchangeable).
 Note that, now the pool is deployed, it cannot be deployed again. Other participants must instead _join_ the existing pool using `joinPool`.
