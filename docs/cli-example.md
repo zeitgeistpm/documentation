@@ -79,7 +79,7 @@ zgcli approve 0 --endpoint ws://localhost:9944
 
 Here we're using the example of the account created on the local chain and approved by `\\Alice`.
 `10000000000` correponds to 1 ZTG, so when we `buyCompleteSet`, we are buying 300 ZTG-equivalent sets of outcomes.
-In the case of this market, where we used the defaults, this means that we will spend 300 ZTG, and receive both 300 `Yes` outcome tokens *and* 300 `No` outcome tokens.
+In the case of this market, where we used the defaults, this means that we created a `Yes`/`No`categorical market and so when we spend 300 ZTG, we receive both 300 `Yes` outcome tokens *and* 300 `No` outcome tokens.
 We can then use `deployPool` to be the first to deploy a liquidity pool for market `0`.
 (The current, temporary, default amount to deploy to a pool is 100 ZTG equivalent of outcome tokens, _plus_ 100  ZTG - These amounts will be configurable, but are currently set to 100 ZTG as this is the minimum allowed to deploy to a liquidity pool)
 ```
