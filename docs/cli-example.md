@@ -15,7 +15,7 @@ If you are using a local chain instance, follow the instructions to install and 
 In order to use the CLI, clone the [zeitgeistpm/tools repo](https://github.com/zeitgeistpm/tools) and install using `yarn`. 
 installation using `npm` may not be complete.
 ```
-git clone 
+git clone https://github.com/zeitgeistpm/tools.git
 cd tools
 yarn
 ```
