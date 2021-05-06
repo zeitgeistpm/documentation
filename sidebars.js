@@ -10,7 +10,8 @@ module.exports = {
       'court',
       'futarchy',
       'applications',
-      'roadmap'
+      'roadmap',
+      'how-to-participate-in-Derby'
     ],
     Technology: [
       'guides',
