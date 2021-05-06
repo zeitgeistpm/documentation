@@ -45,7 +45,7 @@ title: How To Participate in Zeitgeist's Kusama Parachain Derby
 
   ![faucet screenshot](./../static/img/how-to/20210506185713.png)
 
-- Send a message like this `!drip 5Hxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 100` to get your testnet token for you account. On this command line, `5Hxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` represents your Polkadot address and `100` represents the quantity of testnet token you need.
+- Send a message like this `!drip 5Hxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` to get your testnet token for you account. On this command line, `5Hxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` represents your Polkadot address.
 
 ## Make your prediction in Zeitgeist
 
