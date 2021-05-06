@@ -15,7 +15,7 @@ title: How To Participate in Zeitgeist's Kusama Parachain Derby
 
 - You can install `Polkadot{.js} extension` for Chrome or Firefox, here is the [link](https://polkadot.js.org/extension/)
 
-- Then you need create a new account by using this extension. **Attention！** You **MUST** remember your mnemonic seed which can be used to restore you wallet.
+- Then you need create a new account by using this extension. **Attention！** You **MUST** write down and secure your mnemonic seed which can be used to restore you wallet.
 
   ![create a new account](./../static/img/how-to/20210506183818.png)
 
