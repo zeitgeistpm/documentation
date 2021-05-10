@@ -20,7 +20,7 @@ Sometimes we have to upgrade the type deifnitions to support new features and po
 Npm is almost always up to date with the types we are using on the Zeitgeist chain but you can check by comparing the version number
 of [our published npm package](https://www.npmjs.com/package/@zeitgeistpm/type-defs) with that on [our Github repository](https://github.com/zeitgeistpm/tools/blob/main/packages/type-defs/package.json).
 
-If you find the type defintions mismatching, you can easily update them manually by taking [the new type definitions from the Github repository](https://github.com/zeitgeistpm/tools/blob/main/packages/type-defs/src/index.ts), selecting only the object named `types,
+If you find the type defintions mismatching, you can easily update them manually by taking [the new type definitions from the Github repository](https://github.com/zeitgeistpm/tools/blob/main/packages/type-defs/src/index.ts), selecting only the object named `types`,
 and copying and pasting it into [the Settings|Developer tab](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbp-rpc.zeitgeist.pm#/settings/developer) in polkadot.js/apps.
 https://github.com/zeitgeistpm/documentation/new/main/docs/assets/type-def_selection.png. Don't forget to press on `Save`!
 
