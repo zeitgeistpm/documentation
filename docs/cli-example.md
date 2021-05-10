@@ -1,12 +1,12 @@
 ---
-id: using-zeitgeist-markets
-title: Using Zeitgeist markets
+id: cli-example
+title: Using Zeitgeist markets (CLI)
 ---
 
 ### Setup
 This page will describe some CLI commands to access a Zeitgeist chain.
 You can either run a Zeitgeist chain instance locally for testing purposes or interact with the live chain. 
-By default, the local chain endows the well-known account `\\Alice` with test ZTG and you don't need to do anything to fund this account or obtain the private seed.
+By default, the local chain endows the well-known account `//Alice` with test ZTG and you don't need to do anything to fund this account or obtain the private seed.
 On the live chain, we will assume that you have the private seed to an account which is funded with sufficient ZBP (or ZTG) as appropriate for the chain.
 You will need over 100 ZTG or equivalent on the chain you are using if you want to interact with a market you have created.
 
@@ -67,10 +67,10 @@ We could create the same  market on a local testnet, by specifying an endpoint
  zgcli createMarket "Zeitgeist a hit?" "Will Zeitgeist be a hit?" 5HBjqZByJz36LPpod2p5ZbeM84yUywj2U1EP9WjZwDp7S4pk 125000 --endpoint ws://localhost:9944
 ```
 
-We didn't specify a seed here - we could have done, but the CLI will use the private seed for `\\Alice` by default and, on the local chain instance, this account in endowed with a balance by default.
+We didn't specify a seed here - we could have done, but the CLI will use the private seed for `//Alice` by default and, on the local chain instance, this account in endowed with a balance by default.
 Make a note of the `marketId` if creation of the market was successful. (Here we'll use `0`).
 
-As well as being funded, the `\\Alice` account has sudo permissions on the local instance, so we can approve our own market! :
+As well as being funded, the `//Alice` account has sudo permissions on the local instance, so we can approve our own market! :
 
 ```
 zgcli approve 0 --endpoint ws://localhost:9944
@@ -78,7 +78,7 @@ zgcli approve 0 --endpoint ws://localhost:9944
 
 ### As a liquidity provider
 
-Here we're using the example of the account created on the local chain and approved by `\\Alice`.
+Here we're using the example of the account created on the local chain and approved by `//Alice`.
 `10000000000` correponds to 1 ZTG, so when we `buyCompleteSet`, we are buying 300 ZTG-equivalent sets of outcomes.
 In the case of this market, where we used the defaults, this means that we created a `Yes`/`No`categorical market and so when we spend 300 ZTG, we receive both 300 `Yes` outcome tokens *and* 300 `No` outcome tokens.
 We can then use `deployPool` to be the first to deploy a liquidity pool for market `0`.
