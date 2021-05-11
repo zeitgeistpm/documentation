@@ -3,57 +3,61 @@ id: how-to-participate-in-derby
 title: How To Participate in Zeitgeist's Kusama Parachain Derby
 ---
 
-## Create a Polkadot account
+## Create a Zeitgeist account
 
 ### PC
 
-- You can install `Polkadot{.js} extension` for Chrome or Firefox, here is the [link](https://polkadot.js.org/extension/)
+- The easiet way to create and maintain accounts in the polkadot ecosystem is using the `Polkadot{.js} extension` for Chrome or Firefox, both available [here](https://polkadot.js.org/extension/)
 
-- Then you need create a new account by using this extension. **Attention！** You **MUST** write down and secure your mnemonic seed which can be used to restore you wallet.
+- You will need an account, which you can create using the extension. **Attention！** You **MUST** write down and secure your mnemonic seed which can be used to restore your wallet. Keep it secure as it will recreate your account without a password or any further authorisation.
 
   ![create a new account](./../static/img/how-to/20210506183818.png)
+
+- If the Zeitgeist chain is not listed yet, select 
 
 - When finished, you will get an account like this.
 
   ![finish account creation](./../static/img/how-to/20210506184035.png)
 
-- And this is your Polkadot address, you can use it now!
+- Copy your new Zeitgeist address, you can use it now!
+
+ (If you already loaded the Kusama Derby page, 
+ you may need to reload before it connects to the extension) 
 
 ### Mobile Device
 
 - You can use [Polkawallet](https://polkawallet.io/) to create a new account.
 
-- Install the app and open it, then choose `create a new account`. Also, the mnemonic seed is pretty important, please keep it safe.
-
+- Install the app and open it, then choose `create a new account`. Also, the mnemonic seed is pretty important, so keep it secure.!
   ![screenshot for polkawallet](./../static/img/how-to/20210506184936.png)
 
-- When finished, you just get your Polkadot account like this.
+- When finished, you will see your Zeitgeist account address like this.
 
   ![Account screenshot](./../static/img/how-to/20210506185237.png)
 
 ## Ask Faucet for Testnet Tokens (ZBP)
 
-- If you want to participate in this Derby, you have to get our testnet token first.
+- To participate in the Derby, you'll first need to get our testnet token - test ZTG.
 
-- Join in our [Discord](https://discord.com/invite/xv8HuA4s8v) and choose faucet like this.
+- Join our [Discord](https://discord.com/invite/xv8HuA4s8v) and enter the room named faucet.
 
   ![faucet screenshot](./../static/img/how-to/20210506185713.png)
 
-- Send a message like this `!drip 5Hxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` to get your testnet token for you account. On this command line, `5Hxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` represents your Polkadot address.
+- Send a message like this `!drip 5Hxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` to get test ZTG sent to your account. In this command, replace `5Hxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` with your Zeitgeist address. Make sure this is the address you have access to - you won't get a second chance!
 
 ## Make your Prediction on Zeitgeist
 
-- [Here is a link to the Derby](https://proto.zeitgeist.pm/kusama-derby)
+- Open up [the Kusama Derby dapp](https://proto.zeitgeist.pm/kusama-derby)
 
 - First, you need to link your wallet to our dapp. Just click this.
 
   ![link wallet to dapp](./../static/img/how-to/20210506190512.png)
 
-- Now you can make a prediction! Chose one and click it.
+- Now you can make a prediction! 
 
   ![enter the prediction market](./../static/img/how-to/20210506190451.png)
 
-- Now you can see the site you will make a prediction. On the top, you can choose which slot you wanna bet. In the middle page, you can see more visually what is happening in the current prediction market. At the bottom, you can make your prediction arbitrarily.
+- After choosing which slot you want to predict, you'll see the current state of that market - the further the 'horse', the more participants believe it will win. Below, you can add whichever prediction you choose.
 
   ![choose a slot](./../static/img/how-to/20210506190815.png)
 
@@ -61,15 +65,15 @@ title: How To Participate in Zeitgeist's Kusama Parachain Derby
 
   ![buy & sell](./../static/img/how-to/20210506191144.png)
 
-- If you want to **BUY** , just click `BUY` button and fill in the amount. The upper one means how many ZTG you want to bet on, and the lower one means how many **SHARES** you want to bet on. For example, if you want to bet 10 ZTG, because of the `Price` is 0.1422, you can get 10/0.1422=70.32 SHARES (without considering the **Fee**). Similarly, if you want to bet 10 SHARES, you need to pay 1.422 ZTG.
+- If you want to bet on a horse winning, you want to **BUY** - just click the `BUY` button and fill in the amount. The top number is how many ZTG you want to spend on your bet, and the lower one will update with how many **OUTCOME TOKENS** you will receive. For example, if you want to bet 10 ZTG, because the `Price` is 0.1422, you can get 10/0.1422=70.32 OUTCOME TOKENS (excluding the **Fee**) which can be converted to 70.32 ZTG (minus the fee) if your horse comes in first. Similarly, if you want to receive 10 ZTG if you win, the cost is 1.422 ZTG now.
 
   ![image-20210506191332151](./../static/img/how-to/20210506191334.png)
 
-- When you finish your bet, just click `Sign Transaction` , then you will get this page, just fill in your password for Polkadot account, and click  `Sign Transaction` .
+- When you've entered the deatils of your bet, click `Sign Transaction` and you will get this page. You will need to confirm using the password you set up for your Zeitgeist account, and click  `Sign Transaction` .
 
   ![Sign transaction](./../static/img/how-to/20210506192656.png)
 
-- If you can see this, it means you succeed. Congratulations!
+- If you can see the message 'Swapped!', you placed your bet successfully. Congratulations!
 
   ![Broadcasting transaction](./../static/img/how-to/20210506192649.png)
 
