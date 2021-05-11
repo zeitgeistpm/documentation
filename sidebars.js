@@ -11,7 +11,8 @@ module.exports = {
       'futarchy',
       'applications',
       'roadmap',
-      'how-to-participate-in-derby'
+      'how-to-participate-in-derby',
+      'troubleshooting'
     ],
     Technology: [
       'guides',
