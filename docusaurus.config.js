@@ -82,7 +82,7 @@ module.exports = {
           routeBasePath: '/',
           // Please change this to your repo.
           editUrl:
-            'https://github.com/zeitgeistpm/docs/edit/master/website/',
+            'https://github.com/zeitgeistpm/docs/edit/main/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
