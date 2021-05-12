@@ -10,9 +10,9 @@ title: Troubleshooting
 ##### I see `<unknown>` as the result of my query to Chain state, or from making an RPC call
 
 Most of the time, this is the result of misconfugred types in polkadot.js.org/apps.
-However, this result will also show while the page is waiting for the network request.
+However, this result will also show for a brief moment while the page is waiting for the network request, so if the network is very slow or the connection breaks, then `<unkown>` will continue to show
 
-To diagnose which, open your browser's Dev Tools. Usually you can do this by pressing F12.
+To diagnose which of these problems you are experiencing, open your browser's Dev Tools. Usually you can do this by pressing F12.
 Dev Tools contains a console (you may have to select the tab for it) which outputs errors encountered by the page.
 If you see an error along the lines of:
 > DRR: Unable to decode ... createType ... Decoded input doesn't match input, received 0x..... , created 0x.....
