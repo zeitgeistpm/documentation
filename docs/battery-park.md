@@ -42,8 +42,10 @@ code repository to add the dependencies.
 ```sh
 # clone the code locally
 git clone https://github.com/zeitgeistpm/zeitgeist.git
-# change directories
+# change directory
 cd zeitgeist
+# select correct version
+git checkout fb127223ea8990bb27819dbbb9b15a46d7ffea73
 # use the initializer script
 ./scripts/init.sh
 ```
