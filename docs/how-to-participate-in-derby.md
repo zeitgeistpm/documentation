@@ -57,6 +57,10 @@ connects to the extension)
   Make sure this is the address you have access to - you won't get a second
   chance!
 
+- If you had a KSM account with a KSM balance on May 11, 2021 when the snapshot was taken,
+  you can also claim an equivalent amount of ZBP from the faucet. See [using the faucet](/using-the-faucet.md)
+  for instructions on how that can be done.
+
 ## Make your Prediction on Zeitgeist
 
 - Open up [the Kusama Derby dapp](https://proto.zeitgeist.pm/kusama-derby)
@@ -67,13 +71,13 @@ connects to the extension)
 
 - Now you can make a prediction!
 
-  ![enter the prediction market](./../static/img/how-to/20210506190451.png)
+  ![enter the prediction market](./../static/img/derby_markets.png)
 
 - After choosing which slot you want to predict, you'll see the current state of that market - the further the 'horse', the more ZBP was bet on it. Below, you can add whichever prediction you choose.
 
   ![choose a slot](./../static/img/how-to/20210506190815.png)
 
-  ![prediction situation](./../static/img/how-to/20210506190928.png)
+  ![prediction situation](./../static/img/derby_horses.png)
 
   ![buy & sell](./../static/img/how-to/20210506191144.png)
 
@@ -86,8 +90,7 @@ connects to the extension)
   comes in first. Similarly, if you want to receive 10 ZTG if you win, the cost
   is 1.422 ZTG now.
 
-  ![image-20210506191332151](./../static/img/how-to/20210506191334.png)
-
+  ![image-20210506191332151](./../static/img/derby_open_card.png)
 
 - When you've entered the details of your bet, click `Sign Transaction` and you will get this page. You will need to confirm using the password you set up for your Zeitgeist account, and click  `Sign Transaction` .
 
@@ -99,4 +102,4 @@ connects to the extension)
 
   ![Broadcasting transaction](./../static/img/how-to/20210506192649.png)
 
-  ![success](./../static/img/how-to/20210506192652.png)
+  ![success](./../static/img/success.png)
