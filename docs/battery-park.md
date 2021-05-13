@@ -73,8 +73,8 @@ sure that you have Docker installed locally, then type (or paste) the following
 commands in your terminal:
 
 ```
-docker pull zeitgeistpm/zeitgeist-node
-docker run zeitgeistpm/zeitgeist-node --chain battery_park
+docker pull zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73
+docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 --chain battery_park
 ```
 
 ## Accessing the User Interface
