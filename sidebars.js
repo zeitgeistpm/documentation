@@ -12,6 +12,7 @@ module.exports = {
       'applications',
       'roadmap',
       'how-to-participate-in-derby',
+      'using-the-faucet',
       'troubleshooting'
     ],
     Technology: [

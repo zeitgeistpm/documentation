@@ -14,8 +14,10 @@ Battery Park is the name of the Zeitgeist testnet. It is named after
 luscious park on the southern tip of Manhattan island with a view of the Statue
 of Liberty.
 
-If you want to support and strengthen Battery Park by running your own network node, head over to the section [Get Connected](battery-park#get-connected).
-If you want to interact with Battery Park, head over to the section [Accessing the User Interface](battery-park#accessing-the-user-interface)
+If you want to support and strengthen Battery Park by running your own network
+node, head over to the section [Get Connected](battery-park#get-connected). If
+you want to interact with Battery Park, head over to the section
+[Accessing the User Interface](battery-park#accessing-the-user-interface)
 
 ## Get Connected
 
@@ -64,9 +66,11 @@ You should see your node begin to sync blocks.
 
 #### Using Docker
 
-We publish the latest version to the [Docker Hub](https://hub.docker.com/r/zeitgeistpm/zeitgeist-node) 
-that can be pulled and ran locally to connect to the network. In order to do this first make sure that
-you have Docker installed locally, then type (or paste) the following commands in your terminal:
+We publish the latest version to the
+[Docker Hub](https://hub.docker.com/r/zeitgeistpm/zeitgeist-node) that can be
+pulled and ran locally to connect to the network. In order to do this first make
+sure that you have Docker installed locally, then type (or paste) the following
+commands in your terminal:
 
 ```
 docker pull zeitgeistpm/zeitgeist-node
@@ -80,8 +84,17 @@ You can access the Apps based (advanced) UI at:
 
 ## Faucet
 
-We operate a [faucet discord channel](https://discord.gg/VWMY3xMtWb), that offers a faucet that can be used to receive the native Zeitgeist currency for the Battery Park testnet, ZBP (Zeitgeist Battery Park), which is required for numerous interactions with Battery Park. You can request 1 ZBP per 36 hours by using the `!drip your_account_address` command in the [faucet discord channel](https://discord.gg/VWMY3xMtWb). The account address should start with a "5".
+We operate a [faucet discord channel](https://discord.gg/VWMY3xMtWb), that
+offers a faucet that can be used to receive the native Zeitgeist currency for
+the Battery Park testnet, ZBP (Zeitgeist Battery Park), which is required for
+numerous interactions with Battery Park. You can request 1 ZBP per 36 hours by
+using the `!drip your_account_address` command in the
+[faucet discord channel](https://discord.gg/VWMY3xMtWb). The account address
+should start with a "5".
 
-There are numerous ways to generate an account, we suggest to use [Polkadot{.js} extension](https://github.com/polkadot-js/extension) though, because it is simple and straightforward to use. You can get it at:
+There are numerous ways to generate an account, we suggest to use
+[Polkadot{.js} extension](https://github.com/polkadot-js/extension) though,
+because it is simple and straightforward to use. You can get it at:
+
 - [Chrome web store](https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd)
 - [Firefox add-ons](https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/)
