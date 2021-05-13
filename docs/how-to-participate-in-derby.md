@@ -29,18 +29,6 @@ title: How To Participate in Zeitgeist's Kusama Parachain Derby
 (If you already loaded the Kusama Derby page, you may need to reload before it
 connects to the extension)
 
-### Mobile Device
-
-- You can use [Polkawallet](https://polkawallet.io/) to create a new account.
-
-- Install the app and open it, then choose `create a new account`. Also, the
-  mnemonic seed is pretty important, so keep it secure.!
-  ![screenshot for polkawallet](./../static/img/how-to/20210506184936.png)
-
-- When finished, you will see your Zeitgeist account address like this.
-
-  ![Account screenshot](./../static/img/how-to/20210506185237.png)
-
 ## Ask Faucet for Testnet Tokens (ZBP)
 
 - To participate in the Derby, you'll first need to get our testnet token - test
