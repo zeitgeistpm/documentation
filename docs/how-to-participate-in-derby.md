@@ -69,9 +69,7 @@ connects to the extension)
 
   ![enter the prediction market](./../static/img/how-to/20210506190451.png)
 
-- After choosing which slot you want to predict, you'll see the current state of
-  that market - the further the 'horse', the more participants believe it will
-  win. Below, you can add whichever prediction you choose.
+- After choosing which slot you want to predict, you'll see the current state of that market - the further the 'horse', the more ZBP was bet on it. Below, you can add whichever prediction you choose.
 
   ![choose a slot](./../static/img/how-to/20210506190815.png)
 
@@ -90,9 +88,9 @@ connects to the extension)
 
   ![image-20210506191332151](./../static/img/how-to/20210506191334.png)
 
-- When you've entered the deatils of your bet, click `Sign Transaction` and you
-  will get this page. You will need to confirm using the password you set up for
-  your Zeitgeist account, and click `Sign Transaction` .
+
+- When you've entered the details of your bet, click `Sign Transaction` and you will get this page. You will need to confirm using the password you set up for your Zeitgeist account, and click  `Sign Transaction` .
+
 
   ![Sign transaction](./../static/img/how-to/20210506192656.png)
 
