@@ -31,7 +31,7 @@ Don't forget to press `Save`!
 
 ![selecting type definitions](./../static/img/type-def_selection.png)
 
-
+If you cannot `Save` the new types and the input area remains pink, ensure that the object is strictly JSON formatted, for example by using Javascript's `JSON.stringify` method or [a formatting tool](https://www.freeformatter.com/json-formatter.html).
 
 ### Accessing Zeitgeist through the [SDK](https://github.com/zeitgeistpm/tools)
 
