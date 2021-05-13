@@ -18,11 +18,12 @@ title: How To Participate in Zeitgeist's Kusama Parachain Derby
 
   ![create a new account](./../static/img/how-to/20210506183818.png)
 
-- If the Zeitgeist chain is not listed yet, select
-
 - When finished, you will get an account like this.
 
   ![finish account creation](./../static/img/how-to/20210506184035.png)
+
+- Select either "Use on any chain" or "Zeitgeist Battery Park" in the
+  side menu of the new account
 
 - Copy your new Zeitgeist address, you can use it now!
 
