@@ -8,7 +8,7 @@ instead of the ZTG. ZBP is provided to users through a frictioned faucet on
 Discord in order to allow for testing and experimentation.
 
 __NOTE:__ Due to the presence of a click-farm attack on our faucet we needed to take an
-extra measure to protect and the integrity of the Kusama Derby campaign. For this reason,
+extra measure to protect the integrity of the Kusama Derby campaign. For this reason,
 we decided to put the faucet behind a $2.00 paywall. All of the proceeds will be donated to India
 COVID Relief Funds. We hope you understand. The faucet can now be accessed from [this link](https://launchpass.com/kusama-derby-faucet/faucet).
 
