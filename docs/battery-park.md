@@ -102,7 +102,7 @@ ZEITGEIST_KEY_NAME="node_key"
 mkdir -p ${ZEITGEIST_KEY_PATH}
 # Attention: Old keys you stored in the same path might be overwritten here
 xxd -l 32 -c 32 -p /dev/urandom > ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME}
-chmod 600 ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME} 
+chmod 400 ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME} 
 ```
 
 If you simply run the docker image directly, make sure to export the
@@ -120,7 +120,7 @@ variables in the service file, again the last character of
 `ZEITGEIST_KEY_PATH` must not be "/":
 
 ```
-Environment="ZEITGEIST_KEY_PATH=${HOME}/.zeitgeist"
+Environment="ZEITGEIST_KEY_PATH=/path/to/node_key"
 Environment="ZEITGEIST_KEY_NAME=node_key"
 ```
 
@@ -143,7 +143,14 @@ docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 -
 
 ## Accessing the User Interface
 
-You can access the Apps based (advanced) UI at:
+You can access the campaign we put together to celebrate the Kusama 
+parachain auctions and help incentivize our testnet at: [https://proto.zeitgeist.pm/kusama-derby](https://proto.zeitgeist.pm/kusama-derby)
+
+You can follow our [kusama-derby tutorial](how-to-participate-in-derby) to learn how to interact with it.
+This is not the full Zeitgeist application, it is only one special
+use case. The full Zeitgeist application will be released in the future.
+
+You can also access the Apps based (advanced) UI at:
 [https://polkadot.js.org/apps/?rpc=wss://bp-rpc.zeitgeist.pm](https://polkadot.js.org/apps/?rpc=wss://bp-rpc.zeitgeist.pm)
 
 ## Faucet
@@ -151,7 +158,7 @@ You can access the Apps based (advanced) UI at:
 We operate a [faucet discord channel](https://discord.gg/VWMY3xMtWb), that
 offers a faucet that can be used to receive the native Zeitgeist currency for
 the Battery Park testnet, ZBP (Zeitgeist Battery Park), which is required for
-numerous interactions with Battery Park. You can request 1 ZBP per 36 hours by
+numerous interactions with Battery Park. You can request 1 ZBP per 24 hours by
 using the `!drip your_account_address` command in the
 [faucet discord channel](https://discord.gg/VWMY3xMtWb). The account address
 should start with a "5".
