@@ -71,12 +71,74 @@ You should see your node begin to sync blocks.
 We publish the latest version to the
 [Docker Hub](https://hub.docker.com/r/zeitgeistpm/zeitgeist-node) that can be
 pulled and ran locally to connect to the network. In order to do this first make
-sure that you have Docker installed locally, then type (or paste) the following
-commands in your terminal:
+sure that you have Docker installed locally.
 
+##### Downloading the docker image
 ```
 docker pull zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73
+```
+
+##### Running the image with a temporary node id
+You can run the docker image using the following command, but the node id
+is lost after you shut down the docker image:
+```
 docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 --chain battery_park
+```
+
+If you want to receive rewards through the [Zeitgeist collator program](https://docs.google.com/forms/d/e/1FAIpQLSc857iTOfp_3CHCdh7qeZwkD_vQfxFeARbMsjhrCF12YBGsuQ/viewform)
+for running a node, head over to [Generating a key for a permanent node id on Linux](battery-park#generating-a-key-for-a-permanent-node-id-on-linux)
+
+##### Generating a key for a permanent node id on Linux
+You need a permanent node id if you want to participate in the
+[Zeitgeist collator program](https://docs.google.com/forms/d/e/1FAIpQLSc857iTOfp_3CHCdh7qeZwkD_vQfxFeARbMsjhrCF12YBGsuQ/viewform).
+Execute the following code, but make sure to read the comments and adjust
+the variable `ZEITGEIST_KEY_PATH` and `ZEITGEIST_KEY_NAME`:
+
+```
+# Configure where your key is stored (last character must not be "/")
+ZEITGEIST_KEY_PATH="${HOME}/.zeitgeist"
+# Configure the key name
+ZEITGEIST_KEY_NAME="node_key"
+mkdir -p ${ZEITGEIST_KEY_PATH}
+# Attention: Old keys you stored in the same path might be overwritten here
+xxd -l 32 -c 32 -p /dev/urandom > ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME}
+chmod 600 ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME} 
+```
+
+If you simply run the docker image directly, make sure to export the
+`ZEITGEIST_KEY_PATH` environment variable on login:
+```
+echo -e "\n# Zeitgeist node id secret file\nexport ZEITGEIST_KEY_PATH=${ZEITGEIST_KEY_PATH}\nexport ZEITGEIST_KEY_NAME=${ZEITGEIST_KEY_NAME}" >> ${HOME}/.profile
+```
+*note: Opening a new terminal will require to source the profile file again,*
+*such that the environment variables are active again: `source ${HOME}/.profile`.*
+*You can log out of and into your system again to automate this procedure.*
+
+If you want to run a service that automatically runs the node, make sure
+to include the `ZEITGEIST_KEY_PATH` and the `ZEITGEIST_KEY_NAME` environment
+variables in the service file, again the last character of
+`ZEITGEIST_KEY_PATH` must not be "/":
+
+```
+Environment="ZEITGEIST_KEY_PATH=${HOME}/.zeitgeist"
+Environment="ZEITGEIST_KEY_NAME=node_key"
+```
+
+Make sure to backup the secret file to a safe place to avoid loss of rewards
+due to a lost secret for the node id:
+```
+cp ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME} /your/safe/place
+```
+
+##### Generating a key for a permanent node id on Windows
+Windows instructions will follow soon.
+
+
+##### Running the docker image with a permanent node id
+executing the following command launch the node using the node id file
+that we generated before to assure a constant node id:
+```
+docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 --chain battery_park --node-key "$(cat ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME})"
 ```
 
 ## Accessing the User Interface
