@@ -19,9 +19,9 @@ node, head over to the section [Get Connected](battery-park#get-connected). If
 you want to interact with Battery Park, head over to the section
 [Accessing the User Interface](battery-park#accessing-the-user-interface)
 
-## Get Connected
+## Get connected
 
-### Running a Node
+### Running a node
 
 There are two ways that you can run a node and connect to the Battery Park
 testnet. One way is to build the code from source (this could take up to 45
@@ -29,15 +29,20 @@ minutes or more depending on your hardware). The other way is to use
 [Docker](https://www.docker.com/) which doesn't need to build and can get you
 started right away.
 
-#### Building From Source
+#### Building from source
 
 The source code is hosted in the
 [zeitgeistpm/zeitgeist](https://github.com/zeitgeistpm/zeitgeist) repository on
 the Zeitgeist GitHub.
 
+To be able to compile the project, Rust must be installed on your system.
+We recommend using [rustup](https://rustup.rs/#) to manage your rust
+build environments. This instructions will assume that you have rustup
+installed.
+
 You will need to clone the code locally, and make sure that you have the
-dependencies installed. You can use the `scripts/init.sh` script inside of the
-code repository to add the dependencies.
+[dependencies](https://substrate.dev/docs/en/knowledgebase/getting-started/#1-build-dependencies)
+installed. Execute the following commands to fetch the project:
 
 ```sh
 # clone the code locally
@@ -46,8 +51,18 @@ git clone https://github.com/zeitgeistpm/zeitgeist.git
 cd zeitgeist
 # select correct version
 git checkout fb127223ea8990bb27819dbbb9b15a46d7ffea73
+```
+
+Next configure rustup, on Linux you can execute the following script:
+```sh
 # use the initializer script
 ./scripts/init.sh
+```
+Otherwise configure rustup manually:
+```sh
+rustup update nightly-2021-03-10
+rustup update stable
+rustup target add wasm32-unknown-unknown --toolchain nightly-2021-03-10
 ```
 
 After initializing you can then start building by using the cargo command:
@@ -74,14 +89,14 @@ pulled and ran locally to connect to the network. In order to do this first make
 sure that you have Docker installed locally.
 
 ##### Downloading the docker image
-```
+```sh
 docker pull zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73
 ```
 
 ##### Running the image with a temporary node id
 You can run the docker image using the following command, but the node id
 is lost after you shut down the docker image:
-```
+```sh
 docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 --chain battery_park
 ```
 
@@ -94,7 +109,7 @@ You need a permanent node id if you want to participate in the
 Execute the following code, but make sure to read the comments and adjust
 the variable `ZEITGEIST_KEY_PATH` and `ZEITGEIST_KEY_NAME`:
 
-```
+```sh
 # Configure where your key is stored (last character must not be "/")
 ZEITGEIST_KEY_PATH="${HOME}/.zeitgeist"
 # Configure the key name
@@ -107,7 +122,7 @@ chmod 400 ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME}
 
 If you simply run the docker image directly, make sure to export the
 `ZEITGEIST_KEY_PATH` environment variable on login:
-```
+```sh
 echo -e "\n# Zeitgeist node id secret file\nexport ZEITGEIST_KEY_PATH=${ZEITGEIST_KEY_PATH}\nexport ZEITGEIST_KEY_NAME=${ZEITGEIST_KEY_NAME}" >> ${HOME}/.profile
 ```
 *note: Opening a new terminal will require to source the profile file again,*
@@ -119,14 +134,14 @@ to include the `ZEITGEIST_KEY_PATH` and the `ZEITGEIST_KEY_NAME` environment
 variables in the service file, again the last character of
 `ZEITGEIST_KEY_PATH` must not be "/":
 
-```
+```sh
 Environment="ZEITGEIST_KEY_PATH=/path/to/node_key"
 Environment="ZEITGEIST_KEY_NAME=node_key"
 ```
 
 Make sure to backup the secret file to a safe place to avoid loss of rewards
 due to a lost secret for the node id:
-```
+```sh
 cp ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME} /your/safe/place
 ```
 
@@ -137,11 +152,11 @@ Windows instructions will follow soon.
 ##### Running the docker image with a permanent node id
 executing the following command launch the node using the node id file
 that we generated before to assure a constant node id:
-```
+```sh
 docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 --chain battery_park --node-key "$(cat ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME})"
 ```
 
-## Accessing the User Interface
+## Accessing the user interface
 
 You can access the campaign we put together to celebrate the Kusama 
 parachain auctions and help incentivize our testnet at: [https://proto.zeitgeist.pm/kusama-derby](https://proto.zeitgeist.pm/kusama-derby)
@@ -155,13 +170,10 @@ You can also access the Apps based (advanced) UI at:
 
 ## Faucet
 
-We operate a [faucet discord channel](https://discord.gg/VWMY3xMtWb), that
-offers a faucet that can be used to receive the native Zeitgeist currency for
-the Battery Park testnet, ZBP (Zeitgeist Battery Park), which is required for
-numerous interactions with Battery Park. You can request 1 ZBP per 24 hours by
-using the `!drip your_account_address` command in the
-[faucet discord channel](https://discord.gg/VWMY3xMtWb). The account address
-should start with a "5".
+We operate a [faucet](using-the-faucet), that can be used to receive the native
+Zeitgeist currency for the Battery Park testnet, ZBP (Zeitgeist Battery Park),
+which is required for numerous interactions with Battery Park. You will need
+an account to retrieve ZBP.
 
 There are numerous ways to generate an account, we suggest to use
 [Polkadot{.js} extension](https://github.com/polkadot-js/extension) though,
