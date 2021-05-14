@@ -106,8 +106,11 @@ for running a node, head over to [Generating a key for a permanent node id on Li
 ##### Generating a key for a permanent node id on Linux
 You need a permanent node id if you want to participate in the
 [Zeitgeist collator program](https://docs.google.com/forms/d/e/1FAIpQLSc857iTOfp_3CHCdh7qeZwkD_vQfxFeARbMsjhrCF12YBGsuQ/viewform).
-Execute the following code, but make sure to read the comments and adjust
-the variable `ZEITGEIST_KEY_PATH` and `ZEITGEIST_KEY_NAME`:
+The following code will generate a file for you in `ZEITGEIST_KEY_PATH`/
+`ZEITGEIST_KEY_NAME`, which contains a secret that is used to derive the same
+node id every time the docker image is started. Before executing the following
+code, make sure to read the comments and adjust `ZEITGEIST_KEY_PATH` and 
+`ZEITGEIST_KEY_NAME`.
 
 ```sh
 # Configure where your key is stored (last character must not be "/")
@@ -116,7 +119,7 @@ ZEITGEIST_KEY_PATH="${HOME}/.zeitgeist"
 ZEITGEIST_KEY_NAME="node_key"
 mkdir -p ${ZEITGEIST_KEY_PATH}
 # Attention: Old keys you stored in the same path might be overwritten here
-xxd -l 32 -c 32 -p /dev/urandom > ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME}
+docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 key generate-node-key > ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME}
 chmod 400 ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME} 
 ```
 
@@ -125,8 +128,8 @@ If you simply run the docker image directly, make sure to export the
 ```sh
 echo -e "\n# Zeitgeist node id secret file\nexport ZEITGEIST_KEY_PATH=${ZEITGEIST_KEY_PATH}\nexport ZEITGEIST_KEY_NAME=${ZEITGEIST_KEY_NAME}" >> ${HOME}/.profile
 ```
-*note: Opening a new terminal will require to source the profile file again,*
-*such that the environment variables are active again: `source ${HOME}/.profile`.*
+*Note: Opening a new terminal will require to source the profile file again,*
+*such that the environment variables are set again: `source ${HOME}/.profile`.*
 *You can log out of and into your system again to automate this procedure.*
 
 If you want to run a service that automatically runs the node, make sure
@@ -149,12 +152,15 @@ cp ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME} /your/safe/place
 Windows instructions will follow soon.
 
 
-##### Running the docker image with a permanent node id
+##### Running the docker image with a permanent node id on Linux
 executing the following command launch the node using the node id file
 that we generated before to assure a constant node id:
 ```sh
 docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 --chain battery_park --node-key "$(cat ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME})"
 ```
+*Note: You can also use the `--node-key-file` command instead of `--node-key`,*
+*but in some situations this leads to a permission error, whereas the supplied*
+*variant should work anytime*
 
 ## Accessing the user interface
 
