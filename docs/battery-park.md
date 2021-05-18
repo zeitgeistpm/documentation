@@ -24,12 +24,20 @@ you want to interact with Battery Park, head over to the section
 ### Running a node
 
 There are two ways that you can run a node and connect to the Battery Park
-testnet. One way is to build the code from source (this could take up to 45
-minutes or more depending on your hardware). The other way is to use
-[Docker](https://www.docker.com/) which doesn't need to build and can get you
-started right away.
+testnet. One way is to [build the code from source](battery-park#building-from-source).
+On recent hardware this should take about 5-10 minutes, on older hardware 
+this can take more than 45 minutes. [The other way](battery-park#using-docker) 
+is to use [Docker](https://www.docker.com/) which doesn't need to build and can
+get you started right away.
 
 #### Building from source
+
+*Note for Windows users: Although it should be possible to build this project*
+*on Windows, it is not well supported. Instead it is recommended to build this*
+*project inside WSL in Windows. If you want to build this on Windows anyways,*
+*you can follow [this tutorial](https://substrate.dev/docs/en/knowledgebase/getting-started/windows-users)*
+*to setup your build environment and continue with this tutorial afterwards.*
+*We have not tested building on Windows and cannot guarantee that it will work.*
 
 The source code is hosted in the
 [zeitgeistpm/zeitgeist](https://github.com/zeitgeistpm/zeitgeist) repository on
@@ -53,7 +61,7 @@ cd zeitgeist
 git checkout fb127223ea8990bb27819dbbb9b15a46d7ffea73
 ```
 
-Next configure rustup, on Linux you can execute the following script:
+Next configure rustup, on Unix you can execute the following script:
 ```sh
 # use the initializer script
 ./scripts/init.sh
@@ -71,8 +79,8 @@ After initializing you can then start building by using the cargo command:
 cargo build --release
 ```
 
-Once the build has finished you will have the `zeitgeist` binary available in
-the `target/release` folder. You can start a node for Battery Park from the root
+Once the build has finished you will have the *zeitgeist* binary available in
+the *target/release* folder. You can start a node for Battery Park from the root
 of the directory like so:
 
 ```sh
@@ -80,6 +88,45 @@ of the directory like so:
 ```
 
 You should see your node begin to sync blocks.
+
+The previous command will store the chain data in
+*$HOME/.local/share/zeitgeist/chains/battery_park*. You can choose a different
+location, for example */services/zeitgeist* by using the `-d` parameter:
+```sh
+./target/release/zeitgeist -d /services/zeitgeist --chain battery_park --bootnodes /ip4/139.162.171.58/tcp/30333/p2p/12D3KooWPvu5rpH2FNYnAmiQ8X8XqkMiuSFTjH2jwMCSjoam7RGQ
+```
+Ensure that you have write permissions for the path. In case you want to use
+the */services/zeitgeist* folder at the root of the file system, you will have to change
+the ownership to the user who runs the Zeitgeist node (called *user* here):
+```sh
+chown -R user:user /services/zeitgeist
+```
+
+If you want to receive rewards through the [Zeitgeist collator program](https://docs.google.com/forms/d/e/1FAIpQLSc857iTOfp_3CHCdh7qeZwkD_vQfxFeARbMsjhrCF12YBGsuQ/viewform)
+for running a node, you have to ensure that your node id is permanent and your
+node has an high up-time. Your node id is derived from a secret, that is stored
+within */services/zeitgeist/chains/battery_park/network/secret_ed25519*. First ensure
+that the file is read-only:
+```
+chmod 400 /services/zeitgeist/chains/battery_park/network/secret_ed25519
+```
+Then backup your secret file to a safe place, such that you can continue to 
+earn rewards for that node id after a loss of data.
+
+Your node id is printed by the node shortly after it has been started. It looks 
+like this:
+> Local node identity is: 12D3KooWKzzeu1thnWQv8CCWaugFfpeCXnq7jmp6GENSdXqG5xX9
+
+In addition, you should ensure that your node has a maximum up-time, because
+your rewards will depend on it. To do this, you could use a systemd service,
+that automatically starts your Zeitgeist chain and restarts it in case of an 
+error. To do so, you can follow the guide at [Automatically running the Zeitgeist chain as a systemd service (Linux)](battery-park#automatically-running-the-zeitgeist-chain-as-a-systemd-service-linux).
+
+Feel free to play around with the other available options, which you can 
+inspect by executing:
+```sh
+./target/release/zeitgeist --help
+```
 
 #### Using Docker
 
@@ -93,74 +140,177 @@ sure that you have Docker installed locally.
 docker pull zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73
 ```
 
-##### Running the image with a temporary node id
+##### Running the docker image
 You can run the docker image using the following command, but the node id
-is lost after you shut down the docker image:
+and the chain data are lost after you shut down the docker container:
 ```sh
 docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 --chain battery_park
 ```
 
+To keep the chain data, you will have to select a folder on your system that
+docker will use to store its files in. Ensure that the folder does exist.
+Assuming the path you want to use locally is */services/zeitgeist*, 
+the command would be:
+```sh
+docker run -v /services/zeitgeist:/zeitgeist zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 -d /zeitgeist --chain battery_park
+```
+Ensure that you have write permissions for the path. In case you want to use
+the */services/zeitgeist* folder at the root of the file system, you will have to change
+the ownership to the user who runs the Zeitgeist node (called *user* here). On
+Unix systems, you can change the ownership by using the following command:
+```sh
+chown -R user:user /services/zeitgeist
+```
+
 If you want to receive rewards through the [Zeitgeist collator program](https://docs.google.com/forms/d/e/1FAIpQLSc857iTOfp_3CHCdh7qeZwkD_vQfxFeARbMsjhrCF12YBGsuQ/viewform)
-for running a node, head over to [Generating a key for a permanent node id on Linux](battery-park#generating-a-key-for-a-permanent-node-id-on-linux)
-
-##### Generating a key for a permanent node id on Linux
-You need a permanent node id if you want to participate in the
-[Zeitgeist collator program](https://docs.google.com/forms/d/e/1FAIpQLSc857iTOfp_3CHCdh7qeZwkD_vQfxFeARbMsjhrCF12YBGsuQ/viewform).
-The following code will generate a file for you in `ZEITGEIST_KEY_PATH`/
-`ZEITGEIST_KEY_NAME`, which contains a secret that is used to derive the same
-node id every time the docker image is started. Before executing the following
-code, make sure to read the comments and adjust `ZEITGEIST_KEY_PATH` and 
-`ZEITGEIST_KEY_NAME`.
-
-```sh
-# Configure where your key is stored (last character must not be "/")
-ZEITGEIST_KEY_PATH="${HOME}/.zeitgeist"
-# Configure the key name
-ZEITGEIST_KEY_NAME="node_key"
-mkdir -p ${ZEITGEIST_KEY_PATH}
-# Attention: Old keys you stored in the same path might be overwritten here
-docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 key generate-node-key > ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME}
-chmod 400 ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME} 
+for running a node, you have to ensure that your node id is permanent and your
+node has an high up-time. Your node id is derived from a secret, that is stored
+within */services/zeitgeist/chains/battery_park/network/secret_ed25519*. First ensure
+that the file is read-only. On Unix:
+```
+chmod 400 /services/zeitgeist/chains/battery_park/network/secret_ed25519
 ```
 
-If you simply run the docker image directly, make sure to export the
-`ZEITGEIST_KEY_PATH` environment variable on login:
+On Windows (assuming you have chosen the path *C:\services\zeitgeist*):
 ```sh
-echo -e "\n# Zeitgeist node id secret file\nexport ZEITGEIST_KEY_PATH=${ZEITGEIST_KEY_PATH}\nexport ZEITGEIST_KEY_NAME=${ZEITGEIST_KEY_NAME}" >> ${HOME}/.profile
-```
-*Note: Opening a new terminal will require to source the profile file again,*
-*such that the environment variables are set again: `source ${HOME}/.profile`.*
-*You can log out of and into your system again to automate this procedure.*
-
-If you want to run a service that automatically runs the node, make sure
-to include the `ZEITGEIST_KEY_PATH` and the `ZEITGEIST_KEY_NAME` environment
-variables in the service file, again the last character of
-`ZEITGEIST_KEY_PATH` must not be "/":
-
-```sh
-Environment="ZEITGEIST_KEY_PATH=/path/to/node_key"
-Environment="ZEITGEIST_KEY_NAME=node_key"
+attrib +r "C:\services\zeitgeist\chains\battery_park\network\secret_ed25519"
 ```
 
-Make sure to backup the secret file to a safe place to avoid loss of rewards
-due to a lost secret for the node id:
+Then backup your secret file to a safe place, such that you can continue to 
+earn rewards for that node id after a loss of data.
+
+Your node id is printed by the node shortly after the `docker run` command was
+executed. The message looks like this:
+> Local node identity is: 12D3KooWKzzeu1thnWQv8CCWaugFfpeCXnq7jmp6GENSdXqG5xX9
+
+
+That's it, your node should be running and syncing with other nodes, while
+using a persistent chain storage and node id. If you want to participate in the
+collators program, you should ensure that your node has a maximum up-time, 
+because your rewards will depend on it. It is suggested to automatically start 
+and restart the docker container that runs the node, which is explained in [Automatically running the Zeitgeist chain as a docker service](battery-park#automatically-running-the-zeitgeist-chain-as-a-docker-service).
+
+##### Automatically running the Zeitgeist chain as a docker service
+To automatically start a docker container every time (including after 
+reboots and errors), except when it was explicitly stopped by a docker command,
+append the `-d` and `--restart` flag to the `docker run` command from above:
 ```sh
-cp ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME} /your/safe/place
+docker run --restart unless-stopped -d -v /services/zeitgeist:/zeitgeist zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 -d /zeitgeist --chain battery_park
+```
+*Note: If you want to participate in the [Zeitgeist collator program](https://docs.google.com/forms/d/e/1FAIpQLSc857iTOfp_3CHCdh7qeZwkD_vQfxFeARbMsjhrCF12YBGsuQ/viewform),*
+*you should also add a `--name your_node_name` parameter at the end of*
+*the supplied command.*
+
+After the command was executed, one line is printed in the terminal that
+represents the container id. It looks like this:
+> 1e501c25e43be3f2cecc3bade11b22f60f17839d41b37cdac9139cb8ebc8700b
+
+To retrieve your node id, execute the following command (replace *container_id*
+with the container id that was printed to your terminal):
+```sh
+docker logs container_id
+```
+The previous command shows the outputs of the node. It should include one line 
+containing your node id, that looks like:
+> Local node identity is: 12D3KooWKzzeu1thnWQv8CCWaugFfpeCXnq7jmp6GENSdXqG5xX9
+
+You can also retrieve the container id by using the following command:
+```sh
+docker ps --filter ancestor=zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73
 ```
 
-##### Generating a key for a permanent node id on Windows
-Windows instructions will follow soon.
+##### Automatically running the Zeitgeist chain as a systemd service (Linux)
+To automatically start and restart the zeitgeist chain, you can use a systemd
+service. It is not recommended to do this with a docker image, but for a
+zeitgeist binary that was built from source it is perfectly adequate.
 
+We will create a non-privileged user to execute the Zeitgeist node, setup the
+folder structure, create a systemd service file, launch the service and
+inspect the output.
 
-##### Running the docker image with a permanent node id on Linux
-executing the following command launch the node using the node id file
-that we generated before to assure a constant node id:
+Create a new user (without a home folder) and disable login for that user
+(ensure to copy&paste both commands sequentially to ensure they're executed):
 ```sh
-docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 --chain battery_park --node-key "$(cat ${ZEITGEIST_KEY_PATH}/${ZEITGEIST_KEY_NAME})"
+sudo useradd -M zeitgeist
 ```
-*Note: You can also use the `--node-key-file` command instead of `--node-key`,*
-*but in some situations this leads to a permission error, whereas the supplied*
-*variant should work anytime*
+```sh
+sudo usermod zeitgeist -s /sbin/nologin
+```
+
+Create a folder that will contain the Zeitgeist data and the previously
+compiled binary file (see [Building from source](battery-park#building-from-source)).
+Note down were your *zeitgeist* binary lies (it is within the source folder at
+*target/release*) and replace the path after the `cp` command that is
+shown below. In this example we will use */services/zeitgeist*
+as the base folder for our service, */service/zeitgeist/bin* will contain the
+*zeitgeist* binary and the whole */services/zeitgeist* folder structure will
+be owned by the non-privileged zeitgeist user we created in the previous step:
+```sh
+sudo mkdir -p /services/zeitgeist/bin
+sudo cp /path/to/your/target/release/zeitgeist /services/zeitgeist/bin
+sudo chown -R zeitgeist:zeitgeist /services/zeitgeist
+```
+
+Create a systemd service file. You can use your favorite editor, in this 
+example we will use `nano` though, because it is well supported. 
+```sh
+sudo nano /etc/systemd/system/zeitgeist-node.service
+```
+
+You can just use the following template or adjust it to your needs:
+```sh
+[Unit]
+Description=Zeitgeist chain node
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+User=zeitgeist
+Group=zeitgeist
+RestartSec=5
+Restart=always
+Nice=1
+ExecStart=/services/zeitgeist/bin/zeitgeist -d /services/zeitgeist --chain battery_park --bootnodes /ip4/139.162.171.58/tcp/30333/p2p/12D3KooWPvu5rpH2FNYnAmiQ8X8XqkMiuSFTjH2jwMCSjoam7RGQ
+
+[Install]
+WantedBy=multi-user.target
+```
+You can adjust the *Nice* value to configure the priority of the process the 
+service spawns. 20 is the lowest, -20 the highest priority.
+
+*Note: If you want to participate in the [Zeitgeist collator program](https://docs.google.com/forms/d/e/1FAIpQLSc857iTOfp_3CHCdh7qeZwkD_vQfxFeARbMsjhrCF12YBGsuQ/viewform),*
+*you should also add a `--name your_node_name` parameter at the end of the*
+*ExecStart argument of the service file.*
+
+Paste your copy buffer into nano by pressing `CTRL+SHIFT+V` and save the
+changes by pressing `CTRL+X`, `y` and `ENTER`
+
+Enable the service and start it:
+```sh
+sudo systemctl enable zeitgeist-node
+sudo systemctl start zeitgeist-node
+```
+
+Check if it is up and running and syncing with the rest of the network:
+```sh
+systemctl status zeitgeist-node
+```
+
+If it shows *Active: active (running)*, your service works as
+expected. Use the following command to retrieve your node id:
+```sh
+journalctl -u zeitgeist-node.service | grep "node id"
+```
+
+Otherwise enter the following command and inspect what went wrong:
+```
+journalctl -u zeitgeist-node
+```
+
+If you are stuck with an error you can ask for assistance in our 
+[node-operators Discord channel](https://discord.gg/WD3VkGt9eY).
+
 
 ## Accessing the user interface
 
