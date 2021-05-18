@@ -21,6 +21,18 @@ you want to interact with Battery Park, head over to the section
 
 ## Get connected
 
+This section will guide you through setting up your own node.
+Under the current average system load, the node can be run on a Raspberry PI 4B
+(built from source):
+- CPU:        Broadcom BCM2711, Quad core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5GHz
+- RAM:        4 GB
+- Hard drive: SSD recommended, but also works on MicroSD for low loads
+
+The minimum system requirements under continuous full system load are:
+- CPU:        Ryzen 5 3600
+- RAM:        32 GB (less should be sufficient, but was not tested)
+- Hard drive: SSD
+
 ### Running a node
 
 There are two ways that you can run a node and connect to the Battery Park
