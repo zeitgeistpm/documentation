@@ -333,7 +333,7 @@ You can ensure your node is up and running by visiting this page, selecting the 
 
 Since we've recently hit the limit of 500 active nodes on Parity's telemetry server, we've also set up our own Telemetry server.
 In order to connect to Zeitgeist's telemetry server, start your node with the flag `--telemetry-url "wss://telemetry.zeitgeist.pm/submit/ 0"`.
-You can now your node is connected by visiting our page at [https://telemetry.zeitgeist.pm](https://telemetry.zeitgeist.pm].
+You can now your node is connected by visiting our page at [https://telemetry.zeitgeist.pm](https://telemetry.zeitgeist.pm).
 
 ## Accessing the user interface
 
