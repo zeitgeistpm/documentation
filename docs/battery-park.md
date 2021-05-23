@@ -323,6 +323,17 @@ journalctl -u zeitgeist-node
 If you are stuck with an error you can ask for assistance in our 
 [node-operators Discord channel](https://discord.gg/WD3VkGt9eY).
 
+## Connecting to Telemetry
+
+By default, your node will connect to Parity's telemetry endpoint that is accessible at [https://telemetry.polkadot.io](https://telemetry.polkadot.io).
+You can ensure your node is up and running by visiting this page, selecting the "Zeitgeist Battery Park" network and searching for your node's name
+(search can be started by simply typing while on the telemetry page).
+
+### Alternative Telemetry
+
+Since we've recently hit the limit of 500 active nodes on Parity's telemetry server, we've also set up our own Telemetry server.
+In order to connect to Zeitgeist's telemetry server, start your node with the flag `--telemetry-url "wss://telemetry.zeitgeist.pm/submit/ 0"`.
+You can now your node is connected by visiting our page at [https://telemetry.zeitgeist.pm](https://telemetry.zeitgeist.pm].
 
 ## Accessing the user interface
 
