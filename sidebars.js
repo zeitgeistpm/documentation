@@ -11,6 +11,7 @@ module.exports = {
       'futarchy',
       'applications',
       'roadmap',
+      'comparisons',
       'how-to-participate-in-derby',
       'using-the-faucet',
       'troubleshooting'
