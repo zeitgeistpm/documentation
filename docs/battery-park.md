@@ -286,7 +286,6 @@ Nice=0
 ExecStart=/services/zeitgeist/bin/zeitgeist \
 			-d /services/zeitgeist \
 			--chain battery_park \
-			--name WiPi \
 			--bootnodes /ip4/139.162.171.58/tcp/30333/p2p/12D3KooWPvu5rpH2FNYnAmiQ8X8XqkMiuSFTjH2jwMCSjoam7RGQ \
         	--telemetry-url "wss://telemetry.zeitgeist.pm/submit/ 0"
 
