@@ -69,8 +69,6 @@ installed. Execute the following commands to fetch the project:
 git clone https://github.com/zeitgeistpm/zeitgeist.git
 # change directory
 cd zeitgeist
-# select correct version
-git checkout fb127223ea8990bb27819dbbb9b15a46d7ffea73
 ```
 
 Next configure rustup, on Unix you can execute the following script:
@@ -96,7 +94,7 @@ the *target/release* folder. You can start a node for Battery Park from the root
 of the directory like so:
 
 ```sh
-./target/release/zeitgeist --chain battery_park --bootnodes /ip4/139.162.171.58/tcp/30333/p2p/12D3KooWPvu5rpH2FNYnAmiQ8X8XqkMiuSFTjH2jwMCSjoam7RGQ --telemetry-url "wss://telemetry.zeitgeist.pm/submit/ 0"
+./target/release/zeitgeist --chain battery_park
 ```
 
 You should see your node begin to sync blocks.
@@ -105,7 +103,7 @@ The previous command will store the chain data in
 *$HOME/.local/share/zeitgeist/chains/battery_park*. You can choose a different
 location, for example */services/zeitgeist* by using the `-d` parameter:
 ```sh
-./target/release/zeitgeist -d /services/zeitgeist --chain battery_park --bootnodes /ip4/139.162.171.58/tcp/30333/p2p/12D3KooWPvu5rpH2FNYnAmiQ8X8XqkMiuSFTjH2jwMCSjoam7RGQ --telemetry-url "wss://telemetry.zeitgeist.pm/submit/ 0"
+./target/release/zeitgeist -d /services/zeitgeist --chain battery_park
 ```
 Ensure that you have write permissions for the path. In case you want to use
 the */services/zeitgeist* folder at the root of the file system, you will have to change
@@ -149,14 +147,14 @@ sure that you have Docker installed locally.
 
 ##### Downloading the docker image
 ```sh
-docker pull zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73
+docker pull zeitgeistpm/zeitgeist-node:latest
 ```
 
 ##### Running the docker image
 You can run the docker image using the following command, but the node id
 and the chain data are lost after you shut down the docker container:
 ```sh
-docker run zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 --chain battery_park --telemetry-url "wss://telemetry.zeitgeist.pm/submit/ 0"
+docker run zeitgeistpm/zeitgeist-node:latest --chain battery_park
 ```
 
 To keep the chain data, you will have to select a folder on your system that
@@ -164,7 +162,7 @@ docker will use to store its files in. Ensure that the folder does exist.
 Assuming the path you want to use locally is */services/zeitgeist*, 
 the command would be:
 ```sh
-docker run -v /services/zeitgeist:/zeitgeist zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 -d /zeitgeist --chain battery_park --telemetry-url "wss://telemetry.zeitgeist.pm/submit/ 0"
+docker run -v /services/zeitgeist:/zeitgeist zeitgeistpm/zeitgeist-node:latest -d /zeitgeist --chain battery_park
 ```
 Ensure that you have write permissions for the path. In case you want to use
 the */services/zeitgeist* folder at the root of the file system, you will have to change
@@ -207,7 +205,7 @@ To automatically start a docker container every time (including after
 reboots and errors), except when it was explicitly stopped by a docker command,
 append the `-d` and `--restart` flag to the `docker run` command from above:
 ```sh
-docker run --restart unless-stopped -d -v /services/zeitgeist:/zeitgeist zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73 -d /zeitgeist --chain battery_park --telemetry-url "wss://telemetry.zeitgeist.pm/submit/ 0"
+docker run --restart unless-stopped -d -v /services/zeitgeist:/zeitgeist zeitgeistpm/zeitgeist-node:latest -d /zeitgeist --chain battery_park
 ```
 *Note: If you want to participate in the [Zeitgeist collator program](https://docs.google.com/forms/d/e/1FAIpQLSc857iTOfp_3CHCdh7qeZwkD_vQfxFeARbMsjhrCF12YBGsuQ/viewform),*
 *you should also add a `--name your_node_name` parameter at the end of*
@@ -228,7 +226,7 @@ containing your node id, that looks like:
 
 You can also retrieve the container id by using the following command:
 ```sh
-docker ps --filter ancestor=zeitgeistpm/zeitgeist-node:fb127223ea8990bb27819dbbb9b15a46d7ffea73
+docker ps --filter ancestor=zeitgeistpm/zeitgeist-node:latest
 ```
 
 ##### Automatically running the Zeitgeist chain as a systemd service (Linux)
@@ -285,9 +283,7 @@ Restart=always
 Nice=0
 ExecStart=/services/zeitgeist/bin/zeitgeist \
 			-d /services/zeitgeist \
-			--chain battery_park \
-			--bootnodes /ip4/139.162.171.58/tcp/30333/p2p/12D3KooWPvu5rpH2FNYnAmiQ8X8XqkMiuSFTjH2jwMCSjoam7RGQ \
-        	--telemetry-url "wss://telemetry.zeitgeist.pm/submit/ 0"
+			--chain battery_park
 
 
 [Install]
@@ -337,8 +333,7 @@ You can ensure your node is up and running by visiting this page, selecting the 
 ### Alternative Telemetry
 
 Since we've recently hit the limit of 500 active nodes on Parity's telemetry server, we've also set up our own Telemetry server.
-In order to connect to Zeitgeist's telemetry server, start your node with the flag `--telemetry-url "wss://telemetry.zeitgeist.pm/submit/ 0"`.
-You can now your node is connected by visiting our page at [https://telemetry.zeitgeist.pm](https://telemetry.zeitgeist.pm).
+You can now also see if your node is connected by visiting our page at [https://telemetry.zeitgeist.pm](https://telemetry.zeitgeist.pm).
 
 ## Accessing the user interface
 
