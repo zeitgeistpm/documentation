@@ -2,7 +2,7 @@ module.exports = {
   someSidebar: {
     Documentation: [
       'getting-started',
-      'battery-park',
+      'battery-station',
       'faq',
       'prediction-markets',
       'using-zeitgeist-markets',
@@ -12,7 +12,6 @@ module.exports = {
       'applications',
       'roadmap',
       'comparisons',
-      'how-to-participate-in-derby',
       'using-the-faucet',
       'troubleshooting'
     ],

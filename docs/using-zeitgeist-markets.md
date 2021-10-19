@@ -10,8 +10,8 @@ assets.
 
 An asset in Zeitgeist could be:
 
-- units of the ZTG token (on the Battery Park testnet, this token is known as
-  ZBP - but in SDK and CLI commands, and in this page, both ZTG and ZBP are
+- units of the ZTG token (on the Battery Station testnet, this token is known as
+  ZBS - but in SDK and CLI commands, and in this page, both ZTG and ZBS are
   called ZTG)
 - An outcome asset, representing 1 ZTG only _once_ the market has finalised and
   _if_ the corresponding outcome is what the market resolved to.
