@@ -10,7 +10,7 @@ either run a Zeitgeist chain instance locally for testing purposes or interact
 with the live chain. By default, the local chain endows the well-known account
 `//Alice` with test ZTG and you don't need to do anything to fund this account
 or obtain the private seed. On the live chain, we will assume that you have the
-private seed to an account which is funded with sufficient ZBP (or ZTG) as
+private seed to an account which is funded with sufficient ZBS (or ZTG) as
 appropriate for the chain. You will need over 100 ZTG or equivalent on the chain
 you are using if you want to interact with a market you have created.
 
