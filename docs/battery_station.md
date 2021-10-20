@@ -3,9 +3,9 @@ id: battery-station
 title: Battery Station
 ---
 
-:::important Zeitgeist Battery Station is a test network in beta phase. You
-can follow this guide to connect to it but some things might not work yet. If
-you would like to report a bug please open an issue on our GitHub repository.
+:::important Zeitgeist Battery Station is a test network in beta phase.
+You can follow this guide to connect to it but some things might not work yet.
+If you would like to report a bug please open an issue on our GitHub repository.
 Also note that the chain is liable to be reset **at any time without warning.**
 :::
 
@@ -37,7 +37,7 @@ get you started right away.
 *We have not tested building on Windows and cannot guarantee that it will work.*
 
 *Note for Ubuntu >= 16 users: Building from source is not necessary, since we offer*
-*a [pre-built binary](https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.0/zeitgeist-parachain).
+*a [pre-built binary](https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.0/zeitgeist-parachain).*
 *You can use it instead of building from source and skip this tutorial to the part*
 *that describes how to fetch the Zeitgeist relay chain specification. Feel free to*
 *use the following command to download the binary under the name "zeitgeist" into*
@@ -45,6 +45,7 @@ get you started right away.
 *"zeitgeist" during the tutorial):*
 ```sh
 curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.0/zeitgeist-parachain
+chmod +x zeitgeist
 ```
 
 The source code is hosted in the
@@ -93,7 +94,8 @@ the *target/release* folder. The Zeitgeist node consists of two components:
 2. The Zeitgeist relaychain
 
 To be able to use the Zeitgeist relaychain instead of the Polkadot relaychain,
-a custom chain specification is required that can be obtained with:
+a [custom chain specification](https://raw.githubusercontent.com/zeitgeistpm/polkadot/battery-station-relay/node/service/res/battery-station-relay.json)
+is required that can be obtained with:
 ```sh
 curl -o battery-station-relay.json https://raw.githubusercontent.com/zeitgeistpm/polkadot/battery-station-relay/node/service/res/battery-station-relay.json
 
@@ -198,7 +200,7 @@ ExecStart=/services/zeitgeist/bin/zeitgeist \
     -- \
     --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
     --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
-    --chain=battery-station-relay.json \
+    --chain=/services/zeitgeist/battery_station/battery-station-relay.json \
     --port=30334 \
     --rpc-port=9934 \
     --ws-port=9945
@@ -208,6 +210,9 @@ ExecStart=/services/zeitgeist/bin/zeitgeist \
 WantedBy=multi-user.target
 ```
 
+Ensure `--chain=/services/zeitgeist/battery-station-relay.json` points to
+the correct chain specification file that was downloaded before. Otherwise
+your node will connect the Polakdot relay chain.
 Replace `zeitgeist-support-$RANDOM` with the name your node should have.
 Set `--port`, `--rpc-port` and `ws-port` to some ports that are not occupied
 yet. Ensure that incoming traffic on those ports is allowed. The node will
@@ -231,7 +236,8 @@ systemctl status zeitgeist-node
 ```
 
 If it shows *Active: active (running)*, your service works as
-expected. Use the following command to retrieve your node id:
+expected. Use the following command to retrieve your node id (from
+*Zeitgeist Parachain*):
 ```sh
 journalctl -u zeitgeist-node.service | grep "node id"
 ```
@@ -273,13 +279,13 @@ the current folder.
 
 You can run the docker image using the following command (place the correct
 path to the *battery-station-relay.json* file), but the node id
-and the chain data are lost after you shut down the docker container:
+and the chain data are lost after you shut down the docker container.
 ```sh
 docker run \
     -p 30333:30333 \
     -p 9933:9933 \
     -p 9944:9944 \
-    -v battery-station-relay.json:/zeitgeist/relay-chain-spec.json \
+    -v ${PWD}/battery-station-relay.json:/zeitgeist/relay-chain-spec.json \
     --name=zeitgeist-parachain \
     --restart=always \
     zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 \
@@ -293,6 +299,8 @@ docker run \
     --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
     --chain=/zeitgeist/relay-chain-spec.json
 ```
+*Note to Windows users: You'll have to replace the `\` character with `^`*
+*and `${PWD}/battery-station-relay.json` with `${PWD}\battery-station-relay.json`*
 
 
 To keep the chain data, you will have to select a folder on your system that
@@ -306,7 +314,7 @@ docker run \
     -p 9933:9933 \
     -p 9944:9944 \
     -v /services/zeitgeist:/zeitgeist/data/
-    -v battery-station-relay.json:/zeitgeist/relay-chain-spec.json \
+    -v ${PWD}/battery-station-relay.json:/zeitgeist/relay-chain-spec.json \
     --name=zeitgeist-parachain \
     --restart=always \
     zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 \
@@ -320,6 +328,8 @@ docker run \
     --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
     --chain=/zeitgeist/relay-chain-spec.json
 ```
+*Note to Windows users: You'll have to replace the `\` character with `^` and*
+*`${PWD}/battery-station-relay.json` with `${PWD}\battery-station-relay.json`*
 
 That's it, your node should be running and syncing with other nodes, while
 using a persistent chain storage and node id.
@@ -514,15 +524,17 @@ while on the telemetry page).
 
 ## Accessing the user interface
 
-You can access the campaign we put together to celebrate the Kusama 
-parachain auctions and help incentivize our testnet at: [https://proto.zeitgeist.pm/kusama-derby](https://proto.zeitgeist.pm/kusama-derby)
+You can asset the beta application at: [https://beta.zeitgeist.pm](https://beta.zeitgeist.pm).
+Note that to gain access to the beta application, a NFT from one of three
+different collections is required. Keep an eye on the announcements to not
+miss the opportunity to obtain limited access to the faucet and consequently
+the beta.
 
-You can follow our [kusama-derby tutorial](how-to-participate-in-derby) to learn how to interact with it.
-This is not the full Zeitgeist application, it is only one special
-use case. The full Zeitgeist application will be released in the future.
+You can follow our [beta app tutorial](https://whisker17.github.io/APP-Guide/#/en/app-en)
+to learn how to interact with it.
 
 You can also access the Apps based (advanced) UI at:
-[https://polkadot.js.org/apps/?rpc=wss://bp-rpc.zeitgeist.pm](https://polkadot.js.org/apps/?rpc=wss://bp-rpc.zeitgeist.pm)
+[https://polkadot.js.org/apps/?rpc=wss://bsr.zeitgeist.pm](https://polkadot.js.org/apps/?rpc=wss://bsr.zeitgeist.pm)
 
 ## Faucet
 
