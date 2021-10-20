@@ -61,8 +61,8 @@ You will need to clone the code locally, and make sure that you have the
 installed. Execute the following commands to fetch the project:
 
 ```sh
-# clone the code locally
-git clone https://github.com/zeitgeistpm/zeitgeist.git
+# clone the code locally and checkout version v0.2.0
+git clone https://github.com/zeitgeistpm/zeitgeist.git --depth 1 --branch v0.2.0
 # change directory
 cd zeitgeist
 ```
