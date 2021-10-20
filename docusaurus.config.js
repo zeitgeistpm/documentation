@@ -72,6 +72,9 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Zeitgeist PM`,
     },
+    prism: {
+      additionalLanguages: ['bash', 'powershell'],
+    },
   },
   presets: [
     [
