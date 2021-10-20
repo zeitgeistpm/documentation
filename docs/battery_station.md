@@ -268,7 +268,7 @@ you copied the file from.
 
 ##### On Unix
 ```sh
-echo "$(CONTAINER_ROW=`docker ps | grep zeitgeistpm/zeitgeist-node` && docker inspect --format '{{range .Mounts}}{{println .Destination}}{{end}}' ${CONTAINER_ROW%% *} | sed -n '2p')/chains/battery_park/network/secret_ed25519"
+echo "$(CONTAINER_ROW=`docker ps | grep zeitgeistpm/zeitgeist-node-parachain` && docker inspect --format '{{range .Mounts}}{{println .Destination}}{{end}}' ${CONTAINER_ROW%% *} | sed -n '2p')/chains/battery_station/network/secret_ed25519"
 ```
 
 ##### On Windows
@@ -308,30 +308,18 @@ bit between docker and systemd and are described in the following sections.
 ##### Restoring the node id within a docker service
 
 First copy the node secret backup file *secret_ed25519* into the docker folder 
-that was mounted using the *-v* command. For example, if the docker command 
-you use to run the node is
-```sh
-docker run --restart unless-stopped -d -v /services/zeitgeist:/zeitgeist zeitgeistpm/zeitgeist-node:latest -d /zeitgeist --chain battery_park
-```
-then you have to place the backed up node secret file into 
-*/services/zeitgeist*. If that folder does not exist yet, create it and ensure 
-docker has the permissions to read from and write into it. 
+that was mounted using the *-v* command. If that folder does not exist yet,
+create it and ensure docker has the permissions to read from and write into it. 
 
 After that, append the 
 following option to the `docker run` command: 
 ```sh
 --node-key-file /services/zeitgeist/secret_ed25519
 ```
-Don't forget to replace */services/zeitgeist/* with the directory you copied 
-the backup into. In case the backup is located at */services/zeitgeist*, the 
-complete command to run your Zeitgeist node with the restored node id as a 
-docker service would look like this:
-```sh
-docker run --restart unless-stopped -d -v /services/zeitgeist:/zeitgeist zeitgeistpm/zeitgeist-node:latest -d /zeitgeist --chain battery_park --node-key-file /services/zeitgeist/secret_ed25519
-```
 
-The previous command will print the container id. Use it to verify, that the 
-Zeitgeist node does indeed use your old node's id (replace *container_id*):
+Don't forget to replace */services/zeitgeist/* with the directory you copied 
+the backup into. Running the docker container will log the node id.
+Use it to verify that the Zeitgeist node does indeed use your old node's id.
 ```sh
 docker logs container_id
 ```
