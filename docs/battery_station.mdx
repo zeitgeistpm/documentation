@@ -119,7 +119,7 @@ curl -o battery-station-relay.json https://raw.githubusercontent.com/zeitgeistpm
 You can start a full-node (non-authoring) for Battery Station from the root of
 the directory like this:
 
-```bash {11}
+```bash {12}
 ./target/release/zeitgeist \
     --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
     --chain=battery_station \
@@ -127,6 +127,7 @@ the directory like this:
     --port=30333 \
     --rpc-port=9933 \
     --ws-port=9944 \
+    --pruning=archive \
     -- \
     --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
     --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
@@ -191,7 +192,7 @@ sudo nano /etc/systemd/system/zeitgeist-node.service
 
 You can just use the following template or adjust it to your needs:
 
-```bash {12,14,17,19-21,28}
+```bash {12,14,17,19-21,29}
 [Unit]
 Description=Zeitgeist Battery Station parachain full node
 After=network.target
@@ -216,6 +217,7 @@ ExecStart=/services/zeitgeist/bin/zeitgeist \
     --rpc-external \
     --ws-external \
     --rpc-cors=all \
+    --pruning=archive \
     -- \
     --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
     --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
@@ -324,6 +326,7 @@ docker run \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
     --parachain-id=2050 \
+    --pruning=archive \
     -- \
     --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
     --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
@@ -347,6 +350,7 @@ docker run `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
     --parachain-id=2050 `
+    --pruning=archive `
     -- `
     --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ `
     --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE `
@@ -380,6 +384,7 @@ docker run \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
     --parachain-id=2050 \
+    --pruning=archive \
     -- \
     --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
     --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
@@ -404,6 +409,7 @@ docker run `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
     --parachain-id=2050 `
+    --pruning=archive `
     -- `
     --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ `
     --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE `
@@ -460,6 +466,7 @@ docker run \
     --rpc-external \
     --ws-external \
     --rpc-cors=all \
+    --pruning=archive \
     -- \
     --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
     --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
@@ -495,6 +502,7 @@ docker run `
     --rpc-external `
     --ws-external `
     --rpc-cors=all `
+    --pruning=archive `
     -- `
     --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ `
     --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE `
