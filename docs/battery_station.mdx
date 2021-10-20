@@ -46,6 +46,7 @@ get you started right away.
 *use the following command to download the binary under the name "zeitgeist" into*
 *the current folder (and don't forget to replace "/target/release/zeitgeist" with*
 *"zeitgeist" during the tutorial):*
+
 ```bash
 curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.0/zeitgeist-parachain
 chmod +x zeitgeist
@@ -107,7 +108,7 @@ curl -o battery-station-relay.json https://raw.githubusercontent.com/zeitgeistpm
 You can start a full-node (non-authoring) for Battery Station from the root
 of the directory like this:
 
-```bash
+```bash {11}
 ./target/release/zeitgeist \
     --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
     --chain=battery_station \
@@ -128,6 +129,7 @@ You should see your node begin to sync blocks.
 
 Feel free to play around with the other available options, which you can 
 inspect by executing:
+
 ```bash
 ./target/release/zeitgeist --help
 ```
@@ -144,10 +146,9 @@ inspect the output.
 
 Create a new user (without a home folder) and disable login for that user
 (ensure to copy&paste both commands sequentially to ensure they're executed):
+
 ```bash
 sudo useradd -M zeitgeist
-```
-```bash
 sudo usermod zeitgeist -s /sbin/nologin
 ```
 
@@ -160,7 +161,8 @@ command that is shown below. In this example we will use */services/zeitgeist*
 as the base folder for our service, */services/zeitgeist/bin* will contain the
 *zeitgeist* binary and the whole */services/zeitgeist* folder structure will
 be owned by the unprivileged zeitgeist user we created during the previous step:
-```bash
+
+```bash {3-4}
 sudo mkdir -p /services/zeitgeist/bin
 sudo mkdir -p /services/zeitgeist/battery_station
 sudo cp /path/to/your/target/release/zeitgeist /services/zeitgeist/bin
@@ -170,12 +172,14 @@ sudo chown -R zeitgeist:zeitgeist /services/zeitgeist
 
 Create a systemd service file. You can use your favorite editor, in this 
 example we will use `nano` though, because it is well supported. 
+
 ```bash
 sudo nano /etc/systemd/system/zeitgeist-node.service
 ```
 
 You can just use the following template or adjust it to your needs:
-```bash
+
+```bash {12,14,17,19-21,28}
 [Unit]
 Description=Zeitgeist Battery Station parachain full node
 After=network.target
@@ -228,12 +232,14 @@ Paste your copy buffer into nano by pressing `CTRL+SHIFT+V` and save the
 changes by pressing `CTRL+X`, `y` and `ENTER`
 
 Enable the service and start it:
+
 ```bash
 sudo systemctl enable zeitgeist-node
 sudo systemctl start zeitgeist-node
 ```
 
 Check if it is up and running and syncing with the rest of the network:
+
 ```bash
 systemctl status zeitgeist-node
 ```
@@ -241,6 +247,7 @@ systemctl status zeitgeist-node
 If it shows *Active: active (running)*, your service works as
 expected. Use the following command to retrieve your node id (from
 *Zeitgeist Parachain*):
+
 ```bash
 journalctl -u zeitgeist-node.service | grep "node id"
 ```
@@ -273,6 +280,7 @@ docker pull zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683
 #### Running a Zeitgeist parachain full node within docker
 To be able to use the Zeitgeist relaychain instead of the Polkadot relaychain,
 a custom chain specification is required that can be obtained with:
+
 ```bash
 curl -o battery-station-relay.json https://raw.githubusercontent.com/zeitgeistpm/polkadot/battery-station-relay/node/service/res/battery-station-relay.json
 ```
@@ -494,6 +502,7 @@ represents the container id. It looks like this:
 
 To retrieve your node id, execute the following command (replace *container_id*
 with the container id that was printed to your terminal):
+
 ```bash
 docker logs container_id
 ```
@@ -503,6 +512,7 @@ containing your node id, that looks like:
 > Local node identity is: 12D3KooWKzzeu1thnWQv8CCWaugFfpeCXnq7jmp6GENSdXqG5xX9
 
 You can also retrieve the container id by using the following command:
+
 ```bash
 docker ps --filter ancestor=zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683
 ```
@@ -546,6 +556,7 @@ docker ps | findstr "zeitgeist"
 The container ID is the leftmost number in the row.
 Then get the volume it's mounted to (replace *container_id* with the id you 
 extracted during the previous step):
+
 ```bash
 docker inspect --format '{{range .Mounts}}{{println .Destination}}{{end}}' container_id
 ```
@@ -578,6 +589,7 @@ create it and ensure docker has the permissions to read from and write into it.
 
 After that, append the following option to the `docker run` command right
 after the docker image (zeitgeist-node-parachain-TAG): 
+
 ```bash
 --node-key-file /zeitgeist/data/secret_ed25519
 ```
@@ -585,6 +597,7 @@ after the docker image (zeitgeist-node-parachain-TAG):
 Don't forget to replace */services/zeitgeist/* with the directory you copied 
 the backup into. Running the docker container will log the node id.
 Use it to verify that the Zeitgeist node does indeed use your old node's id.
+
 ```bash
 docker logs container_id
 ```
@@ -595,6 +608,7 @@ First copy the node secret backup file *secret_ed25519* into the data folder
 of your Zeitgeist node. You can use the following command to retrieve the 
 data folder (replace *zeitgeist-node.service* with the name of your Zeitgeist 
 systemd file):
+
 ```bash
 cat /etc/systemd/system/zeitgeist-node.service | grep -- "-d "
 ```
@@ -606,12 +620,14 @@ in which you placed your backup): `--node-key-file /services/zeitgeist/secret_ed
 
 Stop any running node, update the daemon and start the node again (replace 
 *zeitgeist-node*):
+
 ```bash
 sudo systemctl stop zeitgeist-node; sudo systemctl daemon-reload && sudo systemctl start zeitgeist-node
 ```
 
 Finally, verify that the Zeitgeist node does indeed use your old node's id 
 (replace *zeitgeist-node*):
+
 ```bash
 journalctl -u zeitgeist-node.service | grep "node id"
 ```
