@@ -99,7 +99,7 @@ curl -o battery-station-relay.json https://raw.githubusercontent.com/zeitgeistpm
 
 ```
 
-You can start a node for Battery Station from the root
+You can start a full-node (non-authoring) for Battery Station from the root
 of the directory like this:
 
 ```sh
@@ -131,8 +131,7 @@ If you plan to continuously run your node, jump to the next section.
 
 #### Automatically running the Zeitgeist chain as a systemd service (Linux)
 To automatically start and restart the zeitgeist chain, you can use a systemd
-service. It is not recommended to do this with a docker image, but for a
-zeitgeist binary that was built from source it is perfectly adequate.
+service. It is not recommended to do this with a docker image.
 
 We will create a non-privileged user to execute the Zeitgeist node, setup the
 folder structure, create a systemd service file, launch the service and
@@ -147,17 +146,20 @@ sudo useradd -M zeitgeist
 sudo usermod zeitgeist -s /sbin/nologin
 ```
 
-Create a folder that will contain the Zeitgeist data and the previously
-compiled binary file (see [Building from source](battery-station#building-from-source)).
-Note down were your *zeitgeist* binary lies (it is within the source folder at
-*target/release*) and replace the path after the `cp` command that is
-shown below. In this example we will use */services/zeitgeist*
-as the base folder for our service, */service/zeitgeist/bin* will contain the
+Create a folder that will contain the Zeitgeist data, previously
+compiled binary file and relaychain chain specification file
+(see [Building from source](battery-station#building-from-source)).
+Note were your *zeitgeist* binary lies (by default it is within
+the source folder at *target/release*) and replace the path after the `cp`
+command that is shown below. In this example we will use */services/zeitgeist*
+as the base folder for our service, */services/zeitgeist/bin* will contain the
 *zeitgeist* binary and the whole */services/zeitgeist* folder structure will
-be owned by the non-privileged zeitgeist user we created during the previous step:
+be owned by the unprivileged zeitgeist user we created during the previous step:
 ```sh
 sudo mkdir -p /services/zeitgeist/bin
+sudo mkdir -p /services/zeitgeist/battery_station
 sudo cp /path/to/your/target/release/zeitgeist /services/zeitgeist/bin
+sudo cp /path/to/your/battery-station-relay.json /services/zeitgeist/battery_station/battery-station-relay.json
 sudo chown -R zeitgeist:zeitgeist /services/zeitgeist
 ```
 
@@ -170,7 +172,7 @@ sudo nano /etc/systemd/system/zeitgeist-node.service
 You can just use the following template or adjust it to your needs:
 ```sh
 [Unit]
-Description=Zeitgeist chain node
+Description=Zeitgeist Battery Station parachain full node
 After=network.target
 Requires=network.target
 
@@ -182,19 +184,35 @@ RestartSec=5
 Restart=always
 Nice=0
 ExecStart=/services/zeitgeist/bin/zeitgeist \
-			-d /services/zeitgeist \
-			--chain battery_park
+    --base-path=/services/zeitgeist/battery_station \
+    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
+    --chain=battery_station \
+    --name=zeitgeist-support-$RANDOM \
+    --parachain-id=2050 \
+    --port 30333 \
+    --rpc-port 9933 \
+    --ws-port 9944 \
+    --rpc-external \
+    --ws-external \
+    --rpc-cors=all \
+    -- \
+    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
+    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
+    --chain=/home/sea212/zeitgeist/battery-station-relay.json \
+    --port 30334 \
+    --rpc-port 9934 \
+    --ws-port 9945
 
 
 [Install]
 WantedBy=multi-user.target
 ```
+
+Replace `zeitgeist-support-$RANDOM` with the name your node should have.
+Set `--port`, `--rpc-port` and `ws-port` to some ports that are not occupied
+yet. Ensure that incoming traffic on those ports is allowed.
 You can adjust the *Nice* value to configure the priority of the process the 
 service spawns. 20 is the lowest, -20 the highest priority.
-
-*Note: If you want to participate in the [Zeitgeist collator program](https://docs.google.com/forms/d/e/1FAIpQLSc857iTOfp_3CHCdh7qeZwkD_vQfxFeARbMsjhrCF12YBGsuQ/viewform),*
-*you should also add a `--name your_node_name` parameter at the end of the*
-*ExecStart argument of the service file.*
 
 Paste your copy buffer into nano by pressing `CTRL+SHIFT+V` and save the
 changes by pressing `CTRL+X`, `y` and `ENTER`
@@ -223,6 +241,11 @@ journalctl -u zeitgeist-node
 
 If you are stuck with an error you can ask for assistance in our 
 [node-operators Discord channel](https://discord.gg/WD3VkGt9eY).
+
+We recommend [backing up the node secret file](battery-station#backing-up-the-node-secret-file-from-a-docker-service),
+which is used to derive your node's id. The id might be required in future
+programs. If you want to restore a previous node id, jump to the
+[node id restoration section](battery-station#restoring-the-node-id).
 
 ### Ensuring that you can restore your node's id
 
