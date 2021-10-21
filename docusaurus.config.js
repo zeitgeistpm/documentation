@@ -12,7 +12,6 @@ module.exports = {
     navbar: {
       title: 'Zeitgeist Documentation',
       logo: {
-        alt: 'My Site Logo',
         src: 'img/Zeitgeist-trans.png',
       },
       items: [
