@@ -17,8 +17,13 @@ module.exports = {
       },
       items: [
         {
-          href: 'https://github.com/zeitgeistpm',
-          label: 'GitHub',
+          to: '/',
+          label: 'Documentation',
+          position: 'right',
+        },
+        {
+          to: 'guides',
+          label: 'Technology',
           position: 'right',
         },
       ],
