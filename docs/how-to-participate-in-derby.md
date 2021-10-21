@@ -22,8 +22,8 @@ title: How To Participate in Zeitgeist's Kusama Parachain Derby
 
   ![finish account creation](./../static/img/how-to/20210506184035.png)
 
-- Select either "Use on any chain" or "Zeitgeist Battery Park" in the
-  side menu of the new account
+- Select either "Use on any chain" or "Zeitgeist Battery Park" in the side menu
+  of the new account
 
 - Copy your new Zeitgeist address, you can use it now!
 
@@ -46,9 +46,10 @@ connects to the extension)
   Make sure this is the address you have access to - you won't get a second
   chance!
 
-- If you had a KSM account with a KSM balance on May 11, 2021 when the snapshot was taken,
-  you can also claim an equivalent amount of ZBP from the faucet. See [using the faucet](/using-the-faucet.md)
-  for instructions on how that can be done.
+- If you had a KSM account with a KSM balance on May 11, 2021 when the snapshot
+  was taken, you can also claim an equivalent amount of ZBP from the faucet. See
+  [using the faucet](/using-the-faucet.md) for instructions on how that can be
+  done.
 
 ## Make your Prediction on Zeitgeist
 
@@ -62,7 +63,9 @@ connects to the extension)
 
   ![enter the prediction market](./../static/img/derby_markets.png)
 
-- After choosing which slot you want to predict, you'll see the current state of that market - the further the 'horse', the more ZBP was bet on it. Below, you can add whichever prediction you choose.
+- After choosing which slot you want to predict, you'll see the current state of
+  that market - the further the 'horse', the more ZBP was bet on it. Below, you
+  can add whichever prediction you choose.
 
   ![choose a slot](./../static/img/how-to/20210506190815.png)
 
@@ -81,8 +84,9 @@ connects to the extension)
 
   ![image-20210506191332151](./../static/img/derby_open_card.png)
 
-- When you've entered the details of your bet, click `Sign Transaction` and you will get this page. You will need to confirm using the password you set up for your Zeitgeist account, and click  `Sign Transaction` .
-
+- When you've entered the details of your bet, click `Sign Transaction` and you
+  will get this page. You will need to confirm using the password you set up for
+  your Zeitgeist account, and click `Sign Transaction` .
 
   ![Sign transaction](./../static/img/how-to/20210506192656.png)
 
