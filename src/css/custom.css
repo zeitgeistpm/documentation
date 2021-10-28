@@ -23,3 +23,18 @@
     margin: 0 calc(-1 * var(--ifm-pre-padding));
     padding: 0 var(--ifm-pre-padding);
 }
+
+/* Make navbar narrow like @polkadot-wiki */
+.navbar .navbar__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Center content on sufficiently large screens, center navbar and
+ * floating toc around it */
+@media (min-width: 1400px) {
+  .main-wrapper {
+    width: 1400px;
+    align-self: center;
+  }
+}
