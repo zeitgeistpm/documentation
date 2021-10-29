@@ -57,7 +57,7 @@ module.exports = {
           items: [
             {
               label: 'Blog',
-              to: 'https://zeitgeist.pm/blog',
+              to: 'https://blog.zeitgeist.pm',
             },
             {
               label: 'GitHub',
