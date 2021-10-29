@@ -16,7 +16,12 @@ module.exports = {
       },
       items: [
         {
-          to: '/',
+          to: 'getting-started',
+          label: 'Getting Started',
+          position: 'right',
+        },
+        {
+          to: 'battery-station',
           label: 'Documentation',
           position: 'right',
         },
@@ -30,19 +35,6 @@ module.exports = {
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Getting Started',
-              to: '/',
-            },
-            {
-              label: 'Zeitgeist SDK',
-              to: '/sdk/',
-            },
-          ],
-        },
         {
           title: 'Community',
           items: [

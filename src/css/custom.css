@@ -38,3 +38,8 @@
     align-self: center;
   }
 }
+
+/* For centering the Zeitgeist logo on the launch pad */
+.centered_image {
+  text-align: center;
+}
