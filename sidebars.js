@@ -11,6 +11,7 @@ module.exports = {
     ],
     Learn: [
       'prediction-markets',
+      'liquidity',
       'using-zeitgeist-markets',
       'governance',
       'court',
