@@ -17,17 +17,17 @@ module.exports = {
       items: [
         {
           to: 'getting-started',
-          label: 'Getting Started',
+          label: 'Basics',
           position: 'right',
         },
         {
-          to: 'battery-station',
-          label: 'Documentation',
+          to: 'prediction-markets',
+          label: 'Learn',
           position: 'right',
         },
         {
           to: 'guides',
-          label: 'Technology',
+          label: 'Build',
           position: 'right',
         },
       ],

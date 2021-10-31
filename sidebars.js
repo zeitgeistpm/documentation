@@ -1,21 +1,23 @@
 module.exports = {
   someSidebar: {
-    Documentation: [
+    Basics: [
       'getting-started',
       'battery-station',
       'faq',
+      'applications',
+      'roadmap',
+      'using-the-faucet',
+      'troubleshooting'
+    ],
+    Learn: [
       'prediction-markets',
       'using-zeitgeist-markets',
       'governance',
       'court',
       'futarchy',
-      'applications',
-      'roadmap',
       'comparisons',
-      'using-the-faucet',
-      'troubleshooting'
     ],
-    Technology: [
+    Build: [
       'guides',
       'market-metadata',
       'sdk'
