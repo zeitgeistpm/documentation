@@ -16,7 +16,12 @@ module.exports = {
       },
       items: [
         {
-          to: '/',
+          to: 'getting-started',
+          label: 'Getting Started',
+          position: 'right',
+        },
+        {
+          to: 'battery-station',
           label: 'Documentation',
           position: 'right',
         },
@@ -31,19 +36,6 @@ module.exports = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Getting Started',
-              to: '/',
-            },
-            {
-              label: 'Zeitgeist SDK',
-              to: '/sdk/',
-            },
-          ],
-        },
-        {
           title: 'Community',
           items: [
             {
@@ -52,7 +44,7 @@ module.exports = {
             },
             {
               label: 'Discord',
-              href: '#',
+              href: 'https://discord.com/invite/xv8HuA4s8v',
             },
             {
               label: 'Twitter',
@@ -65,7 +57,7 @@ module.exports = {
           items: [
             {
               label: 'Blog',
-              to: 'https://zeitgeist.pm/blog',
+              to: 'https://blog.zeitgeist.pm',
             },
             {
               label: 'GitHub',
@@ -85,6 +77,8 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           // Please change this to your repo.
