@@ -3,8 +3,6 @@ id: liquidity
 title: Liquidity
 ---
 
-# Liquidity
-
 The _liquidity_ of a market describes how quickly an asset can be traded on the
 market at a reasonable market price. Illiquidity markets tend to suffer from
 large price fluctuations when large amounts of assets are bought or sold and are
@@ -35,9 +33,9 @@ may want to skip this chapter or later return to it.
 
 ## Liquidity Pools
 
-For various reasons, the classical order book model used on centralized
-exchanges doesn't work on-chain. Instead, decentralized exchanges use liquidity
-pools and automated market makers to provide liquidity to their markets.
+For various reasons, the type of market makers used on centralized exchanges
+don't work on-chain. Instead, decentralized exchanges use liquidity pools and
+automated market makers to provide liquidity to their markets.
 
 Usually, a _liquidity pool_ (LP) holds balances of two or more assets, for
 example ETH and USDT, and allows trading these assets for one another. For
@@ -53,41 +51,53 @@ available trading data and/or price oracles.
 A particularly straightforward AMM and common example is Uniswap's
 [constant product formula](https://docs.uniswap.org/protocol/V2/concepts/protocol-overview/how-uniswap-works)
 for pools with two assets. Suppose we create a liquidity pool which (at
-inception) holds 10ETH and 40,000USDT (these balances are usually determined by
-the current price of ETH/USDT provided by some other source, in this case
-4,000USDT/ETH). We define $k = 10 \cdot 40,000 = 400,000$, the product of the
-balances of the assets in the pool. The rule defining the price of the pairs A/B
-and B/A is: _Trades must always keep $k$ constant_, in other words: After a
-trade has gone through, the product of the balances of the assets in the pool
-must remain unchanged (this is not entirely correct due to the fees taken by the
-liquidity providers, see below).
+inception) holds 10.0 ETH and 40,000.0 USDT (these balances are usually
+determined by the current price of ETH/USDT provided by some other source, in
+this case 4,000USDT/ETH). We define $k$ as the product of the balances of the
+assets in the pool ($\#A$ denotes the balance of A in the pool):
 
-For example, after trading USDT for 1ETH, the amount of USDT in the pool must be
-$#USDT = k / #ETH \approx 44,444USDT. This means that buying 1ETH from the pool
-costs 4,444USDT, and will leave the pool with 9ETH and approximately 44,444USDT.
+$$
+k = \#\mathrm{ETH} \cdot \#\mathrm{USDT} = 10 \cdot 40,\!000 = 400,\!000.
+$$
+
+The rule defining the price of the pairs ETH/USDT and USDT/ETH is: _Trades must
+always keep $k$ constant_, in other words: After a trade has gone through, the
+product of the balances of the assets in the pool must remain unchanged (this is
+not entirely correct due to the fees taken by the liquidity providers, see
+below).
+
+For example, after trading USDT for 1 ETH, the balance of USDT in the pool must
+be
+
+$$
+\# \mathrm{USDT} = \frac{k}{\# \mathrm{ETH}} \approx 44,\!444 \, \mathrm{USDT}.
+$$
+
+This means that buying 1 ETH from the pool costs 4,444 USDT, and will leave the
+pool with 9 ETH and approximately 44,444 USDT.
 
 For the sake of simplicity, we've ignored fees in the discussion above. For
 every trade in a market B/A, the liquidity pool charges 0.3% fees (paid in A).
 The fees are added to the balance of A in the pool, but, instead of keeping $k$
 constant, they are used to increase the value of $k$.
 
-Thus, it costs approximately 13USDT (0.3% of 4,444USDT) in fees to execute the
-trade above, and after the trade the pool will hold approximately 44457USDT,
-increasing $k$ to $400,113$.
+Thus, it costs approximately 13 USDT (0.3% of 4,444 USDT) in fees to execute the
+trade above, and after the trade the pool will hold approximately 44,457 USDT,
+increasing $k$ to 400,113.
 
 ## Low Liquidity and Slippage
 
-You may have noticed that 1ETH cost us 4,444USDT instead of 4,000USDT when the
-pool was just created based on an oracle report of 4,000USDT.
+You may have noticed that 1 ETH cost us 4,444 USDT instead of 4,000 USDT when
+the pool was just created based on an oracle report of 4,000 USDT.
 
 This phenomenon is called _slippage_ and is a side effect of low liquidity. If
 trades are made whose size significantly change the balances in the pool (ten
 percent in this case), the constant product formula causes the prices at which
 the trade is executed to "slip" up.
 
-If, instead of 10ETH and 40,000USDT, we had 100ETH and 400,000USDT in the pool,
-the same trade would cause the price to "only" slip by 40USDT. This shows that
-higher amounts of liquidity create a more stable, less volatile market.
+If, instead of 10 ETH and 40,000 USDT, we had 100 ETH and 400,000 USDT in the
+pool, the same trade would cause the price to "only" slip by 40 USDT. This shows
+that higher amounts of liquidity create a more stable, less volatile market.
 
 Slippage is a common phenomenon when market makers are involved, and may also
 occur when placing trades on Zeitgeist.
@@ -117,7 +127,7 @@ pool and selling it at kraken at the appreciated price. But this means that the
 liquidity provider essentially sold their assets below market price.
 
 However, this loss is _impermanent_ in the sense that if ETH depreciates back to
-its original value, the loss is mitigated. The loss becomes permanent only if
+its original value, the loss is mitigated. The loss becomes "permanent" only if
 the liquidity provider withdraws funds from the pool.
 
 Prediction markets using the liquidity-sensitive automated market maker function
@@ -128,15 +138,16 @@ developed by Zeitgeist is based) leave plenty of opportunity for arbitrageurs.
 
 Video tutorials on liquidity pools:
 
--   [Finematics on Impermanent Loss](https://www.youtube.com/watch?v=8XJ1MSTEuU0&t=336s)
--   [Finematics on Liquidity Pools](https://www.youtube.com/watch?v=cizLhxSKrAc&t=532s)
+-   [Finematics on Liquidity Pools](https://www.youtube.com/watch?v=cizLhxSKrAc)
+-   [Finematics on Impermanent Loss](https://www.youtube.com/watch?v=8XJ1MSTEuU0)
 
 Some examples of liquidity pools:
 
 -   [Understanding Curve](https://resources.curve.fi/base-features/understanding-curve)
 -   [Karura protocol overview](https://wiki.acala.network/karura/defi-hub/swap/protocol-overview)
 
-A fantastic article on automated market makers for prediction markets (for the mathematically inclined):
+A fantastic article on automated market makers for prediction markets (for the
+mathematically inclined):
 
 -   Abraham Othman, Tuomas Sandholm, David M. Pennock, Daniel M. Reeves,
     [A practical liquidity-sensitive automated market maker](https://www.researchgate.net/publication/221445031_A_practical_liquidity-sensitive_automated_market_maker),
