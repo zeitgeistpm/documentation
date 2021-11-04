@@ -29,8 +29,8 @@ presidential election".
 
 To aggregate this information, a centralized institution (the _bank_) sells
 pairs of the following assets at 1\$: "Worth 1\$ if $D$", "Worth 1\$ if not
-$D$". These assets are called _outcome tokens_ (sometimes referred to _binary
-options_). Each token represents a possible _outcome_ of the election.
+$D$". These assets are called _outcome asset tokens_ (sometimes referred to
+_binary options_). Each token represents a possible _outcome_ of the election.
 
 While the market is open, these slips are sold to the actors of the market by
 the bank. The price of the individual assets will be decided by the market
@@ -39,7 +39,7 @@ makers who provide liquidity to the market.
 Before the market ends, a date for its _end_ is defined. For example, the Iowa
 Electronic Markets'
 [2016 U.S. Presidential Election Markets](https://iemweb.biz.uiowa.edu/markets/pres16.html),
-in which trades could bet on which of the major parties wins a greater share of
+in which traders could bet on which of the major parties wins a greater share of
 the popular vote in the 2016 election, opened on November 19, 2014 and closed
 November 10, 2016.[^3]
 
@@ -78,8 +78,8 @@ worthless. _It's winner-take-all!_ We say that the market _resolves_ to "Worth
 
 <!-- prettier-ignore -->
 :::important
-After market close, the price of each token is irrelevant to the
-trader. Only the correct outcome token has any remaining value.
+After market close, the price of each token is irrelevant to the trader. Only
+the correct outcome asset token has any remaining value.
 :::
 
 For example, suppose Alice bought 10 shares of "Worth 1\$ if not $D$" at 0.6\$
@@ -122,7 +122,7 @@ take trading fees from the actors to mitigate these risks.[^2]
     If a bank suffers a loss from providing liquidity to a market, this loss may
     be viewed as the cost of receiving the information aggregated by the actors.
 
-### Markets with More than two Outcomes
+### Markets with More than Two Outcomes
 
 In general, a prediction market can involve any (finite) number of assets. For
 example, during the
