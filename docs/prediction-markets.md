@@ -13,9 +13,9 @@ stake in the game and allows them to profit if they correctly predict a future
 outcome - while risking loss if their predictions are incorrect.
 
 The examples presented here are based on the examples in R. Hanson's watershed
-paper _Shall We Vote on Values, But Bet on Beliefs?_.[^vote]
+paper _Shall We Vote on Values, But Bet on Beliefs?_.[^1]
 
-[^vote]:
+[^1]:
     [Shall We Vote on Values, But Bet on Beliefs?](https://www.researchgate.net/publication/277294676_Shall_We_Vote_on_Values_But_Bet_on_Beliefs),
     The Journal of Political Philosophy, 21(2), pp. 151–178 (2013).
 
@@ -41,17 +41,17 @@ Electronic Markets'
 [2016 U.S. Presidential Election Markets](https://iemweb.biz.uiowa.edu/markets/pres16.html),
 in which traders could bet on which of the major parties wins a greater share of
 the popular vote in the 2016 election, opened on November 19, 2014 and closed
-November 10, 2016.[^3]
+November 10, 2016.[^2]
 
-[^3]: Note that this closing date is _after_ the end of the election.
+[^2]: Note that this closing date is _after_ the end of the election.
 
 When the market closes, the outcome must be reported. For centralized prediction
 markets, this is usually done by the bank, and the report is based on trusted
-news media.[^4] On decentralized prediction markets, the report is issued by an
+news media.[^3] On decentralized prediction markets, the report is issued by an
 entity called _oracle_, which must be incentivized to provide correct
 information (or discouraged from providing incorrect information).
 
-[^4]:
+[^3]:
     For example, strategy for the 2016 U.S. Presidential Election Markets (see
     [here](https://iemweb.biz.uiowa.edu/markets/pr_Pres16_VS.html)):
 
@@ -92,9 +92,9 @@ The price at which actors are willing to buy "Worth 1\$ if $D$" is considered to
 be equal to the market's prediction of the probability that the event $D$
 occurs. If, for example, actors are willing to buy shares of "Worth 1\$ if $D$"
 at 0.7\$, then the markets predicts the probability of D to be about 70%, and
-the probability of "not $D$" to be about 30%.[^1]
+the probability of "not $D$" to be about 30%.[^4]
 
-[^1]:
+[^4]:
     The reasoning here is that if the probability of outcome $D$ is $x$, then
     the expected profit of buying the outcome token for the price of $y$ is
     $x - y$. Thus, ignoring trading fees, a trader who believes that the
@@ -116,9 +116,9 @@ close was 0.973\$ (see also
 
 Depending on the market maker strategy and the correctness of the aggregated
 information, the bank might suffer a loss. In practice, the market makers will
-take trading fees from the actors to mitigate these risks.[^2]
+take trading fees from the actors to mitigate these risks.[^5]
 
-[^2]:
+[^5]:
     If a bank suffers a loss from providing liquidity to a market, this loss may
     be viewed as the cost of receiving the information aggregated by the actors.
 
@@ -236,7 +236,7 @@ and [Frederik Hayek][hayek], however it is the economist Robin Hansen that is
 perhaps the best-known proponent of them today. Hansen's writings have a very
 significant theoretic implication on how to implement prediction markets in a
 blockchain setting. He posits in _Shall We Vote on Values, But Bet on
-Beliefs?_[^vote] that the primary problem that can be solved is that of _info
+Beliefs?_[^1] that the primary problem that can be solved is that of _info
 problems_, that is the difficulty of aggregating information among many
 individuals with all different views of the subject.
 
