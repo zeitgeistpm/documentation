@@ -199,8 +199,6 @@ resolves to a number that lies below or above the range, then one of the Long
 and Short outcome assets would be redeemable to 1\$ (and the other would have no
 value).
 
-If you want to bet that The value predicted by the scalar prediction market is
-
 For example, suppose that the upper and lower bounds for Tesla's stock price are
 1,000\$ and 1,200\$. If traders buy Long at 0.60\$, then they bet that Tesla
 will _as least_ be at
