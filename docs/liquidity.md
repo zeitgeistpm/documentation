@@ -4,32 +4,32 @@ title: Liquidity
 ---
 
 The _liquidity_ of a market describes how quickly an asset can be traded on the
-market at a reasonable market price. Illiquid markets tend to suffer from
-large price fluctuations when large amounts of assets are bought or sold and are
-slow to execute trades. Liquid markets, on the other hand, experience only
+market at a reasonable market price. Illiquid markets tend to suffer from large
+price fluctuations when large amounts of assets are bought or sold and are slow
+to execute trades. Liquid markets, on the other hand, experience only
 insignificant changes in price from trades and can execute trades quickly.
 
 For example, a market for a limited NFT collection of ten items is highly
 illiquid. It is very often the case that no one is willing to sell or buy. There
 is no market price to speak of. The floor price is the only available measure
 for the value of the collection, and it will most likely change drastically
-whenever a trade is executed. Real estate and collectibles are other examples of
-illiquid markets.
+whenever a trade is executed. Real estate (tax, agents, attorneys) and
+collectibles (shipping) are other examples of illiquid markets.
 
 The New York Stock Exchange, on the other hand, is a highly liquid market. For
 every asset, markets makers set buy and sell prices at which they are willing to
 execute virtually any trade, and thus facilitate trading. Using modern
 technology, assets can be bought and sold within seconds. The only downside for
-investors is that markets makers charge trading fees and/or make use of a
-bid/ask spread (market makers sell higher than they buy), hoping to take a
-profit from the trades.
+investors is that market makers charge trading fees and/or make use of a bid/ask
+spread (market makers sell higher than they buy), hoping to take a profit from
+the trades.
 
 On decentralized exchanges, liquidity is provided using liquidity pools, and
-incentivized by profits from liquidity mining. As users on Zeitgeist interact
-with liquidity pools by trading, by providing liquidity, or even create
-liquidity pools themselves, we describe these concepts in detail. If you are
-already familiar this the notions of liquidity pool and liquidity mining, you
-may want to skip this chapter or later return to it.
+liquidity providers are rewarded with profits from liquidity mining. As users on
+Zeitgeist interact with liquidity pools by trading and providing liquidity, and
+may even create liquidity pools themselves, we describe these concepts in
+detail. If you are already familiar this the notions of liquidity pool and
+liquidity mining, you may want to skip this chapter or later return to it.
 
 ## Liquidity Pools
 
@@ -51,9 +51,9 @@ available trading data and/or price oracles.
 A particularly straightforward AMM and common example is Uniswap's
 [constant product formula](https://docs.uniswap.org/protocol/V2/concepts/protocol-overview/how-uniswap-works)
 for pools with two assets. Suppose we create a liquidity pool which (at
-inception) holds 10.0 ETH and 40,000.0 USDT (these balances are usually
+inception) holds 10 ETH and 40,000 USDT (these balances are usually
 determined by the current price of ETH/USDT provided by some other source, in
-this case 4,000USDT/ETH). We define $k$ as the product of the balances of the
+this case 4,000 USDT/ETH). We define $k$ as the product of the balances of the
 assets in the pool ($\#A$ denotes the balance of A in the pool):
 
 $$
@@ -70,7 +70,7 @@ For example, after trading USDT for 1 ETH, the balance of USDT in the pool must
 be
 
 $$
-\# \mathrm{USDT} = \frac{k}{\# \mathrm{ETH}} \approx 44,\!444 \, \mathrm{USDT}.
+\# \mathrm{USDT} = \frac{k}{\# \mathrm{ETH}} = \frac{400,\!000}{9} \approx 44,\!444 \, \mathrm{USDT}.
 $$
 
 This means that buying 1 ETH from the pool costs 4,444 USDT, and will leave the
@@ -93,7 +93,7 @@ the pool was just created based on an oracle report of 4,000 USDT.
 This phenomenon is called _slippage_ and is a side effect of low liquidity. If
 trades are made whose size significantly change the balances in the pool (ten
 percent in this case), the constant product formula causes the prices at which
-the trade is executed to "slip" up.
+the trade is executed to "slip" up or down.
 
 If, instead of 10 ETH and 40,000 USDT, we had 100 ETH and 400,000 USDT in the
 pool, the same trade would cause the price to "only" slip by 40 USDT. This shows

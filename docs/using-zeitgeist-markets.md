@@ -36,9 +36,9 @@ outcomes from separate markets may.)
 
 Trading on a prediction market on Zeitgeist is facilitated by the market's
 liquidity pool. The pool contains balances of ZTG and of all outcome tokens of
-the market. Users can trade their tokens with tokens stored in pool: They can
-buy outcome tokens from the pool with ZTG which is then added to the pool, or
-sell outcome tokens to the pool for some of the pool's ZTG.
+the market. Users can trade their tokens with tokens stored in the pool: They
+can buy outcome tokens from the pool with ZTG which is then added to the pool,
+or sell outcome tokens to the pool for some of the pool's ZTG.
 
 For example, if the pool contains 100 ZTG and 100 JWSTYES and Alice buys 3
 JWSTYES at 0.5 ZTG, then Alice transfers 1.5 ZTG into the pool and receives 3
@@ -60,19 +60,20 @@ than 25 ZTG).
 
 Recall that the buy/sell prices of the assets are determined by an automated
 market maker. Zeitgeist uses a novel AMM, the _Rikiddo scoring rule_. You can
-expect the price for each outcome token to be less than 1 ZTG, but lack of
-liquidity can drive the price above 1 ZTG. This makes buying these outcome
+usually expect the price for each outcome token to be less than 1 ZTG, but lack
+of liquidity can drive the price above 1 ZTG. This makes buying these outcome
 tokens fairly unattractive, as they can only be redeemed for 1 ZTG (_if_ they
 win).
 
 In particular, there is no guarantee that the prices of all outcome assets sum
-to 1 ZTG. See [Arbitrage on Zeitgeist](#arbitrage-on-zeitgeist) for more
-details.
+to 1 ZTG. Usually, the prices will sum to _approximately_ 1 ZTG, but in markets
+with shallow liquidity pool or in volatile markets, this is not to be expected.
+See [Arbitrage on Zeitgeist](#arbitrage-on-zeitgeist) for more details.
 
 ### The Prize Pool
 
-On every market, outcome tokens may be _minted_ (or _bought_) during market
-hours by users in _full sets_ (exactly one of each outcome token from the
+On every market, outcome tokens may be _minted_ (or _bought_) in _full sets_ by
+users while the market is open (exactly one of each outcome token from the
 market) at the exact price of 1 ZTG plus transaction fee (so that every outcome
 token is backed $1:(n-1)$ by tokens for the $(n-1)$ other outcomes). The minted
 outcome tokens are transferred to the user's wallet. The ZTG paid for the mint,
@@ -86,10 +87,10 @@ prize pool.
 When a market is created, the prize pool is empty, and the balance of the prize
 pool cannot be changed except by minting and burning full sets. These rules
 guarantee the prize pool contains exactly 1 ZTG for every full set of outcome
-tokens. The purpose of these mechanics is to ensure that when the market
-resolves, all tokens can be redeemed for ZTG from the prize pool (for details,
-see [Resolving Markets and Redeeming Tokens]), and that the prize pool is empty
-after all tokens are redeemed.
+tokens in circulation. The purpose of these mechanics is to ensure that when the
+market resolves, all tokens can be redeemed for ZTG from the prize pool (for
+details, see [Resolving Markets and Redeeming Tokens]), and that the prize pool
+is empty after all tokens are redeemed.
 
 <!-- prettier-ignore -->
 :::important
@@ -109,9 +110,9 @@ sets, as he owns no more JWSTYES.
 
 ### Liquidity Pools and Shares
 
-We already mentioned in [Trading on Zeitgeist] that trading in prediction
-markets is facilitated by the market's liquidity pool, and that the pool
-contains balances of ZTG and of all outcome tokens of the market.
+We already mentioned in [Trading on Zeitgeist] that trading in a prediction
+markets on Zeitgeist is facilitated by the market's liquidity pool, and that the
+pool contains balances of ZTG and of all outcome tokens of the market.
 
 But by default, a new market has no liquidity pool. Instead, the pool must
 either be deployed by the market creator, or by some external liquidity
@@ -195,7 +196,7 @@ reporting the outcome. This address is called the _oracle_. The market creator
 must vouch for the oracle by staking a fixed amount of ZTG. If the oracle does
 not submit the report on time, the stake is slashed.
 
-A common choice of oracle is an address controlled by the market creator.
+A common choice of oracle is any address controlled by the market creator.
 
 <!-- prettier-ignore -->
 :::important
@@ -224,19 +225,22 @@ deployed, trading as described in [Trading on Zeitgeist] is impossible, but
 users may still mint/burn full sets of tokens.
 
 The market remains open until the end date is reached. The market will then
-become inactive and trading will no longer be possible.
+become _inactive_ and trading will no longer be possible.
 
 ### After Hours: Reporting an Outcome
 
 The oracle of the market is expected to submit which outcome actually occurred
 within a fixed frame of time. If the oracle fails to submit the report in time,
-the market creators stake will be slashed, and other users will be able to
+the market creators stake will be slashed, and all addresses will be able to
 submit their report.
 
 <!-- prettier-ignore -->
 :::important
 In the Zeitgeist Beta, the oracle has 24 hours to report the outcome.
 :::
+
+Once the report is submitted, the status of the market changes from inactive to
+_reported_.
 
 ### Disputes
 
@@ -255,8 +259,9 @@ If the dispute cannot be resolved, it is escalated to the
 :::important
 During the Beta campaign, only _simple disputes_ are enabled. This means that
 the outcome of a market can be disputed a maximum of six times (with a 24h
-window, except the last one). The report of the sixth dispute will be used to
-resolve the market. There is no decentralized court in the beta.
+window, except the last one), each time with a higher stake. The report of the
+sixth dispute will be used to resolve the market. There is no decentralized
+court in the beta.
 :::
 
 For example, suppose that the oracle of the JSWT market reports JWSTYES at
@@ -269,11 +274,11 @@ disputes are opened, the market will resolve to JWSTNO at 16:00 PM, December 20.
 
 ### Resolving Markets and Redeeming Tokens
 
-Once the window for disputes is closed, the status of the market is _resolved_
-to the last reported outcome. All outcome tokens except for the winning outcome
-token are immediately burned. Traders who hold winning tokens can now _redeem_
-them for 1 ZTG a piece by signing a transaction. There is no time limit for
-redeeming winning outcome tokens.
+Once the window for disputes is closed, the market is _resolved_ to the last
+reported outcome. All outcome tokens except for the winning outcome token are
+immediately burned. Traders who hold winning tokens can now _redeem_ them for 1
+ZTG apiece by signing a transaction. There is no time limit for redeeming
+winning outcome tokens.
 
 For example, Alice holds 3 JWSTYES and Bob holds 5 JWSTNO. If the market
 resolves to JWSTNO, then Alice's 3 JWSTYES are burned and she is left with
@@ -297,7 +302,7 @@ slashed.
 Zeitgeist's AMM, the Rikiddo scoring rule, does not guarantee that for any
 market the sum of the prices of all outcome assets is approximately equal to 1
 ZTG, or that the price of any outcome tokens remains below 1 ZTG. High prices
-are indicators of low liquidity, and vice versa.
+are indicators of low liquidity or a volatile market.
 
 This creates opportunities for users to add or remove liquidity to profit from
 arbitrage:
