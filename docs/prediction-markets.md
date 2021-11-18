@@ -27,10 +27,11 @@ the U.S. presidential election of 2016 (for the sake of this example, imagine
 that it's early 2016) and $D$ might be "The Democratic Party wins the 2016 U.S.
 presidential election".
 
-To aggregate this information, a centralized institution (the _bank_) sells
-pairs of the following assets at 1\$: "Worth 1\$ if $D$", "Worth 1\$ if not
-$D$". These assets are called _outcome asset tokens_ (sometimes referred to
-_binary options_). Each token represents a possible _outcome_ of the election.
+To aggregate information about the probability of $D$, a centralized institution
+(the _bank_) sells pairs of the following assets at 1\$: "Worth 1\$ if $D$",
+"Worth 1\$ if not $D$". These assets are called _outcome asset tokens_
+(sometimes referred to as _binary options_). Each token represents a possible
+_outcome_ of the election.
 
 While the market is open, these slips are sold to the actors of the market by
 the bank. The price of the individual assets will be decided by the market
@@ -52,7 +53,8 @@ entity called _oracle_, which must be incentivized to provide correct
 information (or discouraged from providing incorrect information).
 
 [^3]:
-    For example, strategy for the 2016 U.S. Presidential Election Markets (see
+    For example, this is the strategy for the 2016 U.S. Presidential Election
+    Markets (see
     [here](https://iemweb.biz.uiowa.edu/markets/pr_Pres16_VS.html)):
 
     > The election data posted on the New York Times official website at 5pm CST
@@ -88,30 +90,33 @@ comes along and the Republican Party is declared the winner of the election.
 Thus, Bob's shares are rendered worthless, while Alice may trade her 10 shares
 in for 10\$, leaving her a fat profit of 4\$ (minus trading fees, see below).
 
-The price at which actors are willing to buy "Worth 1\$ if $D$" is considered to
-be equal to the market's prediction of the probability that the event $D$
-occurs. If, for example, actors are willing to buy shares of "Worth 1\$ if $D$"
-at 0.7\$, then the markets predicts the probability of D to be about 70%, and
-the probability of "not $D$" to be about 30%.[^4]
+But how did the market reveal information about the future event? The price at
+which actors are willing to buy "Worth 1\$ if $D$" measures the actors'
+confidence that $D$ will occur. In fact, the price of one share of "Worth 1\$ if
+$D$" in USD is considered to be equal to the market's prediction of the
+probability that the event $D$ occurs. If, for example, actors are willing to
+buy shares of "Worth 1\$ if $D$" at 0.7\$, then the markets predicts the
+probability of D to be about 70%, and the probability of "not $D$" to be about
+30%.[^4]
 
 [^4]:
     The reasoning here is that if the probability of outcome $D$ is $x$, then
     the expected profit of buying the outcome token for the price of $y$ is
     $x - y$. Thus, ignoring trading fees, a trader who believes that the
-    probability of $D$ is $x$ should expect to make a profit by buying when
-    buying at a price lower than $x$ and selling at a price higher than $x$. So
-    the price should, in the long run, approach $x$.
+    probability of $D$ is $x$ should expect to make a profit by buying at a
+    price lower than $x$ and selling at a price higher than $x$. So the price
+    should, in the long run, approach $x$.
 
 The longer a market is active, the more refined the prediction is expected to
 be. The prediction at market close should reflect all information available to
 the traders over the course of the market. If a market remains open while the
-events on whose outcome bets are made unfold, then value of the outcome to which
-the market will eventually resolve will likely approach 1\$, and all other will
-become nearly worthless. For example, during the IEM's 2016 U.S. Presidential
-Election Markets, the average price of DEM16_WTA, the token for "\$1 if the
-Democratic Party nominee receives the majority of popular votes cast for the two
-major parties in the 2016 U.S. Presidential election, \$0 otherwise", at market
-close was 0.973\$ (see also
+events on whose outcome bets are made unfold, then the value of the outcome to
+which the market will eventually resolve will likely approach 1\$, and all other
+outcomes will become nearly worthless. For example, during the IEM's 2016 U.S.
+Presidential Election Markets, the average price of DEM16_WTA, the token for
+"\$1 if the Democratic Party nominee receives the majority of popular votes cast
+for the two major parties in the 2016 U.S. Presidential election, \$0
+otherwise", at market close was 0.973\$ (see also
 [2016 US Presidential Election Winner Takes All Market](https://iemweb.biz.uiowa.edu/graphs/graph_Pres16_WTA.cfm)).
 
 Depending on the market maker strategy and the correctness of the aggregated
@@ -155,10 +160,12 @@ may both occur) and _exhaustive_ (there must be a token for every possible
 outcome). A good rule of thumb when designing a prediction market that does not
 ask a yes-no question is to define a _catch-all_ token (like _None_ from the
 Kusama Derby), which wins if the outcome matches no other token. In fact, as the
-bidding on the last parachain slot only ended July 6, 2021, the reported outcome
-of the third market of the Kusama Derby was _None_, and the market ended on June
-30, 2021, as announced, even though Khala did eventually win the third parachain
-slot auction.
+bidding on the last parachain slot only ended July 6, 2021, and the Kusama Derby
+ended on June 30, 2021, the reported outcome of the third market of the Kusama
+Derby was _None_, even though Khala did eventually win the third parachain slot
+auction.
+
+<!-- TODO Link Zeitgeist Closed Beta -->
 
 During the Zeitgeist Closed Beta, a market for a football game between the
 Minnesota Vikings and the Dallas Cowboys had the following tokens:
@@ -199,7 +206,7 @@ For example, suppose that the upper and lower bounds for Tesla's stock price are
 will _as least_ be at
 
 $$
-1,\! 000 + 0.6 \cdot 200\$ = 1,\! 120\$
+1,\! 000\$ + 0.6 \cdot 200\$ = 1,\! 120\$
 $$
 
 at market close. If you want to bet that Tesla will be at 1,050\$ at market
@@ -211,8 +218,8 @@ If the market then resolves to 1,180\$, then Long may be redeemed for 0.90\$ and
 Short for 0.10\$. If the market resolves to a value above 1,200\$, then Long is
 worth 1.00\$ and Short is worthless.
 
-Another example of a scalar prediction market is Pres16_VS Market on the Iowa
-Electronic Markets. Instead of betting on the who wins the larger amount of
+Another example of a scalar prediction market is the Pres16_VS Market on the
+Iowa Electronic Markets. Instead of betting on the who wins the larger amount of
 votes in the popular vote, traders are betting the major parties' share in the
 popular vote. This means that the lower bound is 0 and the upper bound is 1, and
 buying a share of UDEM16_VS (Long) at 0.55\$ means that you predict that the

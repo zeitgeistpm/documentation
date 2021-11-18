@@ -4,7 +4,7 @@ title: Liquidity
 ---
 
 The _liquidity_ of a market describes how quickly an asset can be traded on the
-market at a reasonable market price. Illiquidity markets tend to suffer from
+market at a reasonable market price. Illiquid markets tend to suffer from
 large price fluctuations when large amounts of assets are bought or sold and are
 slow to execute trades. Liquid markets, on the other hand, experience only
 insignificant changes in price from trades and can execute trades quickly.
@@ -19,7 +19,7 @@ illiquid markets.
 The New York Stock Exchange, on the other hand, is a highly liquid market. For
 every asset, markets makers set buy and sell prices at which they are willing to
 execute virtually any trade, and thus facilitate trading. Using modern
-technology, assets can be bough and sold within seconds. The only downside for
+technology, assets can be bought and sold within seconds. The only downside for
 investors is that markets makers charge trading fees and/or make use of a
 bid/ask spread (market makers sell higher than they buy), hoping to take a
 profit from the trades.
