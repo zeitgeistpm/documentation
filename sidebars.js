@@ -6,7 +6,7 @@ module.exports = {
       'faq',
       'applications',
       'roadmap',
-      'using-the-faucet',
+      'zeitgeist-beta',
       'troubleshooting'
     ],
     Learn: [
