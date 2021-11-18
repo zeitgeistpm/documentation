@@ -7,18 +7,22 @@ module.exports = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'zeitgeistpm', 
-  projectName: 'docs', // Usually your repo name.
+  projectName: 'documentation', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'Zeitgeist Documentation',
       logo: {
-        alt: 'My Site Logo',
         src: 'img/Zeitgeist-trans.png',
       },
       items: [
         {
-          href: 'https://github.com/zeitgeistpm',
-          label: 'GitHub',
+          to: '/',
+          label: 'Documentation',
+          position: 'right',
+        },
+        {
+          to: 'guides',
+          label: 'Technology',
           position: 'right',
         },
       ],
