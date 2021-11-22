@@ -70,10 +70,11 @@ shallow liquidity pools or in volatile markets, this is not to be expected. See
 
 <!-- prettier-ignore -->
 :::important
-The Zeitgeist Beta uses a [constant product market maker] instead of the Rikiddo
-scoring rule.
+The Zeitgeist Beta uses a
+[constant product market maker](./liquidity.md#example-constant-product-market-maker)
+instead of the Rikiddo scoring rule.
 :::
-
+    
 ### The Prize Pool
 
 On every market, outcome tokens may be _minted_ (or _bought_) in _full sets_ by
@@ -350,5 +351,3 @@ outcome assets and ZTG) or other individual assets to any existing pool.
 [liquidity]: #liquidity
 [resolving markets and redeeming tokens]:
     #resolving-markets-and-redeeming-tokens
-[constant product market maker]:
-    ./liquidity.md#example-constant-product-market-maker
