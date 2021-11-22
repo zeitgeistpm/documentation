@@ -131,7 +131,7 @@ its original value, the loss is mitigated. The loss becomes "permanent" only if
 the liquidity provider withdraws funds from the pool.
 
 Prediction markets using the liquidity-sensitive automated market maker function
-proposed by Othman-Sandholm-Pennock-Reeves (upon the Rikiddo scoring rule
+proposed by Othman-Sandholm-Pennock-Reeves (upon which the Rikiddo scoring rule
 developed by Zeitgeist is based) leave plenty of opportunity for arbitrageurs.
 
 ## Further Reading and Viewing
