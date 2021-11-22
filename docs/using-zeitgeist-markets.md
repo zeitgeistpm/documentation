@@ -59,16 +59,20 @@ than 25 ZTG).
 <!-- TODO Link to the research page on Rikiddo! -->
 
 Recall that the buy/sell prices of the assets are determined by an automated
-market maker. Zeitgeist uses a novel AMM, the _Rikiddo scoring rule_. You can
-usually expect the price for each outcome token to be less than 1 ZTG, but lack
-of liquidity can drive the price above 1 ZTG. This makes buying these outcome
-tokens fairly unattractive, as they can only be redeemed for 1 ZTG (_if_ they
-win).
+market maker. Zeitgeist uses a novel AMM, the _Rikiddo scoring rule_. Rikiddo
+guarantees that the price of each individual asset cannot exceed 1 ZTG. (Note
+that buying an outcome asset for 1 ZTG or more is fairly unattractive, as each
+unit of the asset could never be redeemed for more than the market price.)
+However, there is no guarantee that the prices of all outcome assets sum to 1
+ZTG. Usually, the prices will sum to _approximately_ 1 ZTG, but in markets with
+shallow liquidity pools or in volatile markets, this is not to be expected. See
+[Arbitrage on Zeitgeist](#arbitrage-on-zeitgeist) for more details.
 
-In particular, there is no guarantee that the prices of all outcome assets sum
-to 1 ZTG. Usually, the prices will sum to _approximately_ 1 ZTG, but in markets
-with shallow liquidity pool or in volatile markets, this is not to be expected.
-See [Arbitrage on Zeitgeist](#arbitrage-on-zeitgeist) for more details.
+<!-- prettier-ignore -->
+:::important
+The Zeitgeist Beta uses a [constant product market maker] instead of the Rikiddo
+scoring rule.
+:::
 
 ### The Prize Pool
 
@@ -346,3 +350,5 @@ outcome assets and ZTG) or other individual assets to any existing pool.
 [liquidity]: #liquidity
 [resolving markets and redeeming tokens]:
     #resolving-markets-and-redeeming-tokens
+[constant product market maker]:
+    ./liquidity.md#example-constant-product-market-maker
