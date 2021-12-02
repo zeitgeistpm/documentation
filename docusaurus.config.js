@@ -19,7 +19,7 @@ module.exports = {
       },
       items: [
         {
-          to: 'getting-started',
+          to: '/',  // getting-started',
           label: 'Basics',
           position: 'right',
         },
