@@ -1,3 +1,6 @@
+const math = require('remark-math');
+const katex = require('rehype-katex');
+
 module.exports = {
   title: 'Zeitgeist Documentation',
   tagline: 'Learn how to integrate with the Zeitgeist network.',
@@ -16,13 +19,18 @@ module.exports = {
       },
       items: [
         {
-          to: '/',
-          label: 'Documentation',
+          to: '/',  // getting-started',
+          label: 'Basics',
+          position: 'right',
+        },
+        {
+          to: 'prediction-markets',
+          label: 'Learn',
           position: 'right',
         },
         {
           to: 'guides',
-          label: 'Technology',
+          label: 'Build',
           position: 'right',
         },
       ],
@@ -30,19 +38,6 @@ module.exports = {
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Getting Started',
-              to: '/',
-            },
-            {
-              label: 'Zeitgeist SDK',
-              to: '/sdk/',
-            },
-          ],
-        },
         {
           title: 'Community',
           items: [
@@ -52,7 +47,7 @@ module.exports = {
             },
             {
               label: 'Discord',
-              href: '#',
+              href: 'https://discord.com/invite/xv8HuA4s8v',
             },
             {
               label: 'Twitter',
@@ -65,7 +60,7 @@ module.exports = {
           items: [
             {
               label: 'Blog',
-              to: 'https://zeitgeist.pm/blog',
+              to: 'https://blog.zeitgeist.pm',
             },
             {
               label: 'GitHub',
@@ -85,16 +80,27 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           // Please change this to your repo.
           editUrl:
             'https://github.com/zeitgeistpm/docs/edit/main/',
+          remarkPlugins: [math],
+          rehypePlugins: [katex],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
       },
     ],
+  ],
+  stylesheets: [
+    {
+        href: "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css",
+        integrity: "sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc",
+        crossorigin: "anonymous",
+    },
   ],
 };

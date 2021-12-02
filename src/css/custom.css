@@ -7,14 +7,17 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #205AAC;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
+  /* Using
+   * https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima
+   * */
+  --ifm-color-primary: #007bff;
+  --ifm-color-primary-dark: #006fe6;
+  --ifm-color-primary-darker: #0069d9;
+  --ifm-color-primary-darkest: #0056b3;
+  --ifm-color-primary-light: #1a88ff;
+  --ifm-color-primary-lighter: #268fff;
+  --ifm-color-primary-lightest: #4da3ff;
 }
 
 .docusaurus-highlight-code-line {
@@ -22,4 +25,24 @@
     display: block;
     margin: 0 calc(-1 * var(--ifm-pre-padding));
     padding: 0 var(--ifm-pre-padding);
+}
+
+/* Make navbar narrow like @polkadot-wiki */
+.navbar .navbar__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Center content on sufficiently large screens, center navbar and
+ * floating toc around it */
+@media (min-width: 1400px) {
+  .main-wrapper {
+    width: 1400px;
+    align-self: center;
+  }
+}
+
+/* For centering the Zeitgeist logo on the launch pad */
+.centered_image {
+  text-align: center;
 }
