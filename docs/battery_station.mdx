@@ -23,8 +23,8 @@ Battery Station, head over to the section
 
 The minimum system requirements are:
 
--   CPU: Ryzen 5 3600
--   RAM: 16 GB
+-   CPU: AMD EPYC 7601 (or another CPU with equivalent single core performance)
+-   RAM: 8 GB
 -   Hard drive: SSD
 
 There are two ways that you can run a node and connect to the Battery Station
@@ -47,7 +47,7 @@ _We have not tested building on Windows and cannot guarantee that it will work._
 
 _Note for Ubuntu >= 16 users: Building from source is not necessary, since we
 offer_ _a
-[pre-built binary](https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.0/zeitgeist_parachain)._
+[pre-built binary](https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.1/zeitgeist_parachain)._
 _You can use it instead of building from source and skip this tutorial to the
 part_ _that describes how to fetch the Zeitgeist relay chain specification. Feel
 free to_ _use the following command to download the binary under the name
@@ -55,7 +55,7 @@ free to_ _use the following command to download the binary under the name
 "/target/release/zeitgeist" with_ _"zeitgeist" during the tutorial):_
 
 ```bash
-curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.0/zeitgeist_parachain
+curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.1/zeitgeist_parachain
 chmod +x zeitgeist
 ```
 
@@ -72,8 +72,8 @@ You will need to clone the code locally, and make sure that you have the
 installed. Execute the following commands to fetch the project:
 
 ```bash
-# clone the code locally and checkout version v0.2.0
-git clone https://github.com/zeitgeistpm/zeitgeist.git --depth 1 --branch v0.2.0
+# clone the code locally and checkout version v0.2.1
+git clone https://github.com/zeitgeistpm/zeitgeist.git --depth 1 --branch v0.2.1
 # change directory
 cd zeitgeist
 ```
@@ -88,9 +88,9 @@ Next configure rustup, on Unix you can execute the following script:
 Otherwise configure rustup manually:
 
 ```bash
-rustup update nightly-2021-09-28
+rustup update nightly-2021-12-08
 rustup update stable
-rustup target add wasm32-unknown-unknown --toolchain nightly-2021-09-28
+rustup target add wasm32-unknown-unknown --toolchain nightly-2021-12-08
 ```
 
 After initializing you can then start building by using the cargo command:
@@ -113,15 +113,15 @@ is required that can be obtained with:
 
 ```bash
 curl -o battery-station-relay.json https://raw.githubusercontent.com/zeitgeistpm/polkadot/battery-station-relay/node/service/res/battery-station-relay.json
-
 ```
 
 You can start a full-node (non-authoring) for Battery Station from the root of
 the directory like this:
 
-```bash {12}
+```bash {13}
 ./target/release/zeitgeist \
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --parachain-id=2050 \
     --port=30333 \
@@ -129,8 +129,8 @@ the directory like this:
     --ws-port=9944 \
     --pruning=archive \
     -- \
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
     --chain=battery-station-relay.json \
     --port=30334 \
     --rpc-port=9934 \
@@ -157,12 +157,10 @@ We will create a non-privileged user to execute the Zeitgeist node, setup the
 folder structure, create a systemd service file, launch the service and inspect
 the output.
 
-Create a new user (without a home folder) and disable login for that user
-(ensure to copy&paste both commands sequentially to ensure they're executed):
+Create a new user (without a home folder) and disable login for that user:
 
 ```bash
-sudo useradd -M zeitgeist
-sudo usermod zeitgeist -s /sbin/nologin
+sudo useradd -M zeitgeist && sudo usermod zeitgeist -s /sbin/nologin
 ```
 
 Create a folder that will contain the Zeitgeist data, previously compiled binary
@@ -192,7 +190,7 @@ sudo nano /etc/systemd/system/zeitgeist-node.service
 
 You can just use the following template or adjust it to your needs:
 
-```bash {12,14,17,19-21,29}
+```bash {12,14,18,20-22,30-33}
 [Unit]
 Description=Zeitgeist Battery Station parachain full node
 After=network.target
@@ -207,7 +205,8 @@ Restart=always
 Nice=0
 ExecStart=/services/zeitgeist/bin/zeitgeist \
     --base-path=/services/zeitgeist/battery_station \
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
     --parachain-id=2050 \
@@ -219,8 +218,8 @@ ExecStart=/services/zeitgeist/bin/zeitgeist \
     --rpc-cors=all \
     --pruning=archive \
     -- \
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
     --chain=/services/zeitgeist/battery_station/battery-station-relay.json \
     --port=30334 \
     --rpc-port=9934 \
@@ -312,7 +311,7 @@ custom node name.
 <Tabs>
 <TabItem value="unix" label="Unix - Bash">
 
-```bash {5,12}
+```bash {5,13}
 docker run \
     -p 30333:30333 \
     -p 9933:9933 \
@@ -322,21 +321,22 @@ docker run \
     --restart=always \
     zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 \
     --base-path=/zeitgeist/data \
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
     --parachain-id=2050 \
     --pruning=archive \
     -- \
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
     --chain=/zeitgeist/relay-chain-spec.json
 ```
 
 </TabItem>
 <TabItem value="win" label="Windows - Powershell">
 
-```powershell {5,12}
+```powershell {5,13}
 docker run `
     -p 30333:30333 `
     -p 9933:9933 `
@@ -346,14 +346,15 @@ docker run `
     --restart=always `
     zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 `
     --base-path=/zeitgeist/data `
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
     --parachain-id=2050 `
     --pruning=archive `
     -- `
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ `
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
     --chain=/zeitgeist/relay-chain-spec.json
 ```
 
@@ -369,7 +370,7 @@ this folder), the previous command should be appended by one more `-v` option:
 <Tabs>
 <TabItem value="unix" label="Unix - Bash">
 
-```bash {5-6,13}
+```bash {5-6,14}
 docker run \
     -p 30333:30333 \
     -p 9933:9933 \
@@ -380,21 +381,22 @@ docker run \
     --restart=always \
     zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 \
     --base-path=/zeitgeist/data \
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
     --parachain-id=2050 \
     --pruning=archive \
     -- \
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
     --chain=/zeitgeist/relay-chain-spec.json
 ```
 
 </TabItem>
 <TabItem value="win" label="Windows - Powershell">
 
-```powershell {5-6,13}
+```powershell {5-6,14}
 docker run `
     -p 30333:30333 `
     -p 9933:9933 `
@@ -405,14 +407,15 @@ docker run `
     --restart=always `
     zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 `
     --base-path=/zeitgeist/data `
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
     --parachain-id=2050 `
     --pruning=archive `
     -- `
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ `
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
     --chain=/zeitgeist/relay-chain-spec.json
 ```
 
@@ -437,13 +440,13 @@ adjust `-v /services/zeitgeist` to use a folder you desire for chain data and
 that docker has write permissions for it. Replace `zeitgeist-support-$RANDOM`
 with the name your node should have. Set the first occurence of `--port`,
 `--rpc-port` and `ws-port` to some ports that are not occupied yet and that
-accept incoming traffic. If you change on of those, changes the corresponding
-entry in the option `-p CHANGE_THIS:port` must be applied.
+accept incoming traffic. If you change one of those, the changes must be 
+reflected in the option `-p CHANGE_THIS:port`.
 
 <Tabs>
 <TabItem value="unix" label="Unix - Bash">
 
-```bash {4-8,15,17-19}
+```bash {4-8,16,18-20}
 docker run \
     --restart unless-stopped \
     -d \
@@ -456,7 +459,8 @@ docker run \
     --restart=always \
     zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 \
     --base-path=/zeitgeist/data \
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
     --parachain-id=2050 \
@@ -468,8 +472,8 @@ docker run \
     --rpc-cors=all \
     --pruning=archive \
     -- \
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
     --chain=/zeitgeist/relay-chain-spec.json \
     --port=30334 \
     --rpc-port=9934 \
@@ -479,7 +483,7 @@ docker run \
 </TabItem>
 <TabItem value="win" label="Windows - Powershell">
 
-```powershell {4-8,15,17-19}
+```powershell {4-8,16,18-20}
 docker run `
     --restart unless-stopped `
     -d `
@@ -492,7 +496,8 @@ docker run `
     --restart=always `
     zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 `
     --base-path=/zeitgeist/data `
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
     --parachain-id=2050 `
@@ -504,8 +509,8 @@ docker run `
     --rpc-cors=all `
     --pruning=archive `
     -- `
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ `
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
     --chain=/zeitgeist/relay-chain-spec.json `
     --port=30334 `
     --rpc-port=9934 `
