@@ -23,8 +23,8 @@ Battery Station, head over to the section
 
 The minimum system requirements are:
 
--   CPU: Ryzen 5 3600
--   RAM: 16 GB
+-   CPU: AMD EPYC 7601 (or another CPU with equivalent single core performance)
+-   RAM: 8 GB
 -   Hard drive: SSD
 
 There are two ways that you can run a node and connect to the Battery Station
@@ -121,7 +121,8 @@ the directory like this:
 
 ```bash {12}
 ./target/release/zeitgeist \
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --parachain-id=2050 \
     --port=30333 \
@@ -129,8 +130,8 @@ the directory like this:
     --ws-port=9944 \
     --pruning=archive \
     -- \
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
     --chain=battery-station-relay.json \
     --port=30334 \
     --rpc-port=9934 \
@@ -207,7 +208,8 @@ Restart=always
 Nice=0
 ExecStart=/services/zeitgeist/bin/zeitgeist \
     --base-path=/services/zeitgeist/battery_station \
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
     --parachain-id=2050 \
@@ -219,8 +221,8 @@ ExecStart=/services/zeitgeist/bin/zeitgeist \
     --rpc-cors=all \
     --pruning=archive \
     -- \
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
     --chain=/services/zeitgeist/battery_station/battery-station-relay.json \
     --port=30334 \
     --rpc-port=9934 \
@@ -322,14 +324,15 @@ docker run \
     --restart=always \
     zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 \
     --base-path=/zeitgeist/data \
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
     --parachain-id=2050 \
     --pruning=archive \
     -- \
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
     --chain=/zeitgeist/relay-chain-spec.json
 ```
 
@@ -380,14 +383,15 @@ docker run \
     --restart=always \
     zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 \
     --base-path=/zeitgeist/data \
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
     --parachain-id=2050 \
     --pruning=archive \
     -- \
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
     --chain=/zeitgeist/relay-chain-spec.json
 ```
 
@@ -456,7 +460,8 @@ docker run \
     --restart=always \
     zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 \
     --base-path=/zeitgeist/data \
-    --bootnodes=/ip4/45.33.117.205/tcp/30001/p2p/12D3KooWBMSGsvMa2A7A9PA2CptRFg9UFaWmNgcaXRxr1pE1jbe9 \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
     --parachain-id=2050 \
@@ -468,8 +473,8 @@ docker run \
     --rpc-cors=all \
     --pruning=archive \
     -- \
-    --bootnodes=/ip4/45.33.117.205/tcp/31001/p2p/12D3KooWHgbvdWFwNQiUPbqncwPmGCHKE8gUQLbzbCzaVbkJ1crJ \
-    --bootnodes=/ip4/45.33.117.205/tcp/31002/p2p/12D3KooWE5KxMrfJLWCpaJmAPLWDm9rS612VcZg2JP6AYgxrGuuE \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
+    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
     --chain=/zeitgeist/relay-chain-spec.json \
     --port=30334 \
     --rpc-port=9934 \
