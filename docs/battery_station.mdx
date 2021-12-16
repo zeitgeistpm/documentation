@@ -158,12 +158,10 @@ We will create a non-privileged user to execute the Zeitgeist node, setup the
 folder structure, create a systemd service file, launch the service and inspect
 the output.
 
-Create a new user (without a home folder) and disable login for that user
-(ensure to copy&paste both commands sequentially to ensure they're executed):
+Create a new user (without a home folder) and disable login for that user:
 
 ```bash
-sudo useradd -M zeitgeist
-sudo usermod zeitgeist -s /sbin/nologin
+sudo useradd -M zeitgeist && sudo usermod zeitgeist -s /sbin/nologin
 ```
 
 Create a folder that will contain the Zeitgeist data, previously compiled binary
