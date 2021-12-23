@@ -47,7 +47,7 @@ _We have not tested building on Windows and cannot guarantee that it will work._
 
 _Note for Ubuntu >= 16 users: Building from source is not necessary, since we
 offer_ _a
-[pre-built binary](https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.1/zeitgeist_parachain)._
+[pre-built binary](https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.2/zeitgeist_parachain)._
 _You can use it instead of building from source and skip this tutorial to the
 part_ _that describes how to fetch the Zeitgeist relay chain specification. Feel
 free to_ _use the following command to download the binary under the name
@@ -55,7 +55,7 @@ free to_ _use the following command to download the binary under the name
 "/target/release/zeitgeist" with_ _"zeitgeist" during the tutorial):_
 
 ```bash
-curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.1/zeitgeist_parachain
+curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.2/zeitgeist_parachain
 chmod +x zeitgeist
 ```
 
@@ -72,8 +72,8 @@ You will need to clone the code locally, and make sure that you have the
 installed. Execute the following commands to fetch the project:
 
 ```bash
-# clone the code locally and checkout version v0.2.1
-git clone https://github.com/zeitgeistpm/zeitgeist.git --depth 1 --branch v0.2.1
+# clone the code locally and checkout version v0.2.2
+git clone https://github.com/zeitgeistpm/zeitgeist.git --depth 1 --branch v0.2.2
 # change directory
 cd zeitgeist
 ```
@@ -96,45 +96,19 @@ rustup target add wasm32-unknown-unknown --toolchain nightly-2021-12-08
 After initializing you can then start building by using the cargo command:
 
 ```bash
-cargo build --release --features parachain
+cargo build --release --features parachain --bin zeitgeist
 ```
 
 _Note: A system with at least 16GB of RAM is required to build the node._
 
 Once the build has finished you will have the _zeitgeist_ binary available in
-the _target/release_ folder. The Zeitgeist node consists of two components:
-
-1. The Zeitgeist parachain
-2. The Zeitgeist relaychain
-
-To be able to use the Zeitgeist relaychain instead of the Polkadot relaychain, a
-[custom chain specification](https://raw.githubusercontent.com/zeitgeistpm/polkadot/battery-station-relay/node/service/res/battery-station-relay.json)
-is required that can be obtained with:
-
-```bash
-curl -o battery-station-relay.json https://raw.githubusercontent.com/zeitgeistpm/polkadot/battery-station-relay/node/service/res/battery-station-relay.json
-```
+the _target/release_ folder. 
 
 You can start a full-node (non-authoring) for Battery Station from the root of
 the directory like this:
 
-```bash {13}
-./target/release/zeitgeist \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
-    --chain=battery_station \
-    --parachain-id=2050 \
-    --port=30333 \
-    --rpc-port=9933 \
-    --ws-port=9944 \
-    --pruning=archive \
-    -- \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
-    --chain=battery-station-relay.json \
-    --port=30334 \
-    --rpc-port=9934 \
-    --ws-port=9945
+```bash
+./target/release/zeitgeist --chain=battery_station --pruning=archive 
 ```
 
 You should see your node begin to sync blocks.
@@ -160,25 +134,22 @@ the output.
 Create a new user (without a home folder) and disable login for that user:
 
 ```bash
-sudo useradd -M zeitgeist && sudo usermod zeitgeist -s /sbin/nologin
+sudo useradd -M -r -s /sbin/nologin zeitgeist
 ```
 
-Create a folder that will contain the Zeitgeist data, previously compiled binary
-file and relaychain chain specification file (see
-[Building from source](battery-station#building-from-source)). Note were your
-_zeitgeist_ binary lies (by default it is within the source folder at
+Create a folder that will contain the Zeitgeist data and the previously compiled binary
+file. Note where your _zeitgeist_ binary lies (by default it is within the source folder at
 _target/release_) and replace the path after the `cp` command that is shown
 below. In this example we will use _/services/zeitgeist_ as the base folder for
 our service, _/services/zeitgeist/bin_ will contain the _zeitgeist_ binary and
 the whole _/services/zeitgeist_ folder structure will be owned by the
 unprivileged zeitgeist user we created during the previous step:
 
-```bash {3-4}
+```bash {2}
 sudo mkdir -p /services/zeitgeist/bin
-sudo mkdir -p /services/zeitgeist/battery_station
 sudo cp /path/to/your/target/release/zeitgeist /services/zeitgeist/bin
-sudo cp /path/to/your/battery-station-relay.json /services/zeitgeist/battery_station/battery-station-relay.json
 sudo chown -R zeitgeist:zeitgeist /services/zeitgeist
+sudo chmod -R go=-rwx /services/zeitgeist
 ```
 
 Create a systemd service file. You can use your favorite editor, in this example
@@ -190,7 +161,10 @@ sudo nano /etc/systemd/system/zeitgeist-node.service
 
 You can just use the following template or adjust it to your needs:
 
-```bash {12,14,18,20-22,30-33}
+_Note: The arguments after the double dash (--) apply to the relay chain,
+which is required by the parachain_
+
+```bash {12,14,16,17-19,25-27}
 [Unit]
 Description=Zeitgeist Battery Station parachain full node
 After=network.target
@@ -205,11 +179,8 @@ Restart=always
 Nice=0
 ExecStart=/services/zeitgeist/bin/zeitgeist \
     --base-path=/services/zeitgeist/battery_station \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
-    --parachain-id=2050 \
     --port=30333 \
     --rpc-port=9933 \
     --ws-port=9944 \
@@ -218,9 +189,6 @@ ExecStart=/services/zeitgeist/bin/zeitgeist \
     --rpc-cors=all \
     --pruning=archive \
     -- \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
-    --chain=/services/zeitgeist/battery_station/battery-station-relay.json \
     --port=30334 \
     --rpc-port=9934 \
     --ws-port=9945
@@ -230,12 +198,10 @@ ExecStart=/services/zeitgeist/bin/zeitgeist \
 WantedBy=multi-user.target
 ```
 
-Ensure `--chain=/services/zeitgeist/battery-station-relay.json` points to the
-correct chain specification file that was downloaded before. Otherwise your node
-will connect the Polakdot relay chain. Replace `zeitgeist-support-$RANDOM` with
-the name your node should have. Set `--port`, `--rpc-port` and `ws-port` to some
-ports that are not occupied yet. Ensure that incoming traffic on those ports is
-allowed. The node will listen to RPCs over HTTP and WS, to make the node
+Replace `zeitgeist-support-$RANDOM` with the name your node should have. 
+Set `--port`, `--rpc-port` and `--ws-port` to some ports that are not 
+occupied yet. Ensure that incoming traffic on those ports is allowed. 
+The node will listen to RPCs over HTTP and WS, to make the node
 eligible for potential load-balancing. You can adjust the _Nice_ value to
 configure the priority of the process the service spawns. 20 is the lowest, -20
 the highest priority.
@@ -288,74 +254,46 @@ order to do this first make sure that you have Docker installed locally.
 #### Downloading the docker image
 
 ```bash
-docker pull zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683
+docker pull zeitgeistpm/zeitgeist-node-parachain:v0.2.2
 ```
 
 #### Running a Zeitgeist parachain full node within docker
 
-To be able to use the Zeitgeist relaychain instead of the Polkadot relaychain, a
-custom chain specification is required that can be obtained with:
-
-```bash
-curl -o battery-station-relay.json https://raw.githubusercontent.com/zeitgeistpm/polkadot/battery-station-relay/node/service/res/battery-station-relay.json
-```
-
-The above command will store a file called _battery-station-relay.json_ within
-the current folder.
-
 You can run the docker image using the following command, but the node id and
-the chain data are lost after you shut down the docker container. Before doing
-so, place the correct path to the _battery-station-relay.json_ file and select a
-custom node name.
+the chain data are lost after you shut down the docker container.
 
 <Tabs>
 <TabItem value="unix" label="Unix - Bash">
 
-```bash {5,13}
+```bash {10}
 docker run \
     -p 30333:30333 \
     -p 9933:9933 \
     -p 9944:9944 \
-    -v ${PWD}/battery-station-relay.json:/zeitgeist/relay-chain-spec.json \
     --name=zeitgeist-parachain \
     --restart=always \
-    zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 \
+    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 \
     --base-path=/zeitgeist/data \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
-    --parachain-id=2050 \
-    --pruning=archive \
-    -- \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
-    --chain=/zeitgeist/relay-chain-spec.json
+    --pruning=archive
 ```
 
 </TabItem>
 <TabItem value="win" label="Windows - Powershell">
 
-```powershell {5,13}
+```powershell {10}
 docker run `
     -p 30333:30333 `
     -p 9933:9933 `
     -p 9944:9944 `
-    -v ${PWD}\battery-station-relay.json:/zeitgeist/relay-chain-spec.json `
     --name=zeitgeist-parachain `
     --restart=always `
-    zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 `
+    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 `
     --base-path=/zeitgeist/data `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
-    --parachain-id=2050 `
-    --pruning=archive `
-    -- `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
-    --chain=/zeitgeist/relay-chain-spec.json
+    --pruning=archive
 ```
 
 </TabItem>
@@ -370,53 +308,37 @@ this folder), the previous command should be appended by one more `-v` option:
 <Tabs>
 <TabItem value="unix" label="Unix - Bash">
 
-```bash {5-6,14}
+```bash {5,11}
 docker run \
     -p 30333:30333 \
     -p 9933:9933 \
     -p 9944:9944 \
     -v /services/zeitgeist:/zeitgeist/data/ \
-    -v ${PWD}/battery-station-relay.json:/zeitgeist/relay-chain-spec.json \
     --name=zeitgeist-parachain \
     --restart=always \
-    zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 \
+    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 \
     --base-path=/zeitgeist/data \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
-    --parachain-id=2050 \
-    --pruning=archive \
-    -- \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
-    --chain=/zeitgeist/relay-chain-spec.json
+    --pruning=archive 
 ```
 
 </TabItem>
 <TabItem value="win" label="Windows - Powershell">
 
-```powershell {5-6,14}
+```powershell {5,11}
 docker run `
     -p 30333:30333 `
     -p 9933:9933 `
     -p 9944:9944 `
     -v \services\zeitgeist:/zeitgeist/data/ `
-    -v ${PWD}\battery-station-relay.json:/zeitgeist/relay-chain-spec.json `
     --name=zeitgeist-parachain `
     --restart=always `
-    zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 `
+    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 `
     --base-path=/zeitgeist/data `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
-    --parachain-id=2050 `
-    --pruning=archive `
-    -- `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
-    --chain=/zeitgeist/relay-chain-spec.json
+    --pruning=archive 
 ```
 
 </TabItem>
@@ -433,20 +355,15 @@ reboots and errors), except when it was explicitly stopped by a docker command,
 append the `-d` and `--restart` flag to the `docker run` command from above. The
 following command includes those options. In addition to that, the node
 parameters are extended in a way that makes the node listen to RPCs over HTTP
-and WS, to make the node eligible for potential future load-balancing. Ensure
-that `-v battery-station-relay.json` points to the correct chain specification
-that was downloaded as described in the previous chapter. Also ensure that you
+and WS, to make the node eligible for potential future load-balancing. Ensure that you
 adjust `-v /services/zeitgeist` to use a folder you desire for chain data and
 that docker has write permissions for it. Replace `zeitgeist-support-$RANDOM`
-with the name your node should have. Set the first occurence of `--port`,
-`--rpc-port` and `ws-port` to some ports that are not occupied yet and that
-accept incoming traffic. If you change one of those, the changes must be 
-reflected in the option `-p CHANGE_THIS:port`.
+with the name your node should have.
 
 <Tabs>
 <TabItem value="unix" label="Unix - Bash">
 
-```bash {4-8,16,18-20}
+```bash {4-7,12}
 docker run \
     --restart unless-stopped \
     -d \
@@ -454,36 +371,21 @@ docker run \
     -p 9933:9933 \
     -p 9944:9944 \
     -v /services/zeitgeist:/zeitgeist/data/ \
-    -v ${PWD}/battery-station-relay.json:/zeitgeist/relay-chain-spec.json \
     --name=zeitgeist-parachain \
-    --restart=always \
-    zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 \
+    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 \
     --base-path=/zeitgeist/data \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
-    --parachain-id=2050 \
-    --port=30333 \
-    --rpc-port=9933 \
-    --ws-port=9944 \
     --rpc-external \
     --ws-external \
     --rpc-cors=all \
-    --pruning=archive \
-    -- \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK \
-    --chain=/zeitgeist/relay-chain-spec.json \
-    --port=30334 \
-    --rpc-port=9934 \
-    --ws-port=9945
+    --pruning=archive 
 ```
 
 </TabItem>
 <TabItem value="win" label="Windows - Powershell">
 
-```powershell {4-8,16,18-20}
+```powershell {4-7,12}
 docker run `
     --restart unless-stopped `
     -d `
@@ -491,37 +393,22 @@ docker run `
     -p 9933:9933 `
     -p 9944:9944 `
     -v \services\zeitgeist:/zeitgeist/data/ `
-    -v ${PWD}\battery-station-relay.json:/zeitgeist/relay-chain-spec.json `
     --name=zeitgeist-parachain `
-    --restart=always `
-    zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683 `
+    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 `
     --base-path=/zeitgeist/data `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30337/ws/p2p/12D3KooWSBj4SXAz1ETTurW5PRAF1abyxXb9APAVs4vqBVr2NjRt `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
-    --parachain-id=2050 `
-    --port=30333 `
-    --rpc-port=9933 `
-    --ws-port=9944 `
     --rpc-external `
     --ws-external `
     --rpc-cors=all `
-    --pruning=archive `
-    -- `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
-    --bootnodes=/dns/bsr.zeitgeist.pm/tcp/30338/ws/p2p/12D3KooWRuwKV1yt6fqPL6hsfPvJQ28pqmmTxNSDxEC4eLKagzjK `
-    --chain=/zeitgeist/relay-chain-spec.json `
-    --port=30334 `
-    --rpc-port=9934 `
-    --ws-port=9945
+    --pruning=archive 
 ```
 
 </TabItem>
 </Tabs>
 
 After the command was executed, one line is printed in the terminal that
-represents the container id. It looks like this:
+represents the container id. It has this format:
 
 > 1e501c25e43be3f2cecc3bade11b22f60f17839d41b37cdac9139cb8ebc8700b
 
@@ -540,7 +427,7 @@ containing your node id, that looks like:
 You can also retrieve the container id by using the following command:
 
 ```bash
-docker ps --filter ancestor=zeitgeistpm/zeitgeist-node-parachain:sha-8ea9683
+docker ps --filter ancestor=zeitgeistpm/zeitgeist-node-parachain:v0.2.2
 ```
 
 We recommend
