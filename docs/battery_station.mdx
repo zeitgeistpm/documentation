@@ -254,7 +254,7 @@ order to do this first make sure that you have Docker installed locally.
 #### Downloading the docker image
 
 ```bash
-docker pull zeitgeistpm/zeitgeist-node-parachain:v0.2.2
+docker pull zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33
 ```
 
 #### Running a Zeitgeist parachain full node within docker
@@ -272,7 +272,7 @@ docker run \
     -p 9944:9944 \
     --name=zeitgeist-parachain \
     --restart=always \
-    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 \
+    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 \
     --base-path=/zeitgeist/data \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
@@ -289,7 +289,7 @@ docker run `
     -p 9944:9944 `
     --name=zeitgeist-parachain `
     --restart=always `
-    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 `
+    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 `
     --base-path=/zeitgeist/data `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
@@ -316,7 +316,7 @@ docker run \
     -v /services/zeitgeist:/zeitgeist/data/ \
     --name=zeitgeist-parachain \
     --restart=always \
-    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 \
+    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 \
     --base-path=/zeitgeist/data \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
@@ -334,7 +334,7 @@ docker run `
     -v \services\zeitgeist:/zeitgeist/data/ `
     --name=zeitgeist-parachain `
     --restart=always `
-    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 `
+    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 `
     --base-path=/zeitgeist/data `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
@@ -372,7 +372,7 @@ docker run \
     -p 9944:9944 \
     -v /services/zeitgeist:/zeitgeist/data/ \
     --name=zeitgeist-parachain \
-    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 \
+    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 \
     --base-path=/zeitgeist/data \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
@@ -394,7 +394,7 @@ docker run `
     -p 9944:9944 `
     -v \services\zeitgeist:/zeitgeist/data/ `
     --name=zeitgeist-parachain `
-    zeitgeistpm/zeitgeist-node-parachain:v0.2.2 `
+    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 `
     --base-path=/zeitgeist/data `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
@@ -427,7 +427,7 @@ containing your node id, that looks like:
 You can also retrieve the container id by using the following command:
 
 ```bash
-docker ps --filter ancestor=zeitgeistpm/zeitgeist-node-parachain:v0.2.2
+docker ps --filter ancestor=zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33
 ```
 
 We recommend
