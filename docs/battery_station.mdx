@@ -529,7 +529,7 @@ folder (replace _zeitgeist-node.service_ with the name of your Zeitgeist systemd
 file):
 
 ```bash
-cat /etc/systemd/system/zeitgeist-node.service | grep -- "-d "
+cat /etc/systemd/system/zeitgeist-node.service | grep -- "-d \|-d=\|--base-path"
 ```
 
 After copying the node secret file backup to this location, append the following
