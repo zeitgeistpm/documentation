@@ -21,6 +21,7 @@ module.exports = {
     Build: [
       'guides',
       'market-metadata',
+      'how-to-monitor-node',
       'sdk'
     ],
   },
