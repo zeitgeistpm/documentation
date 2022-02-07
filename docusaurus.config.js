@@ -29,8 +29,13 @@ module.exports = {
           position: 'right',
         },
         {
-          to: 'guides',
+          to: 'SDK guide',
           label: 'Build',
+          position: 'right',
+        },
+        {
+          to: 'index',
+          label: 'Guide',
           position: 'right',
         },
       ],
@@ -65,6 +70,10 @@ module.exports = {
             {
               label: 'GitHub',
               href: 'https://github.com/zeitgeistpm',
+            },
+            {
+              label: 'LinkTree',
+              href: 'https://linktr.ee/zeitgeistpm',
             },
           ],
         },
