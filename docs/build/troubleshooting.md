@@ -41,7 +41,7 @@ selecting only the object named `types`, and copying and pasting it into
 [the Settings | Developer tab](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbp-rpc.zeitgeist.pm#/settings/developer)
 in polkadot.js/apps. Don't forget to press `Save`!
 
-![selecting type definitions](./../static/img/type-def_selection.png)
+![selecting type definitions](./../../static/img/type-def_selection.png)
 
 If you cannot `Save` the new types and the input area remains pink, ensure that
 the object is strictly JSON formatted, for example by using Javascript's

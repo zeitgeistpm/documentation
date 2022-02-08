@@ -1,7 +1,7 @@
 const math = require('remark-math');
 const katex = require('rehype-katex');
 
-module.exports = {
+const config = {
   title: 'Zeitgeist Documentation',
   tagline: 'Learn how to integrate with the Zeitgeist network.',
   url: 'https://docs.zeitgeist.pm',
@@ -11,79 +11,92 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'zeitgeistpm', 
   projectName: 'documentation', // Usually your repo name.
-  themeConfig: {
-    navbar: {
-      title: 'Zeitgeist Documentation',
-      logo: {
-        src: 'img/Zeitgeist-trans.png',
+
+  // plugins: [
+  //   [
+  //     'content-docs',
+  //     /** @type {import('@docusaurus/plugin-content-docs').Options} */
+  //   ],
+  // ],
+
+  themeConfig: 
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      navbar: {
+        hideOnScroll: true,
+        title: 'Zeitgeist Documentation',
+        logo: {
+          src: 'img/Zeitgeist-trans.png',
+        },
+        items: [
+          {
+            to: '/',  // getting-started',
+            label: 'Basics',
+            position: 'right',
+          },
+          {
+            to: 'prediction-markets',
+            label: 'Learn',
+            position: 'right',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'sdk',
+            label: 'SDK',
+            position: 'right',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'guide',
+            label: 'Guide',
+            position: 'right',
+          },
+        ],
       },
-      items: [
-        {
-          to: '/',  // getting-started',
-          label: 'Basics',
-          position: 'right',
-        },
-        {
-          to: 'prediction-markets',
-          label: 'Learn',
-          position: 'right',
-        },
-        {
-          to: 'SDK guide',
-          label: 'Build',
-          position: 'right',
-        },
-        {
-          to: 'index',
-          label: 'Guide',
-          position: 'right',
-        },
-      ],
-    },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Website',
-              href: 'https://zeitgeist.pm',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discord.com/invite/xv8HuA4s8v',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/zeitgeistpm',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: 'https://blog.zeitgeist.pm',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/zeitgeistpm',
-            },
-            {
-              label: 'LinkTree',
-              href: 'https://linktr.ee/zeitgeistpm',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Zeitgeist PM`,
-    },
-    prism: {
-      additionalLanguages: ['bash', 'powershell'],
-    },
-  },
+      footer: {
+        style: 'dark',
+        links: [
+          {
+            title: 'Community',
+            items: [
+              {
+                label: 'Website',
+                href: 'https://zeitgeist.pm',
+              },
+              {
+                label: 'Discord',
+                href: 'https://discord.com/invite/xv8HuA4s8v',
+              },
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/zeitgeistpm',
+              },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'Blog',
+                to: 'https://blog.zeitgeist.pm',
+              },
+              {
+                label: 'GitHub',
+                href: 'https://github.com/zeitgeistpm',
+              },
+              {
+                label: 'LinkTree',
+                href: 'https://linktr.ee/zeitgeistpm',
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Zeitgeist PM`,
+      },
+      prism: {
+        additionalLanguages: ['bash', 'powershell'],
+      },
+    }),
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -113,3 +126,5 @@ module.exports = {
     },
   ],
 };
+
+module.exports = config;
