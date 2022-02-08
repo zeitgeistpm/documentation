@@ -43,7 +43,7 @@ We use [Prometheus](https://prometheus.io/docs/introduction/overview/) as the no
 
 2. After the download is complete, there will be two executable files and two folders in the current path folder:
 
-   ![](../static/img/textart.png)
+   ![](../../static/img/textart.png)
 
 3. Copy the executable file to the specified folder and modify the ownership:
 
@@ -214,7 +214,7 @@ After completing all the above configurations, we can import the [pre-designed D
 
 4. After waiting a few seconds, you will see the data update in the interface.
 
-   ![](../static/img/grafana.png)
+   ![](../../static/img/grafana.png)
 
 ## Reference
 
