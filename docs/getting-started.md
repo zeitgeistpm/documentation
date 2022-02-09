@@ -30,12 +30,12 @@ If you want to just jump in and start using Zeitgeist, then check out our great
 
 Happy predicting!!! 🔮
 
-[prediction markets]: prediction-markets.md
-[governance protocol]: governance.md
-[decentralized court]: court.md
-[futarchic organizations]: futarchy.md
+[prediction markets]: learn/prediction-markets.md
+[governance protocol]: learn/governance.md
+[decentralized court]: learn/court.md
+[futarchic organizations]: learn/futarchy.md
 [faqs]: faq.md
-[sdk docs]: sdk.md
+[sdk docs]: build/sdk.md
 [contact us]: mailto:hi@zeitgeist.pm
 [applications]: applications.md
-[guides]: guides.md
+[guides]: guide

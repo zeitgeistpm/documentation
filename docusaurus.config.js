@@ -31,25 +31,20 @@ const config = {
         items: [
           {
             to: '/',  // getting-started',
-            label: 'Basics',
-            position: 'right',
-          },
-          {
-            to: 'prediction-markets',
-            label: 'Learn',
-            position: 'right',
+            label: 'Docs',
+            position: 'left',
           },
           {
             type: 'docSidebar',
             sidebarId: 'sdk',
             label: 'SDK',
-            position: 'right',
+            position: 'left',
           },
           {
             type: 'docSidebar',
             sidebarId: 'guide',
-            label: 'Guide',
-            position: 'right',
+            label: 'App Guide',
+            position: 'left',
           },
         ],
       },
