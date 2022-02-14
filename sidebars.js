@@ -54,7 +54,7 @@ const sidebars = {
   sdk: [
     {
       type: 'category',
-      label: 'App Guide',
+      label: 'SDK',
       link: {
         type: 'generated-index',
       },

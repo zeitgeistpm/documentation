@@ -7,16 +7,16 @@
 After entering, click `Connect Your Wallet` to connect to the wallet, and the
 APP will check whether there is an NFT in your account.
 
-<img src="https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013121713360.png" style="zoom:50%;" />
+![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013121713360.png)
 
 Of course, there may be a prompt like the following picture. You can wait a few
 seconds. If you can enter the APP, it means there is no problem.
 
-<img src="https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013121733640.png" style="zoom:67%;" />
+![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013121733640.png)
 
 ## APP Introduction
 
-<img src="https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013123835284.png" style="zoom:67%;" />
+![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013123835284.png)
 
 We will introduce BetaNet APP in three parts.
 
@@ -33,13 +33,13 @@ prefix, and the balance is ZBS which is the token of our testnet.
 Enter our Discord server, after completing the verification, click on the
 `BETA APP`-`beta-app-faucet` channel.
 
-<img src="https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013124747988.png" style="zoom:67%;" />
+![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013124747988.png)
 
 Enter `!drip ksm address or Zeitgeist address` , get 2 ZBS everyday.
 
 ### Choose one market to predict
 
-<img src="https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013125047263.png" style="zoom:67%;" />
+![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013125047263.png)
 
 You can choose the topic you are interested in in the existing market to make
 predictions. For example, here is a topic "Whether Evergrande will declare
@@ -63,11 +63,11 @@ After the purchase is successful, you can check your position in
 `My Account`-`My Portfolio`, and you can also make arbitrage by selling high and
 buying low.
 
-<img src="https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013130119647.png" style="zoom:67%;" />
+![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013130119647.png)
 
 ### Check Liquidity Pools
 
 Check the current market’s liquidity pools in `Liquidity Pools` to understand
 the current market activity
 
-<img src="https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013130303230.png" style="zoom:67%;" />
+![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013130303230.png)
