@@ -5,7 +5,7 @@ own markets and add liquidity.
 
 1. Click `Create Market`
 
-   ![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211019110305148.png)
+   <img src="https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211019110305148.png" style="zoom:67%;" />
 
 2. Fill in the specific information, the points that need to be noted include:
 
@@ -23,7 +23,7 @@ own markets and add liquidity.
      time, the amount of deposit token required for such a market will be
      relatively small
 
-   ![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211019113534808.png)
+   <img src="https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211019113534808.png" style="zoom:80%;" />
 
 3. Regarding the last item `Depoly Liquidity Pool`, all participants who create
    a market need to inject liquidity into their market, that is, at least 100
