@@ -29,12 +29,14 @@ own markets and add liquidity.
    a market need to inject liquidity into their market, that is, at least 100
    individual result tokens and 100 ZBS.
 
-   **Tips**
+:::tip
 
-   At present, everyone does not have so many ZBS to provide liquidity, so in
-   BetaNet testnet activities, you can contact team members in the Discord group
-   to ask the team to help add liquidity. So I recommend that you choose `OFF`
-   in the above `Depoly Liquidity Pool`
+At present, everyone does not have so many ZBS to provide liquidity, so in
+BetaNet testnet activities, you can contact team members in the Discord group to
+ask the team to help add liquidity. So I recommend that you choose `OFF` in the
+above `Depoly Liquidity Pool`
 
-4. After completing the above steps, sign the transaction to complete the
+:::
+
+1. After completing the above steps, sign the transaction to complete the
    creation of the market
