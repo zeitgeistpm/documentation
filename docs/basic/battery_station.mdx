@@ -47,7 +47,7 @@ _We have not tested building on Windows and cannot guarantee that it will work._
 
 _Note for Ubuntu >= 16 users: Building from source is not necessary, since we
 offer_ _a
-[pre-built binary](https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.2/zeitgeist_parachain)._
+[pre-built binary](https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.4/zeitgeist_parachain)._
 _You can use it instead of building from source and skip this tutorial to the
 part_ _that describes how to fetch the Zeitgeist relay chain specification. Feel
 free to_ _use the following command to download the binary under the name
@@ -55,7 +55,7 @@ free to_ _use the following command to download the binary under the name
 "/target/release/zeitgeist" with_ _"zeitgeist" during the tutorial):_
 
 ```bash
-curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.2/zeitgeist_parachain
+curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.4/zeitgeist_parachain
 chmod +x zeitgeist
 ```
 
@@ -72,8 +72,8 @@ You will need to clone the code locally, and make sure that you have the
 installed. Execute the following commands to fetch the project:
 
 ```bash
-# clone the code locally and checkout version v0.2.2
-git clone https://github.com/zeitgeistpm/zeitgeist.git --depth 1 --branch v0.2.2
+# clone the code locally and checkout latest version
+git clone https://github.com/zeitgeistpm/zeitgeist.git --depth 1 --branch latest
 # change directory
 cd zeitgeist
 ```
@@ -83,14 +83,6 @@ Next configure rustup, on Unix you can execute the following script:
 ```bash
 # use the initializer script
 ./scripts/init.sh
-```
-
-Otherwise configure rustup manually:
-
-```bash
-rustup update nightly-2021-12-08
-rustup update stable
-rustup target add wasm32-unknown-unknown --toolchain nightly-2021-12-08
 ```
 
 After initializing you can then start building by using the cargo command:
@@ -254,7 +246,7 @@ order to do this first make sure that you have Docker installed locally.
 #### Downloading the docker image
 
 ```bash
-docker pull zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33
+docker pull zeitgeistpm/zeitgeist-node-parachain:latest
 ```
 
 #### Running a Zeitgeist parachain full node within docker
@@ -272,7 +264,7 @@ docker run \
     -p 9944:9944 \
     --name=zeitgeist-parachain \
     --restart=always \
-    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 \
+    zeitgeistpm/zeitgeist-node-parachain:latest \
     --base-path=/zeitgeist/data \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
@@ -289,7 +281,7 @@ docker run `
     -p 9944:9944 `
     --name=zeitgeist-parachain `
     --restart=always `
-    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 `
+    zeitgeistpm/zeitgeist-node-parachain:latest `
     --base-path=/zeitgeist/data `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
@@ -316,7 +308,7 @@ docker run \
     -v /services/zeitgeist:/zeitgeist/data/ \
     --name=zeitgeist-parachain \
     --restart=always \
-    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 \
+    zeitgeistpm/zeitgeist-node-parachain:latest \
     --base-path=/zeitgeist/data \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
@@ -334,7 +326,7 @@ docker run `
     -v \services\zeitgeist:/zeitgeist/data/ `
     --name=zeitgeist-parachain `
     --restart=always `
-    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 `
+    zeitgeistpm/zeitgeist-node-parachain:latest `
     --base-path=/zeitgeist/data `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
@@ -372,7 +364,7 @@ docker run \
     -p 9944:9944 \
     -v /services/zeitgeist:/zeitgeist/data/ \
     --name=zeitgeist-parachain \
-    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 \
+    zeitgeistpm/zeitgeist-node-parachain:latest \
     --base-path=/zeitgeist/data \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
@@ -394,7 +386,7 @@ docker run `
     -p 9944:9944 `
     -v \services\zeitgeist:/zeitgeist/data/ `
     --name=zeitgeist-parachain `
-    zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33 `
+    zeitgeistpm/zeitgeist-node-parachain:latest `
     --base-path=/zeitgeist/data `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
@@ -427,7 +419,7 @@ containing your node id, that looks like:
 You can also retrieve the container id by using the following command:
 
 ```bash
-docker ps --filter ancestor=zeitgeistpm/zeitgeist-node-parachain:sha-b6d3a33
+docker ps --filter ancestor=zeitgeistpm/zeitgeist-node-parachain:latest
 ```
 
 We recommend
