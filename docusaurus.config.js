@@ -12,6 +12,17 @@ const config = {
   organizationName: "zeitgeistpm",
   projectName: "documentation", // Usually your repo name.
 
+  // support multi-languages
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "zh-CN", "ru"],
+    localeConfigs: {
+      en: {
+        htmlLang: "en-GB",
+      },
+    },
+  },
+
   // plugins: [
   //   [
   //     'content-docs',
@@ -65,6 +76,22 @@ const config = {
             sidebarId: "guide",
             label: "App Guide",
             position: "left",
+          },
+          {
+            type: "localeDropdown",
+            position: "right",
+            dropdownItemsAfter: [
+              {
+                href: "https://github.com/facebook/docusaurus/issues/3526",
+                label: "Help Us Translate",
+              },
+            ],
+          },
+          {
+            href: "https://github.com/zeitgeistpm/documentation",
+            position: "right",
+            className: "header-github-link",
+            "aria-label": "GitHub repository",
           },
         ],
       },
