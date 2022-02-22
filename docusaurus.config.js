@@ -23,36 +23,9 @@ const config = {
     },
   },
 
-  // plugins: [
-  //   [
-  //     'content-docs',
-  //     /** @type {import('@docusaurus/plugin-content-docs').Options} */
-  //   ],
-  // ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      algolia: {
-        // The application ID provided by Algolia
-        appId: "YOUR_APP_ID",
-
-        // Public API key: it is safe to commit it
-        apiKey: "YOUR_SEARCH_API_KEY",
-
-        indexName: "YOUR_INDEX_NAME",
-
-        // Optional: see doc section below
-        contextualSearch: true,
-
-        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
-        externalUrlRegex: "external\\.com|domain\\.com",
-
-        // Optional: Algolia search parameters
-        searchParameters: {},
-
-        //... other Algolia params
-      },
       navbar: {
         hideOnScroll: true,
         title: "Zeitgeist Documentation",
@@ -166,6 +139,11 @@ const config = {
         "sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc",
       crossorigin: "anonymous",
     },
+  ],
+  plugins: [
+    // require('path').resolve(__dirname, '../../docusaurus-search-local'),
+    require.resolve("@cmfcmf/docusaurus-search-local"),
+    "plugin-image-zoom",
   ],
 };
 
