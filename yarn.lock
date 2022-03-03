@@ -1273,7 +1273,7 @@
     lunr-languages "^1.4.0"
     mark.js "^8.11.1"
 
-"@crowdin/cli@3":
+"@crowdin/cli@3.7.8":
   version "3.7.8"
   resolved "https://registry.yarnpkg.com/@crowdin/cli/-/cli-3.7.8.tgz#a32bb78836b20cefd91c83b193c3d003c906b2d6"
   integrity sha512-DDA2ggfnYsfoprWmxNpZ5QOxO58RSsbFHHSi+558bqBJMag1z0RjSGSCriqfCQtvBnn2SIVnBsBOaw+HDWXF4w==
