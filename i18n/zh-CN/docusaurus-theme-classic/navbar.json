@@ -1,0 +1,18 @@
+{
+  "title": {
+    "message": "Zeitgeist Documentation",
+    "description": "The title in the navbar"
+  },
+  "item.label.Docs": {
+    "message": "项目文档",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.SDK": {
+    "message": "SDK文档",
+    "description": "Navbar item with label SDK"
+  },
+  "item.label.App Guide": {
+    "message": "App指南",
+    "description": "Navbar item with label App Guide"
+  }
+}
