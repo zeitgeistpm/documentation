@@ -74,7 +74,7 @@ The Zeitgeist Beta uses a
 [constant product market maker](./liquidity.md#example-constant-product-market-maker)
 instead of the Rikiddo scoring rule.
 :::
-    
+
 ### The Prize Pool
 
 On every market, outcome tokens may be _minted_ (or _bought_) in _full sets_ by
@@ -178,15 +178,15 @@ against the informants' ability to predict future outcomes.
 
 The market must be supplied with the following info:
 
--   A unique name
--   A question regarding a future event
--   A list of outcome tokens including ticker symbols
--   A Zeitgeist address that will serve as oracle (see below)
--   An _end date_ (at which the market will close), specified as date or by its
-    end block
--   A detailed description, including info on what information the oracle will
-    base its report and what each outcome tokens represents
--   Optional: The liquidity pool to deploy for the market
+- A unique name
+- A question regarding a future event
+- A list of outcome tokens including ticker symbols
+- A Zeitgeist address that will serve as oracle (see below)
+- An _end date_ (at which the market will close), specified as date or by its
+  end block
+- A detailed description, including info on what information the oracle will
+  base its report and what each outcome tokens represents
+- Optional: The liquidity pool to deploy for the market
 
 <!-- prettier-ignore -->
 :::important
@@ -312,14 +312,14 @@ are indicators of low liquidity or a volatile market.
 This creates opportunities for users to add or remove liquidity to profit from
 arbitrage:
 
--   If the sum of a market's prices is greater than 1 ZTG, then a user can mint
-    a full set for 1 ZTG and sell it to the liquidity pool at a price above 1
-    ZTG (ignoring slippage and trading fees). This move will add liquidity to
-    the market.
--   If the sum of a market's prices is less than 1 ZTG, then a user can buy one
-    of each outcome token from the market for less than 1 ZTG and then burn the
-    full set to receive 1 ZTG from the prize pool. This move will remove
-    liquidity from the market.
+- If the sum of a market's prices is greater than 1 ZTG, then a user can mint a
+  full set for 1 ZTG and sell it to the liquidity pool at a price above 1 ZTG
+  (ignoring slippage and trading fees). This move will add liquidity to the
+  market.
+- If the sum of a market's prices is less than 1 ZTG, then a user can buy one of
+  each outcome token from the market for less than 1 ZTG and then burn the full
+  set to receive 1 ZTG from the prize pool. This move will remove liquidity from
+  the market.
 
 ### Liquidity Pools for Multiple Markets
 
@@ -339,15 +339,15 @@ outcome assets and ZTG) or other individual assets to any existing pool.
 
 ## Further reading
 
--   [Whisker17's Zeitgeist Beta App Guide](https://whisker17.github.io/APP-Guide/#/en/README)
+- [Whisker17's Zeitgeist Beta App Guide](https://whisker17.github.io/APP-Guide/#/en/README)
 
 <!-- Links -->
 
 [trading on zeitgeist]: #trading-on-zeitgeist
 [resolving markets and redeeming tokens]:
-    #resolving-markets-and-redeeming-tokens
+  #resolving-markets-and-redeeming-tokens
 [trading on zeitgeist]: #trading-on-zeitgeist
 [liquidity]: ./liquidity.md
 [liquidity]: #liquidity
 [resolving markets and redeeming tokens]:
-    #resolving-markets-and-redeeming-tokens
+  #resolving-markets-and-redeeming-tokens

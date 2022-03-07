@@ -136,24 +136,24 @@ three prediction markets opened on the Zeitgeist Battery Park chain: _Who will
 win the first/second/third parachain slot on Kusama?_ The tokens of these
 markets:
 
--   Karura
--   Moonriver
--   Khala
--   Robonomics
--   Kilt
--   Equilibrium
--   Hydra
--   Shiden
--   Darwinia
--   None
+- Karura
+- Moonriver
+- Khala
+- Robonomics
+- Kilt
+- Equilibrium
+- Hydra
+- Shiden
+- Darwinia
+- None
 
 The _None_ token is a catch-all option representing the following outcomes:
 
--   None of the other teams listed win the slot
--   The parachain auction does not complete in time before the market's end date
-    of June 30, 2021
--   More than one team split the slot with different lease periods
--   Any other unforeseen outcome
+- None of the other teams listed win the slot
+- The parachain auction does not complete in time before the market's end date
+  of June 30, 2021
+- More than one team split the slot with different lease periods
+- Any other unforeseen outcome
 
 The collection of outcome tokens should be _mutually exclusive_ (no two outcomes
 may both occur) and _exhaustive_ (there must be a token for every possible
@@ -170,12 +170,12 @@ auction.
 During the Zeitgeist Closed Beta, a market for a football game between the
 Minnesota Vikings and the Dallas Cowboys had the following tokens:
 
--   Cowboys win by 6 or less points
--   Cowboys win by 7 or more points
--   Vikings win by 6 or less points
--   Vikings win by 7 or more points
--   Tied
--   Cancelled due to bad weather or other unforeseen events
+- Cowboys win by 6 or less points
+- Cowboys win by 7 or more points
+- Vikings win by 6 or less points
+- Vikings win by 7 or more points
+- Tied
+- Cancelled due to bad weather or other unforeseen events
 
 ## Scalar Prediction Markets
 
@@ -252,5 +252,5 @@ at inducing people to acquire info, share it via trades, and collect that info
 into consensus prices that persuade wider audiences."
 
 [mises]:
-    https://cdn.mises.org/Economic%20Calculation%20in%20the%20Socialist%20Commonwealth_Vol_2_3.pdf
+  https://cdn.mises.org/Economic%20Calculation%20in%20the%20Socialist%20Commonwealth_Vol_2_3.pdf
 [hayek]: https://www.kysq.org/docs/Hayek_45.pdf
