@@ -51,10 +51,10 @@ available trading data and/or price oracles.
 A particularly straightforward AMM and common example is Uniswap's
 [constant product formula](https://docs.uniswap.org/protocol/V2/concepts/protocol-overview/how-uniswap-works)
 for pools with two assets. Suppose we create a liquidity pool which (at
-inception) holds 10 ETH and 40,000 USDT (these balances are usually
-determined by the current price of ETH/USDT provided by some other source, in
-this case 4,000 USDT/ETH). We define $k$ as the product of the balances of the
-assets in the pool ($\#A$ denotes the balance of A in the pool):
+inception) holds 10 ETH and 40,000 USDT (these balances are usually determined
+by the current price of ETH/USDT provided by some other source, in this case
+4,000 USDT/ETH). We define $k$ as the product of the balances of the assets in
+the pool ($\#A$ denotes the balance of A in the pool):
 
 $$
 k = \#\mathrm{ETH} \cdot \#\mathrm{USDT} = 10 \cdot 40,\!000 = 400,\!000.
@@ -138,17 +138,17 @@ developed by Zeitgeist is based) leave plenty of opportunity for arbitrageurs.
 
 Video tutorials on liquidity pools:
 
--   [Finematics on Liquidity Pools](https://www.youtube.com/watch?v=cizLhxSKrAc)
--   [Finematics on Impermanent Loss](https://www.youtube.com/watch?v=8XJ1MSTEuU0)
+- [Finematics on Liquidity Pools](https://www.youtube.com/watch?v=cizLhxSKrAc)
+- [Finematics on Impermanent Loss](https://www.youtube.com/watch?v=8XJ1MSTEuU0)
 
 Some examples of liquidity pools:
 
--   [Understanding Curve](https://resources.curve.fi/base-features/understanding-curve)
--   [Karura protocol overview](https://wiki.acala.network/karura/defi-hub/swap/protocol-overview)
+- [Understanding Curve](https://resources.curve.fi/base-features/understanding-curve)
+- [Karura protocol overview](https://wiki.acala.network/karura/defi-hub/swap/protocol-overview)
 
 A fantastic article on automated market makers for prediction markets (for the
 mathematically inclined):
 
--   Abraham Othman, Tuomas Sandholm, David M. Pennock, Daniel M. Reeves,
-    [A practical liquidity-sensitive automated market maker](https://www.researchgate.net/publication/221445031_A_practical_liquidity-sensitive_automated_market_maker),
-    ACM Transactions on Economics and Computation 1(3), pp. 377-386 (2010)
+- Abraham Othman, Tuomas Sandholm, David M. Pennock, Daniel M. Reeves,
+  [A practical liquidity-sensitive automated market maker](https://www.researchgate.net/publication/221445031_A_practical_liquidity-sensitive_automated_market_maker),
+  ACM Transactions on Economics and Computation 1(3), pp. 377-386 (2010)

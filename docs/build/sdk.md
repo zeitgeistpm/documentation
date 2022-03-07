@@ -5,5 +5,5 @@ title: Zeitgeist SDK
 
 <!-- prettier-ignore -->
 :::important
-The SDK is coming soon! Please check back later.
+You can click on the SDK in the navbar to get more infomation.
 :::
