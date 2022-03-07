@@ -1,20 +1,18 @@
 # Common
 
-### getBlockInfo
+## getBlockInfo
 
 You can use this function to get block info in Zeitgeist.
 
 ```typescript
 const api = await ApiPromise.create({ provider });
 
-const [blockNumber] = await Promise.all([
-    api.rpc.chain.getHeader(),
-  ]);
+const [blockNumber] = await Promise.all([api.rpc.chain.getHeader()]);
 ```
-[Code snippet](./getBlockInfo.ts)
 
+[Code snippet](https://github.com/Whisker17/sdk-demo/blob/main/src/common/getBlockInfo.ts)
 
-### getChainInfo
+## getChainInfo
 
 You can use this function to get chain info about Zeitgeiest.
 
@@ -22,10 +20,10 @@ You can use this function to get chain info about Zeitgeiest.
 const api = await ApiPromise.create({ provider });
 
 const [chain, nodeName, nodeVersion] = await Promise.all([
-    api.rpc.system.chain(),
-    api.rpc.system.name(),
-    api.rpc.system.version(),
-  ]);
+  api.rpc.system.chain(),
+  api.rpc.system.name(),
+  api.rpc.system.version(),
+]);
 ```
-[Code snippet](./getChainInfo.ts)
 
+[Code snippet](https://github.com/Whisker17/sdk-demo/blob/main/src/common/getChainInfo.ts)

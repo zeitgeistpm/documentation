@@ -1,7 +1,7 @@
 ---
 id: getting-started
-title: 开始
-sidebar_label: 开始
+title: Getting Started
+sidebar_label: Getting Started
 slug: /
 ---
 
