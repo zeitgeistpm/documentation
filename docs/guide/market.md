@@ -4,7 +4,8 @@
 
 ### Proposed
 
-The market that has been submitted is still in the review stage and has not yet been opened
+The market that has been submitted is still in the review stage and has not yet
+been opened
 
 ### Active
 
