@@ -142,7 +142,7 @@ const config = {
   ],
   plugins: [
     // require('path').resolve(__dirname, '../../docusaurus-search-local'),
-    require.resolve("@cmfcmf/docusaurus-search-local"),
+    require.resolve("@easyops-cn/docusaurus-search-local"),
     "plugin-image-zoom",
   ],
 };

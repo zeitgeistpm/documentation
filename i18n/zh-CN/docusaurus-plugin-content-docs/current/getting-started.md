@@ -22,8 +22,8 @@ page. After that you can dive into the particular topic that interested you.
 If you are a builder or entreprenuer interested in building on top of the
 Zeitgeist network, check out our [SDK docs][] and feel free to [contact us][] to
 tell us what you're building. If you want some inspiration, check out our
-[applications][] page for some application ideas that we would like to see built
-out.
+[applications](https://zeitgeistpm.notion.site/eb03d7a5604a4824b0afa8c66bb51892?v=d633f94831584fcc85d9f3005de162a3)
+page for some application ideas that we would like to see built out.
 
 If you want to just jump in and start using Zeitgeist, then check out our great
 [guides][].
@@ -37,5 +37,4 @@ Happy predicting!!! 🔮
 [faqs]: faq.md
 [sdk docs]: build/sdk.md
 [contact us]: mailto:hi@zeitgeist.pm
-[applications]: applications.md
-[guides]: guide
+[guides]: guide/app.md

@@ -3,7 +3,8 @@ id: battery-station
 title: Battery Station
 ---
 
-import Tabs from "@theme/Tabs"; import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 <!-- prettier-ignore -->
 :::important Zeitgeist Battery Station is a test network in beta phase.
@@ -23,9 +24,9 @@ Battery Station, head over to the section
 
 The minimum system requirements are:
 
--   CPU: AMD EPYC 7601 (or another CPU with equivalent single core performance)
--   RAM: 8 GB
--   Hard drive: SSD
+- CPU: AMD EPYC 7601 (or another CPU with equivalent single core performance)
+- RAM: 8 GB
+- Hard drive: SSD
 
 There are two ways that you can run a node and connect to the Battery Station
 testnet. One way is to
@@ -47,7 +48,7 @@ _We have not tested building on Windows and cannot guarantee that it will work._
 
 _Note for Ubuntu >= 16 users: Building from source is not necessary, since we
 offer_ _a
-[pre-built binary](https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.4/zeitgeist_parachain)._
+[pre-built binary](https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.3.0/zeitgeist_parachain)._
 _You can use it instead of building from source and skip this tutorial to the
 part_ _that describes how to fetch the Zeitgeist relay chain specification. Feel
 free to_ _use the following command to download the binary under the name
@@ -55,7 +56,7 @@ free to_ _use the following command to download the binary under the name
 "/target/release/zeitgeist" with_ _"zeitgeist" during the tutorial):_
 
 ```bash
-curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.2.4/zeitgeist_parachain
+curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.3.0/zeitgeist_parachain
 chmod +x zeitgeist
 ```
 
@@ -94,13 +95,13 @@ cargo build --release --features parachain --bin zeitgeist
 _Note: A system with at least 16GB of RAM is required to build the node._
 
 Once the build has finished you will have the _zeitgeist_ binary available in
-the _target/release_ folder. 
+the _target/release_ folder.
 
 You can start a full-node (non-authoring) for Battery Station from the root of
 the directory like this:
 
 ```bash
-./target/release/zeitgeist --chain=battery_station --pruning=archive 
+./target/release/zeitgeist --chain=battery_station --pruning=archive
 ```
 
 You should see your node begin to sync blocks.
@@ -129,13 +130,13 @@ Create a new user (without a home folder) and disable login for that user:
 sudo useradd -M -r -s /sbin/nologin zeitgeist
 ```
 
-Create a folder that will contain the Zeitgeist data and the previously compiled binary
-file. Note where your _zeitgeist_ binary lies (by default it is within the source folder at
-_target/release_) and replace the path after the `cp` command that is shown
-below. In this example we will use _/services/zeitgeist_ as the base folder for
-our service, _/services/zeitgeist/bin_ will contain the _zeitgeist_ binary and
-the whole _/services/zeitgeist_ folder structure will be owned by the
-unprivileged zeitgeist user we created during the previous step:
+Create a folder that will contain the Zeitgeist data and the previously compiled
+binary file. Note where your _zeitgeist_ binary lies (by default it is within
+the source folder at _target/release_) and replace the path after the `cp`
+command that is shown below. In this example we will use _/services/zeitgeist_
+as the base folder for our service, _/services/zeitgeist/bin_ will contain the
+_zeitgeist_ binary and the whole _/services/zeitgeist_ folder structure will be
+owned by the unprivileged zeitgeist user we created during the previous step:
 
 ```bash {2}
 sudo mkdir -p /services/zeitgeist/bin
@@ -153,8 +154,8 @@ sudo nano /etc/systemd/system/zeitgeist-node.service
 
 You can just use the following template or adjust it to your needs:
 
-_Note: The arguments after the double dash (--) apply to the relay chain,
-which is required by the parachain_
+_Note: The arguments after the double dash (--) apply to the relay chain, which
+is required by the parachain_
 
 ```bash {12,14,16,17-19,25-27}
 [Unit]
@@ -190,13 +191,12 @@ ExecStart=/services/zeitgeist/bin/zeitgeist \
 WantedBy=multi-user.target
 ```
 
-Replace `zeitgeist-support-$RANDOM` with the name your node should have. 
-Set `--port`, `--rpc-port` and `--ws-port` to some ports that are not 
-occupied yet. Ensure that incoming traffic on those ports is allowed. 
-The node will listen to RPCs over HTTP and WS, to make the node
-eligible for potential load-balancing. You can adjust the _Nice_ value to
-configure the priority of the process the service spawns. 20 is the lowest, -20
-the highest priority.
+Replace `zeitgeist-support-$RANDOM` with the name your node should have. Set
+`--port`, `--rpc-port` and `--ws-port` to some ports that are not occupied yet.
+Ensure that incoming traffic on those ports is allowed. The node will listen to
+RPCs over HTTP and WS, to make the node eligible for potential load-balancing.
+You can adjust the _Nice_ value to configure the priority of the process the
+service spawns. 20 is the lowest, -20 the highest priority.
 
 Paste your copy buffer into nano by pressing `CTRL+SHIFT+V` and save the changes
 by pressing `CTRL+X`, `y` and `ENTER`
@@ -312,7 +312,7 @@ docker run \
     --base-path=/zeitgeist/data \
     --chain=battery_station \
     --name=zeitgeist-support-$RANDOM \
-    --pruning=archive 
+    --pruning=archive
 ```
 
 </TabItem>
@@ -330,7 +330,7 @@ docker run `
     --base-path=/zeitgeist/data `
     --chain=battery_station `
     --name=zeitgeist-support-$(Get-Random) `
-    --pruning=archive 
+    --pruning=archive
 ```
 
 </TabItem>
@@ -347,10 +347,10 @@ reboots and errors), except when it was explicitly stopped by a docker command,
 append the `-d` and `--restart` flag to the `docker run` command from above. The
 following command includes those options. In addition to that, the node
 parameters are extended in a way that makes the node listen to RPCs over HTTP
-and WS, to make the node eligible for potential future load-balancing. Ensure that you
-adjust `-v /services/zeitgeist` to use a folder you desire for chain data and
-that docker has write permissions for it. Replace `zeitgeist-support-$RANDOM`
-with the name your node should have.
+and WS, to make the node eligible for potential future load-balancing. Ensure
+that you adjust `-v /services/zeitgeist` to use a folder you desire for chain
+data and that docker has write permissions for it. Replace
+`zeitgeist-support-$RANDOM` with the name your node should have.
 
 <Tabs>
 <TabItem value="unix" label="Unix - Bash">
@@ -371,7 +371,7 @@ docker run \
     --rpc-external \
     --ws-external \
     --rpc-cors=all \
-    --pruning=archive 
+    --pruning=archive
 ```
 
 </TabItem>
@@ -393,7 +393,7 @@ docker run `
     --rpc-external `
     --ws-external `
     --rpc-cors=all `
-    --pruning=archive 
+    --pruning=archive
 ```
 
 </TabItem>
@@ -579,5 +579,5 @@ There are numerous ways to generate an account, we suggest to use
 [Polkadot{.js} extension](https://github.com/polkadot-js/extension) though,
 because it is simple and straightforward to use. You can get it at:
 
--   [Chrome web store](https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd)
--   [Firefox add-ons](https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/)
+- [Chrome web store](https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd)
+- [Firefox add-ons](https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/)

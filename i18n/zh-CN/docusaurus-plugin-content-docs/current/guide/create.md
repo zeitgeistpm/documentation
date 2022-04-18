@@ -29,6 +29,7 @@ own markets and add liquidity.
    a market need to inject liquidity into their market, that is, at least 100
    individual result tokens and 100 ZBS.
 
+<!-- prettier-ignore -->
 :::tip
 
 At present, everyone does not have so many ZBS to provide liquidity, so in

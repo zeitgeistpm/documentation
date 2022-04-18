@@ -31,7 +31,8 @@ prefix, and the balance is ZBS which is the token of our testnet.
 ### Get Testnet Token
 
 Enter our Discord server, after completing the verification, click on the
-`BETA APP`-`beta-app-faucet` channel.
+[`BETA APP`-`beta-app-faucet`](https://discord.com/channels/737780518313000960/895033113535725648)
+channel.
 
 ![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013124747988.png)
 
