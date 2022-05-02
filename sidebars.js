@@ -27,6 +27,17 @@ const sidebars = {
         "learn/court",
         "learn/futarchy",
         "learn/comparisons",
+        {
+          AppGuide: [
+            "learn/guide/app",
+            "learn/guide/market",
+            "learn/guide/buy",
+            "learn/guide/redeem",
+            "learn/guide/create",
+            "learn/guide/disputed",
+            "learn/guide/liquidity",
+          ],
+        },
       ],
     },
     // Build
@@ -41,44 +52,18 @@ const sidebars = {
         "build/troubleshooting",
         "build/how-to-monitor-node",
         "build/cli-example",
-        "build/sdk",
+        {
+          SDK: [
+            "build/sdk/introduction",
+            "build/sdk/common",
+            "build/sdk/index",
+            "build/sdk/market",
+            "build/sdk/swap",
+          ],
+        },
       ],
     },
     "faq",
-  ],
-  sdk: [
-    {
-      type: "category",
-      label: "SDK",
-      link: {
-        type: "generated-index",
-      },
-      items: [
-        "sdk/introduction",
-        "sdk/common",
-        "sdk/index",
-        "sdk/market",
-        "sdk/swap",
-      ],
-    },
-  ],
-  guide: [
-    {
-      type: "category",
-      label: "App Guide",
-      link: {
-        type: "generated-index",
-      },
-      items: [
-        "guide/app",
-        "guide/market",
-        "guide/buy",
-        "guide/redeem",
-        "guide/create",
-        "guide/disputed",
-        "guide/liquidity",
-      ],
-    },
   ],
 };
 

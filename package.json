@@ -15,7 +15,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "crowdin": "crowdin",
     "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download",
-    "docs:sync": "rm -r i18n/zh-CN/docusaurus-plugin-content-docs/current/** && rm -r i18n/zh-CN/docusaurus-plugin-content-docs/static/** && cp -r docs/** i18n/zh-CN/docusaurus-plugin-content-docs/current && cp -r static/img/ i18n/zh-CN/docusaurus-plugin-content-docs/static/img/ "
+    "docs:sync": "rm -r i18n/zh-CN/docusaurus-plugin-content-docs/current/** && rm -r i18n/zh-CN/docusaurus-plugin-content-docs/static/** && cp -r docs/** i18n/zh-CN/docusaurus-plugin-content-docs/current && cp -r static/img/ i18n/zh-CN/docusaurus-plugin-content-docs/static/img/ && rm -r i18n/ru/docusaurus-plugin-content-docs/current/** && rm -r i18n/ru/docusaurus-plugin-content-docs/static/** && cp -r docs/** i18n/ru/docusaurus-plugin-content-docs/current && cp -r static/img/ i18n/ru/docusaurus-plugin-content-docs/static/img/ "
   },
   "dependencies": {
     "@crowdin/cli": "3.7.8",

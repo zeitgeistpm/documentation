@@ -34,23 +34,6 @@ const config = {
         },
         items: [
           {
-            to: "/", // getting-started',
-            label: "Docs",
-            position: "left",
-          },
-          {
-            type: "docSidebar",
-            sidebarId: "sdk",
-            label: "SDK",
-            position: "left",
-          },
-          {
-            type: "docSidebar",
-            sidebarId: "guide",
-            label: "App Guide",
-            position: "left",
-          },
-          {
             type: "localeDropdown",
             position: "right",
             dropdownItemsAfter: [
@@ -59,12 +42,6 @@ const config = {
                 label: "Help Us Translate",
               },
             ],
-          },
-          {
-            href: "https://github.com/zeitgeistpm/documentation",
-            position: "right",
-            className: "header-github-link",
-            "aria-label": "GitHub repository",
           },
         ],
       },
