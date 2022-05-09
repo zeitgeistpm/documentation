@@ -2,7 +2,9 @@ name: Crowdin Action
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - mkl_crowdin
   pull_request:
     branches: [main]
   schedule:
