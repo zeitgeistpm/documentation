@@ -1,10 +1,10 @@
-# APP Guide
+# APP 教程
 
-**APP link: <https://beta.zeitgeist.pm/>**
+**APP 链接：<https://beta.zeitgeist.pm/>**
 
-## Connect wallet
+## 连接钱包
 
-After entering, click `Connect Your Wallet` to connect to the wallet, and the APP will check whether there is an NFT in your account.
+输入后，点击 `连接您的钱包` 以连接到钱包， APP 将检查您的帐户中是否有 NFT。
 
 ![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013121713360.png)
 
