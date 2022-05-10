@@ -98,8 +98,7 @@ const marketId = await sdk.models.createScalarMarket(
 
 ## fetchMarketData
 
-You can use this function to fetch specify market's infomation by id in the
-Zeitgeiest.
+You can use this function to fetch specify market's infomation by id in the Zeitgeiest.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -129,11 +128,7 @@ const res = await sdk.models.getMarketCount();
 
 ## fetchDisputes
 
-You can use this function to get all market IDs in the Zeitgeiest. Should throw
-errors where market status is such that no disputes can have been registered,
-but all registered disputes will still be returned even if, eg, resolved. To
-check if disputes are active, use `viewMarket` and check market_status for
-"Disputed"
+You can use this function to get all market IDs in the Zeitgeiest. Should throw errors where market status is such that no disputes can have been registered, but all registered disputes will still be returned even if, eg, resolved. To check if disputes are active, use `viewMarket` and check market_status for "Disputed"
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -166,8 +161,7 @@ if (swap != null) {
 
 ## assetSpotPricesInZtg
 
-You can use this function to find prices at a particular block in the
-Zeitgeiest.
+You can use this function to find prices at a particular block in the Zeitgeiest.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -179,8 +173,7 @@ const res = await sdk.models.assetSpotPricesInZtg(blockHash);
 
 ## getBlockData
 
-You can use this function to get block infomation by blockhash in the
-Zeitgeiest.
+You can use this function to get block infomation by blockhash in the Zeitgeiest.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -204,8 +197,7 @@ const res = await sdk.models.getAllMarketIds();
 
 ## currencyTransfer
 
-You can use this function to transfer specified asset from self to any account
-in the Zeitgeiest.
+You can use this function to transfer specified asset from self to any account in the Zeitgeiest.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
