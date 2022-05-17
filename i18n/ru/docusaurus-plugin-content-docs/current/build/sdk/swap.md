@@ -32,7 +32,8 @@ const price = await pool.getSpotPrice(AssetIn, AssetOut, blockHash);
 
 ## assetSpotPricesInZtg
 
-You can use this function to fetch spot prices of all assets in this market. Can be used to find prices at a particular block using unique identifier.
+You can use this function to fetch spot prices of all assets in this market. Can
+be used to find prices at a particular block using unique identifier.
 
 ```typescript
 const res = market.assetSpotPricesInZtg(blockHash);
@@ -135,7 +136,8 @@ const res = await pool.poolJoinWithExactAssetAmount(
 
 ## joinPoolMultifunc
 
-You can use this function to join pool. Three substrate join_pool_xxx functions in one
+You can use this function to join pool. Three substrate join_pool_xxx functions
+in one
 
 ```typescript
 const res = await pool.joinPoolMultifunc(
@@ -159,7 +161,8 @@ const res = await pool.joinPoolMultifunc(
 
 ## exitPool
 
-You can use this function to retrieve a given set of assets from pool to the signer.
+You can use this function to retrieve a given set of assets from pool to the
+signer.
 
 ```typescript
 const res = await pool.exitPool(signer, poolAmountOut, maxAmountsIn, false);
@@ -178,7 +181,8 @@ const res = await pool.exitPool(signer, poolAmountOut, maxAmountsIn, false);
 
 ## swapExactAmountIn
 
-You can use this function to swap a given `assetAmountIn` of the `assetIn/assetOut` pair to pool.
+You can use this function to swap a given `assetAmountIn` of the
+`assetIn/assetOut` pair to pool.
 
 ```typescript
 const res = await pool.swapExactAmountIn(
@@ -208,7 +212,8 @@ const res = await pool.swapExactAmountIn(
 
 ## swapExactAmountOut
 
-You can use this function to swap a given `assetAmountOut` of the `assetIn/assetOut` pair to pool.
+You can use this function to swap a given `assetAmountOut` of the
+`assetIn/assetOut` pair to pool.
 
 ```typescript
 const res = await pool.swapExactAmountOut(

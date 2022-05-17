@@ -117,10 +117,17 @@ const config = {
       crossorigin: "anonymous",
     },
   ],
-  plugins: [
-    // require('path').resolve(__dirname, '../../docusaurus-search-local'),
-    require.resolve("@easyops-cn/docusaurus-search-local"),
-    "plugin-image-zoom",
+
+  plugins: ["plugin-image-zoom"],
+
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        language: ["en", "zh"],
+      },
+    ],
   ],
 };
 

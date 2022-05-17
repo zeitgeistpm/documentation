@@ -26,7 +26,8 @@ res.forEach((market) => console.log(market.toFilteredJSONString(filter)));
 
 ## filterMarketData
 
-Populate only selected attributes from the market data defined using filter. Populates `marketId` by default.
+Populate only selected attributes from the market data defined using filter.
+Populates `marketId` by default.
 
 ```typescript
 const res = filterMarketData(market, filter);
@@ -46,7 +47,9 @@ const res = market.getEndTimestamp();
 
 ## getPoolId
 
-You can use this function to get pool id to be used for fetching data using `sdk.models.market.getPool()`. Returns null if no swap pool is available for the market.
+You can use this function to get pool id to be used for fetching data using
+`sdk.models.market.getPool()`. Returns null if no swap pool is available for the
+market.
 
 ```typescript
 const res = market.getPoolId();
@@ -56,7 +59,8 @@ const res = market.getPoolId();
 
 ## getPool
 
-You can use this function to recreate swap pool for this market using data fetched with `poolId`.
+You can use this function to recreate swap pool for this market using data
+fetched with `poolId`.
 
 ```typescript
 const res = market.getPool();
@@ -66,7 +70,8 @@ const res = market.getPool();
 
 ## getDisputes
 
-You can use this function to fetch disputes for this market using unique identifier `marketId`.
+You can use this function to fetch disputes for this market using unique
+identifier `marketId`.
 
 ```typescript
 const res = market.getDisputes();
@@ -76,7 +81,8 @@ const res = market.getDisputes();
 
 ## deploySwapPool
 
-You can use this function to create swap pool for this market via `api.tx.predictionMarkets.deploySwapPoolForMarket(marketId, weights)`.
+You can use this function to create swap pool for this market via
+`api.tx.predictionMarkets.deploySwapPoolForMarket(marketId, weights)`.
 
 ```typescript
 const res = await market.deploySwapPool(signer, wts, false);
@@ -94,7 +100,8 @@ const res = await market.deploySwapPool(signer, wts, false);
 
 ## assetSpotPricesInZtg
 
-You can use this function to fetch spot prices of all assets in this market Can be used to find prices at a particular block using unique identifier.
+You can use this function to fetch spot prices of all assets in this market Can
+be used to find prices at a particular block using unique identifier.
 
 ```typescript
 const res = market.assetSpotPricesInZtg(blockHash);
@@ -110,7 +117,8 @@ const res = market.assetSpotPricesInZtg(blockHash);
 
 ## buyCompleteSet
 
-You can use this function to buy a complete set of outcome shares for the market. **Note: This is the only way to create new shares.**
+You can use this function to buy a complete set of outcome shares for the
+market. **Note: This is the only way to create new shares.**
 
 ```typescript
 const res = market.buyCompleteSet(signer, Number(1000000000000));
@@ -128,7 +136,8 @@ const res = market.buyCompleteSet(signer, Number(1000000000000));
 
 ## sellCompleteSet
 
-You can use this function to sell/destroy a complete set of outcome shares for the market.
+You can use this function to sell/destroy a complete set of outcome shares for
+the market.
 
 ```typescript
 const res = market.sellCompleteSet(signer, Number(1000000000000));
@@ -200,7 +209,8 @@ const res = await market.redeemShares(signer, outcomeReport, false);
 
 ## approve
 
-You can use this function to approve the `Proposed` market that is waiting for approval from the advisory committee.
+You can use this function to approve the `Proposed` market that is waiting for
+approval from the advisory committee.
 
 ```typescript
 const res = await market.approve(signer, false);
@@ -217,7 +227,8 @@ const res = await market.approve(signer, false);
 
 ## reject
 
-You can use this function to reject the `Proposed` market that is waiting for approval from the advisory committee.
+You can use this function to reject the `Proposed` market that is waiting for
+approval from the advisory committee.
 
 ```typescript
 const res = await market.reject(signer, false);
@@ -234,7 +245,8 @@ const res = await market.reject(signer, false);
 
 ## cancelAdvised
 
-You can use this function to allow the proposer of the market that is currently in a `Proposed` state to cancel the market proposal.
+You can use this function to allow the proposer of the market that is currently
+in a `Proposed` state to cancel the market proposal.
 
 ```typescript
 const res = await market.cancelAdvised(signer, false);

@@ -58,7 +58,7 @@
 | [accountId](https://github.com/Whisker17/sdk-demo/tree/main/src/swap#accountid)                                       | fetch account id in this pool.                                        |
 | [joinPool](https://github.com/Whisker17/sdk-demo/tree/main/src/swap#joinpool)                                         | join pool.                                                            |
 | [poolJoinWithExactAssetAmount](https://github.com/Whisker17/sdk-demo/tree/main/src/swap#pooljoinwithexactassetamount) | join exact asset amount to the pool.                                  |
-| [joinPoolMultifunc](https://github.com/Whisker17/sdk-demo/tree/main/src/swap#joinpoolmultifunc)                       | join pool.<br/>Three substrate join_pool_xxx functions in one |
+| [joinPoolMultifunc](https://github.com/Whisker17/sdk-demo/tree/main/src/swap#joinpoolmultifunc)                       | join pool.<br/>Three substrate join_pool_xxx functions in one         |
 | [exitPool](https://github.com/Whisker17/sdk-demo/tree/main/src/swap#exitpool)                                         | retrieve a given set of assets from pool to the signer.               |
 | [swapExactAmountIn](https://github.com/Whisker17/sdk-demo/tree/main/src/swap#swapexactamountin)                       | swap a given `assetAmountIn` of the `assetIn/assetOut` pair to pool.  |
 | [swapExactAmountOut](https://github.com/Whisker17/sdk-demo/tree/main/src/swap#swapexactamountout)                     | swap a given `assetAmountOut` of the `assetIn/assetOut` pair to pool. |
