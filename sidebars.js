@@ -28,7 +28,12 @@ const sidebars = {
         "learn/futarchy",
         "learn/comparisons",
         {
-          AppGuide: [
+          type: "category",
+          label: "AppGuide",
+          link: {
+            type: "generated-index",
+          },
+          items: [
             "learn/guide/app",
             "learn/guide/market",
             "learn/guide/buy",
