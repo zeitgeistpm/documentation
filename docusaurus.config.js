@@ -34,7 +34,7 @@ const config = {
         title: "Zeitgeist Documentation",
         logo: {
           src: "img/Zeitgeist-trans.png",
-          href: "/docs/",
+          //href: "/docs/",
         },
         items: [
           {
@@ -128,13 +128,13 @@ const config = {
 
   plugins: [
     "plugin-image-zoom",
-    () => ({
-      configureWebpack() {
-        return {
-          devServer: { open: "/docs/" },
-        };
-      },
-    }),
+    // () => ({
+    //   configureWebpack() {
+    //     return {
+    //       devServer: { open: "/docs/" },
+    //     };
+    //   },
+    // }),
   ],
 
   themes: [
