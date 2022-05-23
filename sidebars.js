@@ -53,10 +53,15 @@ const sidebars = {
         "build/how-to-monitor-node",
         "build/cli-example",
         {
-          SDK: [
-            "build/sdk/introduction",
+          type: "category",
+          label: "SDK",
+          link: {
+            type: "doc",
+            id: "build/sdk/introduction",
+          },
+          items: [
             "build/sdk/common",
-            "build/sdk/index",
+            "build/sdk/indexs",
             "build/sdk/market",
             "build/sdk/swap",
           ],
