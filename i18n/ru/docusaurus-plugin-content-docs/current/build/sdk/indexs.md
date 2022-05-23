@@ -1,4 +1,4 @@
-# Index
+# Indexs
 
 ## getAllMarketIds
 

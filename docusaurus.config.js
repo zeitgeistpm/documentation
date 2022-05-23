@@ -1,6 +1,10 @@
+const lightCodeTheme = require("prism-react-renderer/themes/github");
+const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+
 const math = require("remark-math");
 const katex = require("rehype-katex");
 
+/** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Zeitgeist Documentation",
   tagline: "Learn how to integrate with the Zeitgeist network.",
@@ -27,10 +31,10 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        hideOnScroll: true,
         title: "Zeitgeist Documentation",
         logo: {
           src: "img/Zeitgeist-trans.png",
+          href: "/docs/",
         },
         items: [
           {
@@ -86,18 +90,21 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Zeitgeist PM`,
       },
       prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
         additionalLanguages: ["bash", "powershell"],
       },
     }),
+
   presets: [
     [
       "@docusaurus/preset-classic",
+      /** @type {import('@docusaurus/preset-classic').Options} */
       {
         docs: {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           sidebarPath: require.resolve("./sidebars.js"),
-          routeBasePath: "/",
           // Please change this to your repo.
           editUrl: "https://github.com/zeitgeistpm/docs/edit/main/",
           remarkPlugins: [math],
@@ -109,6 +116,7 @@ const config = {
       },
     ],
   ],
+
   stylesheets: [
     {
       href: "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css",
@@ -118,7 +126,16 @@ const config = {
     },
   ],
 
-  plugins: ["plugin-image-zoom"],
+  plugins: [
+    "plugin-image-zoom",
+    () => ({
+      configureWebpack() {
+        return {
+          devServer: { open: "/docs/" },
+        };
+      },
+    }),
+  ],
 
   themes: [
     [
