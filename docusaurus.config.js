@@ -42,7 +42,7 @@ const config = {
             position: "right",
             dropdownItemsAfter: [
               {
-                href: "https://github.com/facebook/docusaurus/issues/3526",
+                href: "https://crowdin.com/project/zeitgeist-documentation",
                 label: "Help Us Translate",
               },
             ],
