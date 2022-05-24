@@ -11,7 +11,7 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: 'Permissionless and Unstoppable',
-    Svg: require('@site/static/img/t2.svg').default,
+    Svg: require('@site/static/img/Icon1.svg').default,
     description: (
       <>
         No single entity controls the Zeitgeist network. It is based on peer-to-peer technology and distributed governance.
@@ -20,7 +20,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Powered by ZTG',
-    Svg: require('@site/static/img/t1.svg').default,
+    Svg: require('@site/static/img/Icon2.svg').default,
     description: (
       <>
         Zeitgeist is powered by ZTG. ZTG is the native currency of Zeitgeist that plays a critical role in market creation and resolution.
@@ -29,7 +29,7 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: 'Scalable and Affordable',
-    Svg: require('@site/static/img/t3.svg').default,
+    Svg: require('@site/static/img/Icon3.svg').default,
     description: (
       <>
         Since Zeitgeist is built on its own layer-1 chain with optimized runtime logic, it will be affordable even with high traffic.
