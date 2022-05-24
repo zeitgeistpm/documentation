@@ -1,0 +1,583 @@
+---
+id: battery-station
+title: Battery Station
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<!-- prettier-ignore -->
+:::important Zeitgeist Battery Station is a test network in beta phase.
+You can follow this guide to connect to it but some things might not work yet.
+If you would like to report a bug please open an issue on our GitHub repository.
+Also note that the chain is liable to be reset **at any time without any
+warning.**
+:::
+
+If you want to support and strengthen Battery Station by running your own
+network node, head over to the section
+[Get Connected](battery-station#get-connected). If you want to interact with
+Battery Station, head over to the section
+[Accessing the User Interface](battery-station#accessing-the-user-interface)
+
+## Get connected
+
+The minimum system requirements are:
+
+- CPU: AMD EPYC 7601 (or another CPU with equivalent single core performance)
+- RAM: 8 GB
+- Hard drive: SSD
+
+There are two ways that you can run a node and connect to the Battery Station
+testnet. One way is to
+[build the code from source](battery-station#building-from-source). On recent
+hardware this should take about 15 minutes.
+[The other way](battery-station#using-docker) is to use
+[Docker](https://www.docker.com/) which doesn't need to build and can get you
+started right away.
+
+### Building from source
+
+_Note for Windows users: Although it should be possible to build this project_
+_on Windows, it is not well supported. Instead it is recommended to build this_
+_project inside WSL in Windows. If you want to build this on Windows anyways,_
+_you can follow
+[this tutorial](https://substrate.dev/docs/en/knowledgebase/getting-started/windows-users)_
+_to setup your build environment and continue with this tutorial afterwards._
+_We have not tested building on Windows and cannot guarantee that it will work._
+
+_Note for Ubuntu >= 16 users: Building from source is not necessary, since we
+offer_ _a
+[pre-built binary](https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.3.0/zeitgeist_parachain)._
+_You can use it instead of building from source and skip this tutorial to the
+part_ _that describes how to fetch the Zeitgeist relay chain specification. Feel
+free to_ _use the following command to download the binary under the name
+"zeitgeist" into_ _the current folder (and don't forget to replace
+"/target/release/zeitgeist" with_ _"zeitgeist" during the tutorial):_
+
+```bash
+curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.3.0/zeitgeist_parachain
+chmod +x zeitgeist
+```
+
+The source code is hosted in the
+[zeitgeistpm/zeitgeist](https://github.com/zeitgeistpm/zeitgeist) repository on
+GitHub.
+
+To be able to compile the project, Rust must be installed on your system. We
+recommend using [rustup](https://rustup.rs/#) to manage your rust build
+environments. This instructions will assume that you have rustup installed.
+
+You will need to clone the code locally, and make sure that you have the
+[dependencies](https://substrate.dev/docs/en/knowledgebase/getting-started/#1-build-dependencies)
+installed. Execute the following commands to fetch the project:
+
+```bash
+# clone the code locally and checkout latest version
+git clone https://github.com/zeitgeistpm/zeitgeist.git --depth 1 --branch latest
+# change directory
+cd zeitgeist
+```
+
+Next configure rustup, on Unix you can execute the following script:
+
+```bash
+# use the initializer script
+./scripts/init.sh
+```
+
+After initializing you can then start building by using the cargo command:
+
+```bash
+cargo build --release --features parachain --bin zeitgeist
+```
+
+_Note: A system with at least 16GB of RAM is required to build the node._
+
+Once the build has finished you will have the _zeitgeist_ binary available in
+the _target/release_ folder.
+
+You can start a full-node (non-authoring) for Battery Station from the root of
+the directory like this:
+
+```bash
+./target/release/zeitgeist --chain=battery_station --pruning=archive
+```
+
+You should see your node begin to sync blocks.
+
+Feel free to play around with the other available options, which you can inspect
+by executing:
+
+```bash
+./target/release/zeitgeist --help
+```
+
+If you plan to continuously run your node, jump to the next section.
+
+#### Automatically running the Zeitgeist parachain as a systemd service (Linux)
+
+To automatically start and restart the zeitgeist chain, you can use a systemd
+service. It is not recommended to do this with a docker image.
+
+We will create a non-privileged user to execute the Zeitgeist node, setup the
+folder structure, create a systemd service file, launch the service and inspect
+the output.
+
+Create a new user (without a home folder) and disable login for that user:
+
+```bash
+sudo useradd -M -r -s /sbin/nologin zeitgeist
+```
+
+Create a folder that will contain the Zeitgeist data and the previously compiled
+binary file. Note where your _zeitgeist_ binary lies (by default it is within
+the source folder at _target/release_) and replace the path after the `cp`
+command that is shown below. In this example we will use _/services/zeitgeist_
+as the base folder for our service, _/services/zeitgeist/bin_ will contain the
+_zeitgeist_ binary and the whole _/services/zeitgeist_ folder structure will be
+owned by the unprivileged zeitgeist user we created during the previous step:
+
+```bash {2}
+sudo mkdir -p /services/zeitgeist/bin
+sudo cp /path/to/your/target/release/zeitgeist /services/zeitgeist/bin
+sudo chown -R zeitgeist:zeitgeist /services/zeitgeist
+sudo chmod -R go=-rwx /services/zeitgeist
+```
+
+Create a systemd service file. You can use your favorite editor, in this example
+we will use `nano` though, because it is well supported.
+
+```bash
+sudo nano /etc/systemd/system/zeitgeist-node.service
+```
+
+You can just use the following template or adjust it to your needs:
+
+_Note: The arguments after the double dash (--) apply to the relay chain, which
+is required by the parachain_
+
+```bash {12,14,16,17-19,25-27}
+[Unit]
+Description=Zeitgeist Battery Station parachain full node
+After=network.target
+Requires=network.target
+
+[Service]
+Type=simple
+User=zeitgeist
+Group=zeitgeist
+RestartSec=5
+Restart=always
+Nice=0
+ExecStart=/services/zeitgeist/bin/zeitgeist \
+    --base-path=/services/zeitgeist/battery_station \
+    --chain=battery_station \
+    --name=zeitgeist-support-$RANDOM \
+    --port=30333 \
+    --rpc-port=9933 \
+    --ws-port=9944 \
+    --rpc-external \
+    --ws-external \
+    --rpc-cors=all \
+    --pruning=archive \
+    -- \
+    --port=30334 \
+    --rpc-port=9934 \
+    --ws-port=9945
+
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Replace `zeitgeist-support-$RANDOM` with the name your node should have. Set
+`--port`, `--rpc-port` and `--ws-port` to some ports that are not occupied yet.
+Ensure that incoming traffic on those ports is allowed. The node will listen to
+RPCs over HTTP and WS, to make the node eligible for potential load-balancing.
+You can adjust the _Nice_ value to configure the priority of the process the
+service spawns. 20 is the lowest, -20 the highest priority.
+
+Paste your copy buffer into nano by pressing `CTRL+SHIFT+V` and save the changes
+by pressing `CTRL+X`, `y` and `ENTER`
+
+Enable the service and start it:
+
+```bash
+sudo systemctl enable zeitgeist-node
+sudo systemctl start zeitgeist-node
+```
+
+Check if it is up and running and syncing with the rest of the network:
+
+```bash
+systemctl status zeitgeist-node
+```
+
+If it shows _Active: active (running)_, your service works as expected. Use the
+following command to retrieve your node id (from _Zeitgeist Parachain_):
+
+```bash
+journalctl -u zeitgeist-node.service | grep "node id"
+```
+
+Otherwise enter the following command and inspect what went wrong:
+
+```
+journalctl -u zeitgeist-node
+```
+
+If you are stuck with an error you can ask for assistance in our
+[node-operators Discord channel](https://discord.gg/WD3VkGt9eY).
+
+We recommend
+[backing up the node secret file](battery-station#backing-up-the-node-secret-file-from-a-systemd-service),
+which is used to derive your node's id. The id might be required in future
+programs. If you want to restore a previous node id, jump to the
+[node id restoration section](battery-station#restoring-the-node-id-within-systemd).
+
+### Using Docker
+
+We publish the latest version to the
+[Docker Hub](https://hub.docker.com/r/zeitgeistpm/zeitgeist-node-parachain) that
+can be pulled and ran locally to connect to the Battery Station network. In
+order to do this first make sure that you have Docker installed locally.
+
+#### Downloading the docker image
+
+```bash
+docker pull zeitgeistpm/zeitgeist-node-parachain:latest
+```
+
+#### Running a Zeitgeist parachain full node within docker
+
+You can run the docker image using the following command, but the node id and
+the chain data are lost after you shut down the docker container.
+
+<Tabs>
+<TabItem value="unix" label="Unix - Bash">
+
+```bash {10}
+docker run \
+    -p 30333:30333 \
+    -p 9933:9933 \
+    -p 9944:9944 \
+    --name=zeitgeist-parachain \
+    --restart=always \
+    zeitgeistpm/zeitgeist-node-parachain:latest \
+    --base-path=/zeitgeist/data \
+    --chain=battery_station \
+    --name=zeitgeist-support-$RANDOM \
+    --pruning=archive
+```
+
+</TabItem>
+<TabItem value="win" label="Windows - Powershell">
+
+```powershell {10}
+docker run `
+    -p 30333:30333 `
+    -p 9933:9933 `
+    -p 9944:9944 `
+    --name=zeitgeist-parachain `
+    --restart=always `
+    zeitgeistpm/zeitgeist-node-parachain:latest `
+    --base-path=/zeitgeist/data `
+    --chain=battery_station `
+    --name=zeitgeist-support-$(Get-Random) `
+    --pruning=archive
+```
+
+</TabItem>
+</Tabs>
+
+To keep the chain data, you will have to select a folder on your system that
+docker will use to store its files in. Ensure that the folder does exist and
+that you have write permission for that folder. Assuming the path you want to
+use locally is _/services/zeitgeist_ (and that docker has write permissions in
+this folder), the previous command should be appended by one more `-v` option:
+
+<Tabs>
+<TabItem value="unix" label="Unix - Bash">
+
+```bash {5,11}
+docker run \
+    -p 30333:30333 \
+    -p 9933:9933 \
+    -p 9944:9944 \
+    -v /services/zeitgeist:/zeitgeist/data/ \
+    --name=zeitgeist-parachain \
+    --restart=always \
+    zeitgeistpm/zeitgeist-node-parachain:latest \
+    --base-path=/zeitgeist/data \
+    --chain=battery_station \
+    --name=zeitgeist-support-$RANDOM \
+    --pruning=archive
+```
+
+</TabItem>
+<TabItem value="win" label="Windows - Powershell">
+
+```powershell {5,11}
+docker run `
+    -p 30333:30333 `
+    -p 9933:9933 `
+    -p 9944:9944 `
+    -v \services\zeitgeist:/zeitgeist/data/ `
+    --name=zeitgeist-parachain `
+    --restart=always `
+    zeitgeistpm/zeitgeist-node-parachain:latest `
+    --base-path=/zeitgeist/data `
+    --chain=battery_station `
+    --name=zeitgeist-support-$(Get-Random) `
+    --pruning=archive
+```
+
+</TabItem>
+</Tabs>
+
+That's it, your node should be running and syncing with other nodes, while using
+a persistent chain storage and node id. If you plan to continuously run your
+node, jump to the next section.
+
+#### Running a Zeitgeist parachain full node in a persistent docker container
+
+To automatically start a docker container at any occasion (including after
+reboots and errors), except when it was explicitly stopped by a docker command,
+append the `-d` and `--restart` flag to the `docker run` command from above. The
+following command includes those options. In addition to that, the node
+parameters are extended in a way that makes the node listen to RPCs over HTTP
+and WS, to make the node eligible for potential future load-balancing. Ensure
+that you adjust `-v /services/zeitgeist` to use a folder you desire for chain
+data and that docker has write permissions for it. Replace
+`zeitgeist-support-$RANDOM` with the name your node should have.
+
+<Tabs>
+<TabItem value="unix" label="Unix - Bash">
+
+```bash {4-7,12}
+docker run \
+    --restart unless-stopped \
+    -d \
+    -p 30333:30333 \
+    -p 9933:9933 \
+    -p 9944:9944 \
+    -v /services/zeitgeist:/zeitgeist/data/ \
+    --name=zeitgeist-parachain \
+    zeitgeistpm/zeitgeist-node-parachain:latest \
+    --base-path=/zeitgeist/data \
+    --chain=battery_station \
+    --name=zeitgeist-support-$RANDOM \
+    --rpc-external \
+    --ws-external \
+    --rpc-cors=all \
+    --pruning=archive
+```
+
+</TabItem>
+<TabItem value="win" label="Windows - Powershell">
+
+```powershell {4-7,12}
+docker run `
+    --restart unless-stopped `
+    -d `
+    -p 30333:30333 `
+    -p 9933:9933 `
+    -p 9944:9944 `
+    -v \services\zeitgeist:/zeitgeist/data/ `
+    --name=zeitgeist-parachain `
+    zeitgeistpm/zeitgeist-node-parachain:latest `
+    --base-path=/zeitgeist/data `
+    --chain=battery_station `
+    --name=zeitgeist-support-$(Get-Random) `
+    --rpc-external `
+    --ws-external `
+    --rpc-cors=all `
+    --pruning=archive
+```
+
+</TabItem>
+</Tabs>
+
+After the command was executed, one line is printed in the terminal that
+represents the container id. It has this format:
+
+> 1e501c25e43be3f2cecc3bade11b22f60f17839d41b37cdac9139cb8ebc8700b
+
+To retrieve your node id, execute the following command (replace _container_id_
+with the container id that was printed to your terminal):
+
+```bash
+docker logs container_id
+```
+
+The previous command shows the outputs of the node. It should include one line
+containing your node id, that looks like:
+
+> Local node identity is: 12D3KooWKzzeu1thnWQv8CCWaugFfpeCXnq7jmp6GENSdXqG5xX9
+
+You can also retrieve the container id by using the following command:
+
+```bash
+docker ps --filter ancestor=zeitgeistpm/zeitgeist-node-parachain:latest
+```
+
+We recommend
+[backing up the node secret file](battery-station#backing-up-the-node-secret-file-from-a-docker-container),
+which is used to derive your node's id. The id might be required in future
+programs. If you want to restore a previous node id, jump to the
+[node id restoration section](battery-station#restoring-the-node-id-within-a-docker-container).
+
+### Ensuring that you can restore your node's id
+
+For anybody who has entered a node id in any of our forms, it is essential that
+you backup the corresponding node secret after you have set up the node to
+ensure, that you always can restore the node id that you have entered and
+consequently are always able to continue gathering rewards based on that node
+id.
+
+Your node's id is derived from a secret seed. If you lose access to the data of
+your node, it is impossible to restore your node id, unless you have created a
+backup as long as you had access to the data.
+
+#### Backing up the node secret file from a docker container
+
+The following sections will explain how to retrieve the path to the node secret
+on Unix and Windows based systems. After retrieving the path, copy the file
+located at the path to a safe location that is not on the same machine where you
+copied the file from.
+
+##### On Unix
+
+```bash
+echo "$(CONTAINER_ROW=`docker ps | grep zeitgeistpm/zeitgeist-node-parachain` && docker inspect --format '{{range .Mounts}}{{println .Destination}}{{end}}' ${CONTAINER_ROW%% *} | sed -n '2p')/chains/battery_station/network/secret_ed25519"
+```
+
+##### On Windows
+
+First get the container id:
+
+```bash
+docker ps | findstr "zeitgeist"
+```
+
+The container ID is the leftmost number in the row. Then get the volume it's
+mounted to (replace _container_id_ with the id you extracted during the previous
+step):
+
+```bash
+docker inspect --format '{{range .Mounts}}{{println .Destination}}{{end}}' container_id
+```
+
+Last, append the following string to the last path in the output:
+_\chains\battery_station\network\secret_ed25519_ The resulting string is the
+location of the secret file.
+
+#### Backing up the node secret file from a systemd service
+
+The following command will print the location of your node's secret file (you
+might have to replace _zeitgeist-node_ with the name of your Zeitgeist node
+service):
+
+```bash
+SECRET_LOCATION=`journalctl -u zeitgeist-node | grep "Database: RocksDb at"` && echo ${SECRET_LOCATION##* RocksDb at } | sed 's/\/db/\/network\/secret_ed25519/'
+```
+
+Copy the file to a safe location that is not on the same machine you copied the
+file from.
+
+#### Restoring the node id
+
+Before the node is started, the node secret file backup has to be put in the
+data folder of the Zeitgeist node. The steps to restore the node id differ a bit
+between docker and systemd and are described in the following sections.
+
+##### Restoring the node id within a docker container
+
+First copy the node secret backup file _secret_ed25519_ into the docker folder
+that was mounted using the _-v_ command. If that folder does not exist yet,
+create it and ensure docker has the permissions to read from and write into it.
+
+After that, append the following option to the `docker run` command right after
+the docker image (zeitgeist-node-parachain-TAG):
+
+```bash
+--node-key-file /zeitgeist/data/secret_ed25519
+```
+
+Don't forget to replace _/services/zeitgeist/_ with the directory you copied the
+backup into. Running the docker container will log the node id. Use it to verify
+that the Zeitgeist node does indeed use your old node's id.
+
+```bash
+docker logs container_id
+```
+
+##### Restoring the node id within systemd
+
+First copy the node secret backup file _secret_ed25519_ into the data folder of
+your Zeitgeist node. You can use the following command to retrieve the data
+folder (replace _zeitgeist-node.service_ with the name of your Zeitgeist systemd
+file):
+
+```bash
+cat /etc/systemd/system/zeitgeist-node.service | grep -- "-d \|-d=\|--base-path"
+```
+
+After copying the node secret file backup to this location, append the following
+line to the line starting with _ExecStart_ within your Zeitgeist systemd file
+(replace _/services/zeitgeist_ with the data folder, in which you placed your
+backup): `--node-key-file /services/zeitgeist/secret_ed25519`
+
+Stop any running node, update the daemon and start the node again (replace
+_zeitgeist-node_):
+
+```bash
+sudo systemctl stop zeitgeist-node; sudo systemctl daemon-reload && sudo systemctl start zeitgeist-node
+```
+
+Finally, verify that the Zeitgeist node does indeed use your old node's id
+(replace _zeitgeist-node_):
+
+```bash
+journalctl -u zeitgeist-node.service | grep "node id"
+```
+
+### Connecting to Telemetry
+
+By default, your node will connect to Parity's telemetry endpoint that is
+accessible at [https://telemetry.polkadot.io](https://telemetry.polkadot.io).
+You can ensure your node is up and running by visiting this page, selecting the
+["Battery Station" network](https://telemetry.polkadot.io/#list/0xb90cd3a37b4793c6494b78962986f4f6ed3ec2eda91a6b84fd8457d24f606b9c)
+and searching for your node's name (search can be started by simply typing while
+on the telemetry page).
+
+## Accessing the user interface
+
+You can access the beta application at:
+[https://beta.zeitgeist.pm](https://beta.zeitgeist.pm). Note that to gain access
+to the beta application, an NFT from one of the Zeitgeist Tarot collections is
+required.
+
+You can follow our
+[beta app tutorial](https://whisker17.github.io/APP-Guide/#/en/app-en) to learn
+how to interact with it.
+
+You can also access the polkadot.js-based (advanced) UI at:
+[https://polkadot.js.org/apps/?rpc=wss://bsr.zeitgeist.pm](https://polkadot.js.org/apps/?rpc=wss://bsr.zeitgeist.pm)
+
+See [Zeitgeist Beta](./zeitgeist-beta) for details.
+
+## Faucet
+
+We operate a faucet, that can be used to receive the native Zeitgeist currency
+for the Battery Station testnet, ZBS (Zeitgeist Battery Station), which is
+required for numerous interactions with Battery Station. You will need an
+account to retrieve ZBS.
+
+There are numerous ways to generate an account, we suggest to use
+[Polkadot{.js} extension](https://github.com/polkadot-js/extension) though,
+because it is simple and straightforward to use. You can get it at:
+
+- [Chrome web store](https://chrome.google.com/webstore/detail/polkadot%7Bjs%7D-extension/mopnmbcafieddcagagdcbnhejhlodfdd)
+- [Firefox add-ons](https://addons.mozilla.org/en-US/firefox/addon/polkadot-js-extension/)
