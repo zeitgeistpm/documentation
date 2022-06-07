@@ -1,0 +1,29 @@
+@mixin desktop-xxl {
+	@media (min-width: $desktop-xxl) {
+		@content;
+	}
+}
+
+@mixin desktop-xl{
+	@media (min-width: $desktop-xl) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: $desktop) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (min-width: $tablet) {
+		@content;
+	}
+}
+
+@mixin phablet {
+	@media (min-width: $phablet) {
+		@content;
+	}
+}
