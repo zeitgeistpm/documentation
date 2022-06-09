@@ -71,6 +71,19 @@ const sidebars = {
             "build/sdk/swap",
           ],
         },
+        {
+          type: "category",
+          label: "Collator",
+          link: {
+            type: "doc",
+            id: "build/collator/how-to-run-as-a-collator",
+          },
+          items: [
+            "build/collator/how-to-run-as-a-collator",
+            "build/collator/collator-related-operation-guide",
+            "build/collator/faq",
+          ],
+        },
       ],
     },
     "faq",
