@@ -1,17 +1,20 @@
 import React from 'react';
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: JSX.Element;
+  link: string,
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Permissionless and Unstoppable',
-    Svg: require('@site/static/img/Icon1.svg').default,
+    title: 'Learn',
+    Svg: require('@site/static/img/arrow-up.svg').default,
+    link: '/docs/category/learn',
     description: (
       <>
         No single entity controls the Zeitgeist network. It is based on peer-to-peer technology and distributed governance.
@@ -19,8 +22,9 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Powered by ZTG',
-    Svg: require('@site/static/img/Icon2.svg').default,
+    title: 'Build',
+    Svg: require('@site/static/img/arrow-up.svg').default,
+    link: '/docs/category/build',
     description: (
       <>
         Zeitgeist is powered by ZTG. ZTG is the native currency of Zeitgeist that plays a critical role in market creation and resolution.
@@ -28,8 +32,9 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: 'Scalable and Affordable',
-    Svg: require('@site/static/img/Icon3.svg').default,
+    title: 'Monitor',
+    Svg: require('@site/static/img/arrow-up.svg').default,
+    link: '/docs/build/how-to-monitor-node',
     description: (
       <>
         Since Zeitgeist is built on its own layer-1 chain with optimized runtime logic, it will be affordable even with high traffic.
@@ -38,16 +43,16 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, Svg, link, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
-        <p>{description}</p>
-      </div>
+      <Link className={styles.heroLink} to={link}>
+        <div className={clsx("text--center", styles.heroItem)}>
+          <h3 className={styles.heroTitle}>{title}</h3>
+          <p className={styles.heroDescription}>{description}</p>
+          <Svg className={styles.featureSvg} role="img" />
+        </div>
+      </Link>
     </div>
   );
 }

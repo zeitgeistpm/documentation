@@ -10,11 +10,11 @@
   /* Using
    * https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima
    * */
-  --ifm-color-primary: #007bff;
-  --ifm-color-primary-dark: #006fe6;
+  --ifm-color-primary: #808080;
+  --ifm-color-primary-dark: #1C1E21;
   --ifm-color-primary-darker: #0069d9;
   --ifm-color-primary-darkest: #0056b3;
-  --ifm-color-primary-light: #1a88ff;
+  --ifm-color-primary-light: #fff;
   --ifm-color-primary-lighter: #268fff;
   --ifm-color-primary-lightest: #4da3ff;
 }
@@ -46,7 +46,7 @@
 }
 
 html[data-theme=light] .DocSearch {
-  /* --docsearch-primary-color: var(--ifm-color-primary); */
+  --docsearch-primary-color: var(--ifm-color-primary);
   /* --docsearch-text-color: var(--ifm-font-color-base); */
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(94, 100, 112, 0.7);
@@ -64,7 +64,7 @@ html[data-theme=light] .DocSearch {
 }
 
 html[data-theme=dark] .DocSearch {
-  --docsearch-text-color: var(--ifm-font-color-base);
+  --docsearch-text-color: var(--ifm-color-primary-light);
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(47, 55, 69, 0.7);
   /* Modal */
@@ -73,7 +73,7 @@ html[data-theme=dark] .DocSearch {
   --docsearch-searchbox-background: var(--ifm-background-color);
   --docsearch-searchbox-focus-background: var(--ifm-color-black);
   /* Hit */
-  --docsearch-hit-color: var(--ifm-font-color-base);
+  --docsearch-hit-color: var(--ifm-color-primary-light);
   --docsearch-hit-active-color: var(--ifm-color-white);
   --docsearch-hit-background: var(--ifm-color-emphasis-100);
   /* Footer */
@@ -84,6 +84,7 @@ html[data-theme=dark] .DocSearch {
     var(--ifm-color-emphasis-100) 100%
   );
 }
+
 
 .navbar--fixed-top {
   min-height: 75px;
