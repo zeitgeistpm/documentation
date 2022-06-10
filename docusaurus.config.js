@@ -34,6 +34,7 @@ const config = {
         title: "Zeitgeist Documentation",
         logo: {
           src: "img/Zeitgeist-trans.png",
+          height: '50'
           //href: "/docs/",
         },
         items: [
@@ -101,6 +102,11 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
         additionalLanguages: ["bash", "powershell"],
+      },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
       },
     }),
 

@@ -4,7 +4,6 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
-
 /* You can override the default Infima variables here. */
 :root {
   --ifm-code-font-size: 95%;
@@ -41,13 +40,12 @@
     align-self: center;
   }
 }
-
 /* For centering the Zeitgeist logo on the launch pad */
 .centered_image {
   text-align: center;
 }
 
-html[data-theme="light"] .DocSearch {
+html[data-theme=light] .DocSearch {
   /* --docsearch-primary-color: var(--ifm-color-primary); */
   /* --docsearch-text-color: var(--ifm-font-color-base); */
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
@@ -65,7 +63,7 @@ html[data-theme="light"] .DocSearch {
   --docsearch-footer-background: var(--ifm-color-white);
 }
 
-html[data-theme="dark"] .DocSearch {
+html[data-theme=dark] .DocSearch {
   --docsearch-text-color: var(--ifm-font-color-base);
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(47, 55, 69, 0.7);
@@ -86,3 +84,13 @@ html[data-theme="dark"] .DocSearch {
     var(--ifm-color-emphasis-100) 100%
   );
 }
+
+.navbar--fixed-top {
+  min-height: 75px;
+}
+
+.navbar__logo {
+  height: 50px;
+}
+
+/*# sourceMappingURL=custom.css.map */
