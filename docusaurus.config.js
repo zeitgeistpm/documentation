@@ -37,6 +37,14 @@ const config = {
           //href: "/docs/",
         },
         items: [
+          {to: 'docs', label: 'Getting Started', position: 'right'},
+          {to: 'docs/category/learn', label: 'Learn', position: 'right'},
+          {to: 'docs/category/build', label: 'Build', position: 'right'},
+          {to: 'docs/faq', label: 'FAQ', position: 'right'},
+          {
+            type: 'search',
+            position: 'right',
+          },
           {
             type: "localeDropdown",
             position: "right",
