@@ -11,8 +11,7 @@
 
 ## Add Proxy To An Account
 
-1. Head to
-   [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1. Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2. Choose `Developer`-`Extrinsics`
 
@@ -20,8 +19,7 @@
 
 4. Choose `proxy` and `addProxy`
 
-5. Select the proxy account and the proxy type, confirm the details about
-   roles and privileges of various proxy types
+5. Select the proxy account and the proxy type, confirm the details about roles and privileges of various proxy types
 
 6. Set delay if you prefer
 
@@ -29,15 +27,13 @@
 
 ![Add Proxy](/img/add-proxy.png)
 
-Going back to the account page, we can see that there will be a small sign at this point,
-you can view relevant information by clicking proxy preview.
+Going back to the account page, we can see that there will be a small sign at this point, you can view relevant information by clicking proxy preview.
 
 ![preview](/img/add-proxy-preview.png)
 
 ## Verify Your Proxy State
 
-1. Head to
-   [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1. Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2. Choose `Developer`-`Chain State`
 
@@ -53,8 +49,7 @@ you can view relevant information by clicking proxy preview.
 
 ## Execute Proxy Delegation Transaction
 
-1. Head to
-   [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1. Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2. Choose `Developer`-`Extrinsics`
 
@@ -62,22 +57,17 @@ you can view relevant information by clicking proxy preview.
 
 4. Choose `proxy` and `proxy` and the proxy account
 
-5. Select the proxy delegation transaction you want to execute. Different proxy
-   types can execute different proxy transactions.
+5. Select the proxy delegation transaction you want to execute. Different proxy types can execute different proxy transactions.
 
 6. Submit this transaction
 
 ![proxy transfer](/img/proxy-transfer.png)
 
-Here we'll use an example of proxy transfer to illustrate, we choose `balances` -
-`transfer`, `dest` is the address of the object we want to transfer, `value` is
-the amount you want to transfer (in Pennock, which means you need to multiply
-10^10)
+Here we'll use an example of proxy transfer to illustrate, we choose `balances` - `transfer`, `dest` is the address of the object we want to transfer, `value` is the amount you want to transfer (in Pennock, which means you need to multiply 10^10)
 
 ## Remove Proxy
 
-1. Head to
-   [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1. Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2. Choose `Developer`-`Extrinsics`
 

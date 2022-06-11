@@ -1,14 +1,18 @@
 {
-  "item.label.Docs": {
-    "message": "项目文档",
-    "description": "Navbar item with label Docs"
+  "item.label.Getting Started": {
+    "message": "入门指南",
+    "description": "Navbar item with label Getting Started"
   },
-  "item.label.SDK": {
-    "message": "SDK文档",
-    "description": "Navbar item with label SDK"
+  "item.label.Learn": {
+    "message": "了解",
+    "description": "Navbar item with label Learn"
   },
-  "item.label.App Guide": {
-    "message": "App指南",
-    "description": "Navbar item with label App Guide"
+  "item.label.Build": {
+    "message": "构建",
+    "description": "Navbar item with label Build"
+  },
+  "item.label.FAQ": {
+    "message": "常见问题",
+    "description": "Navbar item with label FAQ"
   }
 }

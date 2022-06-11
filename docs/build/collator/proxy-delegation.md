@@ -20,8 +20,8 @@
 
 4. Choose `proxy` and `addProxy`
 
-5. Select the proxy account and the proxy type, confirm the details about
-   roles and privileges of various proxy types
+5. Select the proxy account and the proxy type, confirm the details about roles
+   and privileges of various proxy types
 
 6. Set delay if you prefer
 
@@ -29,8 +29,8 @@
 
 ![Add Proxy](/img/add-proxy.png)
 
-Going back to the account page, we can see that there will be a small sign at this point,
-you can view relevant information by clicking proxy preview.
+Going back to the account page, we can see that there will be a small sign at
+this point, you can view relevant information by clicking proxy preview.
 
 ![preview](/img/add-proxy-preview.png)
 
@@ -69,10 +69,10 @@ you can view relevant information by clicking proxy preview.
 
 ![proxy transfer](/img/proxy-transfer.png)
 
-Here we'll use an example of proxy transfer to illustrate, we choose `balances` -
-`transfer`, `dest` is the address of the object we want to transfer, `value` is
-the amount you want to transfer (in Pennock, which means you need to multiply
-10^10)
+Here we'll use an example of proxy transfer to illustrate, we choose
+`balances` - `transfer`, `dest` is the address of the object we want to
+transfer, `value` is the amount you want to transfer (in Pennock, which means
+you need to multiply 10^10)
 
 ## Remove Proxy
 

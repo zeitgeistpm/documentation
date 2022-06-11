@@ -19,7 +19,7 @@ const config = {
   // support multi-languages
   i18n: {
     defaultLocale: "en",
-    locales: ["en", "zh-CN", "ru"],
+    locales: ["en", "zh-CN", "ru", "uk"],
     localeConfigs: {
       en: {
         htmlLang: "en-GB",
@@ -34,22 +34,27 @@ const config = {
         // title: `Zeitgeist . Documentation`,
         logo: {
           src: "img/Moon_White.png",
-          height: '35'
+          height: "35",
           //href: "/docs/",
         },
         items: [
           {
-            type: 'html',
-            position: 'left',
-            value: '<a href="https://docs.zeitgeist.pm" class="navbar-title"><span class="navbar-title--zeitgeist">Zeitgeist</span><span class="navbar-title--blue">.</span><span class="navbar-title--documentation">Documentation</span></a>',
+            type: "html",
+            position: "left",
+            value:
+              '<a href="https://docs.zeitgeist.pm" class="navbar-title"><span class="navbar-title--zeitgeist">Zeitgeist</span><span class="navbar-title--blue">.</span><span class="navbar-title--documentation">Documentation</span></a>',
           },
-          {to: 'docs/getting-started', label: 'Getting Started', position: 'right'},
-          {to: 'docs/category/learn', label: 'Learn', position: 'right'},
-          {to: 'docs/category/build', label: 'Build', position: 'right'},
-          {to: 'docs/faq', label: 'FAQ', position: 'right'},
           {
-            type: 'search',
-            position: 'right',
+            to: "docs/getting-started",
+            label: "Getting Started",
+            position: "right",
+          },
+          { to: "docs/category/learn", label: "Learn", position: "right" },
+          { to: "docs/category/build", label: "Build", position: "right" },
+          { to: "docs/faq", label: "FAQ", position: "right" },
+          {
+            type: "search",
+            position: "right",
           },
           {
             type: "localeDropdown",
@@ -193,7 +198,7 @@ const config = {
         additionalLanguages: ["bash", "powershell"],
       },
       colorMode: {
-        defaultMode: 'dark',
+        defaultMode: "dark",
         disableSwitch: false,
         respectPrefersColorScheme: false,
       },

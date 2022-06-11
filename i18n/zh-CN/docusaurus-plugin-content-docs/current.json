@@ -1,26 +1,30 @@
 {
   "version.label": {
-    "message": "Next",
+    "message": "下一页",
     "description": "The label for version current"
   },
   "sidebar.docs.category.Basic": {
-    "message": "Basic",
+    "message": "基础",
     "description": "The label for category Basic in sidebar docs"
   },
   "sidebar.docs.category.Learn": {
-    "message": "Learn",
+    "message": "了解",
     "description": "The label for category Learn in sidebar docs"
   },
+  "sidebar.docs.category.AppGuide": {
+    "message": "应用教程",
+    "description": "The label for category AppGuide in sidebar docs"
+  },
   "sidebar.docs.category.Build": {
-    "message": "Build",
+    "message": "构建",
     "description": "The label for category Build in sidebar docs"
   },
-  "sidebar.sdk.category.SDK": {
+  "sidebar.docs.category.SDK": {
     "message": "SDK",
-    "description": "The label for category SDK in sidebar sdk"
+    "description": "The label for category SDK in sidebar docs"
   },
-  "sidebar.guide.category.App Guide": {
-    "message": "App Guide",
-    "description": "The label for category App Guide in sidebar guide"
+  "sidebar.docs.category.Collator": {
+    "message": "整理人",
+    "description": "The label for category Collator in sidebar docs"
   }
 }

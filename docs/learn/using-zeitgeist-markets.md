@@ -94,8 +94,9 @@ pool cannot be changed except by minting and burning full sets. These rules
 guarantee the prize pool contains exactly 1 ZTG for every full set of outcome
 tokens in circulation. The purpose of these mechanics is to ensure that when the
 market resolves, all tokens can be redeemed for ZTG from the prize pool (for
-details, see [Resolving Markets and Redeeming Tokens]), and that the prize pool
-is empty after all tokens are redeemed.
+details, see
+[Resolving Markets and Redeeming Tokens](#resolving-markets-and-redeeming-tokens)),
+and that the prize pool is empty after all tokens are redeemed.
 
 <!-- prettier-ignore -->
 :::important
@@ -115,9 +116,10 @@ sets, as he owns no more JWSTYES.
 
 ### Liquidity Pools and Shares
 
-We already mentioned in [Trading on Zeitgeist] that trading in a prediction
-markets on Zeitgeist is facilitated by the market's liquidity pool, and that the
-pool contains balances of ZTG and of all outcome tokens of the market.
+We already mentioned in [Trading on Zeitgeist](#trading-on-zeitgeist) that
+trading in a prediction markets on Zeitgeist is facilitated by the market's
+liquidity pool, and that the pool contains balances of ZTG and of all outcome
+tokens of the market.
 
 But by default, a new market has no liquidity pool. Instead, the pool must
 either be deployed by the market creator, or by some external liquidity
@@ -130,7 +132,8 @@ $x$ is 100, making a total value of 200 ZTG.
 Once they have transferred the assets into the pool, the liquidity providers no
 longer control those assets, but will receive fees when others swap them with
 their own assets (usually ZTG) to compensate for the risk of being left holding
-the losing outcome tokens (see [Resolving Markets and Redeeming Tokens]).
+the losing outcome tokens (see
+[Resolving Markets and Redeeming Tokens](#resolving-markets-and-redeeming-tokens)).
 
 <!-- prettier-ignore -->
 :::important
@@ -226,8 +229,8 @@ oracle, minting the outcome tokens, and joining the liquidity pool.
 ### During Market Hours
 
 The market opens immediately after it is created. If no liquidity pool was
-deployed, trading as described in [Trading on Zeitgeist] is impossible, but
-users may still mint/burn full sets of tokens.
+deployed, trading as described in [Trading on Zeitgeist](#trading-on-zeitgeist)
+is impossible, but users may still mint/burn full sets of tokens.
 
 The market remains open until the end date is reached. The market will then
 become _inactive_ and trading will no longer be possible.
@@ -340,14 +343,3 @@ outcome assets and ZTG) or other individual assets to any existing pool.
 ## Further reading
 
 - [Whisker17's Zeitgeist Beta App Guide](https://whisker17.github.io/APP-Guide/#/en/README)
-
-<!-- Links -->
-
-[trading on zeitgeist]: #trading-on-zeitgeist
-[resolving markets and redeeming tokens]:
-  #resolving-markets-and-redeeming-tokens
-[trading on zeitgeist]: #trading-on-zeitgeist
-[liquidity]: ./liquidity.md
-[liquidity]: #liquidity
-[resolving markets and redeeming tokens]:
-  #resolving-markets-and-redeeming-tokens

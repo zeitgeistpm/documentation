@@ -26,46 +26,60 @@ const res = await sdk.models.getAllMarketIds();
 
 ## createCpmmMarketAndDeployAssets
 
-Create a market using CPMM scoring rule, buy a complete set of the assets used
-and deploy within and deploy an arbitrary amount of those that's greater than
-the minimum amount.
+Creates a market using CPMM scoring rule, buys a complete set of the assets used and deploys the funds.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
 
 const res = await sdk.models.createCpmmMarketAndDeployAssets({
-  signer,
-  oracle,
-  period: marketPeriod,
-  marketType,
-  mdm,
-  amount,
-  weights: weights.split(`,`),
-  metadata,
+  signer: util.signerFromSeed(`//Alice`),
+  oracle: `dE3pPiRvdKqPD5bUDBu3Xpi83McE3Zf3UG8CbhWBQfvUywd7U`,
+  period: { block: [4000, 5000] },
+  marketType: { categorical: 5 },
+  metadata: {
+    categories: [
+      { name: `karura` },
+      { name: `moonriver` },
+      { name: `phala` },
+      { name: `robonomics` },
+      { name: `kilt` },
+    ],
+    slug: `kusama-derby-example`,
+    description: `example description`,
+    question: `who will win?`,
+  },
+  mdm: { authorized: `dE3pPiRvdKqPD5bUDBu3Xpi83McE3Zf3UG8CbhWBQfvUywd7U` },
+  swapFee: `1000000000`,
+  amount: `10000000000`,
+  weights: [
+    `10000000000`,
+    `10000000000`,
+    `10000000000`,
+    `10000000000`,
+    `10000000000`,
+  ],
   callbackOrPaymentInfo: false,
 });
 ```
 
 **Object Arguments**
 
-| Name                  | Type                   | Description                                                   |
-| --------------------- | ---------------------- | ------------------------------------------------------------- |
-| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction            |
-| oracle                | string                 | The address that will be responsible for reporting the market |
-| period                | MarketPeriod           | Start and end block numbers or milliseconds since epoch       |
-| marketType            | MarketTypeOf           | `Categorical` or `Scalar`                                     |
-| mdm                   | MarketDisputeMechanism | Dispute settlement can only be `Authorized` currently         |
-| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                  |
-| amount                | string                 | The amount of each token to add to the pool                   |
-| weights               | string[]               | List of relative denormalized weights of each asset           |
-| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`            |
-
-[Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createCpmmMarketAndDeployAssets.ts)
+| Name                  | Type                       | Description                                                   |
+| --------------------- | -------------------------- | ------------------------------------------------------------- |
+| signer                | [KeyringPairOrExtSigner][] | The actual signer provider to sign the transaction            |
+| oracle                | string                     | The address that will be responsible for reporting the market |
+| period                | [MarketPeriod][]           | Start and end block numbers or milliseconds since epoch       |
+| marketType            | [MarketTypeOf][]           | `Categorical` or `Scalar`                                     |
+| metadata              | [DecodedMarketMetadata][]  | A hash pointer to the metadata of the market                  |
+| mdm                   | [MarketDisputeMechanism][] | Dispute settlement can only be `Authorized` currently         |
+| swapFee               | string                     | The fee applied to each swap after pool creation              |
+| amount                | string                     | The amount of each token to add to the pool                   |
+| weights               | string[]                   | List of relative denormalized weights of each outcome asset   |
+| callbackOrPaymentInfo | boolean                    | `true` to get txn fee estimation otherwise `false`            |
 
 ## createMarket
 
-You can use this function to create categorical or scalar market using below
-arguments.
+You can use this function to create categorical or scalar market using below arguments.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -101,8 +115,7 @@ const marketId = await sdk.models.createMarket({
 
 ## fetchMarketData
 
-You can use this function to fetch specify market's infomation by id in the
-Zeitgeiest.
+You can use this function to fetch specify market's infomation by id in the Zeitgeiest.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -120,8 +133,7 @@ const market = await sdk.models.fetchMarketData(Number(marketId));
 
 ## getMarketCount
 
-You can use this function to get total number of markets registered with the
-network.
+You can use this function to get total number of markets registered with the network.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -133,11 +145,7 @@ const res = await sdk.models.getMarketCount();
 
 ## fetchDisputes
 
-You can use this function to get all market IDs in the Zeitgeiest. Should throw
-errors where market status is such that no disputes can have been registered,
-but all registered disputes will still be returned even if, eg, resolved. To
-check if disputes are active, use `viewMarket` and check market_status for
-"Disputed"
+You can use this function to get all market IDs in the Zeitgeiest. Should throw errors where market status is such that no disputes can have been registered, but all registered disputes will still be returned even if, eg, resolved. To check if disputes are active, use `viewMarket` and check market_status for "Disputed"
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -170,8 +178,7 @@ if (swap != null) {
 
 ## assetSpotPricesInZtg
 
-You can use this function to find prices at a particular block in the
-Zeitgeiest.
+You can use this function to find prices at a particular block in the Zeitgeiest.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -183,8 +190,7 @@ const res = await sdk.models.assetSpotPricesInZtg(blockHash);
 
 ## getBlockData
 
-You can use this function to get block infomation by blockhash in the
-Zeitgeiest.
+You can use this function to get block infomation by blockhash in the Zeitgeiest.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -208,8 +214,7 @@ const res = await sdk.models.queryMarket(marketId);
 
 ## queryMarketsCount
 
-You can use this function to query counts of markets for specified filter
-options by GraphQL in the Zeitgeiest.
+You can use this function to query counts of markets for specified filter options by GraphQL in the Zeitgeiest.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint, { graphQlEndpoint });
@@ -221,8 +226,7 @@ const count = await sdk.models.queryMarketsCount({ tags: [tag] });
 
 ## queryAllActiveAssets
 
-You can use this function to query all active assets from subsquid indexer in
-the Zeitgeiest.
+You can use this function to query all active assets from subsquid indexer in the Zeitgeiest.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint, { graphQlEndpoint });
@@ -241,8 +245,7 @@ const res = await sdk.models.queryAllActiveAssets(marketSlug, pagination);
 
 ## filterMarkets
 
-You can use this function to query subsquid indexer for market data with
-pagination in the Zeitgeiest.
+You can use this function to query subsquid indexer for market data with pagination in the Zeitgeiest.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint, { graphQlEndpoint });
@@ -274,8 +277,7 @@ const res = await sdk.models.getAllMarketIds();
 
 ## currencyTransfer
 
-You can use this function to transfer specified asset from self to any account
-in the Zeitgeiest.
+You can use this function to transfer specified asset from self to any account in the Zeitgeiest.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -290,3 +292,9 @@ const res = await sdk.models.currencyTransfer(
 ```
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/currencyTransfer.ts)
+
+[KeyringPairOrExtSigner]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L276
+[MarketDisputeMechanism]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L198
+[MarketPeriod]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L182
+[MarketTypeOf]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L188
+[DecodedMarketMetadata]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L6

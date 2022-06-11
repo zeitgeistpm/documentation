@@ -24,8 +24,7 @@ Choose `developer`---`Chain State`
 
 1. Choose `parachainStaking`
 
-2. Choose
-   `candidateInfo(AccountId32): Option<ParachainStakingCandidateMetadata>`
+2. Choose `candidateInfo(AccountId32): Option<ParachainStakingCandidateMetadata>`
 3. Paste the collator candidate's address
 
 4. Enable the "include option"
@@ -67,26 +66,23 @@ Choose `developer`---`Extrinsics`
 
 2.Choose `parachainStaking`
 
-3.Choose
-`delegate(candidate, amount, candidateDelegationCount, delegationCount)`
+3.Choose `delegate(candidate, amount, candidateDelegationCount, delegationCount)`
 
-4.Copy the candidate's address to delegate(the one you get from "Get the list of
-candidates" step)
+4.Copy the candidate's address to delegate(the one you get from "Get the list of candidates" step)
 
-5.The amount that you would like to stake
+5.The amount that you would like to stake (in Pennock, which means you need to multiply 10^10, so if you want to stake 1 ZTG, you should fill in is `10000000000`)
 
 6.Enter the delegationCount number from "Get the Candidate Delegation Count"
 
-7.Enter the number of existing delegations from "Get your Number of Existing
-Delegations" (If you do not stake before, then enter 0)
+7.Enter the number of existing delegations from "Get your Number of Existing Delegations" (If you do not stake before, then enter 0)
 
 ![](/img/stake-ztg.png)
 
 ### Check the stake result
 
-Once the transaction is confirmed, you can check the result on` Account` Page
+Once the transaction is confirmed, you can check the result on`Account` Page
 
-1.Choose ` Account`
+1.Choose `Account`
 
 2.Click the triangle button
 
@@ -142,8 +138,7 @@ Choose `developer`---`Extrinsics`
 
 4.Select the account you want to remove all delegation for
 
-5.Enter the total number that you have delegated. To check the number, see "Get
-your Number of Existing Delegations"
+5.Enter the total number that you have delegated. To check the number, see "Get your Number of Existing Delegations"
 
 6.Submit this transaction
 
@@ -187,10 +182,8 @@ Choose `developer`---`Extrinsics`
 
 :::tip
 
-If you scheduled a request via the `scheduleRevokeDelegation`, you will need to
-call `cancelDelegationRequest` in step 3;
+If you scheduled a request via the `scheduleRevokeDelegation`, you will need to call `cancelDelegationRequest` in step 3;
 
-If you scheduled a request via the `scheduleLeaveDelegators`, you will need to
-call `cancelDelegationRequest` in step 3;
+If you scheduled a request via the `scheduleLeaveDelegators`, you will need to call `cancelDelegationRequest` in step 3;
 
 :::

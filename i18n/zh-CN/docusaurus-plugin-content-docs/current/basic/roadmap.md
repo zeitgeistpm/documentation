@@ -5,13 +5,11 @@ title: Roadmap
 
 ## Where are we now?
 
-Currently Zeitgeist is in beta with its [Battery Station](./battery-station)
-testnet.
+Currently Zeitgeist is in beta with its [Battery Station](./battery-station) testnet.
 
 ## Where are we going?
 
-The below roadmap is an estimation on the project's progress over the next year.
-Items and priorities are liable to change.
+The below roadmap is an estimation on the project's progress over the next year. Items and priorities are liable to change.
 
 ### 2021
 
@@ -37,11 +35,9 @@ Items and priorities are liable to change.
 #### Q4
 
 - Work on integrating Futarchy into Zeitgeist's native governance framework
-- Start work on Zeitgeist DAOs that can use the same futarchy methods that
-  govern Zeitgeist.
+- Start work on Zeitgeist DAOs that can use the same futarchy methods that govern Zeitgeist.
 - Launch of the Zeitgeist mainnet and of the ZTG token.
 - Implement DAO framework on Zeitgeist.
 - Implement crosschain functionality through becoming a Kusama parachain.
 
-For a more granular exposition of the roadmap please follow the development on
-the GitHub repositories.
+For a more granular exposition of the roadmap please follow the development on the GitHub repositories.

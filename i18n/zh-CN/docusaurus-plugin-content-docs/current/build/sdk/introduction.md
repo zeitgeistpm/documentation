@@ -4,8 +4,7 @@
 
 :::tip
 
-All `amount` parameters are in Pennock, so need to be multiplied by 10^10, which
-means if you want to transfer 1 ZTG, you should fill in `10000000000`
+All `amount` parameters are in Pennock, so need to be multiplied by 10^10, which means if you want to transfer 1 ZTG, you should fill in `10000000000`
 
 :::
 
@@ -77,7 +76,7 @@ means if you want to transfer 1 ZTG, you should fill in `10000000000`
 | [cancelAdvised](/docs/build/sdk/market#canceladvised)                                     | allow the proposer of the market that is currently in a `Proposed` state to cancel the market proposal.                                                                          |
 | [joinPool](/docs/build/sdk/swap#joinpool)                                                 | join pool.                                                                                                                                                                       |
 | [poolJoinWithExactAssetAmount](/docs/build/sdk/swap#pooljoinwithexactassetamount)         | join exact asset amount to the pool.                                                                                                                                             |
-| [joinPoolMultifunc](/docs/build/sdk/swap#joinpoolmultifunc)                               | join pool.<br/>Three substrate join_pool_xxx functions in one                                                                                                                    |
+| [joinPoolMultifunc](/docs/build/sdk/swap#joinpoolmultifunc)                               | join pool.<br/>Three substrate join_pool_xxx functions in one                                                                                                            |
 | [exitPool](/docs/build/sdk/swap#exitpool)                                                 | retrieve a given set of assets from pool to the signer.                                                                                                                          |
 | [swapExactAmountIn](/docs/build/sdk/swap#swapexactamountin)                               | swap a given `assetAmountIn` of the `assetIn/assetOut` pair to pool.                                                                                                             |
 | [swapExactAmountOut](/docs/build/sdk/swap#swapexactamountout)                             | swap a given `assetAmountOut` of the `assetIn/assetOut` pair to pool.                                                                                                            |

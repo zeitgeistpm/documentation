@@ -2,9 +2,7 @@
 
 ## Generate Session Key And Bonding
 
-1. Use RPC to generate an author ID and create/convert session keys by sending
-   RPC calls to HTTP endpoints using the `author_rotateKeys` method in your
-   terminal.
+1. Use RPC to generate an author ID and create/convert session keys by sending RPC calls to HTTP endpoints using the `author_rotateKeys` method in your terminal.
 
 ```
 curl http://127.0.0.1:9933 -H \
@@ -19,8 +17,7 @@ curl http://127.0.0.1:9933 -H \
 
 2. Mapping Author IDs and setting session keys:
 
-   1. Head to
-      [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+   1. Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
    2. Choose `Developer`-`Extrinsics`
 
@@ -34,22 +31,19 @@ curl http://127.0.0.1:9933 -H \
 
 1. Check the mapping settings:
 
-   1. Head to
-      [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+   1. Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
    2. Choose `Developer`-`Chain state`
 
    3. Choose `authorMapping` and `mappingWithDeposit`
 
-   4. Fill your author Id and submit your request, you will get your mapping
-      infomation.
+   4. Fill your author Id and submit your request, you will get your mapping infomation.
 
 ![check mapping](/img/check-mapping.png)
 
 ## Get Candidate Pool Size
 
-Add the candidate pool to get the candidate pool size, select
-Developer-Javascript in Polkadot.js.
+Add the candidate pool to get the candidate pool size, select Developer-Javascript in Polkadot.js.
 
 ```
 // Simple script to get candidate pool size
@@ -61,8 +55,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 ## Join The Candidate Pool
 
-1.  Head to
-    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2.  Choose `Developer`-`Extrinsics`
 
@@ -70,26 +63,20 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 4.  Choose `parachainStaking` and `joinCandidates`
 
-5.  Fill your bond amount (in Pennock, which means you need to multiply 10^10,
-    so the minimum number you should fill in is `640000000000`) and candidate
-    count which you can get from [there](#get-candidate-pool-size)
+5.  Fill your bond amount (in Pennock, which means you need to multiply 10^10, so the minimum number you should fill in is `640000000000`) and candidate count which you can get from [there](#get-candidate-pool-size)
 6.  Submit this transaction and if it succeeds, you will join the candidate pool.
 
 ![join candidate pool](/img/join-candidate-pool.png)
 
 ## Leave Candidate Pool
 
-If you want to leave candidate pool, you need to first schedule a request to
-leave the pool and wait for an exit delay(10 blocks), after this delay you can
-execute this request and stop working as a collator.
+If you want to leave candidate pool, you need to first schedule a request to leave the pool and wait for an exit delay(10 blocks), after this delay you can execute this request and stop working as a collator.
 
-We also support temporarily leaving the candidate pool without unbonding
-your tokens.
+We also support temporarily leaving the candidate pool without unbonding your tokens.
 
 ### Schedule Request to Leave Candidates
 
-1.  Head to
-    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2.  Choose `Developer`-`Extrinsics`
 
@@ -97,17 +84,14 @@ your tokens.
 
 4.  Choose `parachainStaking` and `scheduleLeaveCandidates`
 
-5.  Fill candidate count which you can get from
-    [there](#get-candidate-pool-size)
-6.  Submit this transaction and if it succeeds, you need to wait out the exit delay before the request
-    executes.
+5.  Fill candidate count which you can get from [there](#get-candidate-pool-size)
+6.  Submit this transaction and if it succeeds, you need to wait out the exit delay before the request executes.
 
 ![schedule leave candidates](/img/schedule-leave-candidates.png)
 
 ### Execute Request to Leave Candidates
 
-1.  Head to
-    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2.  Choose `Developer`-`Extrinsics`
 
@@ -115,16 +99,14 @@ your tokens.
 
 4.  Choose `parachainStaking` and `executeLeaveCandidates`
 
-5.  Fill candidate delegation count which you can get from
-    [there](#get-candidate-pool-size)
+5.  Fill candidate delegation count which you can get from [there](#get-candidate-pool-size)
 6.  Submit this transaction and if it succeeds, you will stop working as a collator
 
 ![execute leave candidates](/img/execute-leave-candidates.png)
 
 ### Temporarily Leave the Candidate Pool
 
-1.  Head to
-    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2.  Choose `Developer`-`Extrinsics`
 
@@ -132,8 +114,7 @@ your tokens.
 
 4.  Choose `parachainStaking` and `goOffline`
 
-5.  Submit this transaction and if it succeeds, you wiil temporarily leave the
-    candidate pool
+5.  Submit this transaction and if it succeeds, you wiil temporarily leave the candidate pool
 
 ![go offline](/img/go-offline.png)
 
@@ -141,8 +122,7 @@ your tokens.
 
 ### Bond More
 
-1.  Head to
-    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2.  Choose `Developer`-`Extrinsics`
 
@@ -150,8 +130,7 @@ your tokens.
 
 4.  Choose `parachainStaking` and `candidateBondMore`
 
-5.  Fill your increased amount (in Pennock, which means you need to multiply 10^10,
-    so if you want to bond 10 ZTG more you should fill it in as `100000000000`)
+5.  Fill your increased amount (in Pennock, which means you need to multiply 10^10, so if you want to bond 10 ZTG more you should fill it in as `100000000000`)
 
 6.  Submit the transaction
 
@@ -159,14 +138,11 @@ your tokens.
 
 ### Bond Less
 
-Same as leaving candidate pool, if you want to bond less, you need to first
-schedule a request and wait for an exit delay(10 blocks), after this delay you
-can execute this request and bond less.
+Same as leaving candidate pool, if you want to bond less, you need to first schedule a request and wait for an exit delay(10 blocks), after this delay you can execute this request and bond less.
 
 #### Schedule Bond Less Request
 
-1.  Head to
-    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2.  Choose `Developer`-`Extrinsics`
 
@@ -174,18 +150,15 @@ can execute this request and bond less.
 
 4.  Choose `parachainStaking` and `scheduleCandidateBondLess`
 
-5.  Enter your decreased amount (in Pennock, which means you need to multiply 10^10,
-    so if you want to bond 10 ZTG less you should fill it in is `100000000000`)
-    
-6.  Submit this transaction and if it succeeds, you need to wait an exit delay to
-    execute.
+5.  Enter your decreased amount (in Pennock, which means you need to multiply 10^10, so if you want to bond 10 ZTG less you should fill it in is `100000000000`)
+
+6.  Submit this transaction and if it succeeds, you need to wait an exit delay to execute.
 
 ![schedule bond less](/img/schedule-bond-less.png)
 
 #### Execute Bond Less Request
 
-1.  Head to
-    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2.  Choose `Developer`-`Extrinsics`
 
