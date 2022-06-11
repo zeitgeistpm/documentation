@@ -81,6 +81,7 @@ const sidebars = {
           items: [
             "build/collator/how-to-run-as-a-collator",
             "build/collator/collator-related-operation-guide",
+            "build/collator/proxy-delegation",
             "build/collator/faq",
           ],
         },

@@ -7,5 +7,5 @@
 
 ## What is the rule for producing a block and selecting a block producer?
 
-- Battery Station will select **the top N (currently N=2)** collators based on
+- Battery Station will select **the top N (currently N=7)** collators based on
   stake **every 10 blocks**.
