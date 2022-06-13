@@ -36,7 +36,7 @@
  * floating toc around it */
 @media (min-width: 1400px) {
   .main-wrapper {
-    width: 1400px;
+    width: 100%;
     align-self: center;
   }
 }
@@ -49,7 +49,8 @@ html[data-theme=light] .DocSearch {
   --docsearch-primary-color: var(--ifm-color-primary);
   /* --docsearch-text-color: var(--ifm-font-color-base); */
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
-  --docsearch-container-background: rgba(94, 100, 112, 0.7);
+  /* --docsearch-container-background: rgba(94, 100, 112, 0.7); */
+  --docsearch-container-background: #000;
   /* Modal */
   --docsearch-modal-background: var(--ifm-color-secondary-lighter);
   /* Search box */
@@ -67,6 +68,7 @@ html[data-theme=dark] .DocSearch {
   --docsearch-text-color: var(--ifm-color-primary-light);
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(47, 55, 69, 0.7);
+  /* BG */
   /* Modal */
   --docsearch-modal-background: var(--ifm-background-color);
   /* Search box */
@@ -85,6 +87,34 @@ html[data-theme=dark] .DocSearch {
   );
 }
 
+html[data-theme='dark'] .footer--dark {
+  --ifm-footer-background-color: #000;
+  border-top: solid 1px white;
+  --ifm-footer-color: #fff;
+  --ifm-footer-link-color: #fff;
+  --ifm-footer-title-color: #fff;
+}
+
+.footer--dark {
+  --ifm-footer-background-color: #fff;
+  border-top: solid 1px black;
+  --ifm-footer-color: #000;
+  --ifm-footer-link-color: #000;
+  --ifm-footer-title-color: #000;
+}
+
+html[data-theme='dark'] {
+  --ifm-background-color: #000;
+}
+
+.navbar {
+  border-bottom: solid 1px black;
+}
+
+html[data-theme=dark] .navbar {
+  background-color: #000;
+  border-bottom: solid 1px white;
+}
 
 .navbar--fixed-top {
   min-height: 75px;
