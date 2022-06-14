@@ -114,7 +114,7 @@ marketId | MarketId | The unique identifier for the market you want to fetch. |
 
 ## getMarketCount
 
-You can use this function to get market counts in the Zeitgeiest.
+You can use this function to get total number of markets registered with the network.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
