@@ -61,73 +61,40 @@ const res = await sdk.models.createCpmmMarketAndDeployAssets({
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createCpmmMarketAndDeployAssets.ts)
 
-## createCategoricalMarket
+## createMarket
 
-You can use this function to create a categorical market in the Zeitgeiest.
+You can use this function to create categorical or scalar market using below arguments.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
 
-const marketId = await sdk.models.createCategoricalMarket(
+const marketId = await sdk.models.createMarket({
   signer,
   oracle,
-  marketPeriod,
-  advised,
-  mdm,
-  cpmm,
+  period: marketPeriod,
   metadata,
-  false
-);
+  creationType: advised ? `Advised` : `Permissionless`,
+  marketType: { Scalar: bounds ? bounds : [0, 100] },
+  mdm,
+  scoringRule: cpmm ? `CPMM` : `RikiddoSigmoidFeeMarketEma`,
+  callbackOrPaymentInfo: false,
+});
 ```
 
-**Arguments** | Name | Type | Introduction | | ---- | ---- | ------------ | |
-signer | KeyringPairOrExtSigner | The actual signer provider to sign the
-transaction. | | oracle | string |The address that will be responsible for
-reporting the market. | | period | MarketPeriod |Start and end block numbers or
-unix timestamp of the market. | | creationType | string |"Permissionless" or
-"Advised", Advised as default | | mdm | MarketDisputeMechanism |Dispute
-settlement can be authorized, court or simple_disputes | | scoringRule | string
-| scoringRule you choose, CPMM as default| | metadata | DecodedMarketMetadata
-|Market metadata | | callbackOrPaymentInfo | |"true" to get txn fee estimation
-otherwise "false" |
+**Object Arguments** 
+| Name                  | Type                   | Description                                                    |
+| --------------------- | ---------------------- | -------------------------------------------------------------- |
+| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction             |
+| oracle                | string                 | The address that will be responsible for reporting the market  |
+| period                | MarketPeriod           | Start and end block numbers or unix timestamp of the market    |
+| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                   |
+| creationType          | string                 | `Permissionless` or `Advised`                                  |
+| marketType            | MarketTypeOf           | `Categorical` or `Scalar`                                      |
+| mdm                   | MarketDisputeMechanism | Dispute settlement can be authorized, court or simple_disputes |
+| scoringRule           | string                 | The scoring rule of the market                                 |
+| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`             |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createCategoricalMarket.ts)
-
-## createScalarMarket
-
-You can use this function to create a scalar market in the Zeitgeiest.
-
-```typescript
-const sdk = await SDK.initialize(endpoint);
-
-const marketId = await sdk.models.createScalarMarket(
-  signer,
-  title,
-  description,
-  oracle,
-  marketPeriod,
-  advised,
-  bounds,
-  mdm,
-  cpmm,
-  false
-);
-```
-
-**Arguments** | Name | Type | Introduction | | ---- | ---- | ------------ | |
-signer | KeyringPairOrExtSigner | The actual signer provider to sign the
-transaction. | | oracle | string |The address that will be responsible for
-reporting the market. | | period | MarketPeriod |Start and end block numbers or
-unix timestamp of the market. | | title | string | The title of the new
-prediction market. | | description | string | The description / extra
-information for the market. | | creationType | string |"Permissionless" or
-"Advised", Advised as default | | mdm | MarketDisputeMechanism |Dispute
-settlement can be authorized, court or simple_disputes | | scoringRule | string
-| scoringRule you choose, CPMM as default| | bounds | number[] |The array having
-lower and higher bound values denoting range set. [0,100] as default | |
-callbackOrPaymentInfo | |"true" to get txn fee estimation otherwise "false" |
-
-[Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createScalarMarket.ts)
 
 ## fetchMarketData
 
