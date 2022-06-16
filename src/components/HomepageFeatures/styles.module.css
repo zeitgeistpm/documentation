@@ -3,6 +3,7 @@
   align-items: center;
   width: 100%;
   padding: 5rem 1rem;
+  min-height: calc(100vh - 95px);
 }
 
 @media (min-width: 997px) {
@@ -13,7 +14,7 @@
     background-size: 160vw;
   }
   [data-theme='light'] .features  {
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/static/img/99.svg');
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/static/img/dots_inverted.png');
     background-position: left center;
     background-repeat: no-repeat;
     background-size: 160vw;
@@ -56,7 +57,7 @@
 }
 
 .heroItem {
-  height:250px;
+  height: 300px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -88,5 +89,27 @@
 
 .heroDescription {
   font-size: 0.8rem;
+}
+
+.homeCTA {
+  border-top: solid 1px white;
+  background: url('/static/img/69.svg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 500px;
+}
+
+[data-theme='light'] .homeCTA {
+  filter: invert(1);
+  color: white;
+}
+
+.homeCTAinner {
+  padding: 5rem 1rem;
+}
+
+.ctaButton {
+  margin-right: 30px;
 }
 

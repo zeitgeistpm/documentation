@@ -4,7 +4,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const math = require("remark-math");
 const katex = require("rehype-katex");
 
-/** @type {import('@docusaurus/types').Config} */
+/** =@type {import('@docusaurus/types').Config} */
 const config = {
   title: "Zeitgeist Documentation",
   tagline: "Learn how to integrate with the Zeitgeist network.",
@@ -33,7 +33,7 @@ const config = {
       navbar: {
         title: "Zeitgeist Documentation",
         logo: {
-          src: "img/Zeitgeist-trans.png",
+          src: "img/Moon_White.png",
           height: '50'
           //href: "/docs/",
         },
@@ -62,36 +62,72 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Community",
             items: [
               {
-                label: "Website",
-                href: "https://zeitgeist.pm",
-              },
-              {
-                label: "Discord",
-                href: "https://discord.com/invite/xv8HuA4s8v",
-              },
-              {
-                label: "Twitter",
-                href: "https://twitter.com/zeitgeistpm",
+                html: `
+                    <a class="footer-logo" href="/" target="_blank" rel="noreferrer noopener" aria-label="Zeitgeist Logo">
+                      <img src="img/Moon_White.png" alt="Zeitgeist Logo" height="50" />
+                      <h3>Zeitgeist</h3>
+                    </a>
+                  `,
               },
             ],
           },
           {
-            title: "More",
+            title: "General",
             items: [
               {
-                label: "Blog",
-                to: "https://blog.zeitgeist.pm",
+                html: `
+                    <a href="https://blog.zeitgeist.pm" target="_blank" rel="noreferrer noopener">
+                      Website
+                    </a>
+                  `,
               },
               {
-                label: "GitHub",
-                href: "https://github.com/zeitgeistpm",
+                html: `
+                    <a href="https://linktr.ee/zeitgeistpm" target="_blank" rel="noreferrer noopener">
+                      LinkTree
+                    </a>
+                  `,
+              },
+            ],
+          },
+          {
+            title: "Technology",
+            items: [
+              {
+                html: `
+                    <a href="https://github.com/ZeitgeistPM" target="_blank" rel="noreferrer noopener">
+                      Github
+                    </a>
+                  `,
               },
               {
-                label: "LinkTree",
-                href: "https://linktr.ee/zeitgeistpm",
+                html: `
+                    <a href="https://zeitgeist.pm/privacy.pdf" target="_blank" rel="noreferrer noopener">
+                      Privacy
+                    </a>
+                  `,
+              },
+            ],
+          },
+          {
+            title: "Social",
+            items: [
+              {
+                html: `
+                    <div class="social-links">
+                      <a class="social-link" href="https://discord.com/invite/xv8HuA4s8v" target="_blank" rel="noreferrer noopener">
+                        <img width="25" src="img/discord.svg"/ alt="Discord Logo">
+                      </a>
+                      <a class="social-link" href="https://github.com/ZeitgeistPM" target="_blank" rel="noreferrer noopener">
+                        <img width="25" src="img/github-light.png"/ alt="Github Logo">
+                      </a>
+                      <a class="social-link" href="https://twitter.com/zeitgeistpm" target="_blank" rel="noreferrer noopener">
+                        <img width="25" src="img/twitter.svg"/ alt="Twitter Logo">
+                      </a>
+                    </div>
+                  `,
               },
             ],
           },

@@ -57,8 +57,10 @@ function Feature({title, Svg, link, description}: FeatureItem) {
   );
 }
 
+
 export default function HomepageFeatures(): JSX.Element {
   return (
+  <>
     <section className={styles.features}>
       <div className="container">
         <div className="row">
@@ -68,5 +70,21 @@ export default function HomepageFeatures(): JSX.Element {
         </div>
       </div>
     </section>
+    <section className={clsx('row', styles.homeCTA)}>
+      <div className={clsx('container', styles.homeCTAinner)}>
+        <div className={clsx('col col--6')}>
+            <h2>Help improve this wiki</h2>
+            <p>This wiki was started by and is maintained by Web3 Foundation. It is an open-source-ish project and aims to be the most extensive resource of knowledge on Polkadot and the Polkadot ecosystem.</p>
+            <div className="">
+              <Link to="https://github.com/ZeitgeistPM" className={clsx('button button--outline button--primary', styles.ctaButton)}>Contribute</Link>
+              <Link to="https://crowdin.com/project/zeitgeistpm" className={clsx('button button--outline button--primary', styles.ctaButton)}>Help Translate</Link>
+            </div>
+        </div>
+        <div className={clsx('col col--6')}>
+
+        </div>
+      </div>
+    </section>
+    </>
   );
 }
