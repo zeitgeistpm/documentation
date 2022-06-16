@@ -118,13 +118,13 @@ const config = {
                 html: `
                     <div class="social-links">
                       <a class="social-link" href="https://discord.com/invite/xv8HuA4s8v" target="_blank" rel="noreferrer noopener">
-                        <img width="25" src="img/discord.svg"/ alt="Discord Logo">
+                        <img width="25" src="img/discord.svg" alt="Discord Logo">
                       </a>
                       <a class="social-link" href="https://github.com/ZeitgeistPM" target="_blank" rel="noreferrer noopener">
-                        <img width="25" src="img/github-light.png"/ alt="Github Logo">
+                        <img width="25" src="img/github-light.png" alt="Github Logo">
                       </a>
                       <a class="social-link" href="https://twitter.com/zeitgeistpm" target="_blank" rel="noreferrer noopener">
-                        <img width="25" src="img/twitter.svg"/ alt="Twitter Logo">
+                        <img width="25" src="img/twitter.svg" alt="Twitter Logo">
                       </a>
                     </div>
                   `,
