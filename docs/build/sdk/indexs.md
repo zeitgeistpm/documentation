@@ -47,17 +47,17 @@ const res = await sdk.models.createCpmmMarketAndDeployAssets({
 ```
 
 **Object Arguments** 
-| Name                  | Type                   | Description                                                    |
-| --------------------- | ---------------------- | -------------------------------------------------------------- |
-| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction             |
-| oracle                | string                 | The address that will be responsible for reporting the market  |
-| period                | MarketPeriod           | Start and end block numbers or unix timestamp of the market    |
-| marketType            | MarketTypeOf           | `Categorical` or `Scalar`                                      |
-| mdm                   | MarketDisputeMechanism | Dispute settlement can be authorized, court or simple_disputes |
-| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                   |
-| amount                | string                 | The amount of each token to add to the pool                    |
-| weights               | string[]               | List of relative denormalized weights of each asset            |
-| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`             |
+| Name                  | Type                   | Description                                                   |
+| --------------------- | ---------------------- | ------------------------------------------------------------- |
+| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction            |
+| oracle                | string                 | The address that will be responsible for reporting the market |
+| period                | MarketPeriod           | Start and end block numbers or milliseconds since epoch       |
+| marketType            | MarketTypeOf           | `Categorical` or `Scalar`                                     |
+| mdm                   | MarketDisputeMechanism | Dispute settlement can only be `Authorized` currently         |
+| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                  |
+| amount                | string                 | The amount of each token to add to the pool                   |
+| weights               | string[]               | List of relative denormalized weights of each asset           |
+| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`            |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createCpmmMarketAndDeployAssets.ts)
 
@@ -82,17 +82,17 @@ const marketId = await sdk.models.createMarket({
 ```
 
 **Object Arguments** 
-| Name                  | Type                   | Description                                                    |
-| --------------------- | ---------------------- | -------------------------------------------------------------- |
-| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction             |
-| oracle                | string                 | The address that will be responsible for reporting the market  |
-| period                | MarketPeriod           | Start and end block numbers or unix timestamp of the market    |
-| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                   |
-| creationType          | string                 | `Permissionless` or `Advised`                                  |
-| marketType            | MarketTypeOf           | `Categorical` or `Scalar`                                      |
-| mdm                   | MarketDisputeMechanism | Dispute settlement can be authorized, court or simple_disputes |
-| scoringRule           | string                 | The scoring rule of the market                                 |
-| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`             |
+| Name                  | Type                   | Description                                                   |
+| --------------------- | ---------------------- | ------------------------------------------------------------- |
+| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction            |
+| oracle                | string                 | The address that will be responsible for reporting the market |
+| period                | MarketPeriod           | Start and end block numbers or milliseconds since epoch       |
+| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                  |
+| creationType          | string                 | `Permissionless` or `Advised`                                 |
+| marketType            | MarketTypeOf           | `Categorical` or `Scalar`                                     |
+| mdm                   | MarketDisputeMechanism | Dispute settlement can only be `Authorized` currently         |
+| scoringRule           | string                 | The scoring rule of the market                                |
+| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`            |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createCategoricalMarket.ts)
 
