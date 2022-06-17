@@ -46,7 +46,7 @@ const res = await sdk.models.createCpmmMarketAndDeployAssets({
 });
 ```
 
-**Object Arguments** 
+**Object Arguments**
 
 | Name                  | Type                   | Description                                                   |
 | --------------------- | ---------------------- | ------------------------------------------------------------- |
