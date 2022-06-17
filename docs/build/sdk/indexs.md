@@ -42,11 +42,12 @@ const res = await sdk.models.createCpmmMarketAndDeployAssets({
   amount,
   weights: weights.split(`,`),
   metadata,
-  callbackOrPaymentInfo: false
+  callbackOrPaymentInfo: false,
 });
 ```
 
-**Object Arguments** 
+**Object Arguments**
+
 | Name                  | Type                   | Description                                                    |
 | --------------------- | ---------------------- | -------------------------------------------------------------- |
 | signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction             |
@@ -63,7 +64,8 @@ const res = await sdk.models.createCpmmMarketAndDeployAssets({
 
 ## createMarket
 
-You can use this function to create categorical or scalar market using below arguments.
+You can use this function to create categorical or scalar market using below
+arguments.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -81,17 +83,18 @@ const marketId = await sdk.models.createMarket({
 });
 ```
 
-**Object Arguments** 
+**Object Arguments**
+
 | Name                  | Type                   | Description                                                    |
 | --------------------- | ---------------------- | -------------------------------------------------------------- |
 | signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction             |
 | oracle                | string                 | The address that will be responsible for reporting the market  |
 | period                | MarketPeriod           | Start and end block numbers or unix timestamp of the market    |
-| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                   |
-| creationType          | string                 | `Permissionless` or `Advised`                                  |
 | marketType            | MarketTypeOf           | `Categorical` or `Scalar`                                      |
+| creationType          | string                 | `Permissionless` or `Advised`                                  |
 | mdm                   | MarketDisputeMechanism | Dispute settlement can be authorized, court or simple_disputes |
-| scoringRule           | string                 | The scoring rule of the market                                 |
+| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                   |
+| scoringRule           | string                 | The amount of each token to add to the pool                    |
 | callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`             |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createCategoricalMarket.ts)
@@ -107,14 +110,18 @@ const sdk = await SDK.initialize(endpoint);
 const market = await sdk.models.fetchMarketData(Number(marketId));
 ```
 
-**Arguments** | Name | Type | Introduction | | ---- | ---- | ------------ | |
-marketId | MarketId | The unique identifier for the market you want to fetch. |
+**Object Arguments**
+
+| Name     | Type     | Description                                             |
+| -------- | -------- | ------------------------------------------------------- |
+| marketId | MarketId | The unique identifier for the market you want to fetch. |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/fetchMarketData.ts)
 
 ## getMarketCount
 
-You can use this function to get total number of markets registered with the network.
+You can use this function to get total number of markets registered with the
+network.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -138,8 +145,11 @@ const sdk = await SDK.initialize(endpoint);
 const res = await sdk.models.fetchDisputes();
 ```
 
-**Arguments** | Name | Type | Introduction | | ---- | ---- | ------------ | |
-marketId | MarketId | The unique identifier for the market you want to fetch. |
+**Object Arguments**
+
+| Name     | Type     | Description                                             |
+| -------- | -------- | ------------------------------------------------------- |
+| marketId | MarketId | The unique identifier for the market you want to fetch. |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/fetchDisputes.ts)
 
@@ -220,10 +230,12 @@ const sdk = await SDK.initialize(endpoint, { graphQlEndpoint });
 const res = await sdk.models.queryAllActiveAssets(marketSlug, pagination);
 ```
 
-**Arguments** | Name | Type | Introduction | | ---- | ---- | ------------ | |
-marketSlugText | string | Filter assets by market slug | | pagination | {
-pageNumber: number; pageSize: number } | Options for pagination, not neccessary
-|
+**Object Arguments**
+
+| Name           | Type                                     | Description                            |
+| -------------- | ---------------------------------------- | -------------------------------------- |
+| marketSlugText | string                                   | Filter assets by market slug           |
+| pagination     | { pageNumber: number; pageSize: number } | Options for pagination, not neccessary |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/queryAllActiveAssets.ts)
 
