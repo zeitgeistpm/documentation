@@ -46,6 +46,7 @@ const res = await sdk.models.createCpmmMarketAndDeployAssets({
 });
 ```
 
+<<<<<<< HEAD
 **Object Arguments**
 
 | Name                  | Type                   | Description                                                    |
@@ -59,6 +60,20 @@ const res = await sdk.models.createCpmmMarketAndDeployAssets({
 | amount                | string                 | The amount of each token to add to the pool                    |
 | weights               | string[]               | List of relative denormalized weights of each asset            |
 | callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`             |
+=======
+**Object Arguments** 
+| Name                  | Type                   | Description                                                   |
+| --------------------- | ---------------------- | ------------------------------------------------------------- |
+| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction            |
+| oracle                | string                 | The address that will be responsible for reporting the market |
+| period                | MarketPeriod           | Start and end block numbers or milliseconds since epoch       |
+| marketType            | MarketTypeOf           | `Categorical` or `Scalar`                                     |
+| mdm                   | MarketDisputeMechanism | Dispute settlement can only be `Authorized` currently         |
+| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                  |
+| amount                | string                 | The amount of each token to add to the pool                   |
+| weights               | string[]               | List of relative denormalized weights of each asset           |
+| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`            |
+>>>>>>> 1e13b37d019656ddf0f89e18d8cb057b89231b19
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createCpmmMarketAndDeployAssets.ts)
 
@@ -83,6 +98,7 @@ const marketId = await sdk.models.createMarket({
 });
 ```
 
+<<<<<<< HEAD
 **Object Arguments**
 
 | Name                  | Type                   | Description                                                    |
@@ -96,6 +112,20 @@ const marketId = await sdk.models.createMarket({
 | metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                   |
 | scoringRule           | string                 | The amount of each token to add to the pool                    |
 | callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`             |
+=======
+**Object Arguments** 
+| Name                  | Type                   | Description                                                   |
+| --------------------- | ---------------------- | ------------------------------------------------------------- |
+| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction            |
+| oracle                | string                 | The address that will be responsible for reporting the market |
+| period                | MarketPeriod           | Start and end block numbers or milliseconds since epoch       |
+| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                  |
+| creationType          | string                 | `Permissionless` or `Advised`                                 |
+| marketType            | MarketTypeOf           | `Categorical` or `Scalar`                                     |
+| mdm                   | MarketDisputeMechanism | Dispute settlement can only be `Authorized` currently         |
+| scoringRule           | string                 | The scoring rule of the market                                |
+| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`            |
+>>>>>>> 1e13b37d019656ddf0f89e18d8cb057b89231b19
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createCategoricalMarket.ts)
 
