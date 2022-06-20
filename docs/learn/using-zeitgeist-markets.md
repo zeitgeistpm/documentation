@@ -5,21 +5,27 @@ title: Using Zeitgeist Markets
 
 ## Assets and Markets on Zeitgeist
 
-### The ZTG Token
+### The ZTG Token and Other Currencies
 
 The primary asset on Zeitgeist is the _ZTG_ token. On the Battery Station test
 network, this token is known as _ZBS_, but in SDK and CLI commands, and on this
 page, both ZTG and ZBS are called ZTG.
 
-We use ZTG on Zeitgeist as currency for placing bets in prediction markets (like
-USD in the examples of the previous chapters). Outcome asset tokens will not
-redeem to 1\$ when a market is resolved, but to 1 ZTG instead, and trading fees
-will be paid in ZTG.
+ZTG may be used for placing bets in prediction markets (like USD in the examples
+of the previous chapters). Outcome asset tokens will not redeem to 1\$ when a
+market is resolved, but to 1 ZTG instead, and trading fees will be paid in ZTG.
+Other currencies like [aUSD](https://acala.network/ausd) will be made available
+for trading, as well.
 
 Other uses of ZTG include governance, staking for dispute resolution and
 collator selection, and bonding for various on-chain actions, most importantly
-market creation. Details follow below. You may also be interested in the
-detailed [Tokenomics](https://zeitgeist.pm/ztg) of ZTG.
+market creation. These actions require ZTG and ZTG only. Details follow below.
+
+The total supply of ZTG at genesis is 100M. Each ZTG equal
+$10^{10} = 10,\!000,\!000,\!000$ _Pennocks_, the smallest unit of currency on
+Zeitgeist. Whenever amounts of ZTG are specified in the SDK or polkadot-js, they
+are specified in Pennocks. See [Tokenomics](https://zeitgeist.pm/ztg) for
+details.
 
 ### Outcome Asset Tokens
 
