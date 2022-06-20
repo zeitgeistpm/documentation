@@ -327,17 +327,6 @@ arbitrage:
   set to receive 1 ZTG from the prize pool. This move will remove liquidity from
   the market.
 
-### Liquidity Pools for Multiple Markets
-
-It is possible for a liquidity provider to deploy their own pool, involving any
-kind of assets and not referenced by a specific market. The reason _not_ to do
-this is that they would then be taking the risk of providing liquidity, without
-optimally minimizing that risk, as the total liquidity would be fragmented
-between different pools. When a pool has less liquidity, it is less liquid which
-tends to a lose-lose outcome for all involved. It is recommended, instead, only
-to use the market's _canonical pool_, which will be referenced by the market
-itself in its on-chain `marketData`.
-
 ### Changing the Ratio between Outcome Tokens in a Liquidity Pool
 
 It is possible to add either varying weights of standard assets (the market's
