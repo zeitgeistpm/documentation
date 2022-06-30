@@ -185,28 +185,28 @@ You can use this function to swap a given `assetAmountIn` of the
 `assetIn/assetOut` pair to pool.
 
 ```typescript
-const res = await pool.swapExactAmountIn(
+const res = await pool.swapExactAmountIn({
   signer,
   assetIn,
   assetAmountIn,
   assetOut,
   minAmountOut,
   maxPrice,
-  false
-);
+  callbackOrPaymentInfo: false,
+});
 ```
 
-**Arguments**
+**Object Arguments**
 
-| Name                  | Type                   | Introduction                                                                       |
-| --------------------- | ---------------------- | ---------------------------------------------------------------------------------- |
-| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction.                                |
-| assetIn               | string                 | Asset entering the pool.                                                           |
-| assetAmountIn         | string                 | Amount that will be transferred from the provider to the pool.                     |
-| assetOut              | boolean                | Asset leaving the pool.                                                            |
-| minAmountOut          | string                 | Minimum asset amount that can leave the pool.                                      |
-| maxPrice              | string                 | Market price must be equal or less than the provided value.                        |
-| callbackOrPaymentInfo | boolean                | "true" to get txn fee estimation otherwise callback to capture transaction result. |
+| Name                  | Type                   | Description                                                                       |
+| --------------------- | ---------------------- | --------------------------------------------------------------------------------- |
+| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction                                |
+| assetIn               | string                 | Asset entering the pool                                                           |
+| assetAmountIn         | string                 | Amount that will be transferred from the provider to the pool                     |
+| assetOut              | string                 | Asset leaving the pool                                                            |
+| minAmountOut          | string                 | (_optional_) Minimum asset amount that can leave the pool                         |
+| maxPrice              | string                 | (_optional_) Market price must be equal or less than the provided value           |
+| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise callback to capture transaction result |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/swap/swapExactAmountIn.ts)
 
@@ -216,27 +216,27 @@ You can use this function to swap a given `assetAmountOut` of the
 `assetIn/assetOut` pair to pool.
 
 ```typescript
-const res = await pool.swapExactAmountOut(
+const res = await pool.swapExactAmountOut({
   signer,
   assetIn,
-  assetAmountIn,
+  maxAmountIn,
   assetOut,
-  minAmountOut,
+  assetAmountOut,
   maxPrice,
-  false
-);
+  callbackOrPaymentInfo: false,
+});
 ```
 
-**Arguments**
+**Object Arguments**
 
-| Name                  | Type                   | Introduction                                                                       |
-| --------------------- | ---------------------- | ---------------------------------------------------------------------------------- |
-| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction.                                |
-| assetIn               | string                 | Asset entering the pool.                                                           |
-| assetAmountIn         | string                 | Amount that will be transferred from the provider to the pool.                     |
-| assetOut              | boolean                | Asset leaving the pool.                                                            |
-| minAmountOut          | string                 | Minimum asset amount that can leave the pool.                                      |
-| maxPrice              | string                 | Market price must be equal or less than the provided value.                        |
-| callbackOrPaymentInfo | boolean                | "true" to get txn fee estimation otherwise callback to capture transaction result. |
+| Name                  | Type                   | Introduction                                                                      |
+| --------------------- | ---------------------- | --------------------------------------------------------------------------------- |
+| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction                                |
+| assetIn               | string                 | Asset entering the pool                                                           |
+| maxAmountIn           | string                 | (_optional_) Maximum asset amount that can enter the pool                         |
+| assetOut              | string                 | Asset leaving the pool                                                            |
+| assetAmountOut        | string                 | Amount that will be transferred from the pool to the provider                     |
+| maxPrice              | string                 | (_optional_) Market price must be equal or less than the provided value           |
+| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise callback to capture transaction result |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/swap/swapExactAmountOut.ts)

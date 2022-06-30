@@ -9,27 +9,27 @@
 | Governance  | allows the proxy account to make transactions related to governance, such as voting or proposing democracy proposals                 |
 | Staking     | allows the proxy account to perform staking-related transactions, such as collator or delegator functions, including authorMapping() |
 
-## Add Proxy For A Account
+## Add Proxy To An Account
 
 1. Head to
    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
 2. Choose `Developer`-`Extrinsics`
 
-3. Select the primary account which will controls the proxy accounts
+3. Select the primary account which will control the proxy accounts
 
 4. Choose `proxy` and `addProxy`
 
-5. Select the proxy account and the proxy type, you can check more details about
+5. Select the proxy account and the proxy type, confirm the details about
    roles and privileges of various proxy types
 
-6. Set delay if you need it
+6. Set delay if you prefer
 
 7. Submit this transaction
 
 ![Add Proxy](/img/add-proxy.png)
 
-Going back to the account page, we can see that there will be a small sign here,
+Going back to the account page, we can see that there will be a small sign at this point,
 you can view relevant information by clicking proxy preview.
 
 ![preview](/img/add-proxy-preview.png)
@@ -41,7 +41,7 @@ you can view relevant information by clicking proxy preview.
 
 2. Choose `Developer`-`Chain State`
 
-3. Select the primary account which will controls the proxy accounts
+3. Select the primary account which will control the proxy accounts
 
 4. Choose `proxy` and `proxies`
 
@@ -58,7 +58,7 @@ you can view relevant information by clicking proxy preview.
 
 2. Choose `Developer`-`Extrinsics`
 
-3. Select the primary account which will controls the proxy accounts
+3. Select the primary account which will control the proxy accounts
 
 4. Choose `proxy` and `proxy` and the proxy account
 
@@ -69,7 +69,7 @@ you can view relevant information by clicking proxy preview.
 
 ![proxy transfer](/img/proxy-transfer.png)
 
-We use an example of proxy transfer here to illustrate, we choose `balances` -
+Here we'll use an example of proxy transfer to illustrate, we choose `balances` -
 `transfer`, `dest` is the address of the object we want to transfer, `value` is
 the amount you want to transfer (in Pennock, which means you need to multiply
 10^10)
@@ -81,7 +81,7 @@ the amount you want to transfer (in Pennock, which means you need to multiply
 
 2. Choose `Developer`-`Extrinsics`
 
-3. Select the primary account which will controls the proxy accounts
+3. Select the primary account which will control the proxy accounts
 
 4. Choose `proxy` and `removeProxy/removeProxies`
 

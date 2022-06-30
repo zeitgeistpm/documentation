@@ -75,13 +75,13 @@ const sidebars = {
           type: "category",
           label: "Collator",
           link: {
-            type: "doc",
-            id: "build/collator/how-to-run-as-a-collator",
+            type: "generated-index",
           },
           items: [
             "build/collator/how-to-run-as-a-collator",
             "build/collator/collator-related-operation-guide",
             "build/collator/proxy-delegation",
+            "build/collator/how-to-stake-in-zeitgeist",
             "build/collator/faq",
           ],
         },
