@@ -93,3 +93,104 @@ Once the transaction is confirmed, you can check the result on` Account` Page
 3.You can see the reserved balance
 
 ![](/img/check-stake-result.png)
+
+## How to Stop Delegations
+
+### Schedule Request to Stop Delegations
+
+Choose `developer`---`Extrinsics`
+
+1.Select the account you want to execute the revocation
+
+2.Choose `parachainStaking`
+
+3.Choose `scheduleRevokeDelegation(collator)`
+
+4.Select the account you want to remove the delegation for.
+
+5.Submit this transaction.
+
+![](/img/schedule-leave-delegation.png)
+
+### Execute Request to Stop Delegations
+
+Choose `developer`---`Extrinsics`
+
+1.Select the account you want to execute the revocation
+
+2.Choose `parachainStaking`
+
+3.Choose `executeDelegationRequest`
+
+4.Select the delegator's address
+
+5.Select the account you want to remove the delegation for.
+
+6.Submit this transaction
+
+![](/img/execute-delegation-request.png)
+
+### Remove all ongoing delegations
+
+Choose `developer`---`Extrinsics`
+
+1.Select the account you want to remove all delegation for
+
+2.Choose `parachainStaking`
+
+3.Choose `executeLeaveDelegators`
+
+4.Select the account you want to remove all delegation for
+
+5.Enter the total number that you have delegated. To check the number, see "Get
+your Number of Existing Delegations"
+
+6.Submit this transaction
+
+![](/img/execute-leave-delegation.png)
+
+### Verify Your State
+
+You can verify whether your delegation was removed by following step:
+
+Choose `developer`---`Chain State`
+
+1.Choose `parachainStaking`
+
+2.Choose `delegatorState`
+
+3.Select your account
+
+4.Enable the "Include option"
+
+5.Click the `+`
+
+6.Your latest result
+
+![](/img/delegate-state.png)
+
+### Cancel Request to Stop Delegations
+
+Choose `developer`---`Extrinsics`
+
+1. Select your account
+
+2.Choose `parachainStaking`
+
+1. Choose the `cancelDelegationRequest` or the `cancelLeaveDelegators`
+
+4.Enter the candidate's address
+
+5.Submit this transaction
+
+![](/img/cancel-request-stop-delegations.png)
+
+:::tip
+
+If you scheduled a request via the `scheduleRevokeDelegation`, you will need to
+call `cancelDelegationRequest` in step 3;
+
+If you scheduled a request via the `scheduleLeaveDelegators`, you will need to
+call `cancelDelegationRequest` in step 3;
+
+:::
