@@ -1,10 +1,10 @@
-# How to Run as a Collator on Battery Station
+# How to Be a Collator on Battery Station
 
-## Run the node in Collator mode
+## Run the node in "Collator mode"
 
 ### Download and set up the node environment
 
-1. We can use the following command line to get the latest Zeitgeist node
+1. Use the following command line to get the latest Zeitgeist node
    binary.
 
 ```
@@ -13,7 +13,7 @@ chmod +x zeitgeist
 ```
 
 2. Register a non-privileged user to run the Zeitgeist node service. Docker is
-   not recommended, as it may not guarantee high performance.
+   not recommended, as it gives a sub-optimal performance.
 
    `sudo useradd -M -r -s /sbin/nologin zeitgeist`
 

@@ -81,20 +81,20 @@ const res = market.getDisputes();
 
 ## deploySwapPool
 
-You can use this function to create swap pool for this market via
-`api.tx.predictionMarkets.deploySwapPoolForMarket(marketId, weights)`.
+Creates swap pool for the market with specified liquidity.
 
 ```typescript
-const res = await market.deploySwapPool(signer, wts, false);
+const poolId = await market.deploySwapPool(signer, amount, wts, false);
 ```
 
 **Arguments**
 
-| Name                  | Type                   | Introduction                                                                       |
+| Name                  | Type                   | Description                                                                        |
 | --------------------- | ---------------------- | ---------------------------------------------------------------------------------- |
-| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction.                                |
-| weights               | string                 | List of lengths for each asset.                                                    |
-| callbackOrPaymentInfo |                        | "true" to get txn fee estimation otherwise callback to capture transaction result. |
+| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction                                 |
+| amount                | string                 | The amount of each token to add to the pool                                        |
+| weights               | string                 | The relative denormalized weight of each asset                                     |
+| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise callback to capture transaction result. |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/market/deploySwapPool.ts)
 
