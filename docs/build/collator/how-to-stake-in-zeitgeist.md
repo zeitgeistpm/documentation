@@ -73,7 +73,9 @@ Choose `developer`---`Extrinsics`
 4.Copy the candidate's address to delegate(the one you get from "Get the list of
 candidates" step)
 
-5.The amount that you would like to stake
+5.The amount that you would like to stake (in Pennock, which means you need to
+multiply 10^10, so if you want to stake 1 ZTG, you should fill in is
+`10000000000`)
 
 6.Enter the delegationCount number from "Get the Candidate Delegation Count"
 
