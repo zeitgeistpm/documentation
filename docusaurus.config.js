@@ -71,7 +71,7 @@ const config = {
               {
                 html: `
                     <a class="footer-logo" href="/" target="_blank" rel="noreferrer noopener" aria-label="Zeitgeist Logo">
-                      <img src="img/logo-footer.svg" alt="Zeitgeist Logo" height="40" />
+                      <img src="/img/logo-footer.svg" alt="Zeitgeist Logo" height="40" />
                     </a>
                   `,
               },
