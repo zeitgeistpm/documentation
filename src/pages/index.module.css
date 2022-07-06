@@ -3,6 +3,55 @@
  * and scoped locally.
  */
 
+ .main {
+  position: relative;
+ }
+
+ .bg {
+  position: absolute;
+ }
+
+ .bgTopLeft {
+  left: 300px;
+  top: 254px;
+ }
+
+ .bgTopCenter {
+  right: 320px;
+  top: 440px;
+ }
+
+ .bgLightning {
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%);
+ }
+
+ .bgCenterLeft {
+  left: 100px;
+  top: 800px;
+ }
+
+ .bgCenterCircleSmall {
+  left: 440px;
+  top: 800px;
+ }
+
+ .bgCenterXRight {
+  right: 150px;
+  top: 800px;
+ }
+
+ .bgBottomLeft {
+  left: 100px;
+  bottom: 180px;
+ }
+
+ .bgBottomRight {
+  right: 100px;
+  bottom: 0;
+ }
+
 .heroBanner {
   padding: 4rem 0;
   text-align: center;
@@ -17,6 +66,37 @@
 }
 
 .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialLinks {
+  display: none;
+}
+
+[data-theme='dark'] .socialLinks img{
+  filter: invert(1);
+}
+
+@media (min-width: 768px) {
+  .socialLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: fixed;
+    right: 16px;
+    top: 100px;
+    z-index: 1;
+  }
+}
+
+.socialLink {
+  border: solid 1px var(--ifm-color-primary-darkest);
+  background-color: var(--ifm-color-primary-darkest);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;

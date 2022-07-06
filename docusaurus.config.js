@@ -31,13 +31,18 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: "Zeitgeist Documentation",
+        // title: `Zeitgeist . Documentation`,
         logo: {
           src: "img/Moon_White.png",
-          height: '50'
+          height: '35'
           //href: "/docs/",
         },
         items: [
+          {
+            type: 'html',
+            position: 'left',
+            value: '<a href="https://docs.zeitgeist.pm" class="navbar-title"><span class="navbar-title--zeitgeist">Zeitgeist</span><span class="navbar-title--blue">.</span><span class="navbar-title--documentation">Documentation</span></a>',
+          },
           {to: 'docs', label: 'Getting Started', position: 'right'},
           {to: 'docs/category/learn', label: 'Learn', position: 'right'},
           {to: 'docs/category/build', label: 'Build', position: 'right'},
@@ -66,8 +71,7 @@ const config = {
               {
                 html: `
                     <a class="footer-logo" href="/" target="_blank" rel="noreferrer noopener" aria-label="Zeitgeist Logo">
-                      <img src="img/Moon_White.png" alt="Zeitgeist Logo" height="50" />
-                      <h3>Zeitgeist</h3>
+                      <img src="img/logo-footer.svg" alt="Zeitgeist Logo" height="40" />
                     </a>
                   `,
               },
@@ -78,15 +82,29 @@ const config = {
             items: [
               {
                 html: `
-                    <a href="https://blog.zeitgeist.pm" target="_blank" rel="noreferrer noopener">
-                      Website
+                    <a href="https://drive.google.com/drive/folders/1AfYT8k-LRK_84Ca76jgQktVQsSwkBYwW" target="_blank" rel="noreferrer noopener">
+                      Assets
                     </a>
                   `,
               },
               {
                 html: `
-                    <a href="https://linktr.ee/zeitgeistpm" target="_blank" rel="noreferrer noopener">
-                      LinkTree
+                    <a href="https://blog.zeitgeist.pm/" target="_blank" rel="noreferrer noopener">
+                      Blog
+                    </a>
+                  `,
+              },
+              {
+                html: `
+                    <a href="https://angel.co/company/zeitgeist-pm" target="_blank" rel="noreferrer noopener">
+                      Career
+                    </a>
+                  `,
+              },
+              {
+                html: `
+                    <a href="https://mega.nz/folder/XzxjDaTJ#APLp7GIZ-JMUrgZJu6itvQ" target="_blank" rel="noreferrer noopener">
+                      Wallpapers
                     </a>
                   `,
               },
@@ -112,27 +130,62 @@ const config = {
             ],
           },
           {
-            title: "Social",
+            title: "Community",
             items: [
               {
                 html: `
-                    <div class="social-links">
-                      <a class="social-link" href="https://discord.com/invite/xv8HuA4s8v" target="_blank" rel="noreferrer noopener">
-                        <img width="25" src="img/discord.svg" alt="Discord Logo">
-                      </a>
-                      <a class="social-link" href="https://github.com/ZeitgeistPM" target="_blank" rel="noreferrer noopener">
-                        <img width="25" src="img/github-light.png" alt="Github Logo">
-                      </a>
-                      <a class="social-link" href="https://twitter.com/zeitgeistpm" target="_blank" rel="noreferrer noopener">
-                        <img width="25" src="img/twitter.svg" alt="Twitter Logo">
-                      </a>
-                    </div>
+                    <a href="https://discord.com/invite/xv8HuA4s8v" target="_blank" rel="noreferrer noopener">
+                      Discord
+                    </a>
+                  `,
+              },
+              {
+                html: `
+                    <a href="https://t.me/zeitgeist_official" target="_blank" rel="noreferrer noopener">
+                      Telegram
+                    </a>
+                  `,
+              },
+              {
+                html: `
+                    <a href="https://twitter.com/ZeitgeistPM" target="_blank" rel="noreferrer noopener">
+                      Twitter
+                    </a>
                   `,
               },
             ],
           },
+          {
+            items: [
+              {
+                html: `© ${new Date().getFullYear()} Zeitgeist PM`,
+              },
+            ],
+          },
+          // {
+          //   title: "Social",
+          //   items: [
+          //     {
+          //       html: `
+          //           <div class="social-links">
+          //             <a class="social-link" href="https://discord.com/invite/xv8HuA4s8v" target="_blank" rel="noreferrer noopener">
+          //               <img width="25" src="img/discord.svg" alt="Discord Logo">
+          //             </a>
+          //             <a class="social-link" href="https://github.com/ZeitgeistPM" target="_blank" rel="noreferrer noopener">
+          //               <img width="25" src="img/github-light.png" alt="Github Logo">
+          //             </a>
+          //             <a class="social-link" href="https://twitter.com/zeitgeistpm" target="_blank" rel="noreferrer noopener">
+          //               <img width="25" src="img/twitter.svg" alt="Twitter Logo">
+          //             </a>
+          //             <a class="social-link" href="https://facebook.com/zeitgeistpm" target="_blank" rel="noreferrer noopener">
+          //               <img width="12" src="img/facebook.svg" alt="Facebook Logo">
+          //             </a>
+          //           </div>
+          //         `,
+          //     },
+          //   ],
+          // },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Zeitgeist PM`,
       },
       prism: {
         theme: lightCodeTheme,

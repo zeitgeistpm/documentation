@@ -5,18 +5,34 @@
  * work well for content-centric websites.
  */
 /* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Kanit:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap');
+
 :root {
   --ifm-code-font-size: 95%;
   /* Using
    * https://docusaurus.io/docs/styling-layout#styling-your-site-with-infima
    * */
-  --ifm-color-primary: #808080;
-  --ifm-color-primary-dark: #1C1E21;
+  --ifm-color-primary: #748296;
+  --ifm-color-secondary: #A22DEA;
+  --ifm-color-primary-dark: #000000;
   --ifm-color-primary-darker: #0069d9;
-  --ifm-color-primary-darkest: #0056b3;
+  --ifm-color-primary-darkest: #0001FE;
   --ifm-color-primary-light: #fff;
   --ifm-color-primary-lighter: #268fff;
   --ifm-color-primary-lightest: #4da3ff;
+}
+
+#__docusaurus {
+  overflow: hidden;
+}
+
+html {
+  font-family: 'Lato', sans-serif;
+}
+
+/* HEADINGS */
+h1, h2, h3, h4, h5, h6  {
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .docusaurus-highlight-code-line {
@@ -28,13 +44,23 @@
 
 /* Make navbar narrow like @polkadot-wiki */
 .navbar .navbar__inner {
-  max-width: 1400px;
+  max-width: var(--ifm-container-width);
   margin: 0 auto;
+}
+
+@media (min-width: 1440px) {
+  .navbar .navbar__inner {
+    max-width: var(--ifm-container-width-xl);
+  }
+}
+
+.navbar__title {
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 /* Center content on sufficiently large screens, center navbar and
  * floating toc around it */
-@media (min-width: 1400px) {
+@media (min-width: 1440px) {
   .main-wrapper {
     width: 100%;
     align-self: center;
@@ -89,17 +115,22 @@ html[data-theme=dark] .DocSearch {
 
 /* FOOTER */
 
+.footer--dark .container {
+  border-top: solid 1px #1D3453;
+  padding-top: 40px;
+}
+
 html[data-theme='dark'] .footer--dark {
-  --ifm-footer-background-color: #000;
-  border-top: solid 1px white;
+  --ifm-footer-background-color: rgba(121, 121, 121, 0.04);
+  backdrop-filter: blur(40px);
   --ifm-footer-color: #fff;
   --ifm-footer-link-color: #fff;
   --ifm-footer-title-color: #fff;
 }
 
 .footer--dark {
-  --ifm-footer-background-color: #fff;
-  border-top: solid 1px black;
+  --ifm-footer-background-color: rgba(121, 121, 121, 0.04);
+  backdrop-filter: blur(40px);
   --ifm-footer-color: #000;
   --ifm-footer-link-color: #000;
   --ifm-footer-title-color: #000;
@@ -109,13 +140,15 @@ html[data-theme='dark'] {
   --ifm-background-color: #000;
 }
 
-.footer__links {
-  padding-bottom: 2rem;
-  border-bottom: solid 1px black;
+@media (min-width: 768px) {
+  .footer__links {
+    padding-bottom: 2rem;
+  }
 }
 
-html[data-theme='dark'] .footer__links {
-  border-bottom: solid 1px white;
+.footer__title {
+  font-weight: 400;
+  font-family: 'Space Grotesk';
 }
 
 .footer-logo {
@@ -124,9 +157,6 @@ html[data-theme='dark'] .footer__links {
   gap: 20px;
 }
 
-html[data-theme='light'] .footer-logo {
-  filter: invert(1);
-}
 
 .footer-logo:hover {
   text-decoration: none;
@@ -134,33 +164,81 @@ html[data-theme='light'] .footer-logo {
 }
 
 .footer {
-  padding: 3rem 0 1rem 0;
+  padding: 0rem 0 1rem 0;
+}
+
+.footer__item {
+  color: var(--ifm-color-primary)
 }
 
 .footer-logo h3 {
   margin-bottom: 0;
   color: white;
 }
-.social-links {
-  display: flex;
-  gap: 10px;
+
+.footer__col:first-child {
+  flex: 2 0;
 }
 
-.social-link {
-  border: solid 1px white;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.footer__col:first-child .footer__title{
+  margin:0;
 }
 
-html[data-theme='light'] .social-link {
-  filter: invert(1);
+.footer__col:last-child {
+  flex: 2 0;
+}
+
+@media (min-width: 768px) {
+  .footer__col:last-child {
+    text-align: end;
+  }
+}
+
+.footer__col:last-child .footer__title{
+  margin:0;
 }
 
 /* NAVBAR */
+
+.navbar-title {
+  display: none;
+  color: black;
+}
+
+html[data-theme=dark] .navbar-title  {
+  color: white;
+}
+
+@media (min-width: 996px) {
+  .navbar-title {
+    display: inline;
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 1140px) {
+  .navbar-title {
+    font-size: 20px;
+  }
+}
+
+.navbar-title:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar-title--zeitgeist {
+  font-weight: 700;
+}
+
+.navbar-title--blue {
+  color: var(--ifm-color-primary-darkest);
+  font-size: 40px;
+  line-height: 0;
+  margin: 0 0.2rem;
+}
 
 .navbar {
   border-bottom: solid 1px black;
@@ -168,15 +246,18 @@ html[data-theme='light'] .social-link {
 
 html[data-theme=dark] .navbar {
   background-color: #000;
-  border-bottom: solid 1px white;
 }
 
 .navbar--fixed-top {
   min-height: 80px;
 }
 
+.navbar__brand {
+  margin-right: 0;
+}
+
 .navbar__logo {
-  height: 50px;
+  height: 35px;
 }
 
 html[data-theme='light'] .navbar__logo {
@@ -187,12 +268,21 @@ html[data-theme='light'] .navbar__logo {
   border-color: white;
   color: white;
   background-color: rgba(0, 0, 0, 0.9);
-  border-radius: 5px;
   padding: 15px 20px;
+  min-width: 180px;
+  border-radius: 0;
+}
+
+.button-primary {
+  background-color: var(--ifm-color-primary-darkest);
+}
+
+.button-secondary {
+  background-color: var(--ifm-color-secondary);
 }
 
 .button:hover {
-  color: var(--ifm-color-primary);
+  color: white;
 }
 
 /*# sourceMappingURL=custom.css.map */
