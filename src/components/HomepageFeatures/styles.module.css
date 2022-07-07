@@ -1,11 +1,135 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
   width: 100%;
+  min-height: calc(100vh - 80px);
+}
+
+@media (min-width: 768px) {
+  .features {
+    padding: 5rem 1rem;
+    margin-bottom: 5rem;
+  }
+}
+
+.icon {
+  height: 80px;
+  margin-bottom: 2rem;
 }
 
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  height: 20px;
+  width: 20px;
+  margin-top:auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  transform: rotate(180deg);
 }
+
+[data-theme='dark'] .featureSvg {
+  fill: var(--ifm-color-primary-light);
+  transform: rotate(180deg);
+}
+
+.heroLink {
+  color: var(--ifm-color-primary-dark);
+}
+
+.heroLink:hover {
+  text-decoration: none;
+  color: var(--ifm-color-primary-dark);
+}
+
+[data-theme='dark'] .heroLink {
+  color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .heroLink {
+  color: #fff;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+}
+
+.heroItem {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor:pointer;
+  padding: 2rem;
+  box-sizing: content-box;
+  transition: ease 500ms;
+  background-color: transparent;
+  background: rgba(121, 121, 121, 0.03);
+  backdrop-filter: blur(100px);
+  margin: 25px 0;
+}
+
+.heroItem:hover {
+  box-shadow: 0 16px 48px rgb(0 0 0 / 15%);
+  transform: translateY(-1rem);
+}
+
+[data-theme='dark'] .heroItem:hover {
+  box-shadow: 0 16px 48px rgb(255 255 255 / 15%);
+}
+
+.heroDescription {
+  font-size: 0.8rem;
+  color: var(--ifm-color-primary);
+}
+
+.homeCTA {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 60px;
+}
+
+.homeCTAButtons {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .homeCTAButtons {
+    flex-direction: row;
+  }
+}
+
+.homeCTAButtons a {
+  margin-bottom: 20px;
+}
+
+.homeCTAinner {
+  max-width: 840px;
+  text-align: center;
+  padding: 48px 40px 60px 40px;
+  background: rgba(121, 121, 121, 0.03);
+  backdrop-filter: blur(100px);
+}
+
+@media (min-width: 768px) {
+  .homeCTAinner {
+    padding: 48px 140px 60px 140px;
+  }
+}
+
+.homeCTAinner p {
+  color: var(--ifm-color-primary);
+  margin-bottom: 3rem;
+}
+
+.ctaHeader {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
