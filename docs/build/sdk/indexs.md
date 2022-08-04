@@ -49,7 +49,7 @@ const res = await sdk.models.createCpmmMarketAndDeployAssets({
     question: `who will win?`,
   },
   mdm: { authorized: `dE3pPiRvdKqPD5bUDBu3Xpi83McE3Zf3UG8CbhWBQfvUywd7U` },
-  swapFee: `10`,
+  swapFee: `1000000000`,
   amount: `10000000000`,
   weights: [
     `10000000000`,

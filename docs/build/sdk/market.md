@@ -91,7 +91,7 @@ const signer = util.signerFromSeed(`//Alice`);
 
 const poolId = await market.deploySwapPool(
   signer,
-  `10`,
+  `1000000000`,
   `10000000000`,
   [ 
     `10000000000`, 
@@ -126,7 +126,7 @@ const signer = util.signerFromSeed(`//Alice`);
 
 const poolId = await market.deploySwapPoolAndAdditionalLiquidity(
   signer,
-  `10`,
+  `1000000000`,
   `10000000000`,
   [ 
     `10000000000`, 
