@@ -90,17 +90,17 @@ const market = await sdk.models.fetchMarketData(marketId);
 const signer = util.signerFromSeed(`//Alice`);
 
 const poolId = await market.deploySwapPool(
-    signer,
-    `10`,
+  signer,
+  `10`,
+  `10000000000`,
+  [ 
+    `10000000000`, 
+    `10000000000`, 
+    `10000000000`, 
+    `10000000000`, 
     `10000000000`,
-    [ 
-        `10000000000`, 
-        `10000000000`, 
-        `10000000000`, 
-        `10000000000`, 
-        `10000000000`,
-    ],
-    false,
+  ],
+  false,
 );
 ```
 
@@ -125,17 +125,17 @@ const market = await sdk.models.fetchMarketData(marketId);
 const signer = util.signerFromSeed(`//Alice`);
 
 const poolId = await market.deploySwapPoolAndAdditionalLiquidity(
-    signer,
-    `10`,
+  signer,
+  `10`,
+  `10000000000`,
+  [ 
+    `10000000000`, 
+    `10000000000`, 
+    `10000000000`, 
+    `10000000000`, 
     `10000000000`,
-    [ 
-        `10000000000`, 
-        `10000000000`, 
-        `10000000000`, 
-        `10000000000`, 
-        `10000000000`,
-    ],
-    false,
+  ],
+  false,
 );
 ```
 
