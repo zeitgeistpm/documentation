@@ -34,14 +34,32 @@ the minimum amount.
 const sdk = await SDK.initialize(endpoint);
 
 const res = await sdk.models.createCpmmMarketAndDeployAssets({
-  signer,
-  oracle,
-  period: marketPeriod,
-  marketType,
-  mdm,
-  amount,
-  weights: weights.split(`,`),
-  metadata,
+  signer: util.signerFromSeed(`//Alice`),
+  oracle: `dE3pPiRvdKqPD5bUDBu3Xpi83McE3Zf3UG8CbhWBQfvUywd7U`,
+  period: { block: [4000, 5000] },
+  marketType: { categorical: 5 },
+  metadata: {
+    categories: [
+      { name: `karura` },
+      { name: `moonriver` },
+      { name: `phala` },
+      { name: `robonomics` },
+      { name: `kilt` },
+    ],
+    slug: `kusama-derby-example`,
+    description: `example description`,
+    question: `who will win?`,
+  },
+  mdm: { authorized: `dE3pPiRvdKqPD5bUDBu3Xpi83McE3Zf3UG8CbhWBQfvUywd7U` },
+  swapFee: `10`,
+  amount: `10000000000`,
+  weights: [
+    `10000000000`,
+    `10000000000`,
+    `10000000000`,
+    `10000000000`,
+    `10000000000`,
+  ],
   callbackOrPaymentInfo: false,
 });
 ```
