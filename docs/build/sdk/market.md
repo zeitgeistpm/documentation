@@ -115,6 +115,42 @@ const poolId = await market.deploySwapPool(
 | callbackOrPaymentInfo | boolean                  | `true` to get txn fee estimation otherwise callback to capture transaction result |
 
 
+## deploySwapPoolAndAdditionalLiquidity
+
+Buy complete sets and deploy a pool with specified liquidity for a market.
+
+```typescript
+const market = await sdk.models.fetchMarketData(marketId);
+
+const signer = util.signerFromSeed(`//Alice`);
+
+const poolId = await market.deploySwapPoolAndAdditionalLiquidity(
+    signer,
+    `10`,
+    `10000000000`,
+    [ 
+        `10000000000`, 
+        `10000000000`, 
+        `10000000000`, 
+        `10000000000`, 
+        `10000000000`,
+    ],
+    false,
+);
+```
+
+**Arguments**
+
+| Name                  | Type                     | Description                                                                       |
+| --------------------- | ------------------------ | --------------------------------------------------------------------------------- |
+| signer                | [KeyringPairOrExtSigner] | The actual signer provider to sign the transaction                                |
+| swapFee               | string                   | The fee applied to each swap after pool creation                                  |
+| amount                | string                   | The amount of each token to add to the pool                                       |
+| weights               | string                   | The relative denormalized weight of each outcome asset                            |
+| callbackOrPaymentInfo | boolean                  | `true` to get txn fee estimation otherwise callback to capture transaction result |
+
+[KeyringPairOrExtSigner]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L276
+
 ## assetSpotPricesInZtg
 
 You can use this function to fetch spot prices of all assets in this market Can
