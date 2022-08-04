@@ -26,9 +26,7 @@ const res = await sdk.models.getAllMarketIds();
 
 ## createCpmmMarketAndDeployAssets
 
-Create a market using CPMM scoring rule, buy a complete set of the assets used
-and deploy within and deploy an arbitrary amount of those that's greater than
-the minimum amount.
+Creates a market using CPMM scoring rule, buys a complete set of the assets used and deploys the funds.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -66,19 +64,24 @@ const res = await sdk.models.createCpmmMarketAndDeployAssets({
 
 **Object Arguments**
 
-| Name                  | Type                   | Description                                                   |
-| --------------------- | ---------------------- | ------------------------------------------------------------- |
-| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction            |
-| oracle                | string                 | The address that will be responsible for reporting the market |
-| period                | MarketPeriod           | Start and end block numbers or milliseconds since epoch       |
-| marketType            | MarketTypeOf           | `Categorical` or `Scalar`                                     |
-| mdm                   | MarketDisputeMechanism | Dispute settlement can only be `Authorized` currently         |
-| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                  |
-| amount                | string                 | The amount of each token to add to the pool                   |
-| weights               | string[]               | List of relative denormalized weights of each asset           |
-| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`            |
+| Name                  | Type                     | Description                                                   |
+| --------------------- | ------------------------ | ------------------------------------------------------------- |
+| signer                | [KeyringPairOrExtSigner] | The actual signer provider to sign the transaction            |
+| oracle                | string                   | The address that will be responsible for reporting the market |
+| period                | [MarketPeriod]           | Start and end block numbers or milliseconds since epoch       |
+| marketType            | [MarketTypeOf]           | `Categorical` or `Scalar`                                     |
+| metadata              | [DecodedMarketMetadata]  | A hash pointer to the metadata of the market                  |
+| mdm                   | [MarketDisputeMechanism] | Dispute settlement can only be `Authorized` currently         |
+| swapFee               | string                   | The fee applied to each swap after pool creation              |
+| amount                | string                   | The amount of each token to add to the pool                   |
+| weights               | string[]                 | List of relative denormalized weights of each outcome asset   |
+| callbackOrPaymentInfo | boolean                  | `true` to get txn fee estimation otherwise `false`            |
 
-[Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createCpmmMarketAndDeployAssets.ts)
+[KeyringPairOrExtSigner]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L276
+[MarketDisputeMechanism]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L198
+[MarketPeriod]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L182
+[MarketTypeOf]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L188
+[DecodedMarketMetadata]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L6
 
 ## createMarket
 
