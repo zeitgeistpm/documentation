@@ -40,12 +40,15 @@ blockchain context. Previous endeavours to finding a good replacement
 ([Polkadot democracy](https://wiki.polkadot.network/docs/maintain-guides-democracy),
 [token holder votes](https://vote.polkadot.network),
 [token curated registries](https://education.district0x.io/general-topics/understanding-ethereum/token-curated-registry/))
-have mostly led down the same road: token-based voting. This essentially puts
-the decisions into the hands of the powerful few. Futarchy walks a different
-path. Once the welfare measure is set, policy decision become matter of fact and
-are decided upon not by vote, but by bet.
+have mostly led down the same road: token-based voting.[^3] This essentially
+puts the decisions into the hands of the powerful few. Futarchy walks a
+different path. Once the welfare measure is set, policy decision become matter
+of fact and are decided upon not by vote, but by bet.
 
 [^2]: ibid. p. 151
+[^3]:
+    See
+    [What is Futarchy? - Trading on The Future - Friederike Ernst #TOA18](https://www.youtube.com/watch?v=XonwBPXpyJQ)
 
 ## Futarchy by Example
 
