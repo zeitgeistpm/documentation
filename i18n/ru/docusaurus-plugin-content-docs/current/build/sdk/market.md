@@ -76,22 +76,72 @@ const res = market.getDisputes();
 
 ## deploySwapPool
 
-Creates swap pool for the market with specified liquidity.
+Creates swap pool for the market with specified liquidity. The sender must have enough funds to cover all of the required shares to seed the pool.
 
 ```typescript
-const poolId = await market.deploySwapPool(signer, amount, wts, false);
+const market = await sdk.models.fetchMarketData(marketId);
+
+const signer = util.signerFromSeed(`//Alice`);
+
+const poolId = await market.deploySwapPool(
+  signer,
+  `1000000000`,
+  `10000000000`,
+  [ 
+    `10000000000`, 
+    `10000000000`, 
+    `10000000000`, 
+    `10000000000`, 
+    `10000000000`,
+  ],
+  false,
+);
 ```
 
 **Arguments**
 
-| Name                  | Type                   | Description                                                                        |
-| --------------------- | ---------------------- | ---------------------------------------------------------------------------------- |
-| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction                                 |
-| amount                | string                 | The amount of each token to add to the pool                                        |
-| weights               | string                 | The relative denormalized weight of each asset                                     |
-| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise callback to capture transaction result. |
+| Name                  | Type                       | Description                                                                       |
+| --------------------- | -------------------------- | --------------------------------------------------------------------------------- |
+| signer                | [KeyringPairOrExtSigner][] | The actual signer provider to sign the transaction                                |
+| swapFee               | string                     | The fee applied to each swap after pool creation                                  |
+| amount                | string                     | The amount of each token to add to the pool                                       |
+| weights               | string                     | The relative denormalized weight of each outcome asset                            |
+| callbackOrPaymentInfo | boolean                    | `true` to get txn fee estimation otherwise callback to capture transaction result |
 
-[Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/market/deploySwapPool.ts)
+
+## deploySwapPoolAndAdditionalLiquidity
+
+Buy complete sets and deploy a pool with specified liquidity for a market.
+
+```typescript
+const market = await sdk.models.fetchMarketData(marketId);
+
+const signer = util.signerFromSeed(`//Alice`);
+
+const poolId = await market.deploySwapPoolAndAdditionalLiquidity(
+  signer,
+  `1000000000`,
+  `10000000000`,
+  [ 
+    `10000000000`, 
+    `10000000000`, 
+    `10000000000`, 
+    `10000000000`, 
+    `10000000000`,
+  ],
+  false,
+);
+```
+
+**Arguments**
+
+| Name                  | Type                       | Description                                                                       |
+| --------------------- | -------------------------- | --------------------------------------------------------------------------------- |
+| signer                | [KeyringPairOrExtSigner][] | The actual signer provider to sign the transaction                                |
+| swapFee               | string                     | The fee applied to each swap after pool creation                                  |
+| amount                | string                     | The amount of each token to add to the pool                                       |
+| weights               | string                     | The relative denormalized weight of each outcome asset                            |
+| callbackOrPaymentInfo | boolean                    | `true` to get txn fee estimation otherwise callback to capture transaction result |
 
 ## assetSpotPricesInZtg
 
@@ -249,3 +299,5 @@ const res = await market.cancelAdvised(signer, false);
 | callbackOrPaymentInfo |                        | "true" to get txn fee estimation otherwise callback to capture transaction result. |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/market/cancelAdvised.ts)
+
+[KeyringPairOrExtSigner]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L276
