@@ -1,8 +1,6 @@
 ---
 id: getting-started
 title: Getting Started
-sidebar_label: Getting Started
-slug: /
 ---
 
 Zeitgeist is an evolving blockchain for prediction markets and futarchy. The core functions of the Zeitgeist network include methods for creating, betting on, and resolving [prediction markets][]. However, it also consists of a [governance protocol][] which sways the direction of the network, a [decentralized court][] to handle disputes, and utilities for operating [futarchic organizations][].
