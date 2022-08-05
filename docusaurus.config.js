@@ -43,7 +43,7 @@ const config = {
             position: 'left',
             value: '<a href="https://docs.zeitgeist.pm" class="navbar-title"><span class="navbar-title--zeitgeist">Zeitgeist</span><span class="navbar-title--blue">.</span><span class="navbar-title--documentation">Documentation</span></a>',
           },
-          {to: 'docs', label: 'Getting Started', position: 'right'},
+          {to: 'docs/getting-started', label: 'Getting Started', position: 'right'},
           {to: 'docs/category/learn', label: 'Learn', position: 'right'},
           {to: 'docs/category/build', label: 'Build', position: 'right'},
           {to: 'docs/faq', label: 'FAQ', position: 'right'},
