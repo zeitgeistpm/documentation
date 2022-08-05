@@ -8,7 +8,7 @@
 
 ![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013121713360.png)
 
-Of course, there may be a prompt like the following picture. You can wait a few seconds. If you can enter the APP, it means there is no problem.
+当然，也许会出现下面的情况。 您可以稍作等待。 如果您可以进入 APP，这意味着没有问题。
 
 ![](https://raw.githubusercontent.com/Whisker17/ImageStoreService/main/image-20211013121733640.png)
 
