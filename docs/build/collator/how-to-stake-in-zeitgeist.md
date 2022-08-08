@@ -96,6 +96,24 @@ Once the transaction is confirmed, you can check the result on` Account` Page
 
 ![](/img/check-stake-result.png)
 
+### Increase bond
+
+If you want to delegate more ZTG to a collator with whom you are already staking, you can use the function delegatorBondMore(candidate, more) under the [ParachainStaking option here](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Frpc-0.zeitgeist.pm#/extrinsics)
+
+Choose `developer`---`Extrinsics`
+
+1.Choose the account you would like to stake you tokens
+
+2.Choose `parachainStaking`
+
+3.Select `delegatorBondMore(candidate, more)`
+
+4.Paste the collator address with whom you previously staked
+ 
+5.In more: input the amount you want to stake, remember to multiply it by 10000000000 for example if you want to stake 50 ZTG the amount to input will be: 50 * 10000000000 = 500000000000
+
+6.Press `Submit Transaction`
+
 ## How to Stop Delegations
 
 ### Schedule Request to Stop Delegations
