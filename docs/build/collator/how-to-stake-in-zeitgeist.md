@@ -61,13 +61,9 @@ console.log(delegatorInfo.toHuman()["delegations"].length);
 
 ### Check the amount you can stake
 
-You have a balance which consists of transferrable, vested, locked and reserved tokens. To see the amount of stakable tokens, you can check the transferable tokens on the ` Account` Page
+You have a balance which consists of transferrable, locked and reserved tokens. You can only stake transferrable tokens. To see the amount of transferrable tokens, check the **Accounts** page:
 
-1.Choose ` Account`
-
-2.Click the triangle button
-
-3.You can see the transferable balance
+![](/img/check-stake-result.png)
 
 ### Stake your Token
 
@@ -85,7 +81,7 @@ candidates" step)
 
 5.The amount that you would like to stake (in Pennock, which means you need to
 multiply 10^10, so if you want to stake 1 ZTG, you should fill in is
-`10000000000`).
+`10000000000`)
 
 6.Enter the delegationCount number from "Get the Candidate Delegation Count"
 
