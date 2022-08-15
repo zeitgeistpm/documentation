@@ -6,15 +6,15 @@
 
 1. Head to [Polkadot.js](https://https://polkadot.js.org/apps/)
 
-2. Choose `developer`---`Chain State`
+1. Choose `developer`---`Chain State`
 
-3. Choose `parachainStaking`
+1. Choose `parachainStaking`
 
-4. Choose `candidatePool(): ParachainStakingSetOrderedSetBond`
+1. Choose `candidatePool(): ParachainStakingSetOrderedSetBond`
 
-5. Click `+` to make a query
+1. Click `+` to make a query
 
-6. Copy one of the canditate address you would to stake your tokens
+1. Copy one of the canditate address you would to stake your tokens
 
 ![](/img/get-candidates-list.png)
 
@@ -24,15 +24,15 @@ Choose `developer`---`Chain State`
 
 1. Choose `parachainStaking`
 
-2. Choose
+1. Choose
    `candidateInfo(AccountId32): Option<ParachainStakingCandidateMetadata>`
-3. Paste the collator candidate's address
+1. Paste the collator candidate's address
 
-4. Enable the "include option"
+1. Enable the "include option"
 
-5. Click `+` to make a query
+1. Click `+` to make a query
 
-6. Get the number of delegationCount
+1. Get the number of delegationCount
 
 ![](/img/get-delegation-count.png)
 
@@ -51,11 +51,11 @@ const delegatorInfo = await api.query.parachainStaking.delegatorState(yourDelega
 console.log(delegatorInfo.toHuman()["delegations"].length);
 ```
 
-1.Enter your Address
+1. Enter your Address
 
-2.Click run botton
+1. Click run botton
 
-3.Get the number of existing delegations
+1. Get the number of existing delegations
 
 ![](/img/get-your-delegations-number.png)
 
@@ -69,23 +69,23 @@ You have a balance which consists of transferrable, locked and reserved tokens. 
 
 Choose `developer`---`Extrinsics`
 
-1.Choose the account you would like to stake you tokens
+1. Choose the account you would like to stake you tokens
 
-2.Choose `parachainStaking`
+1. Choose `parachainStaking`
 
-3.Choose
+1. Choose
 `delegate(candidate, amount, candidateDelegationCount, delegationCount)`
 
-4.Copy the candidate's address to delegate(the one you get from "Get the list of
+1. Copy the candidate's address to delegate(the one you get from "Get the list of
 candidates" step)
 
-5.The amount that you would like to stake (in Pennock, which means you need to
+1. The amount that you would like to stake (in Pennock, which means you need to
 multiply 10^10, so if you want to stake 1 ZTG, you should fill in is
 `10000000000`)
 
-6.Enter the delegationCount number from "Get the Candidate Delegation Count"
+1. Enter the delegationCount number from "Get the Candidate Delegation Count"
 
-7.Enter the number of existing delegations from "Get your Number of Existing
+1. Enter the number of existing delegations from "Get your Number of Existing
 Delegations" (If you do not stake before, then enter 0)
 
 ![](/img/stake-ztg.png)
@@ -94,11 +94,11 @@ Delegations" (If you do not stake before, then enter 0)
 
 Once the transaction is confirmed, you can check the result on` Account` Page
 
-1.Choose ` Account`
+1. Choose ` Account`
 
-2.Click the triangle button
+1. Click the triangle button
 
-3.You can see the reserved balance
+1. You can see the reserved balance
 
 ![](/img/check-stake-result.png)
 
@@ -108,15 +108,15 @@ Once the transaction is confirmed, you can check the result on` Account` Page
 
 Choose `developer`---`Extrinsics`
 
-1.Select the account you want to execute the revocation
+1. Select the account you want to execute the revocation
 
-2.Choose `parachainStaking`
+1. Choose `parachainStaking`
 
-3.Choose `scheduleRevokeDelegation(collator)`
+1. Choose `scheduleRevokeDelegation(collator)`
 
-4.Select the account you want to remove the delegation for.
+1. Select the account you want to remove the delegation for.
 
-5.Submit this transaction.
+1. Submit this transaction.
 
 ![](/img/schedule-leave-delegation.png)
 
@@ -124,17 +124,17 @@ Choose `developer`---`Extrinsics`
 
 Choose `developer`---`Extrinsics`
 
-1.Select the account you want to execute the revocation
+1. Select the account you want to execute the revocation
 
-2.Choose `parachainStaking`
+1. Choose `parachainStaking`
 
-3.Choose `executeDelegationRequest`
+1. Choose `executeDelegationRequest`
 
-4.Select the delegator's address
+1. Select the delegator's address
 
-5.Select the account you want to remove the delegation for.
+1. Select the account you want to remove the delegation for.
 
-6.Submit this transaction
+1. Submit this transaction
 
 ![](/img/execute-delegation-request.png)
 
@@ -142,16 +142,16 @@ Choose `developer`---`Extrinsics`
 
 Choose `developer`---`Extrinsics`
 
-1.Select the account you want to remove all delegation for
+1. Select the account you want to remove all delegation for
 
-2.Choose `parachainStaking`
+1. Choose `parachainStaking`
 
-3.Choose `executeLeaveDelegators`
+1. Choose `executeLeaveDelegators`
 
-4.Select the account you want to remove all delegation for
+1. Select the account you want to remove all delegation for
 
-5.Enter the total number that you have delegated. To check the number, see "Get
-your Number of Existing Delegations"
+1. Enter the total number that you have delegated. To check the number, see "Get
+   your Number of Existing Delegations"
 
 6.Submit this transaction
 
@@ -163,17 +163,17 @@ You can verify whether your delegation was removed by following step:
 
 Choose `developer`---`Chain State`
 
-1.Choose `parachainStaking`
+1. Choose `parachainStaking`
 
-2.Choose `delegatorState`
+1. Choose `delegatorState`
 
-3.Select your account
+1. Select your account
 
-4.Enable the "Include option"
+1. Enable the "Include option"
 
-5.Click the `+`
+1. Click the `+`
 
-6.Your latest result
+1. Your latest result
 
 ![](/img/delegate-state.png)
 
@@ -183,13 +183,13 @@ Choose `developer`---`Extrinsics`
 
 1. Select your account
 
-2.Choose `parachainStaking`
+1. Choose `parachainStaking`
 
 1. Choose the `cancelDelegationRequest` or the `cancelLeaveDelegators`
 
-4.Enter the candidate's address
+1. Enter the candidate's address
 
-5.Submit this transaction
+1. Submit this transaction
 
 ![](/img/cancel-request-stop-delegations.png)
 
