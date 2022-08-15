@@ -4,8 +4,7 @@
 
 ### Download and set up the node environment
 
-1. Use the following command line to get the latest Zeitgeist node
-   binary.
+1. Use the following command line to get the latest Zeitgeist node binary.
 
 ```
 curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.3.2/zeitgeist_parachain
