@@ -14,18 +14,18 @@
 1. Head to
    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-2. Choose `Developer`-`Extrinsics`
+1. Choose `Developer`-`Extrinsics`
 
-3. Select the primary account which will control the proxy accounts
+1. Select the primary account which will control the proxy accounts
 
-4. Choose `proxy` and `addProxy`
+1. Choose `proxy` and `addProxy`
 
-5. Select the proxy account and the proxy type, confirm the details about roles
+1. Select the proxy account and the proxy type, confirm the details about roles
    and privileges of various proxy types
 
-6. Set delay if you prefer
+1. Set delay if you prefer
 
-7. Submit this transaction
+1. Submit this transaction
 
 ![Add Proxy](/img/add-proxy.png)
 
@@ -39,15 +39,15 @@ this point, you can view relevant information by clicking proxy preview.
 1. Head to
    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-2. Choose `Developer`-`Chain State`
+1. Choose `Developer`-`Chain State`
 
-3. Select the primary account which will control the proxy accounts
+1. Select the primary account which will control the proxy accounts
 
-4. Choose `proxy` and `proxies`
+1. Choose `proxy` and `proxies`
 
-5. Select the account you want to query/verify
+1. Select the account you want to query/verify
 
-6. Send the query
+1. Send the query
 
 ![verify](/img/verify-proxy.png)
 
@@ -56,16 +56,16 @@ this point, you can view relevant information by clicking proxy preview.
 1. Head to
    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-2. Choose `Developer`-`Extrinsics`
+1. Choose `Developer`-`Extrinsics`
 
-3. Select the primary account which will control the proxy accounts
+1. Select the primary account which will control the proxy accounts
 
-4. Choose `proxy` and `proxy` and the proxy account
+1. Choose `proxy` and `proxy` and the proxy account
 
-5. Select the proxy delegation transaction you want to execute. Different proxy
+1. Select the proxy delegation transaction you want to execute. Different proxy
    types can execute different proxy transactions.
 
-6. Submit this transaction
+1. Submit this transaction
 
 ![proxy transfer](/img/proxy-transfer.png)
 
@@ -79,16 +79,16 @@ you need to multiply 10^10)
 1. Head to
    [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-2. Choose `Developer`-`Extrinsics`
+1. Choose `Developer`-`Extrinsics`
 
-3. Select the primary account which will control the proxy accounts
+1. Select the primary account which will control the proxy accounts
 
-4. Choose `proxy` and `removeProxy/removeProxies`
+1. Choose `proxy` and `removeProxy/removeProxies`
 
-5. Select the proxy account and the proxy type
+1. Select the proxy account and the proxy type
 
-6. Set delay if you need it
+1. Set delay if you need it
 
-7. Submit this transaction
+1. Submit this transaction
 
 ![remove proxy](/img/remove-proxy.png)
