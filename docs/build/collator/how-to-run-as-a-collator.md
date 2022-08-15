@@ -14,7 +14,9 @@
 1. Register a non-privileged user to run the Zeitgeist node service. Docker is
    not recommended, as it gives a sub-optimal performance.
 
-   `sudo useradd -M -r -s /sbin/nologin zeitgeist`
+   ```
+   sudo useradd -M -r -s /sbin/nologin zeitgeist
+   ```
 
 1. Copy the node binary to the specified folder.
 
@@ -27,7 +29,9 @@
 
 1. Create a new service.
 
-   `sudo nano /etc/systemd/system/zeitgeist-node.service`
+   ```
+   sudo nano /etc/systemd/system/zeitgeist-node.service
+   ```
 
 1. Configure the relevant information in the file.
 
@@ -58,7 +62,6 @@
        --port=30334 \
        --rpc-port=9934 \
        --ws-port=9945
-
 
    [Install]
    WantedBy=multi-user.target

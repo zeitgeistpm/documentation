@@ -70,9 +70,9 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 
 1.  Choose `parachainStaking` and `joinCandidates`
 
-1.  Fill your bond amount (in Pennock, which means you need to multiply 10^10,
-    so the minimum number you should fill in is `640000000000`) and candidate
-    count which you can get from [there](#get-candidate-pool-size)
+1.  Fill your bond amount (in Pennock, which means you need to multiply
+    $10^{10}$, so the minimum number you should fill in is `640000000000`) and
+    candidate count which you can get from [there](#get-candidate-pool-size)
 1.  Submit this transaction and if it succeeds, you will join the candidate
     pool.
 
