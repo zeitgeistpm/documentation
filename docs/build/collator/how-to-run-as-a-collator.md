@@ -36,7 +36,7 @@
    Description=Zeitgeist Battery Station parachain full node
    After=network.target
    Requires=network.target
-   
+
    [Service]
    Type=simple
    User=zeitgeist
@@ -58,8 +58,8 @@
        --port=30334 \
        --rpc-port=9934 \
        --ws-port=9945
-   
-   
+
+
    [Install]
    WantedBy=multi-user.target
    ```
