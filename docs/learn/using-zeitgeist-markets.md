@@ -72,7 +72,7 @@ shallow liquidity pools or in volatile markets, this is not to be expected. See
 :::important
 The Zeitgeist Beta uses a
 [constant product market maker](./liquidity.md#example-constant-product-market-maker)
-instead of the Rikiddo scoring rule.
+instead of the Rikiddo scoring rule.  
 :::
 
 ### The Prize Pool
@@ -101,7 +101,7 @@ and that the prize pool is empty after all tokens are redeemed.
 <!-- prettier-ignore -->
 :::important
 The prize pool is separate from the market's liquidity pool, which will be
-discussed further below.
+discussed further below.  
 :::
 
 For example, Alice has 3.7 ZTG in her wallet. She mints 3.5 full sets for the
@@ -137,7 +137,7 @@ the losing outcome tokens (see
 
 <!-- prettier-ignore -->
 :::important
-In the Zeitgeist Beta, liquidity providers do not receive fees.
+In the Zeitgeist Beta, liquidity providers do not receive fees.  
 :::
 
 When joining a liquidity pool, they also receive _liquidity shares_ (also known
@@ -172,7 +172,7 @@ have made some profit).
 <!-- prettier-ignore -->
 :::important
 As liquidity provider for a prediction market, you are essentially betting
-against the informants' ability to predict future outcomes.
+against the informants' ability to predict future outcomes.  
 :::
 
 ## The Life Cycle of a Zeitgeist Prediction Market
@@ -196,7 +196,7 @@ The market must be supplied with the following info:
 Every possible outcome must be represented by an outcome token. Often, it is a
 good idea to include a catch-all token for catching unexpected outcomes. See
 also
-[Markets with More than Two Outcomes](prediction-markets.md#markets-with-more-than-two-outcomes).
+[Markets with More than Two Outcomes](prediction-markets.md#markets-with-more-than-two-outcomes).  
 :::
 
 The market creator specifies a Zeitgeist address which is responsible for
@@ -223,7 +223,7 @@ for the market.
 :::important
 The market creator will sign three transactions when deploying a liquidity pool
 during market creation: Creating the market and bonding the stake for the
-oracle, minting the outcome tokens, and joining the liquidity pool.
+oracle, minting the outcome tokens, and joining the liquidity pool.  
 :::
 
 ### During Market Hours
@@ -244,7 +244,7 @@ submit their report.
 
 <!-- prettier-ignore -->
 :::important
-In the Zeitgeist Beta, the oracle has 24 hours to report the outcome.
+In the Zeitgeist Beta, the oracle has 24 hours to report the outcome.  
 :::
 
 Once the report is submitted, the status of the market changes from inactive to
@@ -269,7 +269,7 @@ During the Beta campaign, only _simple disputes_ are enabled. This means that
 the outcome of a market can be disputed a maximum of six times (with a 24h
 window, except the last one), each time with a higher stake. The report of the
 sixth dispute will be used to resolve the market. There is no decentralized
-court in the beta.
+court in the beta.  
 :::
 
 For example, suppose that the oracle of the JSWT market reports JWSTYES at
@@ -295,7 +295,7 @@ nothing, while Bob can redeem his 5 JWSTNO for 5 ZTG from the prize pool.
 <!-- prettier-ignore -->
 :::important
 Redeeming tokens is different from selling tokens. Tokens cannot be traded after
-market close, but they can be redeemed for 1 ZTG each once the market is resolved.
+market close, but they can be redeemed for 1 ZTG each once the market is resolved.  
 :::
 
 Furthermore, as soon as the market is resolved, those who staked ZTG in a

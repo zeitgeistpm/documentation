@@ -35,8 +35,7 @@ own markets and add liquidity.
 At present, everyone does not have so many ZBS to provide liquidity, so in
 BetaNet testnet activities, you can contact team members in the Discord group to
 ask the team to help add liquidity. So I recommend that you choose `OFF` in the
-above `Depoly Liquidity Pool`
-
+above `Depoly Liquidity Pool`  
 :::
 
 1. After completing the above steps, sign the transaction to complete the

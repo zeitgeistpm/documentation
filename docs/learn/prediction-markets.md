@@ -81,7 +81,7 @@ worthless. _It's winner-take-all!_ We say that the market _resolves_ to "Worth
 <!-- prettier-ignore -->
 :::important
 After market close, the price of each token is irrelevant to the trader. Only
-the correct outcome asset token has any remaining value.
+the correct outcome asset token has any remaining value.  
 :::
 
 For example, suppose Alice bought 10 shares of "Worth 1\$ if not $D$" at 0.6\$

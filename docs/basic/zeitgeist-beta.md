@@ -19,7 +19,7 @@ required:
 :::important
 The beta application takes a snapshot every couple of minutes. If you've just
 bought the NFT, you may have to wait until the next snapshot is taken until you
-can gain access.
+can gain access.  
 :::
 
 You can follow our

@@ -5,8 +5,7 @@
 :::tip
 
 All `amount` parameters are in Pennock, so need to be multiplied by 10^10, which
-means if you want to transfer 1 ZTG, you should fill in `10000000000`
-
+means if you want to transfer 1 ZTG, you should fill in `10000000000`  
 :::
 
 ## Get Markets Datas

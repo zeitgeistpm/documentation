@@ -3,41 +3,39 @@ id: prediction-markets
 title: 预测市场
 ---
 
-Prediction markets are openly traded markets that trade assets which are linked to different potential future outcomes. 预测市场的目的是要从各种独立行为者那里收集到的信息。 Prediction markets have been shown in numerous studies to have more accurate prediction capabilities than other methods such as polls. The reason for this is that they require the actors trading in the markets (also known as _informants_) to put stake in the game and allows them to profit if they correctly predict a future outcome - while risking loss if their predictions are incorrect.
+预测市场是公开交易的市场，其交易的是关联资产 的未来潜在不同的结果。 预测市场的目的是要从各种独立行为者那里收集到的信息。 许多研究表明预测市场具有优于如民意调查等其他方法更准确的预测能力。 其原因是他们 要求在市场交易的行为者(也称为 _提供消息的人_)在游戏中占有 股份，并允许他们在正确预测未来 结果时获得利润。同时如果他们的预测不正确，他们就有可能遭受损失。
 
-The examples presented here are based on the examples in R. Hanson's watershed paper _Shall We Vote on Values, But Bet on Beliefs?_.[^1]
+这里给出的例子是基于R. Hanson的分水岭论文中的例子：_“我们应该对价值观投票，但对信念下注吗？”_[^1]
 
-## Categorical Prediction markets
+## 分类预测市场
 
-In its simplest form, a prediction market tries to predict the probability of a particular outcome $D$ of a future event. For example, the future event might be the U.S. presidential election of 2016 (for the sake of this example, imagine that it's early 2016) and $D$ might be "The Democratic Party wins the 2016 U.S. presidential election".
+最简单的形式是，预测市场试图预测未来事件的 特定结果 $D$ 的概率。 例如，未来的事件可能是美国2016年美国总统选举。 为了这个例子，假设现在是2016年初），而D$可能是“民主党赢得了2016年美国 总统选举”。
 
-To aggregate information about the probability of $D$, a centralized institution (the _bank_) sells pairs of the following assets at 1\$: "Worth 1\$ if $D$", "Worth 1\$ if not $D$". These assets are called _outcome asset tokens_ (sometimes referred to as _binary options_). Each token represents a possible _outcome_ of the election.
+要汇总关于 $D$概率的信息， 中心化机构 ( _银行_) 将以下资产出售为对应的 1\$: "Worth 1\$ if $D$", "Worth 1\$ if not $D$". 这些资产被称为 _结果资产代币_ (有时被称为 _二进制选项_)。 每个代币表示选举中可能的 _结果_
 
-While the market is open, these slips are sold to the actors of the market by the bank. The price of the individual assets will be decided by the market makers who provide liquidity to the market.
+当市场开放时，银行将通过以下方式把这些票据出售给市场参与者： 个别资产的价格将由向市场提供流动性的做市商决定。
 
-Before the market ends, a date for its _end_ is defined. For example, the Iowa Electronic Markets' [2016 U.S. Presidential Election Markets](https://iemweb.biz.uiowa.edu/markets/pres16.html), in which traders could bet on which of the major parties wins a greater share of the popular vote in the 2016 election, opened on November 19, 2014 and closed November 10, 2016.[^2]
+在市场结束前，定义了它的 _结束_ 日期。 例如，爱荷华州的 [2016 美国 总统选举市场](https://iemweb.biz.uiowa.edu/markets/pres16.html)， 交易者可以预测哪一个主要政党赢得了更大的市场份额 2016年选举的普选于2014年11月19日开始，2016年11月10日结束。[^2]
 
-When the market closes, the outcome must be reported. For centralized prediction markets, this is usually done by the bank, and the report is based on trusted news media.[^3] On decentralized prediction markets, the report is issued by an entity called _oracle_, which must be incentivized to provide correct information (or discouraged from providing incorrect information).
+当市场关闭时，必须报告结果。 For centralized prediction markets, this is usually done by the bank, and the report is based on trusted news media.[^3] On decentralized prediction markets, the report is issued by an entity called _oracle_, which must be incentivized to provide correct information (or discouraged from providing incorrect information).
 
-Once the outcome is reported (for the presidential election: $D$ is false), the _winning outcome_ (in this case "Worth 1\$ if not $D$") can be traded in for 1\$ at the bank, while the _losing outcome_ ("Worth 1\$ if $D$") is rendered worthless. _It's winner-take-all!_ We say that the market _resolves_ to "Worth 1\$ if not $D$".
+一旦结果上报（总统选举： $D$ 是假的）， _预测结果正确_ (在这种情况下，"Worth 1\$ if $D$") 可以在银行交易1\$ _预测结果错误_ ("Worth 1\$ if $D$") 变得毫无价值 _预测正确者获取全部收益！_ 我们说这是市场 _决定了“如果不是$D$那么就可以获得1美元_
 
 <!-- prettier-ignore -->
-:::important
-After market close, the price of each token is irrelevant to the trader. Only
-the correct outcome asset token has any remaining value.
+:::重要信息 在市场关闭后，每个代币的价格与交易者无关。 只有正确的结果资产代币有任何剩余价值。  
 :::
 
-For example, suppose Alice bought 10 shares of "Worth 1\$ if not $D$" at 0.6\$ and Bob bought 5 shares of "Worth 1\$ if $D$" at 0.4\$. Then November 10, 2016 comes along and the Republican Party is declared the winner of the election. Thus, Bob's shares are rendered worthless, while Alice may trade her 10 shares in for 10\$, leaving her a fat profit of 4\$ (minus trading fees, see below).
+例如，假定Alice购买了10股股份"Worth 1\$ if not $D$" 在0.6美金的时候\$ 而Bob 购买 5 股份"Worth 1\$ if $D$" 在0.4美金的时候\$。 之后 ，在2016年11月10日，共和党被宣布为选举的获胜者。 因此，Bob的股份变得没有价值，而Alice可能会将她的10个股份 以10\$进行交易， 她获得了一个4\$ 的丰厚利润(减去交易费，见下文)。
 
-But how did the market reveal information about the future event? The price at which actors are willing to buy "Worth 1\$ if $D$" measures the actors' confidence that $D$ will occur. In fact, the price of one share of "Worth 1\$ if $D$" in USD is considered to be equal to the market's prediction of the probability that the event $D$ occurs. If, for example, actors are willing to buy shares of "Worth 1\$ if $D$" at 0.7\$, then the markets predicts the probability of D to be about 70%, and the probability of "not $D$" to be about 30%.[^4]
+但市场如何披露有关未来活动的信息？ 交易者在何种价格愿意购买价值 “1\$ if $D$" 衡量了交易者对 $D$将会发生的信心 实际上， 如果 $D$以美元计，每个部分的价格被认为等于市场预测事件 $D$ 的概率 例如，如果交易者愿意在0.7\$ 购买"Worth 1\$ if $D$"的份额，那么市场预测D的 发生概率约为70%。 并且"不是 $D$"的概率约为 30%。[^4]
 
-The longer a market is active, the more refined the prediction is expected to be. The prediction at market close should reflect all information available to the traders over the course of the market. If a market remains open while the events on whose outcome bets are made unfold, then the value of the outcome to which the market will eventually resolve will likely approach 1\$, and all other outcomes will become nearly worthless. For example, during the IEM's 2016 U.S. Presidential Election Markets, the average price of DEM16_WTA, the token for "\$1 if the Democratic Party nominee receives the majority of popular votes cast for the two major parties in the 2016 U.S. Presidential election, \$0 otherwise", at market close was 0.973\$ (see also [2016 US Presidential Election Winner Takes All Market](https://iemweb.biz.uiowa.edu/graphs/graph_Pres16_WTA.cfm)).
+市场运行时间越长，预测就会越精细。 收盘时的预测应反映交易者在整个市场过程中可获得的所有信息 如果一个市场在其结果押注的事件发生时保持开放，那么市场最终将解决的结果的价值将可能接近1\$，所有其他结果将几乎一文不值。 例如，在2016 年美爱荷华州 DEM16_WTA 即“如果民主党提名人在 2016 年美国总统选举中获得两大党的多数普选票，则为 "\$1，否则为 0 美元”的代币。 则为 "\$1，否则为 0 美元”的代币。 (另见 [2016 美国总统选举赢家占有了所有市场](https://iemweb.biz.uiowa.edu/graphs/graph_Pres16_WTA.cfm))。
 
-Depending on the market maker strategy and the correctness of the aggregated information, the bank might suffer a loss. In practice, the market makers will take trading fees from the actors to mitigate these risks.[^5]
+根据做市商策略和汇总信息的正确性，银行可能会蒙受损失。 实际上，市场做市商会从交易者那里收取交易费用 以减少这些风险。[^5]
 
-### Markets with More than Two Outcomes
+### 具有两个以上结果的市场
 
-In general, a prediction market can involve any (finite) number of assets. For example, during the [Kusama Derby](https://blog.zeitgeist.pm/zeitgeist-presents-the-kusama-parachain-derby/), three prediction markets opened on the Zeitgeist Battery Park chain: _Who will win the first/second/third parachain slot on Kusama?_ The tokens of these markets:
+一般而言，预测市场可能涉及任何（有限的）资产数目。 例如在[Kusama Derby](https://blog.zeitgeist.pm/zeitgeist-presents-the-kusama-parachain-derby/)活动中，3个月测市场在Zeitgeist的测试网开放 _谁将第一个/第二个/第三个赢得Kusama插槽?_ 有以下代币：
 
 - Karura
 - Moonriver
@@ -50,62 +48,62 @@ In general, a prediction market can involve any (finite) number of assets. For e
 - Darwinia
 - None
 
-The _None_ token is a catch-all option representing the following outcomes:
+_None_ 代币是一个包含所有的选项，这个选项代表了以下结果：
 
-- None of the other teams listed win the slot
-- The parachain auction does not complete in time before the market's end date of June 30, 2021
-- More than one team split the slot with different lease periods
-- Any other unforeseen outcome
+- 没有一个以上列出的团队赢得了这个槽位
+- 插槽拍卖在2021年6月30前无法结束
+- 多个团队用不同的租期拆分槽位
+- 任何其他未预见的结果
 
-The collection of outcome tokens should be _mutually exclusive_ (no two outcomes may both occur) and _exhaustive_ (there must be a token for every possible outcome). A good rule of thumb when designing a prediction market that does not ask a yes-no question is to define a _catch-all_ token (like _None_ from the Kusama Derby), which wins if the outcome matches no other token. In fact, as the bidding on the last parachain slot only ended July 6, 2021, and the Kusama Derby ended on June 30, 2021, the reported outcome of the third market of the Kusama Derby was _None_, even though Khala did eventually win the third parachain slot auction.
+结果代币的集合应该是 _相互排斥的_ (不会同时发生两个结果 ) 和 _详尽的_ (每个可能的结果都必须有一个结果代币 )。 在设计一个不问yes-no问题的预测市场时，一个好的经验法则是定义一个 _catch-all_ 代币（如 *none*来自 Kusama Derby），如果结果与其他令牌不匹配，则获胜。 事实上，由于最后一个平行链插槽的竞标在 2021 年 7 月 6 日结束，而 Kusama Derby 于 2021 年 6 月 30 日结束，因此 Kusama Derby第三插槽的结果是 _None_，尽管 Khala 最终赢得了第三个平行链插槽 拍卖。
 
 <!-- TODO Link Zeitgeist Closed Beta -->
 
-During the Zeitgeist Closed Beta, a market for a football game between the Minnesota Vikings and the Dallas Cowboys had the following tokens:
+在Zeitgeist Beta期间，在 Minnesota Vikings和Dallas Cowboys之间有一个足球比赛的预测市场有以下代币：
 
-- Cowboys win by 6 or less points
-- Cowboys win by 7 or more points
-- Vikings win by 6 or less points
-- Vikings win by 7 or more points
-- Tied
-- Cancelled due to bad weather or other unforeseen events
+- Cowboy赢得6分或更低分数
+- Cowboy赢的7或7分以上
+- Vikings赢得6分或更低分数
+- Vikings赢得7或7分以上
+- 平手
+- 由于天气恶劣或其他意外事件而取消
 
-## Scalar Prediction Markets
+## 量化预测市场
 
-The type of market described above is a _discrete_ prediction market in which outcomes form clear _categories_. For betting on the value of some quantity or measurement, _scalar prediction markets_ are used. For example, "What's the Tesla stock price on Monday at market close?" Unlike discrete prediction markets, these are not winner-take-all.
+上面描述的市场类型是 _一个离散的_ 预测市场， 结果在市场中形成清晰的 _类别_。 对于对某些数量或 度值的测试， _标量预测市场_ 被使用。 例如，“星期一市场关闭时 Tesla股票价格是什么？” 与离散预测 不同，这些市场并不是赢家获取所有。
 
-For scalar markets, the outcome assets are known as "Long" and "Short", though the outcome that the market will eventually resolve to will be a number. In scalar markets, instead of the categories (e.g. Yes/No, Under/Over, etc.), the continuous _outcome range_ is set at market creation, defined by an upper and lower numerical bound. The outcome range specified by these bounds does _not_ necessarily cover all possible outcomes.
+就小规模市场而言，结果资产称为“多头”和“空头”。 虽然 市场最终会由一个数字决定结果。 在 标量市场中，不同于分类市场(例如是/否，Under/Over等), 持续 _结果范围_ 是在创建市场时设置的，定义为上限和 下限值。 这些界限指定的结果范围_不一定_涵盖所有可能的结果。
 
-If the market resolves to a number within the outcome range, both Long and Short outcome assets will be redeemable at between 0\$ and 1\$, proportional to where the resolved outcome lies along the range (and totalling 1\$). If the market resolves to a number that lies below or above the range, then one of the Long and Short outcome assets would be redeemable to 1\$ (and the other would have no value).
+如果市场解决结果范围内的数字，多头和空头结果资产都可以在 0\$ 和 1\$ 之间赎回，这与解决的结果在该范围内的位置成正比（总计 1\$）。 如果市场解决的数字低于或高于该范围，则多头和空头结果资产之一将可赎回为 1\$（而另一个将没有价值）。
 
-For example, suppose that the upper and lower bounds for Tesla's stock price are 1,000\$ and 1,200\$. If traders buy Long at 0.60\$, then they bet that Tesla will _as least_ be at
+例如，假定Tesla的股票价格的上下限是 1,000\$ 和 1,200\$。 如果交易者以 0.60 美元买入多头，那么他们押注特斯拉至少会在
 
 $$ 1,\! 000\$ + 0.6 \cdot 200\$ = 1,\! 120\$ $$
 
-at market close. If you want to bet that Tesla will be at 1,050\$ at market close, then you buy Long at 0.25\$ or lower (you predict that Long will redeem for at least 0.25\$) and Short at 0.75\$ or lower (you predict that Short will redeem for at least 0.75\$).
+当市场关闭时。 如果你想打赌特斯拉的市场价是 1050 美元 ，则您在 0.25\$ 或更低买入多头（您预测多头将赎回 至少 0.25\$) 和空头在 0.75\$ 或更低（您预测空头将 兑换至少 0.75\$)。
 
-If the market then resolves to 1,180\$, then Long may be redeemed for 0.90\$ and Short for 0.10\$. If the market resolves to a value above 1,200\$, then Long is worth 1.00\$ and Short is worthless.
+如果市场随后结算为 1,180\$，则可以用 0.90\$ 赎回多头，用 0.10\$ 赎回空头。 如果市场价格为高于 1,200\$ 的值，则多头是 价值 1.00\$ 而空头一文不值。
 
-Another example of a scalar prediction market is the Pres16_VS Market on the Iowa Electronic Markets. Instead of betting on the who wins the larger amount of votes in the popular vote, traders are betting the major parties' share in the popular vote. This means that the lower bound is 0 and the upper bound is 1, and buying a share of UDEM16_VS (Long) at 0.55\$ means that you predict that the Democratic Party will have at least a 55% share of the popular vote (cast between the two parties), and buying UREP16_VS (Short) at 0.40\$ means that you predict that the Republican Party will have at least a 40% share of the vote (cast between the two parties). At market close on November 10, 2016, the average prices were 0.519\$ for UDEM16_VS and 0.484\$ for UREP16_VS (see [2016 US Presidential Election Vote Share Market](https://iemweb.biz.uiowa.edu/graphs/graph_Pres16_VS.cfm)). Note that the actual shares of the Democratic and Republican Party of the popular vote (cast between the two parties) are approximately 51.11% and 48.89% (see [2016 United States presidential election](https://en.wikipedia.org/wiki/2016_United_States_presidential_election)).
+标量预测市场的另一个例子是爱荷华州电子市场上的 Pres16_VS 市场。 不同于下注谁赢得选票更多，交易者正在押注主要政党在普选票中的份额。 这意味着下限为 0，上限为 1，并且 以 0.55\$ 买入 UDEM16_VS（多头）意味着您预测 民主党将拥有至少 55% 的普选票（投 两方之间），以 0.40\$ 买入 UREP16_VS（空头）意味着您 预计共和党将拥有至少 40% 的选票 （在两方之间）。 在 2016 年 11 月 10 日收市时， UDEM16_VS 的平均价格为 0.519\$，UREP16_VS 的平均价格为 0.484\$（参见 [2016 年美国总统选举投票份额市场](https://iemweb.biz.uiowa.edu/graphs/graph_Pres16_VS.cfm)）。 请注意，民主党和共和党的实际份额（两党之间）约为 51.11% 和 48.89% （ [2016 年美国总统大选](https://en.wikipedia.org/wiki/2016_United_States_presidential_election)）。
 
-## Historical Background
+## 历史背景
 
 <!-- TODO Shouldn't this go into the futarchy section? -->
 
-Prediction markets can be traced back to writings of [Ludwig von Mises](https://cdn.mises.org/Economic%20Calculation%20in%20the%20Socialist%20Commonwealth_Vol_2_3.pdf) and [Frederik Hayek](https://www.kysq.org/docs/Hayek_45.pdf), however it is the economist Robin Hansen that is perhaps the best-known proponent of them today. Hansen's writings have a very significant theoretic implication on how to implement prediction markets in a blockchain setting. He posits in _Shall We Vote on Values, But Bet on Beliefs?_<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref">1</a></sup> that the primary problem that can be solved is that of _info problems_, that is the difficulty of aggregating information among many individuals with all different views of the subject.
+预测市场可以追溯到 [Ludwig von Mises](https://cdn.mises.org/Economic%20Calculation%20in%20the%20Socialist%20Commonwealth_Vol_2_3.pdf) 和 [Frederik Hayek](https://www.kysq.org/docs/Hayek_45.pdf)的著作。然而， 经济学家Robin Hansen也许是今天最著名的支持者。 Hansen 的著作对如何在区块链环境中实施预测市场具有非常重要的理论意义。 他在 _我们是否 对价值观投票，但对信念下注？_<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref">1</a></sup> 可能的问题 上的解决办法是_info问题_，就是聚合 许多对这个主题有不同看法的人之间的信息难度。
 
-In relation to the info problems described above, Hanson (in the same paper) points out that speculative markets show striking success in their ability to aggregate information. He says "That is, active speculative markets do very well at inducing people to acquire info, share it via trades, and collect that info into consensus prices that persuade wider audiences."
+关于上述信息问题，汉森（在同一篇论文中） 指出投机市场在他们的能力方面表现出惊人的成功 。 他说：“也就是说，活跃的投机市场在 诱导人们获取信息，通过交易分享信息，并收集信息 成为说服更广泛受众的共识价格方面吧做的很好。”
 
-[^1]: [Shall We Vote on Values, But Bet on Beliefs?](https://www.researchgate.net/publication/277294676_Shall_We_Vote_on_Values_But_Bet_on_Beliefs), The Journal of Political Philosophy, 21(2), pp. 151–178 (2013).[&#8617;](#fnref2:1){.footnote-backref}
+[^1]: [我们是否对价值观投票，但对信念下注？](https://www.researchgate.net/publication/277294676_Shall_We_Vote_on_Values_But_Bet_on_Beliefs), The Journal of Political Philosophy, 21(2), pp. 151-- 178 (2013).[&#8617;](#fnref2:1){.footnote-backref}
 
-[^2]: Note that this closing date is _after_ the end of the election.
+[^2]: 请注意，此结束日期是在选票结束 _之后的_ 。
 
-[^3]: For example, this is the strategy for the 2016 U.S. Presidential Election Markets (see [here](https://iemweb.biz.uiowa.edu/markets/pr_Pres16_VS.html)):
+[^3]: 例如，这是美国2016年 总统选举 市场(见 [这里](https://iemweb.biz.uiowa.edu/markets/pr_Pres16_VS.html))：
 
-    > The election data posted on the New York Times official website at 5pm CST on Wednesday, November 9, 2016, or as soon after as available, will be the official source used to determine payoffs. In the event that the two parties' popular votes are not reported at that website by midnight, Wednesday, November 9, 2016, the Washington Post official website will become the official source. Should neither source report popular vote by midnight Wednesday, the information reported in the print version of the New York Times on Thursday, November 10, 2016, or as soon thereafter as reported, will be used. In the event that the election is delayed or postponed, liquidation will take place in a timely fashion after the close of polling sites for the popular vote.
+    > 2016 年 11 月 9 日星期三美国中部标准时间下午 5 点发布在《纽约时报》官方网站上的选举数据将是用于确定收益的官方来源。 如果该网站在 2016 年 11 月 9 日星期三午夜之前没有报道两党的普选票，华盛顿邮报官方网站将成为官方消息来源。 如果任何消息来源都没有在周三午夜之前报道民众投票，则将使用 2016 年 11 月 10 日星期四或之后尽快报道的《纽约时报》印刷版中报道的信息。 如果选举被推迟或暂停，将在普选投票点关闭后及时进行清算。
 
-    > The judgment of the IEM Governors and Directors will be final in resolving questions of interpretation and typographical or clerical errors."
+    > IEM 理事和董事的判断将是用来解释印刷或文书错误问题的最终决定。”
 
-[^4]: The reasoning here is that if the probability of outcome $D$ is $x$, then the expected profit of buying the outcome token for the price of $y$ is $x - y$. Thus, ignoring trading fees, a trader who believes that the probability of $D$ is $x$ should expect to make a profit by buying at a price lower than $x$ and selling at a price higher than $x$. 因此价格从长远来看应该接近 $x$。
+[^4]: 这里的推理是，如果结果 $D$ 的概率是 $x$，那么以 $y$ 的价格购买结果代币的预期利润是 $x - y$。 因此，忽略交易费用的交易者认为 $D$ 的概率是 $x$ 应该期望通过以 a 买入来获利 价格低于 $x$ 并以高于 $x$ 的价格出售。 因此价格从长远来看应该接近 $x$。
 
-[^5]: If a bank suffers a loss from providing liquidity to a market, this loss may be viewed as the cost of receiving the information aggregated by the actors.
+[^5]: 如果一家银行因向市场提供流动资金而遭受损失， 这种损失可能 被视为接收交易者汇集的信息的费用。

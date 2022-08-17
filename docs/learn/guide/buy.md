@@ -15,6 +15,5 @@ result, and the purchase interface will pop up on the right:
 
 It should be noted that if your balance is not enough to pay for the result
 token you need to buy, the transaction fee will still be deducted, but the
-result token will not be credited.
-
+result token will not be credited.  
 :::

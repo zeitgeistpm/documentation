@@ -193,6 +193,5 @@ If you scheduled a request via the `scheduleRevokeDelegation`, you will need to
 call `cancelDelegationRequest` in step 3;
 
 If you scheduled a request via the `scheduleLeaveDelegators`, you will need to
-call `cancelDelegationRequest` in step 3;
-
+call `cancelDelegationRequest` in step 3;  
 :::

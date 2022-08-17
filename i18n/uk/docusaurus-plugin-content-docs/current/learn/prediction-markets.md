@@ -22,9 +22,7 @@ When the market closes, the outcome must be reported. For centralized prediction
 Once the outcome is reported (for the presidential election: $D$ is false), the _winning outcome_ (in this case "Worth 1\$ if not $D$") can be traded in for 1\$ at the bank, while the _losing outcome_ ("Worth 1\$ if $D$") is rendered worthless. _It's winner-take-all!_ We say that the market _resolves_ to "Worth 1\$ if not $D$".
 
 <!-- prettier-ignore -->
-:::important
-After market close, the price of each token is irrelevant to the trader. Only
-the correct outcome asset token has any remaining value.
+:::important After market close, the price of each token is irrelevant to the trader. Only the correct outcome asset token has any remaining value.  
 :::
 
 For example, suppose Alice bought 10 shares of "Worth 1\$ if not $D$" at 0.6\$ and Bob bought 5 shares of "Worth 1\$ if $D$" at 0.4\$. Then November 10, 2016 comes along and the Republican Party is declared the winner of the election. Thus, Bob's shares are rendered worthless, while Alice may trade her 10 shares in for 10\$, leaving her a fat profit of 4\$ (minus trading fees, see below).

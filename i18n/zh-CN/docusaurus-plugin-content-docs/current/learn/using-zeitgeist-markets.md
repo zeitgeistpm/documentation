@@ -1,180 +1,172 @@
 ---
 id: using-zeitgeist-markets
-title: Using Zeitgeist Markets
+title: 使用 Zeitgeist 的市场
 ---
 
 ## Zeitgeist 上的资产和市场
 
 ### ZTG 代币
 
-The primary asset on Zeitgeist is the _ZTG_ token. On the Battery Station test network, this token is known as _ZBS_, but in SDK and CLI commands, and on this page, both ZTG and ZBS are called ZTG.
+Zeitgeist 的主要资产是 _ZTG_ 代币。 在测试网络上，这个代币叫做 _ZBS_, 但在 SDK 和 CLI 命令中以及这个 页面，ZTG 和 ZBS 都叫做ZTG。
 
-We use ZTG on Zeitgeist as currency for placing bets in prediction markets (like USD in the examples of the previous chapters). Outcome asset tokens will not redeem to 1\$ when a market is resolved, but to 1 ZTG instead, and trading fees will be paid in ZTG.
+我们在Zeitgeist上使用ZTG作为货币在预测市场上进行预测(如前一章中的 美元)。 结果资产代币在市场结算时不会兑换为1\$，而是兑换为1 ZTG，交易费用将以ZTG支付。
 
-Other uses of ZTG include governance, staking for dispute resolution and collator selection, and bonding for various on-chain actions, most importantly market creation. Details follow below. 您也可能对 ZTG 的 [代币经济学](https://zeitgeist.pm/ztg) 感兴趣。
+ZTG的其他用途包括治理，争议解决和 节点运营者选择，以及各种链上行动的关联，最重要的是 市场创建。 详情如下。 您也可能对 ZTG 的 [代币经济学](https://zeitgeist.pm/ztg) 感兴趣。
 
-### Outcome Asset Tokens
+### 结果资产代币
 
-Recall that outcome asset tokens (or _outcome tokens_ for short) represent the possible outcomes of a future event. For example the prediction market "[James Webb Space Telescope](https://en.wikipedia.org/wiki/James_Webb_Space_Telescope) (JWST) launches on December 18" might have two outcome tokens, "The JWST does launch on Dec. 18" and "The JWST does not launch on Dec. 18", which are represented by on-chain tokens using ticker symbols like JWSTYES and JWSTNO. (Two outcomes from the same market may not have the same ticker symbol, but outcomes from separate markets may.)
+回顾该结果资产代币(或 _结果代币_ )短暂代表了一个未来事件的 结果。 例如，预测市场 "[James Webb 太空望远镜](https://en.wikipedia.org/wiki/James_Webb_Space_Telescope) 于12月18日启动" 可能有两个结果代币， "JWST 确实 在12月启动。 “JWST 不会在12月18日启动”和"JWST 不会启动"，这些都是 由使用JWSTYES和JWSTNO等链上代币表示的。 （来自同一市场的两种结果可能没有相同的标识，但来自不同市场的结果可能会有相同的标识。）
 
-### Trading on Zeitgeist
+### 在Zeitgeist 上交易
 
-Trading on a prediction market on Zeitgeist is facilitated by the market's liquidity pool. The pool contains balances of ZTG and of all outcome tokens of the market. Users can trade their tokens with tokens stored in the pool: They can buy outcome tokens from the pool with ZTG which is then added to the pool, or sell outcome tokens to the pool for some of the pool's ZTG.
+在Zeitgeist的预测市场上交易是由该市场 上的流动资金池进行推动的。 池中包含ZTG和所有结果代币的 市场余额。 用户可以将其代币与池中存储的代币进行交易： 可以使用ZTG从池中购买结果代币，然后将其添加到池中。或者出售结果代币来换取池中的ZTG。
 
-For example, if the pool contains 100 ZTG and 100 JWSTYES and Alice buys 3 JWSTYES at 0.5 ZTG, then Alice transfers 1.5 ZTG into the pool and receives 3 JWSTYES from the pool, leaving the pool with 101.5 ZTG and 97 JWSTYES (ignoring transaction cost, trading fees and slippage).
+例如，如果池包含100个ZTG和100个JWSTYES，而Alice购买了3个 JWSTYES为0.5 ZTG，然后Alice将1.5 ZTG注入到池中，并收到3 个来自池中的JWSTYES，使池中有101.5个ZTG和97个JWSTYES（忽略 交易成本、交易费用和滑动）。
 
-Let's pretend that the automated market maker has now adjusted the price of JWSTYES to 0.6 ZTG and Bob wants to sell 5 JWSTYES. He would receive 3 ZTG from the pool and add 5 JWSTYES, leaving the pool at 98.5 ZTG and 102 JWSTYES (ignoring transaction cost, trading fees and slippage).
+让我们假设自动做市商现在已经调整了对应的价格，使得 JWSTYES到0.6 ZTG并且Bob想卖出5个JWSTYES。 他将从池中获得3个ZTG并添加5个JWSTYES，池中的ZTG和JWSTYES分别为98.5个和102个（忽略交易成本、交易费用和滑动）。
 
-Note that this means that trading can only happen when the liquidity pool is sufficiently deep. If the pool is too shallow, some trades may be impossible (Alice cannot buy 150 JWSTYES from the pool above) or may suffer from excessive slippage (buying 50 JWSTYES from the pool above will most certainly cost more than 25 ZTG).
+请注意，这意味着只有当流动资金池足够深 时才能进行交易。 如果池太浅，某些交易可能无法进行（Alice无法从上面的池中购买150个JWSTYES），或者可能会出现过度滑动（从上面的库中购买50个JWST YES肯定会花费更多的成本） 大于25ZTG）。
 
 <!-- TODO Link to the research page on Rikiddo! -->
 
-Recall that the buy/sell prices of the assets are determined by an automated market maker. Zeitgeist uses a novel AMM, the _Rikiddo scoring rule_. Rikiddo guarantees that the price of each individual asset cannot exceed 1 ZTG. (Note that buying an outcome asset for 1 ZTG or more is fairly unattractive, as each unit of the asset could never be redeemed for more than the market price.) However, there is no guarantee that the prices of all outcome assets sum to 1 ZTG. Usually, the prices will sum to _approximately_ 1 ZTG, but in markets with shallow liquidity pools or in volatile markets, this is not to be expected. See [Arbitrage on Zeitgeist](#arbitrage-on-zeitgeist) for more details.
+回想一下，资产的买入/卖出价格是由自动做市商决定的。 Zeitgeist 使用一个新颖的 AMM, _Rikiddo 评分规则_。 Rikiddo 保证每个资产的价格不能超过 1 个ZTG。 （请注意，以1ZTG或以上的价格购买一项结果资产是相当没有吸引力的，因为该资产的每一个单位都不可能以高于市场价格的价格赎回。） 然而，无法保证所有结果资产的价格达到1 ZTG。 通常情况下，价格_大约_是1 ZTG。 但在 浅流动性池或波动的市场中，预计不会有这种情况。 更多详细信息请参阅 [Zeitgeist](#arbitrage-on-zeitgeist) 仲裁。
 
 <!-- prettier-ignore -->
-:::important The Zeitgeist Beta uses a [constant product market maker](./liquidity.md#example-constant-product-market-maker) instead of the Rikiddo scoring rule. :::
-
-### The Prize Pool
-
-On every market, outcome tokens may be _minted_ (or _bought_) in _full sets_ by users while the market is open (exactly one of each outcome token from the market) at the exact price of 1 ZTG plus transaction fee (so that every outcome token is backed $1:(n-1)$ by tokens for the $(n-1)$ other outcomes). The minted outcome tokens are transferred to the user's wallet. The ZTG paid for the mint, on the other hand, is placed in the market's _prize pool_. _All outcome tokens are created by minting them in this fashion._
-
-Minting full sets has an inverse process: If a user holds a full set of outcome tokens, they may _burn_ (or _sell_) the full set and receive 1 ZTG from the prize pool.
-
-When a market is created, the prize pool is empty, and the balance of the prize pool cannot be changed except by minting and burning full sets. These rules guarantee the prize pool contains exactly 1 ZTG for every full set of outcome tokens in circulation. The purpose of these mechanics is to ensure that when the market resolves, all tokens can be redeemed for ZTG from the prize pool (for details, see [Resolving Markets and Redeeming Tokens](#resolving-markets-and-redeeming-tokens)), and that the prize pool is empty after all tokens are redeemed.
-
-<!-- prettier-ignore -->
-:::important
-The prize pool is separate from the market's liquidity pool, which will be
-discussed further below.
+:::important Zeitgeist Beta使用了 [恒定做市商](./liquidity.md#example-constant-product-market-maker) 而不是Rikiddo 评分规则。    
 :::
 
-For example, Alice has 3.7 ZTG in her wallet. She mints 3.5 full sets for the James Webb Space Telescope market, pays 3.5 ZTG (which goes into the prize pool of the JWST market) plus transaction fees, and receives 3.5 JWSTYES and 3.5 JWSTNO.
+### 奖池
 
-Bob, on the other hand, has 2.1 JWSTYES and 3.4 JWSTNO tokens. He decides to destroy 2.1 full sets (leaving him with only 1.3 JWSTNO) and receive 2.1 ZTG back from the prize pool. Note that Bob could not have destroyed any more full sets, as he owns no more JWSTYES.
+在每个市场， 结果代币可以在市场开放时由 用户_铸造_ (或 _购买_) __ ( 市场的每个结果代币中的一个)，确切价格为 1 ZTG 加上交易费。 被铸造的代币将会被转入用户的钱包。 另一方面，在铸造时支付的ZTG 被放置在市场的 _奖金池_ 中。 _所有结果代币 都是以这种方式来创建。_
 
-### Liquidity Pools and Shares
+与之相反的是如果用户有结果代币，他们可能 _烧毁_ (或 _出售_) 它们并从池中获得1个ZTG。
 
-We already mentioned in [Trading on Zeitgeist](#trading-on-zeitgeist) that trading in a prediction markets on Zeitgeist is facilitated by the market's liquidity pool, and that the pool contains balances of ZTG and of all outcome tokens of the market.
-
-But by default, a new market has no liquidity pool. Instead, the pool must either be deployed by the market creator, or by some external liquidity provider. After the pool is created, others may _join_ the liquidity pool by providing additional liquidity. When deploying liquidity into a pool, a liquidity provider will usually provide the same amount of full sets of outcome tokens as ZTG ($x$ of each outcome token and $x$ ZTG). The current minimum for $x$ is 100, making a total value of 200 ZTG.
-
-Once they have transferred the assets into the pool, the liquidity providers no longer control those assets, but will receive fees when others swap them with their own assets (usually ZTG) to compensate for the risk of being left holding the losing outcome tokens (see [Resolving Markets and Redeeming Tokens](#resolving-markets-and-redeeming-tokens)).
+创建市场时，奖金池为空，除非铸造和燃烧全部代币，否则无法更改奖金池的余额。 这些规则保证，对于流通中的每一整套结果代币，奖池中正好包含1个ZTG。 这些机制的目的是确保当 市场结束时， 所有代币都可以从池中赎回ZTG(详情 ) 见 [解析市场和兑换代币](#resolving-markets-and-redeeming-tokens), 以及在所有代币被兑换后奖池是空的。
 
 <!-- prettier-ignore -->
-:::important
-In the Zeitgeist Beta, liquidity providers do not receive fees.
+:::important 奖池与市场流动池是分开的，下面将进一步讨论。   
 :::
 
-When joining a liquidity pool, they also receive _liquidity shares_ (also known as _liquidity pool shares_), the third and final asset on Zeitgeist, which represent their share of the assets stored in the liquidity pool. Since the market is liquid, the amount of shares a liquidity provider will receive cannot be exactly determined before the transaction is made. However, they can specify bounds on the amount, either as a minimum of shares to receive for specified assets, or as the maximum assets they will provide for a specified amount of shares.
+例如，Alice在她的钱包里有3.7 ZTG。 她为James Webb Space Telescope市场铸造了3.5套结果代币并支付了3.5ZTG（进入JWST市场的奖金池）加上交易费，并收到了3.5kJWSTYES和3.5JWSTNO。
 
-Liquidity providers may, at any time, destroy their liquidity shares to withdraw their share of the pool.
+另一方面，Bob有2.1个JWSTYES和3.4个JWSTNO代币。 他决定销毁2.1套结果代币(只剩下1.3个JWSTNO)，并从奖金池中得到2.1个ZTG 。 请注意，BOb无法摧毁更多的 套数，因为他不再拥有更多的JWSTYES。
 
-For example, lets say the JWST market has no liquidity pool yet and Alice wishes to deploy a pool. First she mints 100 full sets of outcome tokens, so she pays 100 ZTG into the prize pool of the market and receives 100 JWSTYES and 100 JWSTNO. Then she transfers these outcome tokens plus 100 ZTG into the pool. The whole endeavor costs her 200 ZTG plus transaction costs and earns her 100 liquidity shares.
+### 流动资金池和份额
 
-Suppose now that the market ends and the balances of the pool are the following: 63 JWSTYES, 89 JWSTNO, and 120 ZTG. The balance of ZTG has increased from trading fees. After market close, Alice withdraws her funds: The outcome tokens and 120 ZTG. If the JWST did not launch on December 18, then she can redeem the 89 JWSTNO for 89 ZTG from the prize pool. This means that she's made a gain of 9 ZTG for supplying liquidity to the pool. If, on the other hand, the JWST does launch December 18, Alice is left holding 120 ZTG and 63 JWSTYES (redeemable for 63 ZTG), and, thus, Alice got rekt to the tune of 17 ZTG (but many traders will have made some profit).
+我们已经在 [Zeitgeist 交易](#trading-on-zeitgeist) 中提到， Zeitgeist 预测市场中的交易得到了市场 流动资金池的推动， 而且池中包含ZTG和所有结果 代币的余额。
+
+但在默认情况下，新市场没有流动资金池。 相反，池必须由 市场创建者部署，或通过某些外部流动资金 提供者。 池创建后，其他人可以通过提供额外的流动性 _加入_流动性池。 在将流动性部署到池中时，流动性提供者通常会提供与ZTG相同数量的全套结果代币 ( 每个结果代币的$x$ 和 $x$ ZTG)。 $x$ 的当前最小值为100，总值为200 ZTG。
+
+一旦他们将资产转移到池中，流动性提供者就不再可以控制这些资产。但当其他人与他们交换 他们自己的资产（通常是ZTG）的时候收取费用，以补偿持有剩下的失败结果代币的风险。
 
 <!-- prettier-ignore -->
-:::important
-As liquidity provider for a prediction market, you are essentially betting
-against the informants' ability to predict future outcomes.
+:::important 在 Zeitgeist Beta 中，流动性提供者不收取费用。  
 :::
 
-## The Life Cycle of a Zeitgeist Prediction Market
+加入流动资金池时，他们还会获得 _个流动资金份额_ (也称为 _流动资金池份额_)， Zeitgeist上的第三个也是最后的资产，这些资产 是它们在流动资金池中储存的资产中所占的份额。 因为 市场是流动的，那么流动性提供者所收到的股份数量不能在交易进行之前精确确定 。 但是，他们可以指定金额的界限，可以是指定资产的最低股份数量，也可以是指定股份数量的最大资产数量。
 
-### Creating a Market
+流动资金提供者可随时销毁其流动资金份额，从而提取其在流动资金总额中所占的份额
 
-The market must be supplied with the following info:
+例如，可以说，JWST 市场还没有流动资金池，Alice 也希望 部署一个流动资金。 首先，她铸造了100套完整的结果代币牌， 所以她会将 100 ZTG支付给市场奖池，并获得100 JWSTYES和100 JWSTNO。 然后，她将这些结果代币加上100个ZTG转移到集合中。 整个过程耗费了她200个ZTG 加上交易费用，并赚取了100个 流动资金份额。
 
-- A unique name
-- A question regarding a future event
-- A list of outcome tokens including ticker symbols
-- A Zeitgeist address that will serve as oracle (see below)
-- An _end date_ (at which the market will close), specified as date or by its end block
-- A detailed description, including info on what information the oracle will base its report and what each outcome tokens represents
-- Optional: The liquidity pool to deploy for the market
+现在假定市场结束并且流动池的余额如下： 63 JWSTYES，89 JWSTNO，120 ZTG。 ZTG的余额因交易费用而增加。 在市场关闭后，Alice提取了她的资金：结果代币 和 120 ZTG。 如果JWST 12月18日没有启动，她可以从奖金池中赎回 89 JWSTNO。 这意味着她从向池子提供流动资金中获得9 ZTG的收益。 另一方面，如果JWST确实在12月18日推出，Alice将持有120个ZTG和63个JWSTYES（可兑换为63个ZTG），因此，Alice的损失达到17 ZTG（但许多交易者将获得一些利润）。
 
 <!-- prettier-ignore -->
-:::important Every possible outcome must be represented by an outcome token. Often, it is a good idea to include a catch-all token for catching unexpected outcomes. See also [Markets with More than Two Outcomes](prediction-markets.md#markets-with-more-than-two-outcomes). :::
-
-The market creator specifies a Zeitgeist address which is responsible for reporting the outcome. This address is called the _oracle_. The market creator must vouch for the oracle by staking a fixed amount of ZTG. If the oracle does not submit the report on time, the stake is slashed.
-
-A common choice of oracle is any address controlled by the market creator.
-
-<!-- prettier-ignore -->
-:::important The market creator can specify _any_ address as oracle, but also provides the stake for the oracle. If the market creator specifies an unwitting oracle (by mistake or with malicious intent), the market creator will lose their stake and the oracle will go unpunished. :::
-
-As mentioned earlier markets have no liquidity pool by default. The market creator can choose to deploy the liquidity pool during market creation or create the market without a liquidity pool, hoping that someone else will deploy a pool for the market.
-
-<!-- prettier-ignore -->
-:::important
-The market creator will sign three transactions when deploying a liquidity pool
-during market creation: Creating the market and bonding the stake for the
-oracle, minting the outcome tokens, and joining the liquidity pool.
+:::important 作为预测市场的流动性提供者，您基本上是在下注参与该预测市场的人的预测能力。  
 :::
 
-### During Market Hours
+## Zeitgeist 预测市场的生命周期
 
-The market opens immediately after it is created. If no liquidity pool was deployed, trading as described in [Trading on Zeitgeist](#trading-on-zeitgeist) is impossible, but users may still mint/burn full sets of tokens.
+### 创建一个市场
 
-The market remains open until the end date is reached. The market will then become _inactive_ and trading will no longer be possible.
+必须向市场提供以下信息：
 
-### After Hours: Reporting an Outcome
-
-The oracle of the market is expected to submit which outcome actually occurred within a fixed frame of time. If the oracle fails to submit the report in time, the market creators stake will be slashed, and all addresses will be able to submit their report.
+- 唯一名称
+- 关于未来活动的问题
+- 结果代币列表，包括对应的标识
+- Zeitgeist 地址，它将用作预言机（见下文）
+- _结束日期_ (市场将关闭)，指定为日期或结束的区块高度
+- 详细说明，包括预言机将提供的信息， 根据其报告以及每个结果标识代表的内容
+- 可选：部署供市场使用的流动资金池
 
 <!-- prettier-ignore -->
-:::important
-In the Zeitgeist Beta, the oracle has 24 hours to report the outcome.
+:::important 每个可能的结果必须由结果代币表示. 包含一个包含任何意外结果的代币常常是个好主意。 见[当市场有两个以上的结果](prediction-markets.md#markets-with-more-than-two-outcomes)。  
 :::
 
-Once the report is submitted, the status of the market changes from inactive to _reported_.
+市场创建者指定了一个 Zeitgeist 地址，负责 报告结果。 此地址叫做 _预言机_。 市场创建者 必须通过质押固定数量的ZTG来为预言机做担保。 如果预言机 没有及时提交报告，则没收所有质押的ZTG。
 
-### Disputes
-
-Every time a report is submitted (by the oracle or a stand-in), the market is not resolved for another 24 hours. During this period of time, other users can submit a _dispute_ if they believe that the report is incorrect.
-
-To do so, they stake some ZTG and report the outcome they believe to be correct. The 24 hour window for disputes is then reset, and other users (including the oracle) can dispute the new report.
-
-If the dispute cannot be resolved, it is escalated to the [Decentralized Court](./court.md).
+一个常见的预言机径是由市场创建者控制的任何地址。
 
 <!-- prettier-ignore -->
-:::important During the Beta campaign, only _simple disputes_ are enabled. This means that the outcome of a market can be disputed a maximum of six times (with a 24h window, except the last one), each time with a higher stake. The report of the sixth dispute will be used to resolve the market. There is no decentralized court in the beta. :::
+:::important 市场创建者可以指定 _任意_ 地址作为oracle, 但也要为该预言机提供相应的质押 如果市场创建者指定了一个混乱的预言机(由 于错误或恶意行为)， 市场创建者将失去他们质押的ZTG，并且 这个预言机将不会被公开。 :::
 
-For example, suppose that the oracle of the JSWT market reports JWSTYES at 8:00AM, December 19. If no disputes are opened until 8:00AM, December 20, the market is resolved to JWSTYES. If Alice is convinced that this is incorrect, she may stake ZTG to dispute the outcome and report JWSTNO. If she does this at, say, 16:00 PM, December 19, then a new window for disputes opens, and other users could dispute the new report until 16:00 PM, December 20. If no other disputes are opened, the market will resolve to JWSTNO at 16:00 PM, December 20.
-
-### Resolving Markets and Redeeming Tokens
-
-Once the window for disputes is closed, the market is _resolved_ to the last reported outcome. All outcome tokens except for the winning outcome token are immediately burned. Traders who hold winning tokens can now _redeem_ them for 1 ZTG apiece by signing a transaction. There is no time limit for redeeming winning outcome tokens.
-
-For example, Alice holds 3 JWSTYES and Bob holds 5 JWSTNO. If the market resolves to JWSTNO, then Alice's 3 JWSTYES are burned and she is left with nothing, while Bob can redeem his 5 JWSTNO for 5 ZTG from the prize pool.
+如上文所述，由于默认情况下市场没有流动资金池。 市场 创建者可以选择在市场创建期间部署流动资金池，或者在没有流动资金池的情况下创建 个市场， 希望其他人会为市场部署一个资金池
 
 <!-- prettier-ignore -->
-:::important
-Redeeming tokens is different from selling tokens. Tokens cannot be traded after
-market close, but they can be redeemed for 1 ZTG each once the market is resolved.
+:::important 市场创建者将在市场创建过程中部署流动性资产池 时签名三个交易：创建市场， 为预言机绑定所有的质押份额，创建结果代币并加入流动性资产池。  
 :::
 
-Furthermore, as soon as the market is resolved, those who staked ZTG in a dispute for the token which the market eventually resolved to receive their stakes tokens back, while the stake of those who staked for other tokens are slashed.
+### 在市场开放期间
 
-## Advanced Topics
+市场建立后立即开放。 如果未部署流动资金池 ，那么[在"Trading on Zeitgeist"](#trading-on-zeitgeist)中所描述的交易是不可能的 但用户可能仍会轻微/燃烧完整的代币。
 
-### Arbitrage on Zeitgeist
+市场一直开放，直到到达结束日期。 然后 将变成 _非活跃_ 并且将不再可交易。
 
-Zeitgeist's AMM, the Rikiddo scoring rule, does not guarantee that for any market the sum of the prices of all outcome assets is approximately equal to 1 ZTG, or that the price of any outcome tokens remains below 1 ZTG. High prices are indicators of low liquidity or a volatile market.
+### 结束后：公布结果
 
-This creates opportunities for users to add or remove liquidity to profit from arbitrage:
+预计市场的预言机将在固定的时间范围内提交实际上发生了 的结果。 如预言机未能及时提交报告， 市场创造者质押的ZTG将被没收， 并且所有地址都能够 提交他们的报告。
 
-- If the sum of a market's prices is greater than 1 ZTG, then a user can mint a full set for 1 ZTG and sell it to the liquidity pool at a price above 1 ZTG (ignoring slippage and trading fees). This move will add liquidity to the market.
-- If the sum of a market's prices is less than 1 ZTG, then a user can buy one of each outcome token from the market for less than 1 ZTG and then burn the full set to receive 1 ZTG from the prize pool. This move will remove liquidity from the market.
+<!-- prettier-ignore -->
+:::important 在 Zeitgeist Beta 中，预言机有24小时来报告结果。  
+:::
 
-### Liquidity Pools for Multiple Markets
+报告提交后，市场状态从非活跃到 _已报告_
 
-It is possible for a liquidity provider to deploy their own pool, involving any kind of assets and not referenced by a specific market. The reason _not_ to do this is that they would then be taking the risk of providing liquidity, without optimally minimizing that risk, as the total liquidity would be fragmented between different pools. When a pool has less liquidity, it is less liquid which tends to a lose-lose outcome for all involved. It is recommended, instead, only to use the market's _canonical pool_, which will be referenced by the market itself in its on-chain `marketData`.
+### 争议
 
-### Changing the Ratio between Outcome Tokens in a Liquidity Pool
+每个结果被提交后，该市场将会被锁定24小时。 在此期间内，如果其他用户认为报告不正确，他们可以提交 _争议报告_
 
-It is possible to add either varying weights of standard assets (the market's outcome assets and ZTG) or other individual assets to any existing pool.
+如果这样做，他们需要质押一些ZTG并且报告他们认为正确的结果。 然后24小时的争议时间将会被重置，其他用户(包括 预言机本身)可以对新报告提出异议。
 
-## Further reading
+如果争端无法解决，它会提交到 [去中心化法庭](./court.md).
+
+<!-- prettier-ignore -->
+:::important 测试版期间，只有 _简单的争议系统_ 被启用。 这意味着 市场结果最多可以被质疑6次(在 24 小时 窗口期内） 除最后一次外，每次都需要更高的ZTG质押。 第六次争端的报告将被用来解决市场。 测试版中没有去中心化法院的实现。  
+:::
+
+例如，假设JSWT市场的预言机在12月19日上午8:00报告JWSTYES。 如果12月20日上午8:00之前没有争议，则 市场决定为JWSTYES。 如果Alice确信这是错误的，她可能会质押ZTG来质疑结果并报告JWSTNO。 如果她在12月19日下午16:00这样做，则会打开一个新的争议窗口，其他用户可以在12月20日下午16点之前对新报告提出争议。 如果没有其他争议，市场将在12月20日下午16:00 以JWSTNO为最终结果。
+
+### 解决市场和赎回代币
+
+一旦争议窗口关闭，市场就会以最后一个报告来_ 解决_ 该问题。 除获胜结果代币外的所有结果代币都会立即烧掉。 持有中奖代币的交易员现在可以通过签署交易将其_兑换_为1ZTG。 兑换获胜的结果代币没有时间限制。
+
+例如，Alice拥有3个JWSTYES，Bob 拥有5个JWSTNO。 如果市场 最后的结果为JWSTNO，那么Alice的 3 JWSTYES就会被烧毁，她没有 任何东西可获得。 Bob 可以从奖池中用5个JWSTNO兑换5个ZTG。
+
+<!-- prettier-ignore -->
+:::important 兑换代币和出售代币是不同的 代币在市场关闭后不能交易，但一旦市场解决后，每个获胜代币都可以兑换 1 ZTG。  
+:::
+
+此外，一旦市场取得最终结果，那些质押ZTG并提出争议的人将会根据最终结果拿回或损失质押的ZTG。
+
+## 进阶主题
+
+### Zeitgeist上的套利
+
+Zeitgeist's 自动做市商, the Rikiddo 评分规则， 不保证任何 市场所有结果资产的价格总和大约等于1 ZTG， 或者结果代币的价格低于1 ZTG。 高价格 是流动性低或市场不稳定的指标。
+
+这为用户添加或移除流动资金从 仲裁中获利创造了机会：
+
+- 如果市场价格之和大于1 ZTG，则用户可以以1ZTG铸造 全套结果代币并以高于1ZTG的价格出售给流动性池 （忽略滑动和交易费用）。 这个操作将为市场增加流动性。
+- 如果市场价格总和小于1 ZTG, 然后用户可以从市场以不到1个ZTG的 价格购买每个结果代币中的一个，然后烧掉一整套结果代币并 从奖池中获得1个ZTG。 这个操作将为市场减少流动性。
+
+### 多个市场的流动资金池：
+
+流动性提供者可以部署自己的池，包括任何 资产种类，且未被特定市场引用。 _不要_这样做的原因是，他们将承担提供流动性的风险，而不会以最佳方式最小化该风险，因为总流动性将在不同的池之间分散。 当一个池的流动性较低时，它的低流动性也往往会给所有相关方带来损失。 相反，建议仅使用市场的_规范池_，该规范池将由市场本身在其链上`市场数据`中引用。
+
+### 更改流动池结果代币之间的比率
+
+可以将标准资产(市场的 结果资产和 ZTG) 或其他个别资产加到任何现有的池中。
+
+## 延伸阅读
 
 - [Whisker17's Zeitgeist Beta App Guide](https://whisker17.github.io/APP-Guide/#/en/README)
