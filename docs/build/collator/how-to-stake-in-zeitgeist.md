@@ -21,6 +21,8 @@ account's staking.
 
 1. Choose **Developer** > **Chain state**
 
+1. Choose `parachainStaking`
+
 1. Choose
    `candidateInfo(AccountId32): Option<ParachainStakingCandidateMetadata>`
 
@@ -93,8 +95,6 @@ Choose **Developer** > **Extrinsics**.
 
 Once the transaction is confirmed, you can check the result on the **Accounts**
 page:
-
-1. Choose ` Account`
 
 1. Click the triangle button
 
