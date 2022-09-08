@@ -56,6 +56,7 @@ const sidebars = {
         "build/market-metadata",
         "build/troubleshooting",
         "build/how-to-monitor-node",
+        "build/how-to-unlock-vested-token",
         "build/cli-example",
         {
           type: "category",
