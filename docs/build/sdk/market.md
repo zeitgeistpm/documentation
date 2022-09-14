@@ -81,8 +81,8 @@ const res = market.getDisputes();
 
 ## deploySwapPool
 
-Creates swap pool for the market with specified liquidity.
-The sender must have enough funds to cover all of the required shares to seed the pool.
+Creates swap pool for the market with specified liquidity. The sender must have
+enough funds to cover all of the required shares to seed the pool.
 
 ```typescript
 const market = await sdk.models.fetchMarketData(marketId);
@@ -93,14 +93,8 @@ const poolId = await market.deploySwapPool(
   signer,
   `1000000000`,
   `10000000000`,
-  [ 
-    `10000000000`, 
-    `10000000000`, 
-    `10000000000`, 
-    `10000000000`, 
-    `10000000000`,
-  ],
-  false,
+  [`10000000000`, `10000000000`, `10000000000`, `10000000000`, `10000000000`],
+  false
 );
 ```
 
@@ -113,7 +107,6 @@ const poolId = await market.deploySwapPool(
 | amount                | string                   | The amount of each token to add to the pool                                       |
 | weights               | string                   | The relative denormalized weight of each outcome asset                            |
 | callbackOrPaymentInfo | boolean                  | `true` to get txn fee estimation otherwise callback to capture transaction result |
-
 
 ## deploySwapPoolAndAdditionalLiquidity
 
@@ -128,14 +121,8 @@ const poolId = await market.deploySwapPoolAndAdditionalLiquidity(
   signer,
   `1000000000`,
   `10000000000`,
-  [ 
-    `10000000000`, 
-    `10000000000`, 
-    `10000000000`, 
-    `10000000000`, 
-    `10000000000`,
-  ],
-  false,
+  [`10000000000`, `10000000000`, `10000000000`, `10000000000`, `10000000000`],
+  false
 );
 ```
 
@@ -149,7 +136,8 @@ const poolId = await market.deploySwapPoolAndAdditionalLiquidity(
 | weights               | string                   | The relative denormalized weight of each outcome asset                            |
 | callbackOrPaymentInfo | boolean                  | `true` to get txn fee estimation otherwise callback to capture transaction result |
 
-[KeyringPairOrExtSigner]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L276
+[keyringpairorextsigner]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L276
 
 ## assetSpotPricesInZtg
 
