@@ -13,8 +13,8 @@ There are **two kinds of markets**. And **two kinds of market refusals**
   - Here we reject markets which are **poorly defined**
   - We lay out our rules below, but our rule of thumb is "**if it has any chance
     of confusing people or resolving ambiguously, we will not approve it**"
-- Permissionless
-  markets are created **without approval** and cost a **1000 ZTG bond**
+- Permissionless markets are created **without approval** and cost a **1000 ZTG
+  bond**
   - Here we will **retroactively remove** markets which we **expect to cause
     significantly more harm than benefit** or which **flippantly discuss awful
     outcomes**
@@ -23,24 +23,24 @@ There are **two kinds of markets**. And **two kinds of market refusals**
     probably lose money on them**, so it’s a bad idea
 
 In future we would like to move towards most markets being permissionless, since
-this allows users more freedom and requires less time from the Advisory Committee.
-We will need to build a process to support users here.
+this allows users more freedom and requires less time from the Advisory
+Committee. We will need to build a process to support users here.
 
 ## Approved markets
 
 We're is currently building an optional **off-chain pre-approval process** for
-users to work together to create high quality markets. If you're interested in discussing
-an idea for a market proposal, contact us on our Discord in [🚀│new-markets].
-Until the off-chain process is set up,
-markets must be submitted directly to the Advisory Committee using the Zeitgeist app.
-Beware that markets submitted the
-but these are much more likely to be rejected with users losing their bonds.
+users to work together to create high quality markets. If you're interested in
+discussing an idea for a market proposal, contact us on our Discord in
+[🚀│new-markets]. Until the off-chain process is set up, markets must be
+submitted directly to the Advisory Committee using the Zeitgeist app. Beware
+that markets submitted the but these are much more likely to be rejected with
+users losing their bonds.
 
 The **average (median) user expects to be betting in a fair environment**. They
 expect things to "**just work**" and for **markets to mean what it seems like
 they mean**. While there is room for a "wild west" of experimental markets, the
-Advisory Committee
-gives its approval to markets that users can trust without question.
+Advisory Committee gives its approval to markets that users can trust without
+question.
 
 **Zeitgeist pays a high price to remove its markets**. Hence a bad market cannot
 be quickly altered. If a market resolves too soon... it resolves too soon. There
@@ -80,14 +80,15 @@ their bounties.
       uncertainly. This will be a huge mess.
 - **Markets which close too long before, or too long after an event has
   happened**
-  - e.g. "Who will win the 2022 world cup, if that event takes place?" Resolution
-    date: July 2022.
+  - e.g. "Who will win the 2022 world cup, if that event takes place?"
+    Resolution date: July 2022.
     - We have a 4 day reporting limit. Markets have to report within this time.
       So here there would be no way to resolve the market because it finished
       far too early.
-  - e.g. "Who will win the 2022 world cup, if that event takes place?" Resolution
-    date: 2024.
-    - There is no reason for the market to stay open this long. Users might be confused.
+  - e.g. "Who will win the 2022 world cup, if that event takes place?"
+    Resolution date: 2024.
+    - There is no reason for the market to stay open this long. Users might be
+      confused.
 - **Confusing images**
 - **Wrong categories**
 
@@ -109,11 +110,11 @@ if we remove markets unnecessarily, you should rightly be upset with us.
 We always reject or retroactively remove markets predict specific awful crimes:
 
 - **Explicit market titles/descriptions/images**
-  - Rather than "Will that [expletive] arsehole Dave get fired?" you can
-    write "Will Dave get fired?"
+  - Rather than "Will that [expletive] arsehole Dave get fired?" you can write
+    "Will Dave get fired?"
 - **Individuals being harmed**
-  - Rather than "Will [world leader] be harmed?" you can write "When will
-    world leader leave office?"
+  - Rather than "Will [world leader] be harmed?" you can write "When will world
+    leader leave office?"
 - **Locations or individuals suffering acts of terrorism**
   - Rather than "Will [city/month] have [act of terrorism]?" you can write
     predict on the level of states, countries or years
@@ -121,31 +122,30 @@ We always reject or retroactively remove markets predict specific awful crimes:
   - e.g. markets which create ways for US citizens to bet
 - **We reserve the right to add to this list things which cause the same
   magnitude of harm when predicted**
-- We also reserve the right to **remove markets around the privacy of
-  private individuals**. We will write more guidance as this issue becomes
-  clearer to us
+- We also reserve the right to **remove markets around the privacy of private
+  individuals**. We will write more guidance as this issue becomes clearer to us
 - Finally, **we reserve the right to remove markets which seek to game our
-  rules**. We will have a high bar for this, but should there be low
-  liquidity markets which seek to go right to the edge of what is permitted,
-  we may take action against those markets
+  rules**. We will have a high bar for this, but should there be low liquidity
+  markets which seek to go right to the edge of what is permitted, we may take
+  action against those markets
 
 ### Why do we care?
 
 - Zeitgeist is a place where anyone can create markets. **But with personal
-  freedom comes the personal freedom of others. Some markets could create
-  harm. Where that harm is likely to be much larger than the benefit, we will
+  freedom comes the personal freedom of others. Some markets could create harm.
+  Where that harm is likely to be much larger than the benefit, we will
   consider, then remove those markets.**
-- While markets predict, they also incentivise. Placing a large bet on
-  something not happening is equivalent to offering a large reward for it
-  happening and allowing others to signal that they are working on it.
-  Sometimes this is a fun or beneficial side effect. Sometimes it is a harm to
-  be mitigated.
+- While markets predict, they also incentivise. Placing a large bet on something
+  not happening is equivalent to offering a large reward for it happening and
+  allowing others to signal that they are working on it. Sometimes this is a fun
+  or beneficial side effect. Sometimes it is a harm to be mitigated.
 - For any genuinely interesting question, it is possible to frame markets in a
   way that doesn’t have these bad outcomes. If there isn’t, then it’s not a
   market that is good to make
 - Zeitgeist is allows far more freedom of action here than other prediction
   markets. If you wish to discuss this, please have an example of a specific
-  market you wish to create. Responding to queries here is a lower priority
-  than creating interesting markets and building new technology.
+  market you wish to create. Responding to queries here is a lower priority than
+  creating interesting markets and building new technology.
 
-[🚀│new-markets]: https://discord.com/channels/737780518313000960/1013755957911760996
+[🚀│new-markets]:
+  https://discord.com/channels/737780518313000960/1013755957911760996
