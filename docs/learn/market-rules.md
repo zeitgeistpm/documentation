@@ -8,9 +8,8 @@ title: Rules for Market Creation
 There are **two kinds of markets**. And **two kinds of market refusals**
 
 - **Advised markets** require a **200 ZTG bond** and have to be **approved by
-  the**
-  [Advisory Committee](https://www.notion.so/Advisory-Committee-7d7c085c56964e63978de4c875a5f52f)
-  and can be rejected (with the loss of the bond)
+  the** [Advisory Committee](governance#advisory-committee) and can be rejected
+  (with the loss of the bond)
   - Here we reject markets which are **poorly defined**
   - We lay out our rules below, but our rule of thumb is “**if it has any chance
     of confusing people or resolving ambiguously, we will not approve it**”
