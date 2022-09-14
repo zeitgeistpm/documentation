@@ -94,8 +94,6 @@ their bounties.
 
 ## Permissionless markets
 
-_What they are, markets we always remove and harms_
-
 Zeitgeist removes markets which on expectation cause much more harm than the
 information/incentives they create.
 
@@ -115,19 +113,19 @@ We always reject or retroactively remove markets predict specific awful crimes:
 - **Individuals being harmed**
   - Rather than "Will [world leader] be harmed?" you can write "When will world
     leader leave office?"
-- **Locations or individuals suffering acts of terrorism**
-  - Rather than "Will [city/month] have [act of terrorism]?" you can write
-    predict on the level of states, countries or years
+- **Very specific prediction about locations or individuals suffering acts of
+  terrorism**
 - **Markets which cause Zeitgeist to break national laws**
-  - e.g. markets which create ways for US citizens to bet
+  - e.g. markets which create ways for US citizens to bet.
 - **We reserve the right to add to this list things which cause the same
-  magnitude of harm when predicted**
+  magnitude of harm when predicted**.
 - We also reserve the right to **remove markets around the privacy of private
-  individuals**. We will write more guidance as this issue becomes clearer to us
+  individuals**. We will write more guidance as this issue becomes clearer to
+  us.
 - Finally, **we reserve the right to remove markets which seek to game our
   rules**. We will have a high bar for this, but should there be low liquidity
   markets which seek to go right to the edge of what is permitted, we may take
-  action against those markets
+  action against those markets.
 
 ### Why do we care?
 
@@ -141,7 +139,7 @@ We always reject or retroactively remove markets predict specific awful crimes:
   or beneficial side effect. Sometimes it is a harm to be mitigated.
 - For any genuinely interesting question, it is possible to frame markets in a
   way that doesn’t have these bad outcomes. If there isn’t, then it’s not a
-  market that is good to make
+  market that is good to make.
 - Zeitgeist is allows far more freedom of action here than other prediction
   markets. If you wish to discuss this, please have an example of a specific
   market you wish to create. Responding to queries here is a lower priority than
