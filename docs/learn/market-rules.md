@@ -1,3 +1,8 @@
+---
+id: market-rules
+title: Rules for Market Creation
+---
+
 # Market Creation and Permitted Markets
 
 There are **two kinds of markets**. And **two kinds of market refusals**
