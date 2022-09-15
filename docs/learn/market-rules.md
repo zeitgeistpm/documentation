@@ -20,7 +20,7 @@ There are **two kinds of markets**. And **two kinds of market refusals**
     outcomes**
   - We will **never remove markets lightly**
   - We **will not remove poorly defined permissionless markets**, but **you will
-    probably lose money on them**, so it’s a bad idea
+    probably lose money on them**, so it's a bad idea
 
 In future we would like to move towards most markets being permissionless, since
 this allows users more freedom and requires less time from the Advisory
@@ -52,12 +52,12 @@ their bounties.
 ## Markets the Advisory Committee will reject
 
 - **Markets without clear questions**
-  - e.g. "What’s going to happen in Ukraine?"
+  - e.g. "What's going to happen in Ukraine?"
     - While users might have some sense of what this market is about, it is not
       clear from the question. Users must be able to get an accurate view of
       what the market is about from just reading the question.
     - To put this another way, if more than 1% of users read the question and
-      imagine the market is about something it’s not about and bet on it, this
+      imagine the market is about something it's not about and bet on it, this
       is too many.
 - **Markets without clear resolution criteria**
   - e.g. "Who will win the 2024 US Presidential election?" Resolution criterion:
@@ -110,6 +110,8 @@ We always reject or retroactively remove markets predict specific awful crimes:
 - **Explicit market titles/descriptions/images**
   - Rather than "Will that [expletive] arsehole Dave get fired?" you can write
     "Will Dave get fired?"
+  - Don't add advertisements to your markets description, _especially_ for
+    products not directly related to the market
 - **Individuals being harmed**
   - Rather than "Will [world leader] be harmed?" you can write "When will world
     leader leave office?"
@@ -138,7 +140,7 @@ We always reject or retroactively remove markets predict specific awful crimes:
   allowing others to signal that they are working on it. Sometimes this is a fun
   or beneficial side effect. Sometimes it is a harm to be mitigated.
 - For any genuinely interesting question, it is possible to frame markets in a
-  way that doesn’t have these bad outcomes. If there isn’t, then it’s not a
+  way that doesn't have these bad outcomes. If there isn't, then it's not a
   market that is good to make.
 - Zeitgeist is allows far more freedom of action here than other prediction
   markets. If you wish to discuss this, please have an example of a specific
