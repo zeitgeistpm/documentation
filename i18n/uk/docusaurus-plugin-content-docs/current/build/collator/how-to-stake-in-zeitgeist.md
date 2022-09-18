@@ -91,6 +91,22 @@ Once the transaction is confirmed, you can check the result on the **Accounts** 
 
 ![](/img/check-stake-result.png)
 
+### Increase Bond
+
+If you want to delegate more ZTG to a collator with whom you are already staking, you can use the extrinsic `delegatorBondMore(candidate, more)`. Choose **Developer** > **Extrinsics**.
+
+1. Select your account under _using the selected account_.
+
+1. Choose `parachainStaking` under _submit the following extrinsic_.
+
+1. Select `delegatorBondMore(candidate, more)`.
+
+1. Paste the collator address with whom you previously staked into `candidate`.
+
+1. Under `more` enter the amount you want to stake. The amount is given in Pennocks, which means you need to multiply the amount in ZTG by `10^10`, so if you want to stake 1 ZTG, you should fill in 10000000000.
+
+1. Press `Submit Transaction`
+
 ## How to Stop Delegations
 
 ### Schedule Request to Stop Delegations
