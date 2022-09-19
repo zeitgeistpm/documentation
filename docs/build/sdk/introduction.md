@@ -8,7 +8,7 @@ You can do the following to install it directly into your javascript based
 project:
 
 ```
-npm i @zeitgeistpm/sdk` or `yarn add @zeitgeistpm/sdk
+npm i @zeitgeistpm/sdk or yarn add @zeitgeistpm/sdk
 ```
 
 :::tip
