@@ -1,4 +1,4 @@
-# How to Unlock your Vested Tokens
+# Як розблокувати ваші токени з вестингом
 
 If you have an error while transferring, it may be because you have insufficient balance in circulation in your wallet, or it may be because your ZTG tokens are in `vested` status and we need you to unlock them so that your ZTG can be circulated.
 
