@@ -5,11 +5,7 @@
 The Zeitgeist SDK is written in `Typescript` and can be found here:
 [@zeitgeistpm/sdk](https://github.com/zeitgeistpm/tools/tree/main/packages/sdk).
 You can do the following to install it directly into your javascript based
-project:
-
-```
-npm i @zeitgeistpm/sdk or yarn add @zeitgeistpm/sdk
-```
+project: `npm i @zeitgeistpm/sdk` or `yarn add @zeitgeistpm/sdk`.
 
 :::tip
 
