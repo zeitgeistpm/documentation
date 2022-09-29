@@ -11,8 +11,8 @@ There are **two kinds of markets**. And **two kinds of market refusals**
   the** [Advisory Committee](governance#advisory-committee) and can be rejected
   (with the loss of the bond)
   - Here we reject markets which are **poorly defined**
-  - We lay out our rules below, but our rule of thumb is "**if it has any chance
-    of confusing people or resolving ambiguously, we will not approve it**"
+  - We lay out our rules below, but our rule of thumb is " **if it has any chance
+    of confusing people or resolving ambiguously, we will not approve it** "
 - Permissionless markets are created **without approval** and cost a **1000 ZTG
   bond**
   - Here we will **retroactively remove** markets which we **expect to cause
@@ -31,10 +31,10 @@ Committee. We will need to build a process to support users here.
 We're is currently building an optional **off-chain pre-approval process** for
 users to work together to create high quality markets. If you're interested in
 discussing an idea for a market proposal, contact us on our Discord in
-[🚀│new-markets]. Until the off-chain process is set up, markets must be
-submitted directly to the Advisory Committee using the Zeitgeist app. Beware
-that markets submitted the but these are much more likely to be rejected with
-users losing their bonds.
+market-creation (which uses Discords new forum feature. Until the off-chain 
+process is set up, markets must be submitted directly to the Advisory Committee 
+using the Zeitgeist app. Beware that markets submitted without discussing with us
+these are much more likely to be rejected with users losing their bonds.
 
 The **average (median) user expects to be betting in a fair environment**. They
 expect things to "**just work**" and for **markets to mean what it seems like
@@ -73,11 +73,14 @@ their bounties.
     - It's unclear what the time zone is.
     - It's unclear in which currency the price of ETH is measured.
     - It's unclear which source is used (there are many ETH/USD markets).
+    - Do we mean Proof of Work or Proof of Stake?
 - **Markets with outcomes which do not consider all major possible outcomes**
   - e.g. "Who will win UFC #290?" Outcomes: Adam Abbes, Balijis Bhat.
     - UFC fights are regularly postponed or cancelled. There needs to be a
       "fight cancelled" option. Without this, the market could resolve
       uncertainly. This will be a huge mess.
+    - A good catch all here is to have an "other" option, clearly defined as not 
+      the options already mentioned
 - **Markets which close too long before, or too long after an event has
   happened**
   - e.g. "Who will win the 2022 world cup, if that event takes place?"
@@ -94,7 +97,7 @@ their bounties.
 
 ## Permissionless markets
 
-Zeitgeist removes markets which on expectation cause much more harm than the
+Zeitgeist removes markets which on expectation cause 10x more harm than the
 information/incentives they create.
 
 The following list would seem to go without saying. But we will say them to make
@@ -105,17 +108,14 @@ if we remove markets unnecessarily, you should rightly be upset with us.
 
 ### Markets we always reject
 
-We always reject or retroactively remove markets predict specific awful crimes:
-
 - **Explicit market titles/descriptions/images**
   - Rather than "Will that [expletive] arsehole Dave get fired?" you can write
     "Will Dave get fired?"
-  - Don't add advertisements to your markets description, _especially_ for
-    products not directly related to the market
+  - Don't add advertisements to your markets description
 - **Individuals being harmed**
   - Rather than "Will [world leader] be harmed?" you can write "When will world
     leader leave office?"
-- **Very specific prediction about locations or individuals suffering acts of
+- **Very specific predictions about locations or individuals suffering acts of
   terrorism**
 - **Markets which cause Zeitgeist to break national laws**
   - e.g. markets which create ways for US citizens to bet.
@@ -147,5 +147,5 @@ We always reject or retroactively remove markets predict specific awful crimes:
   market you wish to create. Responding to queries here is a lower priority than
   creating interesting markets and building new technology.
 
-[🚀│new-markets]:
+market-ideas:
   https://discord.com/channels/737780518313000960/1013755957911760996
