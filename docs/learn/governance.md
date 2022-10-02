@@ -13,8 +13,8 @@ title: Governance
 
 ### Advisory Committee
 
-The _Advisory Committee_ ensures the quality of markets on the Zeitgeist platform. 
-It is allowed to make the following decisions:
+The _Advisory Committee_ ensures the quality of markets on the Zeitgeist
+platform. It is allowed to make the following decisions:
 
 - Force changes to on-chain identities (requires two-thirds approval)
 - Approve advised markets (requires single member approval)
