@@ -26,7 +26,8 @@ const res = await sdk.models.getAllMarketIds();
 
 ## createCpmmMarketAndDeployAssets
 
-Creates a market using CPMM scoring rule, buys a complete set of the assets used and deploys the funds.
+Creates a market using CPMM scoring rule, buys a complete set of the assets used
+and deploys the funds.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -77,11 +78,16 @@ const res = await sdk.models.createCpmmMarketAndDeployAssets({
 | weights               | string[]                 | List of relative denormalized weights of each outcome asset   |
 | callbackOrPaymentInfo | boolean                  | `true` to get txn fee estimation otherwise `false`            |
 
-[KeyringPairOrExtSigner]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L276
-[MarketDisputeMechanism]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L198
-[MarketPeriod]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L182
-[MarketTypeOf]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L188
-[DecodedMarketMetadata]: https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L6
+[keyringpairorextsigner]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L276
+[marketdisputemechanism]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L198
+[marketperiod]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L182
+[markettypeof]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L188
+[decodedmarketmetadata]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L6
 
 ## createMarket
 
