@@ -82,17 +82,12 @@ their bounties.
       uncertainly. This will be a huge mess.
     - A good catch all here is to have an "other" option, clearly defined as not
       the options already mentioned
-- **Markets which close too long before, or too long after an event has
-  happened**
-  - e.g. "Who will win the 2022 world cup, if that event takes place?"
-    Resolution date: July 2022.
-    - We have a 4 day reporting limit. Markets have to report within this time.
-      So here there would be no way to resolve the market because it finished
-      far too early.
-  - e.g. "Who will win the 2022 world cup, if that event takes place?"
-    Resolution date: 2024.
+- **Markets with ill-configured start/end times**
+  - e.g. "Who will win the 2022 World Cup?"; ends January 2024.
     - There is no reason for the market to stay open this long. Users might be
       confused.
+  - e.g. "Who will win the 2022 World Cup?"; ends five minutes after opening.
+    - This market is way too short to aggregate correct information.
 - **Confusing images**
 - **Wrong categories**
 
