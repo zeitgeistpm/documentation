@@ -1,23 +1,23 @@
-# How to Be a Collator on Battery Station
+# Як стати Колатором на Battery Station
 
-## Run the node in "Collator mode"
+## Запустити ноду в режимі "Collator"
 
-### Download and set up the node environment
+### Завантажити та налаштувати середовище ноди
 
-1. Use the following command line to get the latest Zeitgeist node binary.
+1. Використовуйте наступний командний рядок щоб отримати останній бінарний файл ноди Zeitgeist.
 
    ```
    curl -o zeitgeist https://github.com/zeitgeistpm/zeitgeist/releases/download/v0.3.2/zeitgeist_parachain
    chmod +x zeitgeist
    ```
 
-1. Register a non-privileged user to run the Zeitgeist node service. Docker is not recommended, as it gives a sub-optimal performance.
+1. Зареєструйте non-privileged користувача для запуску ноди Zeitgeist . Docker не рекомендується, тому що використовується неоптимальна продуктивність.
 
    ```
    sudo useradd -M -r -s /sbin/nologin zeitgeist
    ```
 
-1. Copy the node binary to the specified folder.
+1. Скопіюйте бінарний файл ноди до вказаної теки.
 
    ```
    sudo mkdir -p /services/zeitgeist/bin
@@ -26,13 +26,13 @@
    sudo chmod -R go=-rwx /services/zeitgeist
    ```
 
-1. Create a new service.
+1. Створення нового сервісу.
 
    ```
    sudo nano /etc/systemd/system/zeitgeist-node.service
    ```
 
-1. Configure the relevant information in the file.
+1. Налаштуйте відповідну інформацію у файлі.
 
    ```
    [Unit]
@@ -53,30 +53,19 @@
        --name-=zeitgeist-whisker \
        --port=30333 \
        --rpc-port=9933 \
-       --ws-port=9944 \
-       --collator \
-       --rpc-cors=all \
-       --pruning=archive \
-       --\
-       --port=30334 \
-       --rpc-port=9934 \
-       --ws-port=9945
-
-   [Install]
-   WantedBy=multi-user.target
    ```
 
-1. Enable and start the service.
+1. Увімкніть та запустіть сервіс.
 
    ```
    sudo systemctl enable zeitgeist-node
    sudo systemctl start zeitgeist-node
    ```
 
-1. Check the status of the service:
+1. Перевірте стан сервісу:
 
    `systemctl status zeitgeist-node`
 
-1. To view the service logging.
+1. Для перегляду журналу сервісу.
 
    `journalctl -u zeitgeist-node`
