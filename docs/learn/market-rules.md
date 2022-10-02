@@ -32,7 +32,7 @@ Committee. We will need to build a process to support users here.
 We're is currently building an optional **off-chain pre-approval process** for
 users to work together to create high quality markets. If you're interested in
 discussing an idea for a market proposal, contact us on our Discord in
-[market-creation] (which uses Discords new forum feature). Until the off-chain
+[market-creation] (which uses Discord's new forum feature). Until the off-chain
 process is set up, markets must be submitted directly to the Advisory Committee
 using the Zeitgeist app. Beware that markets submitted without discussing with
 us these are much more likely to be rejected with users losing their bonds.
