@@ -1,42 +1,42 @@
-# How to Stake on Zeitgeist
+# Як стейкати у Zeitgeist
 
-Head to [polkadot.js](https://https://polkadot.js.org/apps/) to control your account's staking.
+Перейдіть до [polkadot.js](https://https://polkadot.js.org/apps/) аби проконтролювати стейкінг у вашому обліковому записі.
 
-### Get the List of Candidates
+### Отримати Список Кандидатів
 
-1. Choose **Developer** > **Chain state**
+1. Оберіть **Developer** > **Chain state**
 
-1. Choose `parachainStaking`
+1. Оберіть `parachainStaking`
 
-1. Choose `candidatePool(): ParachainStakingSetOrderedSetBond`
+1. Далі виберіть `candidatePool(): ParachainStakingSetOrderedSetBond`
 
-1. Click `+` to make a query
+1. Натисніть `+` для запиту
 
-1. Copy the candidate address that you want to delegate your tokens to
+1. Скопіюйте адресу кандидата до якої ви хочете делегувати свої токени
 
 ![](/img/get-candidates-list.png)
 
-### Get the Candidate Delegation Count
+### Отримати дані про кількість делегацій кандидатів
 
-1. Choose **Developer** > **Chain state**
+1. Оберіть **Developer** > **Chain state**
 
-1. Choose `parachainStaking`
+1. Оберіть `parachainStaking`
 
-1. Choose `candidateInfo(AccountId32): Option<ParachainStakingCandidateMetadata>`
+1. Далі оберіть `candidateInfo(AccountId32): Option<ParachainStakingCandidateMetadata>`
 
-1. Paste the collator candidate's address
+1. Вставте адресу кандидатів у колатори
 
-1. Enable the "include option"
+1. Увімкніть "опцію додавання"
 
-1. Click `+` to make a query
+1. Натисніть `+` для запиту
 
-1. Get the number of delegationCount
+1. Отримайте дані про кількість делегацій
 
 ![](/img/get-delegation-count.png)
 
-### Get the Number of Existing Delegations
+### Отримати дані про чинні делегації
 
-Choose **Developer** > **JavaScript** and copy the following code to the editor box:
+Виберіть **Developer** > **JavaScript** і скопіюйте наступний код у редактор:
 
 ```
 // Simple script to get your number of existing delegations.
@@ -47,85 +47,85 @@ const delegatorInfo = await api.query.parachainStaking.delegatorState(yourDelega
 console.log(delegatorInfo.toHuman()["delegations"].length);
 ```
 
-1. Replace `YOUR_ADDRESS_HERE` with your address
+1. Замініть `YOUR_ADDRESS_HERE` на вашу адресу
 
-1. Click Run button
+1. Натисніть кнопку "Run" (Запуск)
 
-1. Get the number of existing delegations
+1. Отримайте число чинних делегацій
 
 ![](/img/get-your-delegations-number.png)
 
-### Check the Amount You Can Stake
+### Перевірте суму, яку ви можете застейкати
 
-You have a balance which consists of transferrable, locked and reserved tokens. You can only stake transferrable tokens. To see the amount of transferrable tokens, check the **Accounts** page:
+У вас є баланс, який складається із тих, що передаються, а також заблокованих та зарезервованих токенів. Ви можете стейкати лише ті токени, що передаються (transferrable). Щоб перевірити кількість transferrable токенів, перевірте сторінку **Accounts**:
 
 ![](/img/check-stake-result.png)
 
-### Stake Your Tokens
+### Застейкати токени
 
-Choose **Developer** > **Extrinsics**.
+Оберіть **Developer** > **Extrinsics**.
 
-1. Choose the account you would like to delegate your tokens to
+1. Виберіть обліковий запис, на який ви хочете делегувати свої токени
 
-1. Choose `parachainStaking`
+1. Оберіть `parachainStaking`
 
-1. Choose `delegate(candidate, amount, candidateDelegationCount, delegationCount)`
+1. Оберіть `delegate(candidate, amount, candidateDelegationCount, delegationCount)`
 
-1. Copy the candidate's address to delegate (the one you get from "Get the list of candidates" step)
+1. Скопіюйте адресу кандидата в делегати (ту, яку ви отримали на кроці "Отримати список кандидатів")
 
-1. Specify the amount that you would like to stake. The amount is given in Pennocks, which means you need to multiply the amount in ZTG by $10^{10}$, so if you want to stake 1 ZTG, you should fill in `10000000000`
+1. Вкажіть суму, яку ви хотіли б застейкати. Сума вказана у Pennocks, що означає, що вам потрібно помножити суму ZTG на $10^{10}$, так що якщо ви хочете поставити 1 ZTG, ви повинні заповнити `100000000`
 
-1. Enter the `delegationCount` from [Get the Candidate Delegation Count][]
+1. Введіть `delegationCount` від [Get the Candidate Delegation Count][]
 
-1. Enter the number of existing delegations from \[Get the Number of Existing Delegations\] (if you did not stake before, then enter `0`)
+1. Введіть кількість існуючих делегацій із \[Get the Number of Existing Делегації\] (якщо ви не зробили цього раніше, введіть `0`)
 
 ![](/img/stake-ztg.png)
 
-### Check the Stake Result
+### Перевірте результат Стейкінгу
 
-Once the transaction is confirmed, you can check the result on the **Accounts** page:
+Після підтвердження транзакції ви можете перевірити результат на сторінці **Accounts**:
 
-1. Click the triangle button
+1. Натисніть на трикутник
 
-1. You can see the reserved balance
+1. Ви можете побачити зарезервований баланс
 
 ![](/img/check-stake-result.png)
 
-### Increase Bond
+### Збільшити суму облігацій
 
-If you want to delegate more ZTG to a collator with whom you are already staking, you can use the extrinsic `delegatorBondMore(candidate, more)`. Choose **Developer** > **Extrinsics**.
+Якщо ви хочете делегувати більше ZTG колатору, з яким ви вже стейкали, ви можете використовувати extrinsic `delegatorBondMore(candidate, more)`. Оберіть **Developer** > **Extrinsics**.
 
-1. Select your account under _using the selected account_.
+1. Виберіть свій обліковий запис у розділі _using the selected account_.
 
-1. Choose `parachainStaking` under _submit the following extrinsic_.
+1. Виберіть `parachainStaking` під _submit the following extrinsic_.
 
-1. Select `delegatorBondMore(candidate, more)`.
+1. Виберіть `delegatorBondMore(candidate, more)`.
 
-1. Paste the collator address with whom you previously staked into `candidate`.
+1. Вставте адресу колатора, з яким вже раніше стейкали у `candidate`.
 
-1. Under `more` enter the amount you want to stake. The amount is given in Pennocks, which means you need to multiply the amount in ZTG by `10^10`, so if you want to stake 1 ZTG, you should fill in 10000000000.
+1. Під `more` введіть суму, яку бажаєте застейкати. Сума вказана у Pennocks, що означає, що вам потрібно помножити суму ZTG на  `10^10`, так що якщо ви хочете застейкати 1 ZTG, ви повинні заповнити 10000000000.
 
-1. Press `Submit Transaction`
+1. Натисніть `Submit Transaction`
 
-## How to Stop Delegations
+## Як зупинити делегації
 
-### Schedule Request to Stop Delegations
+### Заплануйте запит на припинення делегування
 
-Choose **Developer** > **Extrinsics**.
+Оберіть **Developer** > **Extrinsics**.
 
-1. Select the account you want to execute the revocation for
+1. Виберіть обліковий запис, для якого ви хочете виконати відміну
 
-1. Choose `parachainStaking`
+1. Оберіть `parachainStaking`
 
-1. Choose `scheduleRevokeDelegation(collator)`
+1. Оберіть `scheduleRevokeDelegation(collator)`
 
-1. Select the account you want to remove the delegation for
+1. Виберіть обліковий запис, для якого хочете відмінити делегування
 
-1. Submit this transaction
+1. Надішліть транзакцію
 
 ![](/img/schedule-leave-delegation.png)
 
-### Execute Request to Stop Delegations
+### Виконайте запит на зупинку делегації
 
 Choose **Developer** > **Extrinsics**.
 
