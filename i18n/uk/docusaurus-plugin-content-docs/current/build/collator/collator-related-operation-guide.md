@@ -1,8 +1,8 @@
-# Collator Operation Guide
+# Посібник з Експлуатації Колатора
 
-## Generate Session Key And Bonding
+## Генерація сеансового ключа та прив'язка
 
-1. Use RPC to generate an author ID and create/convert session keys by sending RPC calls to HTTP endpoints using the `author_rotateKeys` method in your terminal.
+1. Використовуйте RPC для генерації ідентифікатора автора та створення/перетворення сеансових ключів, надсилаючи RPC виклики на кінцеві точки HTTP, використовуючи метод `author_rotateKeys` у вашому терміналі.
 
    ```
    curl http://127.0.0.1:9933 -H \
@@ -15,157 +15,157 @@
      }'
    ```
 
-1. Mapping Author IDs and setting session keys:
+1. Зіставлення ID Автора та встановлення сеансових ключів:
 
-   1. Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+   1. Передіть до [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-   1. Choose `Developer`-`Extrinsics`
+   1. Виберіть `Developer`-`Extrinsics`
 
-   1. Select the account you want to be associated
+   1. Виберіть потрібний обліковий запис
 
-   1. Choose `authorMapping` and `addAssociation(authorId)`
+   1. Оберіть `authorMapping` та `addAssociation(authorId)`
 
-   1. Fill your author Id and submit transaction
+   1. Заповніть ID автора та підтвердіть транзакцію
 
    ![addAssociation](/img/mapping-association.png)
 
-1. Check the mapping settings:
+1. Перевірте параметри відображення:
 
-   1. Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+   1. Передіть до [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-   1. Choose `Developer`-`Chain state`
+   1. Виберіть `Developer`-`Chain state`
 
-   1. Choose `authorMapping` and `mappingWithDeposit`
+   1. Оберіть `authorMapping` та `mappingWithDeposit`
 
-   1. Fill your author Id and submit your request, you will get your mapping infomation.
+   1. Заповніть ID автора та подайте запит, і ви отримаєте інформацію щодо цього.
 
-   ![check mapping](/img/check-mapping.png)
+   ![addAssociation](/img/check-mapping.png)
 
-## Get Candidate Pool Size
+## Отримати розмір пулу кандидатів
 
-Add the candidate pool to get the candidate pool size, select Developer-Javascript in Polkadot.js.
+Додайте пул кандидатів, щоб отримати розмір пулу кандидатів, оберіть Developer-Javascript у Polkadot.js.
 
 ```
-// Simple script to get candidate pool size
+// Простий скрипт для отримання розміру пула кандидатів
 const candidatePool = await api.query.parachainStaking.candidatePool();
 console.log(`Candidate pool size is: ${candidatePool.length}`);
 ```
 
 ![get candidate pool size](/img/get-candidate-pool-size.png)
 
-## Join The Candidate Pool
+## Приєднатися до пулу кандидатів
 
-1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Передіть до [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-1.  Choose `Developer`-`Extrinsics`
+1.  Виберіть `Developer`-`Extrinsics`
 
-1.  Select the account you want to be associated
+1.  Виберіть потрібний обліковий запис
 
-1.  Choose `parachainStaking` and `joinCandidates`
+1.  Оберіть `parachainStaking` і `joinCandidates`
 
-1.  Fill your bond amount (in Pennock, which means you need to multiply $10^{10}$, so the minimum number you should fill in is `640000000000`) and candidate count which you can get from [there](#get-candidate-pool-size)
-1.  Submit this transaction and if it succeeds, you will join the candidate pool.
+1.  Заповніть суму облігації (у Pennock, тобто вам потрібно помножити $10^{10}$, тому мінімальна кількість, яку ви повинні заповнити, це `640000000000`) та кількість кандидатів ви можете отримати [тут](#get-candidate-pool-size)
+1.  Подайте цю транзакцію і, якщо вона успішна, ви приєднаєтеся до пулу кандидата.
 
 ![join candidate pool](/img/join-candidate-pool.png)
 
-## Leave Candidate Pool
+## Покинути пул кандидатів
 
-If you want to leave candidate pool, you need to first schedule a request to leave the pool and wait for an exit delay(10 blocks), after this delay you can execute this request and stop working as a collator.
+Якщо ви хочете залишити пул для кандидатів, вам потрібно спочатку запланувати запит на вихід з пулу та зачекати (10 блоків), після цієї затримки ви можете виконати запит та припинити роботу у ролі колатора.
 
-We also support temporarily leaving the candidate pool without unbonding your tokens.
+Окрім того, ми підтримуємо тимчасовий вихід з пулу кандидатів без розблокування токенів.
 
-### Schedule Request to Leave Candidates
+### Заплануйте запит для виходу з пулу
 
-1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Передіть до [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-1.  Choose `Developer`-`Extrinsics`
+1.  Виберіть `Developer`-`Extrinsics`
 
-1.  Select the account you want to be associated
+1.  Виберіть потрібний обліковий запис
 
-1.  Choose `parachainStaking` and `scheduleLeaveCandidates`
+1.  Оберіть `parachainStaking` та `scheduleLeaveCandidates`
 
-1.  Fill candidate count which you can get from [there](#get-candidate-pool-size)
-1.  Submit this transaction and if it succeeds, you need to wait out the exit delay before the request executes.
+1.  Заповніть кількість кандидатів, які ви можете отримати [тут](#get-candidate-pool-size)
+1.  Надішліть запит на цю операцію і, якщо вона успішна, необхідно дочекатися exit delay (певна кількість блоків) перед виконанням запиту.
 
 ![schedule leave candidates](/img/schedule-leave-candidates.png)
 
-### Execute Request to Leave Candidates
+### Виконайте запит для виходу з пулу
 
-1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Передіть до [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-1.  Choose `Developer`-`Extrinsics`
+1.  Виберіть `Developer`-`Chain state`
 
-1.  Select the account you want to be associated
+1.  Виберіть потрібний обліковий запис
 
-1.  Choose `parachainStaking` and `executeLeaveCandidates`
+1.  Оберіть `parachainStaking` та `executeLeaveCandidates`
 
-1.  Fill candidate delegation count which you can get from [there](#get-candidate-pool-size)
-1.  Submit this transaction and if it succeeds, you will stop working as a collator
+1.  Заповніть кількість кандидатів, які ви можете отримати [тут](#get-candidate-pool-size)
+1.  Подайте запит на цю транзакцію і, якщо вона успішна, ви припините роботу колатора.
 
 ![execute leave candidates](/img/execute-leave-candidates.png)
 
-### Temporarily Leave the Candidate Pool
+### Тимчасовий вихід з пулу кандидатів
 
-1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Передіть до [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-1.  Choose `Developer`-`Extrinsics`
+1.  Виберіть `Developer`-`Extrinsics`
 
-1.  Select the account you want to be associated
+1.  Виберіть потрібний обліковий запис
 
-1.  Choose `parachainStaking` and `goOffline`
+1.  Оберіть `parachainStaking` та `goOffline`
 
-1.  Submit this transaction and if it succeeds, you wiil temporarily leave the candidate pool
+1.  Подайте запит на цю транзакцію і, якщо вона успішна, ви зможете тимчасово покинути пул.
 
 ![go offline](/img/go-offline.png)
 
-## Change Bond Amount
+## Змінити суму облігацій
 
-### Bond More
+### Обрати більшу суму
 
-1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Передіть до [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-1.  Choose `Developer`-`Extrinsics`
+1.  Виберіть `Developer`-`Extrinsics`
 
-1.  Select the account you want to be associated
+1.  Виберіть потрібний обліковий запис
 
-1.  Choose `parachainStaking` and `candidateBondMore`
+1.  Оберіть `parachainStaking` та `candidateBondMore`
 
-1.  Fill your increased amount (in Pennock, which means you need to multiply $10^{10}$, so if you want to bond 10 ZTG more you should fill it in as `100000000000`)
+1.  Заповніть вашу збільшену суму (Pennock, це означає, що вам потрібно помножити $10^{10}$, тож, якщо потрібно на 10 ZTG більше, це варто заповнити як `100000000000`)
 
-1.  Submit the transaction
+1.  Подайте запит на транзакцію
 
 ![bond more](/img/bond-more.png)
 
-### Bond Less
+### Обрати меншу суму
 
-Same as leaving candidate pool, if you want to bond less, you need to first schedule a request and wait for an exit delay(10 blocks), after this delay you can execute this request and bond less.
+Так само, як у виході з пулу кандидатів, якщо ви хочете зв'язати менше, вам треба спочатку запланувати запит та чекати затримки виходу (10 блоків), після цієї затримки ви можете виконати запит.
 
-#### Schedule Bond Less Request
+#### Запланувати запит на зменшення суми облігацій
 
-1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Передіть до [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-1.  Choose `Developer`-`Extrinsics`
+1.  Виберіть `Developer`-`Extrinsics`
 
-1.  Select the account you want to be associated
+1.  Виберіть необхідний обліковий запис
 
-1.  Choose `parachainStaking` and `scheduleCandidateBondLess`
+1.  Виберіть `parachainStaking` та `scheduleCandidateBondLess`
 
-1.  Enter your decreased amount (in Pennock, which means you need to multiply 10^10, so if you want to bond 10 ZTG less you should fill it in is `100000000000`)
+1.  Введіть зменшену суму (в Pennock, це означає, що вам потрібно помножити 10^10, тому, якщо ви хочете зв'язати на 10 ZTG менше, ви повинні заповнити `100000000000`)
 
-1.  Submit this transaction and if it succeeds, you need to wait an exit delay to execute.
+1.  Надішліть запит на цю операцію і, якщо вона успішна, необхідно дочекатися exit delay (певна кількість блоків) перед виконанням запиту.
 
 ![schedule bond less](/img/schedule-bond-less.png)
 
-#### Execute Bond Less Request
+#### Виконати запит на зменшення кількості облігацій
 
-1.  Head to [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
+1.  Передіть до [Polkadot.js](https://polkadot.js.org/apps/?rpc=wss%3A%2F%2Fbsr.zeitgeist.pm#/accounts)
 
-1.  Choose `Developer`-`Extrinsics`
+1.  Виберіть `Developer`-`Extrinsics`
 
-1.  Select the account you want to be associated
+1.  Оберіть необхідний обліковий запис
 
-1.  Choose `parachainStaking` and `executeCandidateBondLess`
+1.  Оберіть `parachainStaking` та `executeCandidateBondLess`
 
-1.  Submit this transaction
+1.  Надішліть транзакцію
 
 ![execute bond less](/img/execute-bond-less.png)
