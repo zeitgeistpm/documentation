@@ -21,8 +21,11 @@ platform. It is allowed to make the following decisions:
 - Reject advised markets if they are deemed valid (requires majority approval)
 - Close markets (requires two-thirds approval) or destroy markets (requires full
   approval) which are in gross violation of our rules of conduct
-- Resolve disputes for markets with the _authorized_ dispute mechanism
-<!-- TODO Link to a list of dispute mechnisms! -->
+- Resolve disputes for markets with the [Authorized] dispute mechanism
 
 The rules that the Advisory Committee enforces may be found in
 [Rules for Market Creation](market-rules.md).
+
+<!-- Links -->
+
+[Authorized]: ./using-zeitgeist-markets.md#disputes
