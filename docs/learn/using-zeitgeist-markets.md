@@ -239,43 +239,35 @@ within a fixed frame of time. If the oracle fails to submit the report in time,
 the market creators stake will be slashed, and all addresses will be able to
 submit their report.
 
-<!-- prettier-ignore -->
-:::important
-In the Zeitgeist Beta, the oracle has 24 hours to report the outcome.
-:::
-
-Once the report is submitted, the status of the market changes from inactive to
+Once the report is submitted, the status of the market changes from _closed_ to
 _reported_.
 
 ### Disputes
 
-Every time a report is submitted (by the oracle or a stand-in), the market is
-not resolved for another 24 hours. During this period of time, other users can
-submit a _dispute_ if they believe that the report is incorrect.
+When a report is submitted (by the oracle or a stand-in), the market is not
+resolved for a certain window of time called the _dispute period_. During this
+period of time, other users can submit a _dispute_ if they believe that the
+report is incorrect. To do so, they stake a certain amount of ZTG, the _dispute
+bond_ and report the outcome they believe to be correct (the _suggestion_).
 
-To do so, they stake some ZTG and report the outcome they believe to be correct.
-The 24 hour window for disputes is then reset, and other users (including the
-oracle) can dispute the new report.
+How the dispute is resolved depends on what _dispute mechanism_ was selected
+during market creation. The currently available dispute mechanisms are:
 
-If the dispute cannot be resolved, it is escalated to the
-[Decentralized Court](./court.md).
+- _Authorized_: After the market has been disputed, the [Advisory Committee]
+  decides which outcome the market will resolve to.
+- _[Decentralized Court]_ (currently disabled): A group of randomly selected
+  jurors vote secretly to find a [Schelling point] among the market's outcomes,
+  which is then used as the resolved outcome.
 
-<!-- prettier-ignore -->
-:::important
-During the Beta campaign, only _simple disputes_ are enabled. This means that
-the outcome of a market can be disputed a maximum of six times (with a 24h
-window, except the last one), each time with a higher stake. The report of the
-sixth dispute will be used to resolve the market. There is no decentralized
-court in the beta.
-:::
+If the dispute is found to have been justified in the sense that the market
+resolves to the outcome suggested by the disputant, the dispute bond is returned
+to the disputant. If this is not the case, the dispute bond is slashed.
 
 For example, suppose that the oracle of the JSWT market reports JWSTYES at
-8:00AM, December 19. If no disputes are opened until 8:00AM, December 20, the
-market is resolved to JWSTYES. If Alice is convinced that this is incorrect, she
-may stake ZTG to dispute the outcome and report JWSTNO. If she does this at,
-say, 16:00 PM, December 19, then a new window for disputes opens, and other
-users could dispute the new report until 16:00 PM, December 20. If no other
-disputes are opened, the market will resolve to JWSTNO at 16:00 PM, December 20.
+8:00AM, December 19 and that the dispute period is 24h. If no disputes are
+opened until 8:00AM, December 20, the market is resolved to JWSTYES. If Alice is
+convinced that this is incorrect, she may stake ZTG to dispute the outcome and
+report JWSTNO.
 
 ### Resolving Markets and Redeeming Tokens
 
@@ -343,6 +335,9 @@ outcome assets and ZTG) or other individual assets to any existing pool.
 
 <!-- Links -->
 
+[advisory committee]: ./governance.md#advisory-committee
+[decentralized court]: ./court
+[schelling point]: https://en.wikipedia.org/wiki/Focal_point_(game_theory)
 [trading on zeitgeist]: #trading-on-zeitgeist
 [resolving markets and redeeming tokens]:
   #resolving-markets-and-redeeming-tokens
