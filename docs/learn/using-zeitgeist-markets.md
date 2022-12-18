@@ -58,8 +58,7 @@ against the informants' ability to predict future outcomes.
 :::
 
 Anyone who owns liquidity pool shares may _exit_ the pool and receive back their
-share of the pool's assets. The details of joining and exiting depend on the
-market's scoring rule.
+share of the pool's assets.
 
 ## Zeitgeist Markets
 
@@ -80,17 +79,17 @@ The market requires the following data...
 
   <!-- prettier-ignore -->
   :::important
-    The market creator can specify _any_ address as oracle, but also provides
-    the stake for the oracle. If the market creator specifies an unwitting
-    oracle (by mistake or with malicious intent), the market creator will most
-    likely lose their stake and the oracle will go unpunished.
-    :::
+  The market creator can specify _any_ address as oracle, but also provides
+  the stake for the oracle. If the market creator specifies an unwitting
+  oracle (by mistake or with malicious intent), the market creator will most
+  likely lose their stake and the oracle will go unpunished.
+  :::
 
 - The _market dispute mechanism_ is used to resolve disputes between users. See
   [disputes] for details.
 
 - The _scoring rule_ determines the automatic market maker that the market's
-  pools use. The scoring rules are described in detail in [zeitgeist amms].
+  pools use. There's currently only one scoring rule available on Zeitgeist.
 
 - The _period_ determines when a market opens and closes and is specified either
   in blocks or using [UNIX timestamps](https://en.wikipedia.org/wiki/Unix_time)
@@ -205,7 +204,7 @@ sets, as he owns no more JWSTYES.
 
 Zeitgeist supports a constant mean market maker, also referred to as constant
 product market maker or CPMM on our platform, which is based on the
-[Balancer AMM](balancer.fi/whitepaper.pdf), a variation on the basic
+[Balancer AMM](https://balancer.fi/whitepaper.pdf), a variation on the basic
 $x \cdot y = \mathrm{const}$ formula which allows different assets to have
 different _weights_, which define their impact on price.
 
