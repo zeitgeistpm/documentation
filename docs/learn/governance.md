@@ -28,4 +28,4 @@ The rules that the Advisory Committee enforces may be found in
 
 <!-- Links -->
 
-[Authorized]: ./using-zeitgeist-markets.md#disputes
+[authorized]: ./using-zeitgeist-markets.md#disputes
