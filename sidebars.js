@@ -10,7 +10,11 @@ const sidebars = {
         type: "generated-index",
       },
       collapsed: false,
-      items: ["basic/battery-station", "basic/roadmap", "basic/zeitgeist-beta"],
+      items: [
+        "basic/battery-station",
+        "basic/roadmap",
+        "basic/zeitgeist-beta",
+      ],
     },
     // Learn
     {
@@ -22,6 +26,7 @@ const sidebars = {
       items: [
         "learn/prediction-markets",
         "learn/liquidity",
+        "learn/market-rules",
         "learn/using-zeitgeist-markets",
         "learn/governance",
         "learn/court",
@@ -56,6 +61,7 @@ const sidebars = {
         "build/market-metadata",
         "build/troubleshooting",
         "build/how-to-monitor-node",
+        "build/how-to-unlock-vested-token",
         "build/cli-example",
         {
           type: "category",
@@ -75,13 +81,13 @@ const sidebars = {
           type: "category",
           label: "Collator",
           link: {
-            type: "doc",
-            id: "build/collator/how-to-run-as-a-collator",
+            type: "generated-index",
           },
           items: [
             "build/collator/how-to-run-as-a-collator",
             "build/collator/collator-related-operation-guide",
             "build/collator/proxy-delegation",
+            "build/collator/how-to-stake-in-zeitgeist",
             "build/collator/faq",
           ],
         },

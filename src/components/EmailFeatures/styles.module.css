@@ -1,0 +1,52 @@
+.newsletter {
+    padding: 50px 0;
+    background: rgba(121, 121, 121, 0.04);
+    backdrop-filter: blur(40px);
+   }
+  
+  .newsletterForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 40px;
+  }
+  
+  @media (min-width: 768px) {
+    .newsletterForm {
+      padding: 48px 140px 60px 140px;
+      flex-direction: row;
+    }
+  }
+  
+  .input {
+    padding: 15px 20px;
+    height: 51px;
+    border: 1px solid #748296;
+    width: 100%;
+    background-color: white;
+    color: black;
+  }
+
+  @media (min-width: 768px) {
+    .input {
+      max-width: 350px;
+
+    }
+  }
+
+  .input:focus {
+    outline: solid 1px var(--ifm-color-primary-darkest);
+  }
+  
+  .input::placeholder{
+    color: black;
+    font-family: 'Space Grotesk';
+    text-align: center;
+  }
+
+  .newsletterMessage {
+    text-align: center;
+    min-width: 100%;
+  }

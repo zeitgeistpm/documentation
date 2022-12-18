@@ -81,22 +81,63 @@ const res = market.getDisputes();
 
 ## deploySwapPool
 
-You can use this function to create swap pool for this market via
-`api.tx.predictionMarkets.deploySwapPoolForMarket(marketId, weights)`.
+Creates swap pool for the market with specified liquidity. The sender must have
+enough funds to cover all of the required shares to seed the pool.
 
 ```typescript
-const res = await market.deploySwapPool(signer, wts, false);
+const market = await sdk.models.fetchMarketData(marketId);
+
+const signer = util.signerFromSeed(`//Alice`);
+
+const poolId = await market.deploySwapPool(
+  signer,
+  `1000000000`,
+  `10000000000`,
+  [`10000000000`, `10000000000`, `10000000000`, `10000000000`, `10000000000`],
+  false
+);
 ```
 
 **Arguments**
 
-| Name                  | Type                   | Introduction                                                                       |
-| --------------------- | ---------------------- | ---------------------------------------------------------------------------------- |
-| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction.                                |
-| weights               | string                 | List of lengths for each asset.                                                    |
-| callbackOrPaymentInfo |                        | "true" to get txn fee estimation otherwise callback to capture transaction result. |
+| Name                  | Type                     | Description                                                                       |
+| --------------------- | ------------------------ | --------------------------------------------------------------------------------- |
+| signer                | [KeyringPairOrExtSigner] | The actual signer provider to sign the transaction                                |
+| swapFee               | string                   | The fee applied to each swap after pool creation                                  |
+| amount                | string                   | The amount of each token to add to the pool                                       |
+| weights               | string                   | The relative denormalized weight of each outcome asset                            |
+| callbackOrPaymentInfo | boolean                  | `true` to get txn fee estimation otherwise callback to capture transaction result |
 
-[Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/market/deploySwapPool.ts)
+## deploySwapPoolAndAdditionalLiquidity
+
+Buy complete sets and deploy a pool with specified liquidity for a market.
+
+```typescript
+const market = await sdk.models.fetchMarketData(marketId);
+
+const signer = util.signerFromSeed(`//Alice`);
+
+const poolId = await market.deploySwapPoolAndAdditionalLiquidity(
+  signer,
+  `1000000000`,
+  `10000000000`,
+  [`10000000000`, `10000000000`, `10000000000`, `10000000000`, `10000000000`],
+  false
+);
+```
+
+**Arguments**
+
+| Name                  | Type                     | Description                                                                       |
+| --------------------- | ------------------------ | --------------------------------------------------------------------------------- |
+| signer                | [KeyringPairOrExtSigner] | The actual signer provider to sign the transaction                                |
+| swapFee               | string                   | The fee applied to each swap after pool creation                                  |
+| amount                | string                   | The amount of each token to add to the pool                                       |
+| weights               | string                   | The relative denormalized weight of each outcome asset                            |
+| callbackOrPaymentInfo | boolean                  | `true` to get txn fee estimation otherwise callback to capture transaction result |
+
+[keyringpairorextsigner]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L276
 
 ## assetSpotPricesInZtg
 

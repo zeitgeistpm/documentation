@@ -1,8 +1,6 @@
 ---
 id: getting-started
 title: Getting Started
-sidebar_label: Getting Started
-slug: /
 ---
 
 Zeitgeist is an evolving blockchain for prediction markets and futarchy. The

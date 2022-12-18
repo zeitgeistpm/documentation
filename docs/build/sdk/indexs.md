@@ -26,112 +26,105 @@ const res = await sdk.models.getAllMarketIds();
 
 ## createCpmmMarketAndDeployAssets
 
-Create a market using CPMM scoring rule, buy a complete set of the assets used
-and deploy within and deploy an arbitrary amount of those that's greater than
-the minimum amount.
+Creates a market using CPMM scoring rule, buys a complete set of the assets used
+and deploys the funds.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
 
-const poolId = await sdk.models.createCpmmMarketAndDeployAssets(
-  signer,
-  oracle,
-  marketPeriod,
-  advised ? "Advised" : "Permissionless",
-  marketType,
-  mdm,
-  amts,
-  baseAssetAmount,
-  wts,
-  kp,
-  metadata,
-  false
-);
+const res = await sdk.models.createCpmmMarketAndDeployAssets({
+  signer: util.signerFromSeed(`//Alice`),
+  oracle: `dE3pPiRvdKqPD5bUDBu3Xpi83McE3Zf3UG8CbhWBQfvUywd7U`,
+  period: { block: [4000, 5000] },
+  marketType: { categorical: 5 },
+  metadata: {
+    categories: [
+      { name: `karura` },
+      { name: `moonriver` },
+      { name: `phala` },
+      { name: `robonomics` },
+      { name: `kilt` },
+    ],
+    slug: `kusama-derby-example`,
+    description: `example description`,
+    question: `who will win?`,
+  },
+  mdm: { authorized: `dE3pPiRvdKqPD5bUDBu3Xpi83McE3Zf3UG8CbhWBQfvUywd7U` },
+  swapFee: `1000000000`,
+  amount: `10000000000`,
+  weights: [
+    `10000000000`,
+    `10000000000`,
+    `10000000000`,
+    `10000000000`,
+    `10000000000`,
+  ],
+  callbackOrPaymentInfo: false,
+});
 ```
 
-**Arguments** | Name | Type | Introduction | | ---- | ---- | ------------ | |
-signer | KeyringPairOrExtSigner | The actual signer provider to sign the
-transaction. | | oracle | string |The address that will be responsible for
-reporting the market. | | period | MarketPeriod |Start and end block numbers or
-unix timestamp of the market. | | creationType | string |"Permissionless" or
-"Advised", Advised as default | | marketType | string |"Categorical" or "Scalar"
-| | mdm | MarketDisputeMechanism |Dispute settlement can be authorized, court or
-simple_disputes | | keep | string[] |Specifies how many assets to keep. | |
-weights | string[] |List of relative denormalized weights of each asset price. |
-| baseAssetAmount | Amount for native currency liquidity | | amounts | string[]
-| List of amounts of each outcome asset that should be deployed.| | metadata |
-DecodedMarketMetadata |Market metadata | | paymentInfo | |"true" to get txn fee
-estimation otherwise "false" |
+**Object Arguments**
 
-[Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createCpmmMarketAndDeployAssets.ts)
+| Name                  | Type                     | Description                                                   |
+| --------------------- | ------------------------ | ------------------------------------------------------------- |
+| signer                | [KeyringPairOrExtSigner] | The actual signer provider to sign the transaction            |
+| oracle                | string                   | The address that will be responsible for reporting the market |
+| period                | [MarketPeriod]           | Start and end block numbers or milliseconds since epoch       |
+| marketType            | [MarketTypeOf]           | `Categorical` or `Scalar`                                     |
+| metadata              | [DecodedMarketMetadata]  | A hash pointer to the metadata of the market                  |
+| mdm                   | [MarketDisputeMechanism] | Dispute settlement can only be `Authorized` currently         |
+| swapFee               | string                   | The fee applied to each swap after pool creation              |
+| amount                | string                   | The amount of each token to add to the pool                   |
+| weights               | string[]                 | List of relative denormalized weights of each outcome asset   |
+| callbackOrPaymentInfo | boolean                  | `true` to get txn fee estimation otherwise `false`            |
 
-## createCategoricalMarket
+[keyringpairorextsigner]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L276
+[marketdisputemechanism]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L198
+[marketperiod]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L182
+[markettypeof]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L188
+[decodedmarketmetadata]:
+  https://github.com/zeitgeistpm/tools/blob/main/packages/sdk/src/types/index.ts#L6
 
-You can use this function to create a categorical market in the Zeitgeiest.
+## createMarket
+
+You can use this function to create categorical or scalar market using below
+arguments.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
 
-const marketId = await sdk.models.createCategoricalMarket(
+const marketId = await sdk.models.createMarket({
   signer,
   oracle,
-  marketPeriod,
-  advised,
-  mdm,
-  cpmm,
+  period: marketPeriod,
   metadata,
-  false
-);
+  creationType: advised ? `Advised` : `Permissionless`,
+  marketType: { Scalar: bounds ? bounds : [0, 100] },
+  mdm,
+  scoringRule: cpmm ? `CPMM` : `RikiddoSigmoidFeeMarketEma`,
+  callbackOrPaymentInfo: false,
+});
 ```
 
-**Arguments** | Name | Type | Introduction | | ---- | ---- | ------------ | |
-signer | KeyringPairOrExtSigner | The actual signer provider to sign the
-transaction. | | oracle | string |The address that will be responsible for
-reporting the market. | | period | MarketPeriod |Start and end block numbers or
-unix timestamp of the market. | | creationType | string |"Permissionless" or
-"Advised", Advised as default | | mdm | MarketDisputeMechanism |Dispute
-settlement can be authorized, court or simple_disputes | | scoringRule | string
-| scoringRule you choose, CPMM as default| | metadata | DecodedMarketMetadata
-|Market metadata | | callbackOrPaymentInfo | |"true" to get txn fee estimation
-otherwise "false" |
+**Object Arguments**
+
+| Name                  | Type                   | Description                                                   |
+| --------------------- | ---------------------- | ------------------------------------------------------------- |
+| signer                | KeyringPairOrExtSigner | The actual signer provider to sign the transaction            |
+| oracle                | string                 | The address that will be responsible for reporting the market |
+| period                | MarketPeriod           | Start and end block numbers or milliseconds since epoch       |
+| metadata              | DecodedMarketMetadata  | A hash pointer to the metadata of the market                  |
+| creationType          | string                 | `Permissionless` or `Advised`                                 |
+| marketType            | MarketTypeOf           | `Categorical` or `Scalar`                                     |
+| mdm                   | MarketDisputeMechanism | Dispute settlement can only be `Authorized` currently         |
+| scoringRule           | string                 | The scoring rule of the market                                |
+| callbackOrPaymentInfo | boolean                | `true` to get txn fee estimation otherwise `false`            |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createCategoricalMarket.ts)
-
-## createScalarMarket
-
-You can use this function to create a scalar market in the Zeitgeiest.
-
-```typescript
-const sdk = await SDK.initialize(endpoint);
-
-const marketId = await sdk.models.createScalarMarket(
-  signer,
-  title,
-  description,
-  oracle,
-  marketPeriod,
-  advised,
-  bounds,
-  mdm,
-  cpmm,
-  false
-);
-```
-
-**Arguments** | Name | Type | Introduction | | ---- | ---- | ------------ | |
-signer | KeyringPairOrExtSigner | The actual signer provider to sign the
-transaction. | | oracle | string |The address that will be responsible for
-reporting the market. | | period | MarketPeriod |Start and end block numbers or
-unix timestamp of the market. | | title | string | The title of the new
-prediction market. | | description | string | The description / extra
-information for the market. | | creationType | string |"Permissionless" or
-"Advised", Advised as default | | mdm | MarketDisputeMechanism |Dispute
-settlement can be authorized, court or simple_disputes | | scoringRule | string
-| scoringRule you choose, CPMM as default| | bounds | number[] |The array having
-lower and higher bound values denoting range set. [0,100] as default | |
-callbackOrPaymentInfo | |"true" to get txn fee estimation otherwise "false" |
-
-[Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/createScalarMarket.ts)
 
 ## fetchMarketData
 
@@ -144,14 +137,18 @@ const sdk = await SDK.initialize(endpoint);
 const market = await sdk.models.fetchMarketData(Number(marketId));
 ```
 
-**Arguments** | Name | Type | Introduction | | ---- | ---- | ------------ | |
-marketId | MarketId | The unique identifier for the market you want to fetch. |
+**Arguments**
+
+| Name     | Type     | Description                                             |
+| -------- | -------- | ------------------------------------------------------- |
+| marketId | MarketId | The unique identifier for the market you want to fetch. |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/fetchMarketData.ts)
 
 ## getMarketCount
 
-You can use this function to get market counts in the Zeitgeiest.
+You can use this function to get total number of markets registered with the
+network.
 
 ```typescript
 const sdk = await SDK.initialize(endpoint);
@@ -175,8 +172,11 @@ const sdk = await SDK.initialize(endpoint);
 const res = await sdk.models.fetchDisputes();
 ```
 
-**Arguments** | Name | Type | Introduction | | ---- | ---- | ------------ | |
-marketId | MarketId | The unique identifier for the market you want to fetch. |
+**Arguments**
+
+| Name     | Type     | Description                                             |
+| -------- | -------- | ------------------------------------------------------- |
+| marketId | MarketId | The unique identifier for the market you want to fetch. |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/fetchDisputes.ts)
 
@@ -257,10 +257,12 @@ const sdk = await SDK.initialize(endpoint, { graphQlEndpoint });
 const res = await sdk.models.queryAllActiveAssets(marketSlug, pagination);
 ```
 
-**Arguments** | Name | Type | Introduction | | ---- | ---- | ------------ | |
-marketSlugText | string | Filter assets by market slug | | pagination | {
-pageNumber: number; pageSize: number } | Options for pagination, not neccessary
-|
+**Arguments**
+
+| Name           | Type                                     | Description                            |
+| -------------- | ---------------------------------------- | -------------------------------------- |
+| marketSlugText | string                                   | Filter assets by market slug           |
+| pagination     | { pageNumber: number; pageSize: number } | Options for pagination, not neccessary |
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/index/queryAllActiveAssets.ts)
 
