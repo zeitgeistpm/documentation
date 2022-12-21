@@ -249,13 +249,13 @@ is often necessary.
 
 ## Summary
 
--   For categorical markets: If you estimate that the probability of a
-    categorical outcome is $p$, then buy the corresponding token if its price is
-    smaller than $p$ and short the token if its price is larger than $p$.
--   For scalar markets: If you estimate that the result of a scalar market will
-    be $w$, then buy LONG if the current estimate is smaller than $w$ and buy
-    SHORT if the current estimate is larger than $w$.
--   Provide liquidity if you believe the current prices are correct. This is a
-    bet against the other informants
--   Withdraw liquidity to take profits or if you believe that a justified market
-    correction is about to happen.
+- For categorical markets: If you estimate that the probability of a categorical
+  outcome is $p$, then buy the corresponding token if its price is smaller than
+  $p$ and short the token if its price is larger than $p$.
+- For scalar markets: If you estimate that the result of a scalar market will be
+  $w$, then buy LONG if the current estimate is smaller than $w$ and buy SHORT
+  if the current estimate is larger than $w$.
+- Provide liquidity if you believe the current prices are correct. This is a bet
+  against the other informants
+- Withdraw liquidity to take profits or if you believe that a justified market
+  correction is about to happen.
