@@ -188,13 +188,13 @@ informants more rope. Thus, providing liquidity can be thought of increasing
 your position in your bet against the market.
 
 So, users should provide liquidity when the spot prices are at the level that
-they should be at according to their prediction. Remember, that the liquidity
-providers then _pay_ the informants for shifting the prediction to the correct
-probability distribution. If they get it right, the liquidity provider will
-incur a loss. But if the LPs initial prediction is correct, then their expected
-profit is non-negative (this is a hard calculation), and the farther the
-informants' probability distribution diverges from the LPs prediction and the
-more market noise that occurs while the price moves from the initial to the
+they should be at according to their prediction. The traders then pay money to
+receive outcome tokens and shift the prediction to what they believe to be the
+correct probability distribution. If they get it right, the liquidity provider
+will incur a loss. But if the LPs initial prediction is correct, then their
+expected profit is non-negative (this is a hard calculation), and the farther
+the informants' probability distribution diverges from the LPs prediction and
+the more market noise that occurs while the price moves from the initial to the
 final prediction, the higher the LPs expected profit. Even if the final
 prediction is equal to the initial prediction, the LPs will still have collected
 fees. In particular, when you create a pool, you should always set the initial
@@ -203,6 +203,49 @@ prices according to the probabilities that you predict.
 By withdrawing some of their liquidity, on the other hand, an LP removes funds
 from their bet against the market. They might do this to take profits (including
 swap fees) or because they have lost faith in their prediction.
+
+## Minimizing Losses When Gathering Information
+
+Roughly speaking, there are two motivations for creating a market or providing
+liquidity. One is to create a market that allows you to bet against the
+informants that are active on Zeitgeist, as discussed above. This can be
+profitable if the liquidity providers have information which gives them an
+advantage over the traders.
+
+The other is to gather information from the traders. This is the exact reversal
+of the situation above. The liquidity providers start off with as good a
+prediction they can muster (based on whatever they know about the topic), which
+is then corrected by the informants. If the market eventually yields a better
+prediction, this results in a loss for the liquidity providers, but they receive
+a better prediction as compensation.
+
+The question then is, how the liquidity providers can minimize losses or
+maximize the quality of information they receive. The liquidity is key. If the
+pool is too shallow, and, thus, the market is too thin, then the potential
+losses for the LPs are quite small, and it is very easy for traders to move the
+price. But this is not a good situation for the traders: Not only do they deal
+with excessive slippage, but they are also forced to give up their information
+at a very low price. For example, if the pool is so shallow that any trader can
+only buy 10 units of a particular outcome token, their profit is limited to
+\$10. Most non-publicly available information is worth more than that, and may
+very well discourage knowledgeable informants from participating in the market,
+which may hurt the quality of the prediction.
+
+On the other hand, if the pool is too deep, and, thus, the market is too thick,
+then the potential losses of the LPs is quite large, and it is very difficult
+for the traders to move the price. This is good for the traders, though, as they
+can buy tokens and lower prices. And just as thin markets can have a negative
+effect on the prediction, so can markets that are too thick. While a
+particularly thick market may incentivize a knowledgeable whale to join the
+market and give up some crucial bit of information in exchange for the chance of
+a particularly big payoff, it can also make it _too_ hard for traders to move
+the price, which may again hurt the quality of the prediction.
+
+In summary, the liquidity providers control both their risk and the quality of
+the prediction by adding or withdrawing liquidity. Thin markets can result in a
+lack of participation, while thick markets can lead to significant losses and
+slow price changes. Manually adjusting the liquidity according to market signals
+is often necessary.
 
 ## Summary
 
