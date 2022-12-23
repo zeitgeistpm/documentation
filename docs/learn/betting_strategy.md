@@ -139,7 +139,7 @@ market. Since buying LONG is equivalent to selling/shorting SHORT, if you
 already own SHORT tokens, you can sell SHORT tokens in this situation instead of
 buying more LONG tokens.
 
-Similarly, the profit of buying one unit of LONG at the price of $p$ is
+Similarly, the profit of buying one unit of SHORT at the price of $p$ is
 $(v - w) / (b - a)$, so a reasonable informant buys SHORT if they believe the
 prediction is too high.
 
