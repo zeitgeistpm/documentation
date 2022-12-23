@@ -119,7 +119,7 @@ market, how should you bet?
 
 The SHORT token takes on more value as the value that the market resolves to is
 closer to the lower bound $a$, and LONG tokens on more value as the value that
-the market resolves to is closer to the upper bound $b$. In fact, suppose the
+the market resolves to is closer to the upper bound $b$. In fact, suppose that
 your belief is correct and the market resolves to $w$. Then each LONG is worth
 $(w - a) / (b - a)$ and each SHORT is worth $(b - w) / (b - a)$.
 
@@ -227,17 +227,17 @@ is then corrected by the informants. If the market eventually yields a better
 prediction, this results in a loss for the liquidity providers, but they receive
 a better prediction as compensation.
 
-The question then is, how the liquidity providers can minimize losses or
-maximize the quality of information they receive. The liquidity is key. If the
-pool is too shallow, and, thus, the market is too thin, then the potential
-losses for the LPs are quite small, and it is very easy for traders to move the
-price. But this is not a good situation for the traders: Not only do they deal
-with excessive slippage, but they are also forced to give up their information
-at a very low price. For example, if the pool is so shallow that any trader can
-only buy 10 units of a particular outcome token, their profit is limited to
-\$10. Most non-publicly available information is worth more than that, and may
-very well discourage knowledgeable informants from participating in the market,
-which may hurt the quality of the prediction.
+The question then is how the liquidity providers can minimize losses or maximize
+the quality of information they receive. The liquidity is key. If the pool is
+too shallow, and, thus, the market is too thin, then the potential losses for
+the LPs are quite small, and it is very easy for traders to move the price. But
+this is not a good situation for the traders: Not only do they deal with
+excessive slippage, but they are also forced to give up their information at a
+very low price. For example, if the pool is so shallow that any trader can only
+buy 10 units of a particular outcome token, their profit is limited to \$10.
+Most non-publicly available information is worth more than that, and may very
+well discourage knowledgeable informants from participating in the market, which
+may hurt the quality of the prediction.
 
 On the other hand, if the pool is too deep, and, thus, the market is too thick,
 then the potential losses of the LPs is quite large, and it is very difficult
