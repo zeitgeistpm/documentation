@@ -46,7 +46,7 @@ probability-weighted average over all possible outcomes. For example, in the
 example above, the expected value is
 
 $$
-    p(A) \cdot 1\,\$ + p(\neg A) \cdot 0\,\$ - 0.5\,\$ = 0.4\,\$
+    p(A) \cdot \$1 + p(\neg A) \cdot \$0 - \$0.5 = \$0.4
 $$
 
 (assuming that our beliefs are correct, the probability of $A$ is $0.9$ and the
@@ -64,6 +64,11 @@ Note that all our projections about profit are based on the assumption that our
 beliefs are correct (if we didn't assume that, we should probably not betting on
 our beliefs in the first place.). _If your prediction is incorrect, you're
 unlikely to profit._
+
+Of course, we may never know if any prediction was correct. For example, if you
+believe that the probabilities of $A$ and $B$ are 90% and 10%, resp. and then
+$B$ occurs - well, that doesn't mean you were wrong. Your prediction may have
+been spot-on and it just so happened that things played out in an unusual way.
 
 Below are some general notes on how to optimize the standard interactions with
 categorical and scalar markets, especially with regard to providing liquidity.
@@ -84,7 +89,7 @@ $A$ has a probability of $p(A)$. Let $q$ be the price of the outcome. Then the
 expected profit of buying one $A$ token
 
 $$
-    p(A) \cdot 1\,\$ - q
+    p(A) \cdot \$1 - q
 $$
 
 (you pay $q$, and if $A$ occurs, then you receive one dollar; otherwise you go
@@ -109,8 +114,8 @@ of making a loss.
 Suppose there's a scalar market with a range of $[a, b]$. Let $p$ and $q$ be the
 spot prices of SHORT and LONG, resp. Recall that $p + q = 1$. The value
 predicted by the market is $v = pa + qb$. Assume you believe that the market
-will resolve to $w$. Given the current status $p, q, v$ of the market, how
-should you bet?
+will resolve to $w \in [a, b]$. Given the current status $p, q, v$ of the
+market, how should you bet?
 
 The SHORT token takes on more value as the value that the market resolves to is
 closer to the lower bound $a$, and LONG tokens on more value as the value that
@@ -137,6 +142,9 @@ buying more LONG tokens.
 Similarly, the profit of buying one unit of LONG at the price of $p$ is
 $(v - w) / (b - a)$, so a reasonable informant buys SHORT if they believe the
 prediction is too high.
+
+If $w$ lies outside of the scalar range $[a, b]$, then just assume that $w = a$
+if $w < a$ or $w = b$ if $w > b$ and apply the system above.
 
 ## Providing Liquidity
 
