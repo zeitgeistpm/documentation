@@ -27,7 +27,7 @@ const sidebars = {
         "learn/prediction-markets",
         "learn/liquidity",
         "learn/using-zeitgeist-markets",
-        "learn/betting",
+        "learn/betting-strategy",
         "learn/market-rules",
         "learn/governance",
         "learn/court",

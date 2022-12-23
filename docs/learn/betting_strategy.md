@@ -1,5 +1,5 @@
 ---
-id: betting
+id: betting-strategy
 title: Betting Strategies
 ---
 
