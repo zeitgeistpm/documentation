@@ -79,7 +79,9 @@ The last section is a TL;DR.
 You can _short_ a token (bet that the event will _not_ occur) by buying the same
 amount of all other tokens. With Zeitgeist's current market maker, this can be
 implemented by first buying $x$ full sets and then selling $x$ units of the
-token you wish to short on the market.
+token you wish to short on the market. In fact, you can create all sorts of
+_compound bets_ by buying full sets and then selling only certain tokens to the
+market maker.
 :::
 
 ## Trading Categorical Markets
