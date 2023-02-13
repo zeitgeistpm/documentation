@@ -7,14 +7,15 @@ be able to submit transactions.
 
 ```ts
 import {
-  create,
-  CreateStandaloneMarketParams,
-  mainnet,
-  RpcContext,
   Sdk,
+  FullContext,
+  CreateStandaloneMarketParams,
+  create,
+  mainnet,
+  ZTG,
 } from "@zeitgeistpm/sdk";
 
-const sdk: Sdk<RpcContext> = await create(mainnet());
+const sdk: Sdk<FullContext> = await create(mainnet());
 ```
 
 ## 2. Init Market Creation Params
