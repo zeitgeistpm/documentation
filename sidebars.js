@@ -62,13 +62,35 @@ const sidebars = {
           label: "SDK",
           link: {
             type: "doc",
-            id: "build/sdk/introduction",
+            id: "build/sdk/v1/introduction",
           },
           items: [
-            "build/sdk/common",
-            "build/sdk/indexs",
-            "build/sdk/market",
-            "build/sdk/swap",
+            {
+              type: "category",
+              label: "V2",
+              link: {
+                type: "doc",
+                id: "build/sdk/v2/introduction",
+              },
+              items: [
+                "build/sdk/v2/getting-started",
+                "build/sdk/v2/market-creation",
+              ],
+            },
+            {
+              type: "category",
+              label: "V1",
+              link: {
+                type: "doc",
+                id: "build/sdk/v1/introduction",
+              },
+              items: [
+                "build/sdk/v1/common",
+                "build/sdk/v1/indexs",
+                "build/sdk/v1/market",
+                "build/sdk/v1/swap",
+              ],
+            },
           ],
         },
         {
