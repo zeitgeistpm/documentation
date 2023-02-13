@@ -1,7 +1,11 @@
-# SDK(NEXT v2) Documentation
+# SDK V2 Documentation
 
 ![sdk version](https://img.shields.io/npm/v/@zeitgeistpm/sdk)
 [![CI](https://github.com/zeitgeistpm/sdk-next/actions/workflows/ci.yml/badge.svg)](https://github.com/zeitgeistpm/sdk-next/actions/workflows/ci.yml)
+
+**The Zeitgeist SDK is a higher level developer experience that offers
+functionality for the most common use cases for interacting directly with the
+zeitgeist blockchain and the chaindata indexer.**
 
 :::caution
 
@@ -14,6 +18,10 @@ Please report any issues you find on the
 
 :::
 
-The Zeitgeist SDK is a higher level developer experience that offers
-functionality for the most common use cases for interacting directly with the
-zeitgeist blockchain and the chaindata indexer.
+<a href='/docs/build/sdk/v2/getting-started'
+style={{padding: "1em", display: 'block', textAlign: 'center'}}>
+
+  <div style={{ background: "#0001fe", display: "inline-block", padding: "0.8em 1.4em", borderRadius: "8px", color: "white", fontSize: "1.2em", fontWeight: "bold"}}>
+    Get Started
+  </div>
+</a>

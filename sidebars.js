@@ -10,11 +10,7 @@ const sidebars = {
         type: "generated-index",
       },
       collapsed: false,
-      items: [
-        "basic/battery-station",
-        "basic/roadmap",
-        "basic/zeitgeist-beta",
-      ],
+      items: ["basic/battery-station", "basic/roadmap", "basic/zeitgeist-beta"],
     },
     // Learn
     {
@@ -67,8 +63,10 @@ const sidebars = {
           type: "category",
           label: "SDK",
           link: {
-            type: "doc",
-            id: "build/sdk/v1/introduction",
+            type: "generated-index",
+            title: "Zeitgeist SDK",
+            description:
+              "Use the Zeitgeist SDK to build using Zeitgeist Prediction Market Primitives.",
           },
           items: [
             {

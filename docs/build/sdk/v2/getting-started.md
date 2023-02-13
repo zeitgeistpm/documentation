@@ -12,6 +12,8 @@ npm i @zeitgeistpm/sdk @polkadot/api @polkadot/util
 
 The zeitgeist sdk can be initialized in one of three different modes.
 
+[Code Snippets for Initialization](https://github.com/zeitgeistpm/sdk-next/tree/main/playground/examples/src/initialization)
+
 ### Full(default)
 
 The full mode has access to both the zeitgeist indexer and chain rpc apis, it
@@ -97,7 +99,7 @@ with the chain data.
 ```ts
 import type { RpcContext, Sdk } from "@zeitgeistpm/sdk";
 import { create, createStorage } from "@zeitgeistpm/sdk";
-import { IPFS, LocalStorage } from "@zeitgeistpm/web3.storage";
+import { IPFS } from "@zeitgeistpm/web3.storage";
 
 const sdk: Sdk<RpcContext> = await create({
   provider: "wss://localhost:9944",
@@ -106,28 +108,5 @@ const sdk: Sdk<RpcContext> = await create({
       node: { url: "localhost:5001" },
     })
   ),
-});
-```
-
-### In the browser using localStorage
-
-If you are working in the browser you can use localStorage as your metadata
-persistence.
-
-:::warning
-
-Just keep in mind that the metadata created on markets is only available in your
-local browser and has to be cleared when clearing the local chain node.
-
-:::
-
-```ts
-import type { RpcContext, Sdk } from "@zeitgeistpm/sdk";
-import { create, createStorage } from "@zeitgeistpm/sdk";
-import { LocalStorage } from "@zeitgeistpm/web3.storage";
-
-const sdk: Sdk<RpcContext> = await create({
-  provider: "wss://localhost:9944",
-  storage: createStorage(LocalStorage.storage()),
 });
 ```
