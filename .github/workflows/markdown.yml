@@ -1,0 +1,19 @@
+name: Markdown
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  prettier:
+    name: Verify formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Run check
+        uses: creyD/prettier_action@v4.2
+        with:
+          dry: true
+          prettier_version: 2.2.1
+          prettier_options: "--check docs/*.md* docs/**/*.md* docs/**/**/*.md*"

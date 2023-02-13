@@ -10,7 +10,11 @@ const sidebars = {
         type: "generated-index",
       },
       collapsed: false,
-      items: ["basic/battery-station", "basic/roadmap", "basic/zeitgeist-beta"],
+      items: [
+        "basic/battery-station",
+        "basic/roadmap",
+        "basic/zeitgeist-beta",
+      ],
     },
     // Learn
     {
@@ -22,6 +26,7 @@ const sidebars = {
       items: [
         "learn/prediction-markets",
         "learn/liquidity",
+        "learn/market-rules",
         "learn/using-zeitgeist-markets",
         "learn/governance",
         "learn/court",
@@ -56,6 +61,7 @@ const sidebars = {
         "build/market-metadata",
         "build/troubleshooting",
         "build/how-to-monitor-node",
+        "build/how-to-unlock-vested-token",
         "build/cli-example",
         {
           type: "category",
