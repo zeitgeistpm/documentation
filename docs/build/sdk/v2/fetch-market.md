@@ -6,17 +6,24 @@ Here we are fetching `10` `active` markets with the `Sports` tag.
 
 ```ts
 import { MarketStatus } from "@zeitgeistpm/indexer";
-import { create, FullContext, mainnet, Sdk } from "@zeitgeistpm/sdk";
+import {
+  create,
+  FullContext,
+  mainnet,
+  MarketList,
+  Sdk,
+} from "@zeitgeistpm/sdk";
 
 const sdk: Sdk<FullContext> = await create(mainnet());
 
-const activeSportsMarkets = await sdk.model.markets.list({
-  limit: 10,
-  where: {
-    tags_containsAll: ["Sports"],
-    status_eq: MarketStatus.Active,
-  },
-});
+const activeSportsMarkets: MarketList<FullContext> =
+  await sdk.model.markets.list({
+    limit: 10,
+    where: {
+      tags_containsAll: ["Sports"],
+      status_eq: MarketStatus.Active,
+    },
+  });
 
 activeSportsMarkets.forEach((market) => {
   console.log(`${market.marketId}: ${market.question}`);
@@ -39,12 +46,18 @@ will give the same result as the indexed one above with the exception of
 limiting results.
 
 ```ts
-import { create, mainnetRpc, RpcContext, Sdk } from "@zeitgeistpm/sdk";
+import {
+  create,
+  mainnetRpc,
+  MarketList,
+  RpcContext,
+  Sdk,
+} from "@zeitgeistpm/sdk";
 import { isNotNull } from "@zeitgeistpm/utility/dist/null";
 
 const sdk: Sdk<RpcContext> = await create(mainnetRpc());
 
-const all = await sdk.model.markets.list();
+const all: MarketList<RpcContext> = await sdk.model.markets.list();
 
 const activeSportsMarkets = (
   await Promise.all(
@@ -81,11 +94,19 @@ If you are working with a `FullContext` sdk it will favour the indexer when
 querying markets. But if you want to force querying on chain data you can use it
 `asRpc` which will in effect make it a `RpcContext` sdk.
 
+:::info
+
+Note that `asRpc()` clones the sdk and will reuse the underlying websocket
+connection, but will not affect the sdk it was cloned from.
+
+:::
+
 ```ts
 import {
   create,
   FullContext,
   mainnet,
+  MarketList,
   RpcContext,
   Sdk,
 } from "@zeitgeistpm/sdk";
@@ -97,7 +118,7 @@ const sdk: Sdk<FullContext> = await create(mainnet());
  */
 const rpcSdk: Sdk<RpcContext> = sdk.asRpc();
 
-const markets = await rpcSdk.model.markets.list();
+const markets: MarketList<RpcContext> = await rpcSdk.model.markets.list();
 
 /**
  * Saturate the markets with data from IPFS so we can peek its question
