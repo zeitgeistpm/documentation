@@ -154,6 +154,15 @@ export type CreateMarketWithPoolParams = CreateMarketBaseParams & {
 };
 ```
 
+:::info
+
+Note that the length of the `weights` array have to match the number of
+`categorical assets` or the exact number 2 when its a scalar market.
+
+[Read more about weights and helpers here.](/docs/build/sdk/v2/pool-creation-helpers)
+
+:::
+
 ## Metadata
 
 The metadata passed to market creation is added to external storage(default

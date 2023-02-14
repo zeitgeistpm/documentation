@@ -85,7 +85,10 @@ const sidebars = {
                     type: "doc",
                     id: "build/sdk/v2/market-creation",
                   },
-                  items: ["build/sdk/v2/create-market-parameters"],
+                  items: [
+                    "build/sdk/v2/create-market-parameters",
+                    "build/sdk/v2/pool-creation-helpers",
+                  ],
                 },
               ],
             },
