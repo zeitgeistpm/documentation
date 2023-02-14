@@ -63,6 +63,8 @@ const params: CreateMarketWithPoolParams<typeof sdk> = {
 };
 ```
 
+[Read more about market parameters](/docs/build/sdk/v2/create-market-parameters)
+
 ## 3. Submitting transaction
 
 The `create` method on `sdk.model.markets` will first add the metadata to the

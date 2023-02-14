@@ -78,7 +78,15 @@ const sidebars = {
               },
               items: [
                 "build/sdk/v2/getting-started",
-                "build/sdk/v2/market-creation",
+                {
+                  type: "category",
+                  label: "Market Creation",
+                  link: {
+                    type: "doc",
+                    id: "build/sdk/v2/market-creation",
+                  },
+                  items: ["build/sdk/v2/create-market-parameters"],
+                },
               ],
             },
             {
