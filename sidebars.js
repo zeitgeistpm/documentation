@@ -78,6 +78,7 @@ const sidebars = {
               },
               items: [
                 "build/sdk/v2/getting-started",
+                "build/sdk/v2/fetch-market",
                 {
                   type: "category",
                   label: "Market Creation",
