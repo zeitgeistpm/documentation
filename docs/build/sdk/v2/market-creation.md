@@ -117,3 +117,10 @@ if (data.isRight()) {
   console.log(`Market creation had error: ${data.unwrapLeft().message}`);
 }
 ```
+
+### Full Code
+
+Here is the full code snippet for this example with some smaller differences for
+development and testing ease.
+
+[Full code snippet](https://github.com/zeitgeistpm/sdk-next/blob/main/playground/examples/src/market-creation/market-with-pool.ts)

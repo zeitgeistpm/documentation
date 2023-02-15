@@ -5,7 +5,7 @@
 In this part we give an example of how to buy a market outcome asset in a
 categorical market. This effectively means making a prediction on the market.
 
-## Set up
+### 1. Set up
 
 First we import the needed modules from the sdk and polkadotjs. Some of the
 types are not needed but included for clarity.
@@ -24,12 +24,10 @@ import {
   calcInGivenOut,
   create,
   FullContext,
-  getAssetBalance,
-  getAssetIds,
-  getAssetWeight,
   getIndexOf,
-  getSwapFee,
   mainnet,
+  Market,
+  Pool,
   Sdk,
   ZTG,
   ZtgAssetId,
@@ -38,7 +36,7 @@ import {
 const sdk: Sdk<FullContext> = await create(mainnet());
 ```
 
-## Fetching Market and Pool
+### 2. Fetching Market and Pool
 
 We fetch the market since it has metadata about the outcome categories that we
 need and the associated pool that we are going to buy assets from.
@@ -72,7 +70,7 @@ if (!market) {
 
 :::
 
-## Massaging the Trade Data
+### 3. Massaging the Trade Data
 
 Now we massage the data fetched and further fetch some data we need to be able
 to make the trade.
@@ -80,7 +78,7 @@ to make the trade.
 First we normalize the assets in the pool to the `AssetId` type
 
 ```ts
-const marketAssets: AssetId[] = getAssetIds(pool);
+const marketAssets: AssetId[] = pool.getAssetIds();
 ```
 
 Then we declare the base asset we are going to buy the outcome assets with. This
@@ -121,12 +119,16 @@ and weights of the pool assets so that we can calculate the max amount of base
 assets we are willing to pay for the outcome asset.
 
 ```ts
-const baseAssetBalance = await getAssetBalance(sdk, pool, baseAsset);
-const outcomeAssetBalance = await getAssetBalance(sdk, pool, outcomeAsset);
-const baseAssetWeight = getAssetWeight(pool, baseAsset).unwrap()!;
-const outcomeAssetWeight = getAssetWeight(pool, outcomeAsset).unwrap()!;
+const [baseAssetBalance, outcomeAssetBalance] = await Promise.all([
+  pool.getAssetBalance(baseAsset),
+  pool.getAssetBalance(outcomeAsset),
+]);
 
-const swapFee = getSwapFee(pool).unwrap()!;
+const baseAssetWeight = pool.getAssetWeight(baseAsset).unwrap()!;
+const outcomeAssetWeight = pool.getAssetWeight(outcomeAsset).unwrap()!;
+
+const amountToBuy = ZTG.mul(20).toString();
+const swapFee = pool.getSwapFee();
 const slippage = 0.1;
 
 const maxAssetAmountIn = calcInGivenOut(
@@ -139,7 +141,7 @@ const maxAssetAmountIn = calcInGivenOut(
 ).mul(slippage / 100 + 1);
 ```
 
-## Making the Transaction
+### 4. Making the Transaction
 
 Now we have all the data we need to submit the transaction and can submit it by
 calling the `swapExactAmountOut` method on the `Pool`
