@@ -141,6 +141,15 @@ const maxAssetAmountIn = calcInGivenOut(
 ).mul(slippage / 100 + 1);
 ```
 
+:::info
+
+> "Slippage tolerances establish a margin of change acceptable to the user
+> beyond price impact."
+
+[Read more about slippage here.](https://docs.uniswap.org/concepts/protocol/swaps#slippage)
+
+:::
+
 ### 4. Making the Transaction
 
 Now we have all the data we need to submit the transaction and can submit it by
