@@ -78,7 +78,6 @@ const sidebars = {
               },
               items: [
                 "build/sdk/v2/getting-started",
-                "build/sdk/v2/fetch-market",
                 {
                   type: "category",
                   label: "Market Creation",
@@ -91,6 +90,8 @@ const sidebars = {
                     "build/sdk/v2/pool-creation-helpers",
                   ],
                 },
+                "build/sdk/v2/fetch-market",
+                "build/sdk/v2/making-a-prediction",
               ],
             },
             {
