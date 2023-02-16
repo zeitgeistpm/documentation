@@ -100,6 +100,7 @@ const sidebars = {
                   },
                   items: ["build/sdk/v2/selling-assets"],
                 },
+                "build/sdk/v2/asset-ids",
               ],
             },
             {

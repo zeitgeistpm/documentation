@@ -10,7 +10,7 @@ is still high.
 
 :::info
 
-The following code is a continuation of the same code used when buyin assets in
+The following code is a continuation of the same code used when buying assets in
 the [Making a Prediction Part](/docs/build/sdk/v2/making-a-prediction)
 
 **But note that we have to calculate the slippage for selling and not buying.**

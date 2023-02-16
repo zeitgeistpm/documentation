@@ -7,7 +7,7 @@ categorical market. This effectively means making a prediction on the market.
 
 ### 1. Set up
 
-First we import the needed modules from the sdk and polkadotjs. Some of the
+First we import the needed modules from the sdk and polkadot.js. Some of the
 types are not needed but included for clarity.
 
 :::note

@@ -96,7 +96,8 @@ console.log(`Pool created with id: ${pool.poolId}`);
 
 :::warning
 
-The unwrap method will throw and error if failing and should be try catched.
+The unwrap method will throw and error if failing and should be exception
+handled.
 
 :::
 
