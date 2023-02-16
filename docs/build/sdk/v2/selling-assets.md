@@ -1,4 +1,4 @@
-# Seeling Assets
+# Selling Assets
 
 Your beliefs around a market might change during the market life time and in
 this case you might want to sell your previously bought assets.
