@@ -31,6 +31,7 @@ import {
   Sdk,
   ZTG,
   ZtgAssetId,
+  slippageFromFloat,
 } from "@zeitgeistpm/sdk";
 
 const sdk: Sdk<FullContext> = await create(mainnet());
@@ -129,7 +130,8 @@ const outcomeAssetWeight = pool.getAssetWeight(outcomeAsset).unwrap()!;
 
 const amountToBuy = ZTG.mul(20).toString();
 const swapFee = pool.getSwapFee();
-const slippage = 0.1;
+
+const slippage = slippageFromFloat(0.1, "buying");
 
 const maxAssetAmountIn = calcInGivenOut(
   baseAssetBalance,
@@ -138,10 +140,13 @@ const maxAssetAmountIn = calcInGivenOut(
   outcomeAssetWeight,
   amountToBuy,
   swapFee.div(ZTG).toNumber()
-).mul(slippage / 100 + 1);
+).mul(slippage);
 ```
 
 :::info
+
+The slippage here is set to `0.1%`, for very active markets you might want to
+increase this a bit.
 
 > "Slippage tolerances establish a margin of change acceptable to the user
 > beyond price impact."
@@ -174,4 +179,4 @@ console.log("Trade Successfull");
 Here is a link to the full code of this example with some smaller differences so
 its testable during development.
 
-[Full Code Snippet](https://github.com/zeitgeistpm/sdk-next/blob/main/playground/examples/src/assets/buy-sell-assets.ts)
+[Full Code Snippet](https://github.com/zeitgeistpm/sdk-next/blob/main/playground/examples/src/assets/buy-assets.ts)

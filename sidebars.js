@@ -91,7 +91,15 @@ const sidebars = {
                   ],
                 },
                 "build/sdk/v2/fetch-market",
-                "build/sdk/v2/making-a-prediction",
+                {
+                  type: "category",
+                  label: "Making A Prediction",
+                  link: {
+                    type: "doc",
+                    id: "build/sdk/v2/making-a-prediction",
+                  },
+                  items: ["build/sdk/v2/selling-assets"],
+                },
               ],
             },
             {
