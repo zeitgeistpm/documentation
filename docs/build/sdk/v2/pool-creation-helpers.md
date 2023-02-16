@@ -12,7 +12,7 @@ outcomes and therefore two asset tokens.
 - We use the `ZTG` helper to correctly calculate the pool value to `300 ZTG`
 - We use the helper `evenWeights(x_number_of_outcomes)` to distribute the
   weights evenly among the outcomes.
-- We use the helper `swapFeeFromFloat(percent)` to set the swap fee tio `1%`
+- We use the helper `swapFeeFromFloat(percent)` to set the swap fee to `1%`
 
 :::
 
@@ -34,28 +34,42 @@ const params = {
 }
 ```
 
-## Uneven Asset Weighting
+## Initial Prediction _(Uneven Asset Weighting)_
 
-In case you want to have uneven weighting of assets upon pool/market creation
-you can use the helper `weightsFromRelativeRatio(ratio: number[])`
+When you are creating a market and providing liquidity there is a good chance
+you already have a sense of what the prediction will be and want to position
+your liquidity across outcome assets in a way that is most beneficial to you.
 
-:::info
-
-In this example we are distributing the weight unevenly in a 2 to 4 ratio.
-
-:::
+You can use the `weightsFromRelativeRatio` to do this by supplying prices.
 
 ```ts
 import {
   weightsFromRelativeRatio
 } from '@zeitgeistpm/sdk'
 
+const yesOutcomePricePrediction = 0.8
+const noOutcomePricePrediction = 0.2
+
 const params = {
   ...,
   marketType: { Categorical: 2 },
   pool: {
     ...,
-    weights: weightsFromRelativeRatio([2, 4]),
+    weights: weightsFromRelativeRatio([yesOutcomePricePrediction, noOutcomePricePrediction]),
   },
 }
 ```
+
+:::info
+
+In this example we are prediction that the `yes` outcome has a `80%`percent
+chance of being the outcome and the `no`outcome a `20%` chance.
+
+Since the total price of all assets add up to `1 ZTG` its easier to reason
+around weighting if you make sure that all the number supplied to the
+`weightsFromRelativeRatio` function adds up to 1.
+
+If you are thinking about it as percentage chances its easier if the numbers add
+upp to `100`
+
+:::
