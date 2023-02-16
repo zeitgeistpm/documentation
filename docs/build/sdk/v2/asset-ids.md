@@ -66,6 +66,79 @@ type PoolShareAssetId = {
 };
 ```
 
+## Parsing Asset Ids
+
+The sdk exposes the following function that helps to normalize/parse a `AssetId`
+from a `string`, `object` or `ZeitgeistPrimitivesAsset`
+
+```ts
+declare const parseAssetId = (
+  raw: string | object | ZeitgeistPrimitivesAsset,
+): E.IEither<SyntaxError, AssetId>
+```
+
+All of the following examples will parse to the same `AssetId`
+
+```ts
+const assetId: AssetId = parseAssetId({ CategoricalOutcome: [1, 2] }).unwrap();
+
+const assetId: AssetId = parseAssetId('{"CategoricalOutcome":[1,2]}').unwrap();
+
+const assetId: AssetId = parseAssetId(
+  api.createType("ZeitgeistPrimitivesAsset", { categoricalOutcome: [1, 2] })
+).unwrap();
+```
+
+:::info
+
+Note that the `unwrap` method in `Either` values will throw an error if it
+cannot parse the value as expected and should be handled.
+
+:::
+
+## Typeguards for Asset Ids
+
+The sdk exposes certain type guards that can typecheck asset ids at runtime.
+
+```ts
+import {
+  AssetId,
+  getIndexOf,
+  IOCategoricalAssetId,
+  IOMarketOutcomeAssetId,
+  IOScalarAssetId,
+  parseAssetId,
+} from "@zeitgeistpm/sdk";
+
+const categoricalAssetId: AssetId = parseAssetId({
+  CategoricalOutcome: [1, 2],
+}).unwrap();
+
+const scalarAssetId: AssetId = parseAssetId({
+  ScalarOutcome: [1, "Short"],
+}).unwrap();
+
+/**
+ * We can narrow all the way down to a concrete type
+ */
+if (IOCategoricalAssetId.is(categoricalAssetId)) {
+  console.log(categoricalAssetId.CategoricalOutcome);
+}
+if (IOScalarAssetId.is(scalarAssetId)) {
+  console.log(scalarAssetId.ScalarOutcome);
+}
+
+/**
+ * Or down to the union type of possible outcome asset id types
+ */
+if (IOMarketOutcomeAssetId.is(categoricalAssetId)) {
+  /**
+   * Getting the index of asset ids is only applicable to Market Outcome Asset ids
+   */
+  console.log(getIndexOf(categoricalAssetId));
+}
+```
+
 ## Example
 
 In this example we are using `parseAssetId` to normalize the asset ids of a
