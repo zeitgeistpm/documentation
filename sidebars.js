@@ -90,7 +90,15 @@ const sidebars = {
                     "build/sdk/v2/pool-creation-helpers",
                   ],
                 },
-                "build/sdk/v2/fetch-market",
+                {
+                  type: "category",
+                  label: "Fetching Markets",
+                  link: {
+                    type: "doc",
+                    id: "build/sdk/v2/fetch-markets",
+                  },
+                  items: ["build/sdk/v2/fetch-market"],
+                },
                 {
                   type: "category",
                   label: "Making A Prediction",
