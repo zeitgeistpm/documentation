@@ -88,6 +88,7 @@ const sidebars = {
                   items: [
                     "build/sdk/v2/create-market-parameters",
                     "build/sdk/v2/pool-creation-helpers",
+                    "build/sdk/v2/market-creation-two-step",
                   ],
                 },
                 {
