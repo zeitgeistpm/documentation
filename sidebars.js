@@ -120,6 +120,14 @@ const sidebars = {
                 },
                 "build/sdk/v2/asset-ids",
                 "build/sdk/v2/indexer",
+                {
+                  type: "category",
+                  label: "Reference",
+                  link: {
+                    type: "generated-index",
+                  },
+                  items: ["build/sdk/v2/reference/market"],
+                },
               ],
             },
             {
