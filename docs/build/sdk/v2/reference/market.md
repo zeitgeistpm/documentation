@@ -135,6 +135,12 @@ react components for example.
 const sdk: Sdk<RpcContext> = await create(batterystationRpc());
 const market = (await sdk.model.markets.get(340)).unwrap()!;
 const saturatedMarket: SaturatedRpcMarket = await market.saturate();
+
+// Metadata is available on the market object.
+saturatedMarket.slug;
+saturatedMarket.question;
+saturatedMarket.description;
+saturatedMarket.tags;
 ```
 
 ### Market Methods [[ref]](https://zeitgeist.pm/sdk-next/types/_zeitgeistpm_sdk.MarketMethods.html)

@@ -37,3 +37,7 @@ const market = (await sdk.model.markets.get(212)).unwrap();
 ```ts
 const market = (await sdk.model.markets.get({ marketId: 212 })).unwrap();
 ```
+
+#### Returns
+
+**[Market type ref](/docs/build/sdk/v2/reference/market)**

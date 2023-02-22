@@ -119,6 +119,7 @@ const sidebars = {
                   items: ["build/sdk/v2/calculating-scalar-prediction"],
                 },
                 "build/sdk/v2/asset-ids",
+                "build/sdk/v2/custom-metadata",
                 "build/sdk/v2/indexer",
                 {
                   type: "category",
@@ -126,8 +127,16 @@ const sidebars = {
                   link: {
                     type: "generated-index",
                   },
-                  items: ["build/sdk/v2/reference/market"],
+                  items: [
+                    "build/sdk/v2/reference/market",
+                    {
+                      type: "link",
+                      label: "Full API Docs",
+                      href: "https://zeitgeist.pm/sdk-next/index.html", // The external URL
+                    },
+                  ],
                 },
+                "https://github.com/zeitgeistpm/sdk-next/blob/main/packages/sdk/CHANGELOG.md",
               ],
             },
             {

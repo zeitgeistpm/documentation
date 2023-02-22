@@ -30,6 +30,10 @@ activeSportsMarkets.forEach((market) => {
 });
 ```
 
+#### Returns
+
+**[Market type ref](/docs/build/sdk/v2/reference/market)**
+
 :::info
 
 Note that since we are creating a `FullContext` sdk the indexer will be the

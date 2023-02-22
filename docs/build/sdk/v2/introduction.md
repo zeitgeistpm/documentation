@@ -1,5 +1,7 @@
 # SDK V2 Documentation
 
+## The next iteration of the zeitgeist sdk
+
 ![sdk version](https://img.shields.io/npm/v/@zeitgeistpm/sdk)
 [![CI](https://github.com/zeitgeistpm/sdk-next/actions/workflows/ci.yml/badge.svg)](https://github.com/zeitgeistpm/sdk-next/actions/workflows/ci.yml)
 
