@@ -105,9 +105,8 @@ const predictedPrice = assetPrices
   .at(0)!;
 
 console.log(
-  `${market.q}``The prediction is ${
-    predictedPrice.name
-  } at ${predictedPrice.price.toString()}`
+  `${market.question}`,
+  `The prediction is ${predictedPrice.name} at ${predictedValue.toFixed(2)}`
 );
 ```
 
