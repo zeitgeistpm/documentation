@@ -15,8 +15,8 @@ jobs:
         run: |
           yarn install
       - name: Run check
-        uses: creyD/prettier_action@v4.2
         with:
           dry: true
           prettier_version: 2.2.1
-          prettier_options: "--check docs/*.md* docs/**/*.md* docs/**/**/*.md*"
+          prettier_options:
+            "yarn prettier --check docs/*.md* docs/**/*.md* docs/**/**/*.md*"
