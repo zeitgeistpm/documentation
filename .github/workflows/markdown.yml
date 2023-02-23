@@ -15,8 +15,5 @@ jobs:
         run: |
           yarn install
       - name: Run check
-        with:
-          dry: true
-          prettier_version: 2.2.1
-          prettier_options:
-            "yarn prettier --check docs/*.md* docs/**/*.md* docs/**/**/*.md*"
+        run: |
+          yarn prettier --check docs/*.md* docs/**/*.md* docs/**/**/*.md*
