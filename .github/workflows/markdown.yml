@@ -11,10 +11,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Install
+        run: |
+          yarn install
       - name: Run check
         uses: creyD/prettier_action@v4.2
         with:
           dry: true
           prettier_version: 2.2.1
-          prettier_options:
-            "yarn install && --check docs/*.md* docs/**/*.md* docs/**/**/*.md*"
+          prettier_options: "--check docs/*.md* docs/**/*.md* docs/**/**/*.md*"
