@@ -139,6 +139,23 @@ if (IOMarketOutcomeAssetId.is(categoricalAssetId)) {
 }
 ```
 
+## Corelating AssetId and Outcome Metadata
+
+The asset ids that represent market outcomes IE:
+[`MarketOutcomeAssetId`](https://zeitgeist.pm/sdk-next/types/_zeitgeistpm_sdk.MarketOutcomeAssetId.html)
+which is either a
+[`ScalarAssetId`](https://zeitgeist.pm/sdk-next/types/_zeitgeistpm_sdk.ScalarAssetId.html)
+or a
+[`CategoricalAssetId`](https://zeitgeist.pm/sdk-next/types/_zeitgeistpm_sdk.CategoricalAssetId.html)
+stores the index of the asset that is corelated to the `market.categories`.
+
+```ts
+declare const market: Market<FullContext>;
+declare const assetId: MarketOutcomeAssetId;
+
+const { name, ticker, color } = market.categories![getIndexOf(assetId)]!;
+```
+
 ## Example
 
 In this example we are using `parseAssetId` to normalize the asset ids of a
