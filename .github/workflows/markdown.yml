@@ -2,7 +2,7 @@ name: Markdown
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   prettier:
@@ -16,4 +16,5 @@ jobs:
         with:
           dry: true
           prettier_version: 2.2.1
-          prettier_options: "--check docs/*.md* docs/**/*.md* docs/**/**/*.md*"
+          prettier_options:
+            "yarn install && --check docs/*.md* docs/**/*.md* docs/**/**/*.md*"
