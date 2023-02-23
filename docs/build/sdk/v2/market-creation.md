@@ -71,6 +71,10 @@ The `create` method on `sdk.model.markets` will first add the metadata to the
 IPFS(or other custom) storage and then submit the transaction needed to create
 the market on chain.
 
+_If then transaction fails it will also try to remove the metadata from IPFS and
+unpin it in the cluster if a cluster config is configured. The standard
+zeitgeist ipfs storage config uses a cluster._
+
 ```ts
 const response = await sdk.model.markets.create(params);
 ```

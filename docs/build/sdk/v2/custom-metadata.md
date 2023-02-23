@@ -22,6 +22,13 @@ type CustomMarketMetadata = {
 };
 ```
 
+:::info
+
+Note that the literal tag `__meta: "markets"` is required on the custom market
+metadata type.
+
+:::
+
 ## 2. Initializing the SDK
 
 Next we initialize the sdk with the custom metadata as a generic.
