@@ -118,6 +118,15 @@ const sidebars = {
                   },
                   items: ["build/sdk/v2/calculating-scalar-prediction"],
                 },
+                {
+                  type: "category",
+                  label: "Providing Liquidity",
+                  link: {
+                    type: "doc",
+                    id: "build/sdk/v2/join-pool",
+                  },
+                  items: ["build/sdk/v2/exit-pool"],
+                },
                 "build/sdk/v2/asset-ids",
                 "build/sdk/v2/custom-metadata",
                 "build/sdk/v2/indexer",
@@ -136,7 +145,11 @@ const sidebars = {
                     },
                   ],
                 },
-                "https://github.com/zeitgeistpm/sdk-next/blob/main/packages/sdk/CHANGELOG.md",
+                {
+                  type: "link",
+                  label: "CHANGELOG",
+                  href: "https://github.com/zeitgeistpm/sdk-next/blob/main/packages/sdk/CHANGELOG.md",
+                },
               ],
             },
             {
