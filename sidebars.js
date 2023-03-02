@@ -118,6 +118,7 @@ const sidebars = {
                   },
                   items: ["build/sdk/v2/calculating-scalar-prediction"],
                 },
+                "build/sdk/v2/rpc-prices",
                 {
                   type: "category",
                   label: "Providing Liquidity",

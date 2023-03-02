@@ -58,6 +58,13 @@ Now we can iterate through the markets assets, fetch their balances, weights and
 correlated market metadata category. Then we can calculate the price for the
 given assets.
 
+:::info
+
+The zeitgeist node also supports `rpc` calls to fetch asset prices.
+[Read more about them here.](/docs/build/sdk/v2/rpc-prices)
+
+:::
+
 ```ts
 const assetPrices = await Promise.all(
   assets.map(async (asset) => {
