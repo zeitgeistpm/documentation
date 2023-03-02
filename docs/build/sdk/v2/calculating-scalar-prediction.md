@@ -3,7 +3,13 @@
 Here we jump straight to step 5 of the calculating prediction flow. Meaning that
 step 1 through 4 in the
 [previous section](/docs/build/sdk/v2/calculating-current-prediction) are the
-same
+same.
+
+:::info
+
+[Learn more about scalar markets](/docs/learn/prediction-markets#scalar-prediction-markets)
+
+:::
 
 ## 5. Printing the current _(scalar)_ prediction
 
