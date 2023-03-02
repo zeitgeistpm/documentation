@@ -2,7 +2,7 @@
 
 In this example we use the SDK to add some liquidity to a `Pool`. In return we
 get some LP tokens that represent our relative share of the liquidity pool.
-Higher liquidity results in smoother trades and enables a greater number of
+Higher liquidity results in lower price slippage and enables a greater number of
 people to participate in the market.
 
 > The LP tokens can be burned by a provider in order to receive back their share
