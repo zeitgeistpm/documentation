@@ -90,11 +90,38 @@ You can also connect to a localy running development node. Just note that if you
 don't have the zeitgeist subsquid node also running locally you have to boot it
 in rpc mode.
 
-### Using local IPFS node
+### Starting a local Zeitgeist Node with Docker.
 
-This works best if you are running a local node where you persist chain data to
-disk and want to keep the stored metadata(markets) in a persisten synced state
-with the chain data.
+**1. First lets pull the ipfs image and zeitgeist image.**
+
+```bash
+docker pull ipfs/go-ipfs:latest
+docker pull zeitgeistpm/zeitgeist-node
+```
+
+**2. Then we can boot up the ipfs daemon image and zeitgeist node.**
+
+```bash
+docker run \
+   -p 4001:4001 \
+   -p 127.0.0.1:8080:8080 \
+   -p 127.0.0.1:8081:8081 \
+   -p 127.0.0.1:5001:5001 \
+   ipfs/go-ipfs
+
+docker run \
+    -p 30333:30333 \
+    -p 9933:9933 \
+    -p 9944:9944 \
+    zeitgeistpm/zeitgeist-node \
+    --dev \
+    --rpc-external \
+    --ws-external \
+    --rpc-cors=all \
+    --pruning=archive
+```
+
+**3. Connecting the SDK to the dev environment.**
 
 ```ts
 import type { RpcContext, Sdk } from "@zeitgeistpm/sdk";
