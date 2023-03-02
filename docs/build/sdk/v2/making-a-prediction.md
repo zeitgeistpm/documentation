@@ -155,6 +155,13 @@ increase this a bit.
 
 :::
 
+:::warning
+
+A high slippage increases the chance that a user's trade succeeds, however it
+also increases their chance of being front run and getting a worse deal.
+
+:::
+
 ### 4. Making the Transaction
 
 Now we have all the data we need to submit the transaction and can submit it by
