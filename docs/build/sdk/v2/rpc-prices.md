@@ -68,8 +68,8 @@ _Usefull when you need a graph of prices over a range of blocks._
 ### Example
 
 Here we are fetching the price for the `AssetId`
-`{ CategoricalOutcome: [0, 0] }` in \*_ZTG_ for the blocks `55, 56 and 57` not
-including the swap fees.
+`{ CategoricalOutcome: [0, 0] }` in \*_ZTG_ for the blocks `55`, `56` and `57`
+not including the swap fees.
 
 ```ts
 const sdk: Sdk<RpcContext> = await create(localhostRpc());

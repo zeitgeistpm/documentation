@@ -125,6 +125,8 @@ const submittableResult = await pool.join({
 console.log(`Liquidity added`);
 ```
 
+[Read more about signing transactions.](/docs/build/sdk/v2/market-creation#2-init-market-creation-params)
+
 ## Full Code
 
 [Full code snippet](https://github.com/zeitgeistpm/sdk-next/blob/main/playground/examples/src/swaps/join-pool.ts)

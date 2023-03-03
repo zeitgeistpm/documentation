@@ -181,6 +181,8 @@ const submitableResult = await pool.swapExactAmountOut({
 console.log("Trade Successfull");
 ```
 
+[Read more about signing transactions.](/docs/build/sdk/v2/market-creation#2-init-market-creation-params)
+
 ### Full Code
 
 Here is a link to the full code of this example with some smaller differences so

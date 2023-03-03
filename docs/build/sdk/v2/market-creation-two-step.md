@@ -79,6 +79,8 @@ const { market } = marketCreationRespons.saturate().unwrap();
 console.log(`Market created with id: ${market.marketId}`);
 ```
 
+[Read more about signing transactions.](/docs/build/sdk/v2/market-creation#2-init-market-creation-params)
+
 ### 2. Deploying Pool for the market with liquidity.
 
 Here we submit a second transaction that deploys a swap pool for the market

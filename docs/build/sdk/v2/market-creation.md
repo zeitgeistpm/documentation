@@ -27,6 +27,27 @@ other keyring mechanism.
 const signer: KeyringPair = getSigner();
 ```
 
+Or using the extension and the
+[@polkadot/extension-dapp](https://www.npmjs.com/package/@polkadot/extension-dapp)
+library.
+
+```ts
+const injector = await web3FromAddress(address);
+const signer = {
+  address,
+  signer: injector.signer,
+};
+```
+
+:::info
+
+Read more about signing transactions
+[here](https://polkadot.js.org/docs/keyring/start/sign-verify/). And how to sign
+transactions in the browser
+[here](https://polkadot.js.org/docs/extension/usage).
+
+:::
+
 Then we set up the parameters needed to create a market. In this case we are
 creating a market with a pool with a liquidity of `300 ZTG` and even weighting
 among the two categorical outcomes.

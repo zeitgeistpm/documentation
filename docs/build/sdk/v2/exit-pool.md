@@ -54,6 +54,8 @@ const totalPoolShares = await pool.getTotalIssuance();
 const ratio = totalPoolShares.div(userPoolShares);
 ```
 
+[Read more about signing transactions.](/docs/build/sdk/v2/market-creation#2-init-market-creation-params)
+
 ## 3. Calculating Asset Amounts
 
 Then we can calculate the amount of assets the user expects to get out based on
