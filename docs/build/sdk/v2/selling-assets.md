@@ -17,7 +17,7 @@ the [Making a Prediction Part](/docs/build/sdk/v2/making-a-prediction)
 
 :::
 
-### Swapping Outcome Assets for ZTG(base asset)
+### Swapping Outcome Assets for ZTG (base asset)
 
 Here we swap the previously bought outcome asset `Yes` back into the pool in
 exchange for `ZTG` or other base asset on the pool.
