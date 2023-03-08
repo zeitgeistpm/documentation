@@ -29,7 +29,7 @@ const sdk: Sdk<FullContext> = await create(mainnet());
 
 :::info
 
-This is the prefered mode for full applications that need to both query data in
+This is the preferred mode for full applications that need to both query data in
 a more optimized way and also need to interact with the chain itself.
 
 :::
@@ -86,20 +86,20 @@ const sdk: Sdk<FullContext> = await create(batterystation());
 
 ## Local Dev Node
 
-You can also connect to a localy running development node. Just note that if you
-don't have the zeitgeist subsquid node also running locally you have to boot it
-in rpc mode.
+You can also connect to a locally running development node. Just note that if
+you don't have the zeitgeist Subsquid node also running locally you have to boot
+it in rpc mode.
 
 ### Starting a local Zeitgeist Node with Docker.
 
-**1. First lets pull the ipfs image and zeitgeist image.**
+**1. First lets pull the IPFS image and zeitgeist image.**
 
 ```bash
 docker pull ipfs/go-ipfs:latest
 docker pull zeitgeistpm/zeitgeist-node
 ```
 
-**2. Then we can boot up the ipfs daemon image and zeitgeist node.**
+**2. Then we can boot up the IPFS daemon image and zeitgeist node.**
 
 ```bash
 docker run \

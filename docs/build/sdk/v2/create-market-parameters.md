@@ -222,7 +222,7 @@ type MarketMetadata = {
   img?: string | undefined;
   /**
    * If the market is a scalar market, then set the scalar type.
-   * Determines how the range is displayed in the zeitgeist app UI.
+   * Determines how the range is displayed in the Zeitgeist app UI.
    */
   scalarType?: "number" | "date" | undefined;
   /**
@@ -252,9 +252,9 @@ type MarketMetadata = {
 
 ### Officially Supported Tags
 
-The following tags are supported in the zeitgeist application. And you want to
+The following tags are supported in the Zeitgeist application. And you want to
 use one of them if you want the market to show up under that tag on the
-zeitgeist app.
+Zeitgeist app.
 
 ```ts
 type ZeitgeistTag =

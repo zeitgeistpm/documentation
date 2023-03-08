@@ -58,7 +58,7 @@ type ZtgAssetId = {
 ### Pool Share Assets
 
 Pool shares are earned/minted when you provide liquidity to a market. The number
-represents the pool id the poolshares belong to.
+represents the pool id the pool-shares belong to.
 
 ```ts
 type PoolShareAssetId = {
@@ -98,7 +98,7 @@ cannot parse the value as expected and should be handled.
 
 ## Typeguards for Asset Ids
 
-The sdk exposes certain type guards that can typecheck asset ids at runtime.
+The sdk exposes certain type guards that can type check asset ids at runtime.
 
 ```ts
 import {

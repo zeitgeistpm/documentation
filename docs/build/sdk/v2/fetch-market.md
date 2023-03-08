@@ -17,7 +17,7 @@ type MarketGetQuery =
 :::info
 
 Note that the `market.marketId` and `market.id` are not the same. The `id` is a
-unique database identifier in the indexed subsquid data. While `marketId` is the
+unique database identifier in the indexed Subsquid data. While `marketId` is the
 unique id used across both indexed and on chain market data.
 
 :::

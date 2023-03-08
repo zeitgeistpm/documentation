@@ -30,7 +30,7 @@ const pool = await sdk.model.swaps
 ## 2. Amount and Ratio.
 
 Next we get the signing account, fetch the balance of pool shares the account
-has in the pool, and calculate the ratio the user has of the total poolshares.
+has in the pool, and calculate the ratio the user has of the total pool-shares.
 
 :::note
 
