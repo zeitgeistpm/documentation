@@ -10,7 +10,7 @@ npm i @zeitgeistpm/sdk @polkadot/api @polkadot/util
 
 ## Initialization
 
-The zeitgeist sdk can be initialized in one of three different modes.
+The Zeitgeist SDK can be initialized in one of three different modes.
 
 [Code Snippets for Initialization](https://github.com/zeitgeistpm/sdk-next/tree/main/playground/examples/src/initialization)
 
