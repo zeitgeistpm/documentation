@@ -56,7 +56,7 @@ the amount ztg the user wants to add to the pool.
 
 :::note
 
-This ratio must be the same for all assets so that adding liqudity doesn't
+This ratio must be the same for all assets so that adding liquidity doesn't
 change the current prices
 
 :::
@@ -105,7 +105,7 @@ _Calculate the amount of pool shares the user should receive based on the
 percentage of the pool they will own after the extrinsic is executed_
 
 ```ts
-const poolAmmount = totalPoolShares.div(ratio).toFixed(0, Decimal.ROUND_DOWN);
+const poolAmount = totalPoolShares.div(ratio).toFixed(0, Decimal.ROUND_DOWN);
 ```
 
 ## 5. Sending the transaction
@@ -118,7 +118,7 @@ const signer: KeyringPair = getSignerSomehow();
 
 const submittableResult = await pool.join({
   signer,
-  poolAmount: poolAmmount, // amount of pool shares the user should receive
+  poolAmount: poolAmount, // amount of pool shares the user should receive
   maxAssetsIn: [...assetsMaxIn, baseAssetMaxIn], // maximum amounts of assets the user is willing to pay
 });
 

@@ -66,12 +66,12 @@ const params: CreateStandaloneMarketParams<typeof sdk> = {
 /**
  * Create market transaction and send it.
  */
-const marketCreationRespons = await sdk.model.markets.create(params);
+const marketCreationResponse = await sdk.model.markets.create(params);
 
 /**
  * Extracts the market from events in the block.
  */
-const { market } = marketCreationRespons.saturate().unwrap();
+const { market } = marketCreationResponse.saturate().unwrap();
 
 /**
  * Print the results.

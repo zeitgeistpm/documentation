@@ -170,7 +170,7 @@ calling the `swapExactAmountOut` method on the `Pool`
 ```ts
 const signer: KeyringPair = getSignerSomehow();
 
-const submitableResult = await pool.swapExactAmountOut({
+const submittableResult = await pool.swapExactAmountOut({
   assetIn: { Ztg: null },
   assetAmountOut: amountToBuy,
   assetOut: outcomeAsset,

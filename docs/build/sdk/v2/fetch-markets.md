@@ -37,7 +37,7 @@ activeSportsMarkets.forEach((market) => {
 :::info
 
 Note that since we are creating a `FullContext` sdk the indexer will be the
-prefered method of fetching markets and will give access to more fine grained
+preferred method of fetching markets and will give access to more fine grained
 filtering like by status, tags, creator etc.
 
 :::

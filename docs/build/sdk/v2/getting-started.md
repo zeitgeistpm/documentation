@@ -10,7 +10,7 @@ npm i @zeitgeistpm/sdk @polkadot/api @polkadot/util
 
 ## Initialization
 
-The zeitgeist sdk can be initialized in one of three different modes.
+The Zeitgeist SDK can be initialized in one of three different modes.
 
 [Code Snippets for Initialization](https://github.com/zeitgeistpm/sdk-next/tree/main/playground/examples/src/initialization)
 
@@ -29,7 +29,7 @@ const sdk: Sdk<FullContext> = await create(mainnet());
 
 :::info
 
-This is the prefered mode for full applications that need to both query data in
+This is the preferred mode for full applications that need to both query data in
 a more optimized way and also need to interact with the chain itself.
 
 :::
@@ -73,6 +73,13 @@ Perfect for static sites or analytics tools.
 
 :::
 
+### Testnet Graphql Explorer
+
+You can access the testnet Graphql explorer if you want to look at the indexed
+data and get more info on the indexed data types here:
+
+[https://processor.bsr.zeitgeist.pm/graphql](https://processor.bsr.zeitgeist.pm/graphql)
+
 ## Battery Station
 
 You can also connect to our test net using the sdk.
@@ -86,20 +93,25 @@ const sdk: Sdk<FullContext> = await create(batterystation());
 
 ## Local Dev Node
 
-You can also connect to a localy running development node. Just note that if you
-don't have the zeitgeist subsquid node also running locally you have to boot it
-in rpc mode.
+You can also connect to a locally running development node.
+
+:::note
+
+Just note that if you don't have the zeitgeist Subsquid node also running
+locally you have to boot it in rpc mode.
+
+:::
 
 ### Starting a local Zeitgeist Node with Docker.
 
-**1. First lets pull the ipfs image and zeitgeist image.**
+**1. First lets pull the IPFS image and zeitgeist image.**
 
 ```bash
 docker pull ipfs/go-ipfs:latest
 docker pull zeitgeistpm/zeitgeist-node
 ```
 
-**2. Then we can boot up the ipfs daemon image and zeitgeist node.**
+**2. Then we can boot up the IPFS daemon image and zeitgeist node.**
 
 ```bash
 docker run \
