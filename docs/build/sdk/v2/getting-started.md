@@ -73,6 +73,13 @@ Perfect for static sites or analytics tools.
 
 :::
 
+### Testnet Graphql Explorer
+
+You can access the testnet Graphql explorer if you want to look at the indexed
+data and get more info on the indexed data types here:
+
+[https://processor.bsr.zeitgeist.pm/graphql](https://processor.bsr.zeitgeist.pm/graphql)
+
 ## Battery Station
 
 You can also connect to our test net using the sdk.
@@ -86,9 +93,14 @@ const sdk: Sdk<FullContext> = await create(batterystation());
 
 ## Local Dev Node
 
-You can also connect to a locally running development node. Just note that if
-you don't have the zeitgeist Subsquid node also running locally you have to boot
-it in rpc mode.
+You can also connect to a locally running development node.
+
+:::note
+
+Just note that if you don't have the zeitgeist Subsquid node also running
+locally you have to boot it in rpc mode.
+
+:::
 
 ### Starting a local Zeitgeist Node with Docker.
 

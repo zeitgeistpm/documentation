@@ -14,6 +14,13 @@ data.
 
 :::
 
+### Testnet Graphql Explorer
+
+You can access the testnet Graphql explorer if you want to look at the indexed
+data and get more info on the indexed data types here:
+
+[https://processor.bsr.zeitgeist.pm/graphql](https://processor.bsr.zeitgeist.pm/graphql)
+
 ## Quickstart
 
 Boot up the SDK in either `FullContext` or `IndexedContext` mode to be able to
