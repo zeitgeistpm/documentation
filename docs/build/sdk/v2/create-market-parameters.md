@@ -94,6 +94,28 @@ export type CreateMarketBaseParams = {
 };
 ```
 
+:::info
+
+### Scalar Markets
+
+Scalar markets can be any range of numbers also timestamps. And if you want them
+to display as dates in the Zeitgeist UI you can specify that in the metadata.
+
+```ts
+const params: CreateMarketWithPoolParams<typeof sdk> = {
+  marketType: { Scalar: [
+    Date.now(),
+    Date.now() + oneWeekInMs
+  ] },
+  metadata: {
+    ...
+    scalarType: 'date',
+  }
+}
+```
+
+:::
+
 ## Standalone Market Parameters
 
 These parameters are added to the base when you want to create a market without
