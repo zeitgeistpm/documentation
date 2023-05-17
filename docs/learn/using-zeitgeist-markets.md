@@ -300,6 +300,45 @@ dispute for the token which the market eventually resolved to receive their
 stakes tokens back, while the stake of those who staked for other tokens are
 slashed.
 
+### Bonds
+
+There are four types of bonds utilized by prediction markets on Zeitgeist:
+_creation_, _oracle_, _outsider_ and _dispute_ bonds. Bonds are deemed _settled_
+when they are entirely unreserved or slashed. In the event of a market's
+destruction by the Advisory Committee - a course of action only considered for
+markets in severe violation of our policies - all associated bonds will be
+slashed. Slashed funds are subsequently transferred to the treasury.
+
+- The _creation bond_ is reserved by the market creator at the time of market
+  creation. Its size varies depending on whether the market's creation type is
+  advised or permissionless, with the latter requiring a larger amount. If the
+  market is advised, the creation bond is unreserved upon market approval or if
+  the market concludes without approval. If the market is rejected, a portion of
+  the bond is slashed, and the remaining part is unreserved. The specific
+  portion to be slashed is determined by the `AdvisoryBondSlashPercentage`
+  parameter. Conversely, if the market is created permissionlessly, the creation
+  bond is unreserved upon the market's resolution. Regardless of the scenario,
+  the creation bond serves to ensure the market creator's appropriate conduct.
+
+- The _oracle bond_ is reserved by the market creator during market creation. It
+  is unreserved upon the market's resolution if the oracle provided an honest
+  report, confirmed as true by dispute or undisputed. If the oracle failed to
+  provide a report or if it submitted a false report that was later disputed,
+  the bond is transferred to the outsider.
+
+- The _outsider bond_ is reserved by a user, referred to as the _outsider_, if
+  they submit a report after the oracle failed to do so within the report period
+  deadline. The outsider bond's settlement process mirrors that of the oracle
+  bond. If the outsider's report was honest, the bond is returned, and the
+  outsider also receives the oracle bond as a reward. If the outsider's report
+  is later found to be false through a dispute, the bond is transferred to the
+  disputant.
+
+- The _dispute bond_ is reserved by a user, the _disputant_, upon submitting a
+  dispute. If the dispute is justified and the original report is proven false,
+  the dispute bond is unreserved, and the disputant is rewarded with the
+  oracle/outsider bonds. If the dispute is unjustified, the bond is slashed.
+
 ## Advanced Topics
 
 ### Arbitrage on Zeitgeist
