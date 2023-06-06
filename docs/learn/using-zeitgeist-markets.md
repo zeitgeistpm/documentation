@@ -313,13 +313,13 @@ slashed. Slashed funds are subsequently transferred to the treasury.
   creation. Its size varies depending on whether the market's creation type is
   advised or permissionless, with the latter requiring a larger amount. If the
   market is advised, the creation bond is unreserved upon market approval or if
-  the market period expires without getting either approval or rejection. 
-  If the market is rejected, a portion of
-  the bond is slashed, and the remaining part is unreserved. The specific
-  portion to be slashed is determined by the `AdvisoryBondSlashPercentage`
-  parameter. Conversely, if the market is created permissionlessly, the creation
-  bond is unreserved upon the market's resolution. Regardless of the scenario,
-  the creation bond serves to ensure the market creator's appropriate conduct.
+  the market period expires without receiving either approval or rejection. If
+  the market is rejected, a portion of the bond is slashed, and the remaining
+  part is unreserved. The specific portion to be slashed is determined by the
+  `AdvisoryBondSlashPercentage` parameter. Conversely, if the market is created
+  permissionlessly, the creation bond is unreserved upon the market's
+  resolution. Regardless of the scenario, the creation bond serves to ensure the
+  market creator's appropriate conduct.
 
 - The _oracle bond_ is reserved by the market creator during market creation. It
   is unreserved upon the market's resolution if the oracle provided an honest
@@ -337,8 +337,9 @@ slashed. Slashed funds are subsequently transferred to the treasury.
 
 - The _dispute bond_ is reserved by a user, the _disputant_, upon submitting a
   dispute. If the dispute is justified and the original report is proven false,
-  the dispute bond is unreserved, and the disputant is rewarded with the
-  oracle and the potential outsider bond. If the dispute is unjustified, the bond is slashed.
+  the dispute bond is unreserved, and the disputant is rewarded with the oracle
+  and the outsider bond if available. If the dispute is unjustified, the bond is
+  slashed.
 
 ## Advanced Topics
 
