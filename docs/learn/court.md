@@ -14,9 +14,11 @@ traders who base their decisions on accurate information. If someone provides
 false information, they will be punished, while those who share accurate
 information will be rewarded. In essence, the court is a stake-weighted
 plurality decision-making machine. Zeitgeist's court makes use of the so-called
-[_Schelling point_]. This is achieved by voting in secret and revealing the raw
-vote information later. The outcome with the most votes wins (plurality). The
-court serves as a dispute resolution mechanism.
+[_Schelling point_][]. This is achieved by voting in secret and revealing the
+raw vote information later. The outcome with the most votes wins (plurality).
+The court serves as a dispute resolution mechanism. The court is inspired by
+[Kleros][], a project that has already experimented with an on-chain court
+system.
 
 ### Dispute Management within Court
 
@@ -291,9 +293,6 @@ for (Participant, ParticipantStake) in CourtPool {
 - Participant: A juror or delegator account inside the court pool.
 - Vote Weight: The derivative voting value of one draw weight; it represents one
   `MinJurorStake`.
-
-The court is inspired by [Kleros][], a project that has already experimented
-with an on-chain court system.
 
 [kleros]: https://kleros.io/
 [_schelling point_]: https://en.wikipedia.org/wiki/Focal_point_(game_theory)
