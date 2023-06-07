@@ -12,9 +12,9 @@ The court system is responsible for ensuring that accurate information is added
 to the blockchain. Prediction markets, which rely on truthful data, reward
 traders who base their decisions on accurate information. If someone provides
 false information, they will be punished, while those who share accurate
-information will be rewarded. In essence, the court is a stake-weighted,
-plurality decision-making machine. Zeitgeist's court makes use of the so called
-"Shelling point". This is achieved by voting in secret and revealing the raw
+information will be rewarded. In essence, the court is a stake-weighted
+plurality decision-making machine. Zeitgeist's court makes use of the so-called
+_Schelling point_. This is achieved by voting in secret and revealing the raw
 vote information later. The outcome with the most votes wins (plurality).
 
 ### Connection of Court to Prediction Markets
