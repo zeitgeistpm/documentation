@@ -106,7 +106,9 @@ first court round.
 The formula to determine the necessary requested vote weight for each appeal is
 as follows:
 
-`2^(appeal_number) * 31 + 2^(appeal_number) - 1`
+```
+2^(appeal_number) * 31 + 2^(appeal_number) - 1
+```
 
 So the maximum amount of stake risked by all randomly selected jurors and
 delegators in the last court round (3) is:
