@@ -6,7 +6,7 @@ title: Decentralized Court
 Zeitgeist implements a decentralized court to handle disputes that may arise in
 the resolution of prediction markets outcomes.
 
-### General introduction
+### General Introduction
 
 The court system is responsible for ensuring that accurate information is added
 to the blockchain. Prediction markets, which rely on truthful data, reward
@@ -17,7 +17,7 @@ plurality decision-making machine. Zeitgeist's court makes use of the so called
 "Shelling point". This is achieved by voting in secret and revealing the raw
 vote information later. The outcome with the most votes wins (plurality).
 
-### Connection of court to prediction markets
+### Connection of Court to Prediction Markets
 
 The court serves as a dispute resolution mechanism, which is activated if the
 market creator specifies it. The market creator also designates the oracle
@@ -27,7 +27,7 @@ be "A" for the first team winning, "B" for the second team winning, and "DRAW"
 for a tie. After the game is over and the final winner is, for example, team
 "A", the oracle adds this information to the blockchain.
 
-### Dispute management within court
+### Dispute Management within Court
 
 If the oracle submits the wrong outcome due to malicious behaviour, disputes
 come into play in such cases. Anyone can dispute the oracle report, and once a
@@ -41,7 +41,7 @@ meaning the outcome with the most votes wins. Each market is associated with one
 inner court, which can be appealed multiple times if someone believes the
 jurors' decision is unjustified.
 
-### Global disputes as the last instance
+### Global Disputes as the last Instance
 
 If the number of appeals reaches a certain threshold (currently three appeals)
 or if during the appeal period (or `dispute_duration`) the total `unconsumed`
@@ -53,7 +53,7 @@ and serves as the final outcome for traders to rely on for redemption. Global
 dispute voting participants have all of their funds unlocked after the winner is
 determined.
 
-### Joining the court
+### Joining the Court
 
 You can either join the court (extrinsic `join_court`) as an active juror, who
 is responsible for voting, or be a delegator and delegate (extrinsic `delegate`)
@@ -78,7 +78,7 @@ list of account ids. The dispatch function ensures that the list of
 jurors. The list needs to contain at least one account and all account ids need
 to be unique.
 
-### Exiting the court
+### Exiting the Court
 
 Each juror and delegator can exit the court system to retrieve their remaining
 funds. If the juror or delegator is still actively involved in inner court
@@ -99,7 +99,7 @@ period to get the staked funds back. To finally return the unused funds, the
 participant needs to evoke the `exit_court` dispatch function. The used funds
 (`active_lock`) still remain locked.
 
-### Calculating necessary draw weights
+### Calculating necessary Draw Weights
 
 If a juror votes against the plurality decision, they are penalized by a
 multiple of a constant amount (`n * MinJurorStake`). The penalized amount is
@@ -124,7 +124,7 @@ delegators in the last court round (3) is:
 
 `255 * 500 ZTG = 127,500 ZTG`
 
-### The selection algorithm
+### The Selection Algorithm
 
 The court pool keeps track of all the stake of the jurors and delegators to
 randomly select `n * MinJurorStake` draw weights from it. It is important to
@@ -155,7 +155,7 @@ associated account id (juror or delegator). One randomly selected draw weight is
 equal to one `MinJurorStake` and associated to one juror or delegator account
 id.
 
-### Delegation of draw weight
+### Delegation of Draw Weight
 
 If one draw weight of a delegator is selected by the algorithm (see ”The
 selection algorithm”), one random delegated juror is chosen out of the
@@ -177,7 +177,7 @@ risks (`slashable` and code reference `SelectionAdd::DelegationStake`) the
 `MinJurorStake` associated to the vote weight. If the juror makes bad decisions,
 the delegator loses the selected `MinJurorStake`.
 
-### Voting at predefined time points
+### Voting at predefined Time Points
 
 Jurors are requested to vote in a periodic interval (`RequestInterval`) at a
 known request block in the future. This ensures that jurors only need to check
@@ -231,7 +231,7 @@ The last possible call to `appeal` is necessary for the global dispute to get
 triggered, because there has to be some kind of financial commitment to appeal
 the winner outcome of the last appeal round.
 
-### Determining the winner outcome
+### Determining the Winner Outcome
 
 The basic concept is to get the outcome with the most juror vote weights and use
 that as winner outcome. But there are two edge cases with that approach. If
