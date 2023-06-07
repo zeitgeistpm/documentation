@@ -15,17 +15,8 @@ false information, they will be punished, while those who share accurate
 information will be rewarded. In essence, the court is a stake-weighted
 plurality decision-making machine. Zeitgeist's court makes use of the so-called
 [_Schelling point_]. This is achieved by voting in secret and revealing the raw
-vote information later. The outcome with the most votes wins (plurality).
-
-### Connection of Court to Prediction Markets
-
-The court serves as a dispute resolution mechanism, which is activated if the
-market creator specifies it. The market creator also designates the oracle
-account responsible for reporting the winning outcome. For example, in a soccer
-game, the market question may be: Which team will win? The outcome tokens could
-be "A" for the first team winning, "B" for the second team winning, and "DRAW"
-for a tie. After the game is over and the final winner is, for example, team
-"A", the oracle adds this information to the blockchain.
+vote information later. The outcome with the most votes wins (plurality). The
+court serves as a dispute resolution mechanism.
 
 ### Dispute Management within Court
 
