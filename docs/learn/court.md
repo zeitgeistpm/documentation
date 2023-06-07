@@ -112,12 +112,17 @@ as follows:
 2^(appeal_number) * 31 + 2^(appeal_number) - 1
 ```
 
-So the maximum amount of stake risked by all randomly selected jurors and
-delegators in the last court round (3) is:
+Assume one specific court case is in the last appeal round (3). The number of
+randomly selected draw weights for jurors and delegators is 255, and, therefore,
+the amount of requested ZTG is 127,500 ZTG.
 
-`2^(3) * 31 + 2^(3) - 1 = 255`
+$$
+2^3 * 31 + 2^3 - 1 = 255.
+$$
 
-`255 * 500 ZTG = 127,500 ZTG`
+$$
+255 \cdot 500 \, \mathrm{ZTG} = 127,\!500 \, \mathrm{ZTG}.
+$$
 
 ### The Selection Algorithm
 
