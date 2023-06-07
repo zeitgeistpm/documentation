@@ -14,7 +14,7 @@ traders who base their decisions on accurate information. If someone provides
 false information, they will be punished, while those who share accurate
 information will be rewarded. In essence, the court is a stake-weighted
 plurality decision-making machine. Zeitgeist's court makes use of the so-called
-_Schelling point_. This is achieved by voting in secret and revealing the raw
+[_Schelling point_]. This is achieved by voting in secret and revealing the raw
 vote information later. The outcome with the most votes wins (plurality).
 
 ### Connection of Court to Prediction Markets
@@ -303,3 +303,4 @@ The court is inspired by [Kleros][], a project that has already experimented
 with an on-chain court system.
 
 [kleros]: https://kleros.io/
+[_schelling point_]: https://en.wikipedia.org/wiki/Focal_point_(game_theory)
