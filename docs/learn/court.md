@@ -287,17 +287,17 @@ for (Participant, ParticipantStake) in CourtPool {
 
 ### Terminology
 
-- court hopping: joining the court just to receive token emission benefits and
-  then exiting the court
-- court pool: all jurors and delegators
-- delegator: an account which gives its vote power to jurors
-- draw weight: one slash-able `MinJurorStake` that belongs to one vote weight
-- global dispute: a token voting mechanism for all ZTG holders
-- juror: an account which is responsible to vote in secret and reveal the raw
-  information later on
-- participant: a juror or delegator account inside the court pool
-- vote weight: the derivative voting value of one draw weight; it represents one
-  `MinJurorStake`
+- Court Hopping: Joining the court just to receive token emission benefits and
+  then exiting the court.
+- Court Pool: All jurors and delegators.
+- Delegator: An account which gives its vote power to jurors.
+- Draw Weight: One slash-able `MinJurorStake` that belongs to one vote weight.
+- Global Dispute: A token voting mechanism for all ZTG holders.
+- Juror: An account which is responsible to vote in secret and reveal the raw
+  information later on.
+- Participant: A juror or delegator account inside the court pool.
+- Vote Weight: The derivative voting value of one draw weight; it represents one
+  `MinJurorStake`.
 
 The court is inspired by [Kleros][], a project that has already experimented
 with an on-chain court system.
