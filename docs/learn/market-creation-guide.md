@@ -17,16 +17,16 @@ markets on curious topics will flourish.
 
 When selecting a topic for a market, the creator must avoid trivial or
 exceedingly difficult questions or illegal topics. For example, "Will SpaceX
-send a manned mission to Mars by 2026?" is likely trivial. Topics may be in
-question form in the form of a statement. Contentious issues are welcome, as
-long as resolution criteria are clear (see below). Questions are preferred for
-contentious issues.
+send a manned mission to Mars by 2026?" is likely trivial. Topics may be
+presented in in the form of a question or a statement. Contentious issues are
+welcome, as long as resolution criteria are clear (see below). Questions are
+preferred for contentious issues.
 
 The market's duration and time frame has implications on engagement. If the
 market runs for a long time, users are required to take into account economic
 uncertainties like the price stability of the base asset when making a trade or
 providing liquidity. They are also taking on risks of information shock. If the
-market runs for too short of a time, accurate prediction are difficult to
+market runs for too short a time, accurate predictions are difficult to
 make.[^1] The ideal length depends on the topic: For sports markets, shorter
 durations are acceptable. Markets on political or economic trends should at
 least run a couple of month to properly aggregate information.
@@ -34,7 +34,7 @@ least run a couple of month to properly aggregate information.
 [^1] Zeitgeist currently doesn't allow markets with a duration of more than a
 year.
 
-For example, "Will SpaceX send a manned mission to Marks by 2030?" requires
+For example, "Will SpaceX send a manned mission to Mars by 2030?" requires
 participants to lock up funds for a significant time period. If the base asset
 against which the bets are taken is a speculative asset itself, this bears
 incalculable risks for those who hold outcome tokens.
@@ -56,7 +56,7 @@ which are so unlikely that it makes no sense to bet on them makes no sense, but
 which may occur after all. For example, a market on the Champions League Finals
 might have one outcome for each team. But there's also the chance that the game
 is delayed until after the market is resolved or even cancelled. Any event with
-a probability of less that $1\%$ is considered a long shot and should generally
+a probability of less than $1\%$ is considered a long shot and should generally
 not be made part of the market. If a long shot occurs, the market is instead
 voided.[^2]
 
@@ -196,10 +196,10 @@ internet,
 > Golden Knights Win It All? The Hockey News. Retrieved from:
 > **https://thehockeynews.com/news/nhl-stanley-cup-predictions-do-the-panthers-or-golden-knights-win-it-all**
 
-This market is well phrased, correctly cites it's sources, contextualizes the
+This market is well phrased, correctly cites its sources, contextualizes the
 market using an introductory paragraph and even specifies the official game
 report as official source for the oracle. One way this description could be
-improved by detailing at what date the market will resolve ambiguously if the
+improved is by detailing at what date the market will resolve ambiguously if the
 game is cancelled or delayed.
 
 ### ASTR/USD at the end of Q1 2023 (UTC)
