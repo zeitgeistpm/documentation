@@ -107,11 +107,8 @@ prefers to use:
 
 ## Examples
 
-### U.S. Debt Limit
+### Will the US Raise the Debt Limit by $1.5 Trillion or More by June 2, 2023, 19:00 (UTC)?
 
-> Will the US Raise the Debt Limit by $1.5 Trillion or More by June 2, 2023,
-> 19:00 (UTC)?
->
 > One of the most pressing current events is the potential default of the US
 > government on its payments. This could carry significant implications for
 > global economies worldwide. US bonds are viewed as the gold standard of
