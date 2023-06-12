@@ -22,10 +22,11 @@ const sidebars = {
       items: [
         "learn/prediction-markets",
         "learn/liquidity",
-        "learn/market-rules",
         "learn/using-zeitgeist-markets",
         "learn/governance",
         "learn/court",
+        "learn/market-rules",
+        "learn/market-creation-guide",
         "learn/futarchy",
         "learn/comparisons",
         {
