@@ -27,14 +27,14 @@ come into play in such cases. Anyone can dispute the oracle report, and once a
 dispute is triggered, the court takes over. The court is comprised of jurors and
 delegators who need to lock a certain amount of ZTG tokens to join the court
 system. The more tokens locked, the higher the probability of being selected as
-an active voter (juror) or delegator, who risks funds on behalf of delegated
+an active juror or delegator, who risks funds on behalf of delegated
 jurors. Delegators can transfer their voting rights to active jurors, who
 participate in the voting system. The court uses a plurality voting system,
 meaning the outcome with the most votes wins. Each market is associated with one
-inner court, which can be appealed multiple times if someone believes the
+court case, which can be appealed multiple times if someone believes the
 jurors' decision is unjustified.
 
-### Global Disputes as the last Instance
+### Global Disputes as the Last Instance
 
 If the number of appeals reaches a certain threshold (currently three appeals)
 or if during the appeal period (or `dispute_duration`) the total `unconsumed`
@@ -77,7 +77,7 @@ Each juror and delegator can exit the court system to retrieve their remaining
 funds. If the juror or delegator is still actively involved in inner court
 cases, only the unused (non-active) funds are returned. The unused stake is
 equivalent to the stake that was not already selected by the selection algorithm
-(see “The selection algorithm”). In order to exit the court and get the funds
+(see [“The Selection Algorithm”](#the-selection-algorithm)). In order to exit the court and get the funds
 back as a juror or delegator, one has to call the `prepare_exit_court`
 extrinsic. This extrinsic removes the participant from the court pool and saves
 the current block number to notice when the unused funds can be returned.
@@ -92,7 +92,7 @@ period to get the staked funds back. To finally return the unused funds, the
 participant needs to evoke the `exit_court` dispatch function. The used funds
 (`active_lock`) still remain locked.
 
-### Calculating necessary Draw Weights
+### Calculating Necessary Draw Weights
 
 If a juror votes against the plurality decision, they are penalized by a
 multiple of a constant amount (`n * MinJurorStake`). The penalized amount is
@@ -117,7 +117,7 @@ randomly selected draw weights for jurors and delegators is 255, and, therefore,
 the amount of requested ZTG is 127,500 ZTG.
 
 $$
-2^3 * 31 + 2^3 - 1 = 255.
+2^3 \cdot 31 + 2^3 - 1 = 255.
 $$
 
 $$
@@ -214,11 +214,11 @@ to their selected stakes for the specific court case (extrinsic
 
 In order to make an appeal, the caller of `appeal` has to reserve a bond. The
 cost of an appeal is calculated as following:
-`cost of appeal = AppealBond * 2^(appeal_number + 1)`
+`cost of appeal = AppealBond * 2^(appeal_number + 1)`.
 
-1. first appeal cost: `2000 ZTG (AppealBond) * 2^1 = 4000 ZTG`
-2. second appeal cost: `2000 ZTG (AppealBond) * 2^2 = 8000 ZTG`
-3. third appeal cost: `2000 ZTG (AppealBond) + 2^3 = 16000 ZTG`
+1. First appeal cost: `2000 ZTG (AppealBond) * 2^1 = 4000 ZTG`
+2. Second appeal cost: `2000 ZTG (AppealBond) * 2^2 = 8000 ZTG`
+3. Third appeal cost: `2000 ZTG (AppealBond) + 2^3 = 16000 ZTG`
 
 At the end of the appeal period and if there are no further appeals, all
 accounts which provided appeal bonds and didn’t appeal on the winner outcome,
