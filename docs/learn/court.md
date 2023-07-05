@@ -27,12 +27,12 @@ come into play in such cases. Anyone can dispute the oracle report, and once a
 dispute is triggered, the court takes over. The court is comprised of jurors and
 delegators who need to lock a certain amount of ZTG tokens to join the court
 system. The more tokens locked, the higher the probability of being selected as
-an active juror or delegator, who risks funds on behalf of delegated
-jurors. Delegators can transfer their voting rights to active jurors, who
-participate in the voting system. The court uses a plurality voting system,
-meaning the outcome with the most votes wins. Each market is associated with one
-court case, which can be appealed multiple times if someone believes the
-jurors' decision is unjustified.
+an active juror or delegator, who risks funds on behalf of delegated jurors.
+Delegators can transfer their voting rights to active jurors, who participate in
+the voting system. The court uses a plurality voting system, meaning the outcome
+with the most votes wins. Each market is associated with one court case, which
+can be appealed multiple times if someone believes the jurors' decision is
+unjustified.
 
 ### Global Disputes as the Last Instance
 
@@ -77,10 +77,11 @@ Each juror and delegator can exit the court system to retrieve their remaining
 funds. If the juror or delegator is still actively involved in inner court
 cases, only the unused (non-active) funds are returned. The unused stake is
 equivalent to the stake that was not already selected by the selection algorithm
-(see [“The Selection Algorithm”](#the-selection-algorithm)). In order to exit the court and get the funds
-back as a juror or delegator, one has to call the `prepare_exit_court`
-extrinsic. This extrinsic removes the participant from the court pool and saves
-the current block number to notice when the unused funds can be returned.
+(see [“The Selection Algorithm”](#the-selection-algorithm)). In order to exit
+the court and get the funds back as a juror or delegator, one has to call the
+`prepare_exit_court` extrinsic. This extrinsic removes the participant from the
+court pool and saves the current block number to notice when the unused funds
+can be returned.
 
 With the introduction of the inflation period it is required to restrict court
 hopping. It is possible that users enter the court whenever the rewards of the
@@ -113,8 +114,8 @@ as follows:
 ```
 
 Assume one specific court case is in the last appeal round (`3`). The number of
-randomly selected draw weights for jurors and delegators is `255`, and, therefore,
-the amount of requested ZTG is `127,500 ZTG`.
+randomly selected draw weights for jurors and delegators is `255`, and,
+therefore, the amount of requested ZTG is `127,500 ZTG`.
 
 $$
 2^3 \cdot 31 + 2^3 - 1 = 255.
@@ -257,8 +258,8 @@ to their share of all the other winner stake (`total_winner_stake`).
 
 Additionally, the court system is incentivized by inflation. Participants who
 stake funds in the court receive newly minted tokens proportional to their
-stake. The current configuration involves a yearly inflation rate of `2%` for all
-jurors and delegators in the court system. Inflation is applied at regular
+stake. The current configuration involves a yearly inflation rate of `2%` for
+all jurors and delegators in the court system. Inflation is applied at regular
 intervals, known as `InflationPeriod`, to reduce the strain on the blockchain.
 To prevent users from joining the court just to receive token emissions (court
 hopping), they must remain in the court for at least one full `InflationPeriod`
