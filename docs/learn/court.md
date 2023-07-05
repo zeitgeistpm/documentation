@@ -112,9 +112,9 @@ as follows:
 2^(appeal_number) * 31 + 2^(appeal_number) - 1
 ```
 
-Assume one specific court case is in the last appeal round (3). The number of
-randomly selected draw weights for jurors and delegators is 255, and, therefore,
-the amount of requested ZTG is 127,500 ZTG.
+Assume one specific court case is in the last appeal round (`3`). The number of
+randomly selected draw weights for jurors and delegators is `255`, and, therefore,
+the amount of requested ZTG is `127,500 ZTG`.
 
 $$
 2^3 \cdot 31 + 2^3 - 1 = 255.
@@ -257,7 +257,7 @@ to their share of all the other winner stake (`total_winner_stake`).
 
 Additionally, the court system is incentivized by inflation. Participants who
 stake funds in the court receive newly minted tokens proportional to their
-stake. The current configuration involves a yearly inflation rate of 2% for all
+stake. The current configuration involves a yearly inflation rate of `2%` for all
 jurors and delegators in the court system. Inflation is applied at regular
 intervals, known as `InflationPeriod`, to reduce the strain on the blockchain.
 To prevent users from joining the court just to receive token emissions (court
