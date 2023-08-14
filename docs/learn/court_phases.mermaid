@@ -1,0 +1,9 @@
+graph TD
+J[Disputed] --> A
+A[vote phase scheduled at request block] --> C[Vote Phase]
+C --> D[Aggregation Phase]
+D --> E[Appeal Phase]
+E -. up to three appeals .-> A 
+E -. forth appeal .->  F[Global Dispute]
+E -. phase ends with no appeal .-> L
+F --> L[Resolved]

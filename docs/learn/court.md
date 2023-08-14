@@ -6,8 +6,6 @@ title: Decentralized Court
 Zeitgeist implements a decentralized court to handle disputes that may arise in
 the resolution of prediction markets outcomes.
 
-### General Introduction
-
 The court system is responsible for ensuring that accurate information is added
 to the blockchain. Prediction markets, which rely on truthful data, reward
 traders who base their decisions on accurate information. If someone provides
@@ -19,6 +17,29 @@ raw vote information later. The outcome with the most votes wins (plurality).
 The court serves as a dispute resolution mechanism. The court is inspired by
 [Kleros][], a project that has already experimented with an on-chain court
 system.
+
+## How to participate?
+
+Anyone can participate by joining the court system as a juror or delegator. 
+As a juror, you are responsible for voting and revealing the raw vote information. 
+As a delegator, you can delegate your voting rights to active jurors.
+
+## What is the process of the court system?
+
+Suppose the oracle submitted a wrong outcome. Anyone can 
+bring the market into the `Disputed` state. At this point the court takes over.
+At a known request block in the future, the `Vote Phase` begins. During the vote phase
+the jurors cast their votes as encrypted hashes. After the vote phase ends, during the
+`Aggregation Phase`, the jurors publicly reveal their votes. The raw vote 
+information can be matched to the encrypted hash. If no one appeals during the `Appeal Phase`,
+the outcome with the most votes wins. If someone appeals, the court schedules a new vote phase.
+This can be repeated up to three times. At the forth appeal, the global dispute system
+takes over. The global dispute system is a token voting mechanism for all ZTG holders to
+resolve the market on the most voted outcome.
+
+<img src="court_phases.png" alt="Court Phases" width="600"/>
+
+## Details
 
 ### Dispute Management within Court
 
