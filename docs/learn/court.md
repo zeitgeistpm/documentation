@@ -91,7 +91,7 @@ For the `delegate` extrinsic, the function argument `delegations` contains a
 list of account ids. The dispatch function ensures that the list of
 `delegations` contains actually account ids which are actively participating
 jurors. The list needs to contain at least one account and all account ids need
-to be unique.
+to be unique. Currently the list has a maximum length of five delegations.
 
 ### Exiting the Court
 
@@ -202,13 +202,29 @@ risks (`slashable` and code reference `SelectionAdd::DelegationStake`) the
 `MinJurorStake` associated to the vote weight. If the juror makes bad decisions,
 the delegator loses the selected `MinJurorStake`.
 
-### Voting at predefined Time Points
+### Vote-, Aggregation-, Appeal-Phases at predefined Time Points
 
 Jurors are requested to vote in a periodic interval (`RequestInterval`) at a
 known request block in the future. This ensures that jurors only need to check
 at predefined times if they need to take action. If there wasn’t this concept of
 predefined requests, the jurors would have needed to check in a much smaller
 time interval if they are selected in court cases.
+
+The `RequestInterval` is configured to be seven days currently. So every seven
+days the court requests jurors to vote on its cases. If a dispute is made, the
+court schedules a vote round at the next request block in the future. The next
+request block in the future is the last request block plus the
+`RequestInterval`. If there is no last request block, the next request block is
+the current block number plus the `RequestInterval`.
+
+The vote phase is configured to be three days currently. The aggregation phase
+is three days and the appeal phase is one day. The aggregation phase and appeal
+phase is just scheduled right after the vote phase. The appeal phase is
+scheduled after the aggregation phase. So it's predictable when to take action
+for the jurors.
+
+After an appeal was triggered, the court schedules a new vote round at the next
+request block again.
 
 ### Commitment Voting
 
