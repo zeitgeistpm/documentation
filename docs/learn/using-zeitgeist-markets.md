@@ -304,10 +304,7 @@ slashed.
 
 There are four types of bonds utilized by prediction markets on Zeitgeist:
 _creation_, _oracle_, _outsider_ and _dispute_ bonds. Bonds are deemed _settled_
-when they are entirely unreserved or slashed. In the event of a market's
-destruction by the Advisory Committee - a course of action only considered for
-markets in severe violation of our policies - all associated bonds will be
-slashed. Slashed funds are subsequently transferred to the treasury.
+when they are entirely unreserved or slashed.
 
 - The _creation bond_ is reserved by the market creator at the time of market
   creation. Its size varies depending on whether the market's creation type is
