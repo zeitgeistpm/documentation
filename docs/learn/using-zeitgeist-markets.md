@@ -244,9 +244,9 @@ _reported_.
 
 ### Disputes
 
-When a report is submitted (by the oracle or a stand-in), the market is not
+When a report is submitted (by the oracle or an [outsider](./using-zeitgeist-markets.md)), the market is not
 resolved for a certain window of time called the _dispute period_. During this
-period of time, other users can submit a _dispute_ if they believe that the
+period of time, any user can submit a _dispute_ if they believe that the
 report is incorrect. To do so, they stake a certain amount of ZTG, the _dispute
 bond_ and report the outcome they believe to be correct (the _suggestion_).
 
@@ -262,6 +262,7 @@ during market creation. The currently available dispute mechanisms are:
 If the dispute is found to have been justified in the sense that the market
 resolves to the outcome suggested by the disputant, the dispute bond is returned
 to the disputant. If this is not the case, the dispute bond is slashed.
+More on that in the bonds section of the [Using Zeitgeist Markets] page.
 
 For example, suppose that the oracle of the JSWT market reports JWSTYES at
 8:00AM, December 19 and that the dispute period is 24h. If no disputes are
@@ -338,6 +339,7 @@ outcome assets and ZTG) or other individual assets to any existing pool.
 [advisory committee]: ./governance.md#advisory-committee
 [decentralized court]: ./court
 [schelling point]: https://en.wikipedia.org/wiki/Focal_point_(game_theory)
+[Using Zeitgeist Markets]: ./using-zeitgeist-markets
 [trading on zeitgeist]: #trading-on-zeitgeist
 [resolving markets and redeeming tokens]:
   #resolving-markets-and-redeeming-tokens
