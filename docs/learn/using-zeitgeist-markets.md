@@ -111,7 +111,7 @@ If the market is deemed valid according to the [market creation rules], the
 advisory bond is returned to the creator and liquidity pools may be deployed.
 If, on the other hand, the market violated the rules or is invalid, the advisory
 bond is slashed or the user is asked to change the market before it is approved.
-Should, for any reason, the committee not reach a decision until the market
+Should, for any reason, the advisory committee not reach a decision until the market
 ends, the advisory bond and oracle bond are both returned to the creator.
 
 ### Market Lifecycle
