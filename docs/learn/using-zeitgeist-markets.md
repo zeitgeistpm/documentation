@@ -223,8 +223,7 @@ and 120 ZTG. If the JWST did not launch on December 18, then she can redeem the
 89 JWSTNO for 89 ZTG from the prize pool. This means that she's made a gain of 9
 ZTG for supplying liquidity to the pool. If, on the other hand, the JWST does
 launch December 18, Alice is left holding 120 ZTG and 63 JWSTYES (redeemable for
-63 ZTG), and, thus, Alice got rekt to the tune of 17 ZTG (but many traders will
-have made some profit).
+63 ZTG). As a result, Alice will incur a net loss of 17 ZTG, while many traders might realize a profit.
 
 For example, if the pool contains 100 ZTG and 100 JWSTYES and Alice buys 3
 JWSTYES at 0.5 ZTG, then Alice transfers 1.5 ZTG into the pool and receives 3
