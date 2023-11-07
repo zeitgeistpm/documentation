@@ -94,7 +94,7 @@ initial status depends on the creation type and scoring rule:
 
 ### Creation Type: Permissionless & Advised Markets
 
-Th Zeitgeist network allow entirely _permissionless_ creation of market. Anyone
+The Zeitgeist network allows the _permissionless_ creation of markets. Anyone
 can create a new market, provided they place a _validity bond_ in ZTG. The
 purpose of the bond is to ensure that the market obeys the rules put in place by
 the Zeitgeist team. It is returned to the market creator after the market is
