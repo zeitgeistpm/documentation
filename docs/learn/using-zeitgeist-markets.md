@@ -15,7 +15,7 @@ Other uses of ZTG include governance, staking for dispute resolution (particular
 collator selection, and bonding for various on-chain actions, most importantly
 market creation. _These actions require ZTG and ZTG only._ Details follow below.
 
-The total supply of ZTG at genesis is 100M. Each ZTG equal
+The total supply of ZTG at genesis was 100M. Each ZTG equal
 $10^{10} = 10,\!000,\!000,\!000$ _Pennocks_, the smallest unit of currency on
 Zeitgeist. Whenever amounts of ZTG are specified in the SDK or polkadot-js, they
 are specified in Pennocks.
