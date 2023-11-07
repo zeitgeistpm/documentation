@@ -7,18 +7,11 @@ title: Using Zeitgeist Markets
 
 ### The ZTG Token and Other Currencies
 
-The primary asset on Zeitgeist is the _ZTG_ token. On the Battery Station test
-network, this token is known as _ZBS_, but in SDK and CLI commands, and on this
-page, both ZTG and ZBS are called ZTG.
+The native token on Zeitgeist is _ZTG_. On the Battery Station test network, this token is known as _ZBS_, but in SDK and CLI commands, and on this page, both ZTG and ZBS are called ZTG.
 
-ZTG may be used for placing bets in prediction markets (like USD in the examples
-of the previous chapters). Outcome asset tokens will not redeem to 1\$ when a
-market is resolved, but to 1 ZTG instead, and trading fees will be paid in ZTG.
-In the future, you will be able to teleport select foreign assets like
-[aUSD](https://acala.network/ausd) to Zeitgeist using XCM to use them for
-trading.
+ZTG may be used as _collateral_ in prediction markets. This means it's used as liquidity and for placing bets (like USD in the examples of the previous chapters); outcome asset tokens will not redeem for \$1 when a market is resolved, but for 1 ZTG instead, and trading fees will be paid in ZTG. Other select foreign assets can be used as collateral as well.
 
-Other uses of ZTG include governance, staking for dispute resolution and
+Other uses of ZTG include governance, staking for dispute resolution (particularly in the [Decentralized Court]) and
 collator selection, and bonding for various on-chain actions, most importantly
 market creation. _These actions require ZTG and ZTG only._ Details follow below.
 
@@ -31,12 +24,7 @@ are specified in Pennocks.
 
 Recall that outcome asset tokens (or _outcome tokens_ for short) represent the
 possible outcomes of a future event. For example the prediction market
-"[James Webb Space Telescope](https://en.wikipedia.org/wiki/James_Webb_Space_Telescope)
-(JWST) launches on December 18" might have two outcome tokens, "The JWST does
-launch on Dec. 18" and "The JWST does not launch on Dec. 18", which are
-represented by on-chain tokens using ticker symbols like JWSTYES and JWSTNO.
-(Two outcomes from the same market may not have the same ticker symbol, but
-outcomes from separate markets may.)
+"[James Webb Space Telescope](https://en.wikipedia.org/wiki/James_Webb_Space_Telescope) (JWST) launches on December 18" might have two outcome tokens, "Yes" and "No". A market on the winner of the [Kentucky Derby](https://en.wikipedia.org/wiki/Kentucky_Derby) would have an outcome token for each horse.
 
 ### Liquidity Shares
 
@@ -272,6 +260,7 @@ than 25 ZTG).
   #resolving-markets-and-redeeming-tokens
 [zeitgeist amms]: #zeitgeist-amms
 [prediction markets]: ./prediction-markets.md
+[decentralized court]: ./court.md
 
 [^1] Abraham Othman, Tuomas Sandholm, David M. Pennock, Daniel M. Reeves,
 [A practical liquidity-sensitive automated market maker](https://www.researchgate.net/publication/221445031_A_practical_liquidity-sensitive_automated_market_maker),
