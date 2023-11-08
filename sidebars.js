@@ -26,6 +26,7 @@ const sidebars = {
         "learn/using-zeitgeist-markets",
         "learn/governance",
         "learn/court",
+        "learn/order-book",
         "learn/futarchy",
         "learn/comparisons",
         {
