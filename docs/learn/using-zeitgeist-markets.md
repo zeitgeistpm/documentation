@@ -166,25 +166,26 @@ _reported_.
 
 ### Disputes
 
-When a report is submitted (by the oracle or an [outsider](./using-zeitgeist-markets.md)), the market is not
-resolved for a certain window of time called the _dispute period_.
-When a participant believes the outcome reported by the oracle is incorrect,
-they have the option to initiate a dispute. This process starts with the deposit
-of a bond in ZTG, serving as a guarantee of the disputant's conviction in their claim.
-The dispute mechanism is modular, allowing for the implementation of various
-approaches to handle these disagreements.
+When a report is submitted (by the oracle or an
+[outsider](./using-zeitgeist-markets.md)), the market is not resolved for a
+certain window of time called the _dispute period_. When a participant believes
+the outcome reported by the oracle is incorrect, they have the option to
+initiate a dispute. This process starts with the deposit of a bond in ZTG,
+serving as a guarantee of the disputant's conviction in their claim. The dispute
+mechanism is modular, allowing for the implementation of various approaches to
+handle these disagreements.
 
 Upon the initiation of a dispute, the market enters a special state where the
 reported outcome is effectively put on hold. The dispute mechanism, as defined
 in the market's rules, then takes over. This may involve additional rounds of
-voting, expert arbitration, or other methods to reassess the reported outcome. 
+voting, expert arbitration, or other methods to reassess the reported outcome.
 
 If the dispute is resolved in favor of the disputant, their bond is returned,
 and the market outcome is adjusted accordingly. However, if the dispute is
 deemed unjustified, the bond is forfeited. This system ensures that disputes are
 raised only when there are genuine concerns about the market's outcome,
-maintaining the integrity and reliability of the market. 
-More on that in the bonds section of the [Using Zeitgeist Markets] page.
+maintaining the integrity and reliability of the market. More on that in the
+bonds section of the [Using Zeitgeist Markets] page.
 
 Throughout this process, the market’s participants are kept informed, and the
 mechanisms ensure transparency and fairness, critical for maintaining trust in
