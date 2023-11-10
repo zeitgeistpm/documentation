@@ -220,7 +220,7 @@ informants that are active on Zeitgeist, as discussed above. This can be
 profitable if the liquidity providers have information which gives them an
 advantage over the traders.
 
-The other is to gather information from the traders. This is the exact reversal
+The other motivation is to gather information from the traders. This is the exact reversal
 of the situation above. The liquidity providers start off with as good a
 prediction they can muster (based on whatever they know about the topic), which
 is then corrected by the informants. If the market eventually yields a better
