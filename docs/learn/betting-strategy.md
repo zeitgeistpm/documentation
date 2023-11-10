@@ -158,12 +158,12 @@ than currently predicted by the market. But how can you expose yourself to the
 market if you think that the prices are correct? This is where providing
 liquidity comes into play.
 
-The liquidity of a market is important when it comes to creating accurate
-predictions. When a trader buys tokens, they are giving up information in
-exchange for a potential pay-off (if they are correct, they make a profit). The
-more significant the price movement, the more information they are providing.
-But if prices slip too quickly due to a lack of liquidity, their profits are
-comparatively small to the value of their information.
+The liquidity of a market is important for creating accurate predictions. When a
+trader buys tokens, they are giving up information in exchange for a potential
+pay-off (if they are correct, they make a profit). The more significant the
+price movement, the more information they are providing. But if prices slip too
+quickly due to a lack of liquidity, their profits are comparatively small to the
+value of their information.
 
 Thus, informants and liquidity providers are taking opposite sides of a bet.
 When liquidity providers sell to the informants, they are hoping that the assets
