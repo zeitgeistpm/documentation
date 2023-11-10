@@ -101,13 +101,16 @@ The market requires the following data...
   report.
 
 The curret status of a market is described by the `status` field. The market's
-initial status depends on the creation type. After their period has ended, all
-markets are first closed and then enter the second stage of their lifecycle
-where they undergo a grace period, if configured. During this grace period, all
-trading and market activity is suspended, allowing for a cooldown before the
-resolution process begins. Following this, the designated oracle is required to
-report the outcome of the market. This reported outcome is crucial, as it is the
-basis for the settlement of bets and trades that occurred within the market.
+initial status depends on the creation type. These phases are described in
+detail in the upcoming sections, but we provide a simple overview at this point.
+
+After their period has ended, all markets are first closed and then enter the
+second stage of their lifecycle where they undergo a grace period, if
+configured. During this grace period, all trading and market activity is
+suspended, allowing for a cooldown before the resolution process begins.
+Following this, the designated oracle is required to report the outcome of the
+market. This reported outcome is crucial, as it is the basis for the settlement
+of bets and trades that occurred within the market.
 
 However, this outcome is not necessarily final. There is an opportunity for
 disputes if participants believe the oracle's report is inaccurate or biased.
@@ -151,7 +154,7 @@ assets and may provide liquidity to the pool.
 
 The market closes when the ending block/timestamp is reached. This means that
 swapping assets and providing liquidity is no longer allowed, but users are
-allowed to remove their liquidity now that it is no longer user.
+allowed to remove their liquidity now that it is no longer used.
 
 The oracle of the market is expected to submit which outcome actually occurred
 within a fixed frame of time, the _reporting period_. If the oracle fails to
@@ -163,7 +166,31 @@ _reported_.
 
 ### Disputes
 
-<!-- TODO --->
+When a participant believes the outcome reported by the oracle is incorrect,
+they have the option to initiate a dispute. This process starts with the deposit
+of a bond, serving as a guarantee of the disputant's conviction in their claim.
+The dispute mechanism is modular, allowing for the implementation of various
+approaches to handle these disagreements.
+
+Upon the initiation of a dispute, the market enters a special state where the
+reported outcome is effectively put on hold. The dispute mechanism, as defined
+in the market's rules, then takes over. This may involve additional rounds of
+voting, expert arbitration, or other methods to reassess the reported outcome.
+
+If the dispute is resolved in favor of the disputant, their bond is returned,
+and the market outcome is adjusted accordingly. However, if the dispute is
+deemed unjustified, the bond is forfeited. This system ensures that disputes are
+raised only when there are genuine concerns about the market's outcome,
+maintaining the integrity and reliability of the market.
+
+Throughout this process, the market’s participants are kept informed, and the
+mechanisms ensure transparency and fairness, critical for maintaining trust in
+the market's operations and outcomes.
+
+The default dispute mechanism used on Zeitgeist's app is the [Decentralized
+Court]. The other option that's currently available is the _authorized_
+mechanism, which delegates the decision over the dispute to the Advisory
+Committee.
 
 ### Resolving Markets and Redeeming Tokens
 
@@ -225,10 +252,11 @@ product market maker or CPMM on our platform, which is based on the
 $x \cdot y = \mathrm{const}$ formula which allows different assets to have
 different _weights_, which define their impact on price.
 
-This AMM's liquidity pool contains balances of the base asset (e. g. ZTG) and of all outcome tokens of
-the market. Users can trade their tokens with tokens stored in the pool: They
-can buy outcome tokens from the pool with ZTG which is then added to the pool,
-or sell outcome tokens to the pool for some of the pool's ZTG.
+This AMM's liquidity pool contains balances of the base asset (e. g. ZTG) and of
+all outcome tokens of the market. Users can trade their tokens with tokens
+stored in the pool: They can buy outcome tokens from the pool with ZTG which is
+then added to the pool, or sell outcome tokens to the pool for some of the
+pool's ZTG.
 
 By default, a new market has no liquidity pool. Instead, the pool must either be
 deployed by the market creator, or by some external liquidity provider. After
