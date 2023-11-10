@@ -84,7 +84,7 @@ const sharesId = await pool.sharesId();
 You can use this function to fetch account id in this pool.
 
 ```typescript
-const account = await pool.accountId();
+const account = await pool.getAccountId();
 ```
 
 [Code snippet](https://github.com/Whisker17/sdk-demo/tree/main/src/swap/accountId.ts)
