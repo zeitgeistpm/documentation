@@ -136,7 +136,7 @@ be _removed from the app without warning_.
 If the user does not wish to place the validity bond, they may instead create
 the market as _advised_ and only place a smaller _advisory bond_. The [Advisory
 Committee] then decides if the market is valid. Until this decision is made, no
-liquidity pool may be deployed for the market and no full sets may be bought or
+liquidity pool may be deployed for the market and no complete sets may be bought or
 sold.
 
 If the market is deemed valid according to the [market creation rules], the
@@ -219,29 +219,29 @@ slashed.
 
 ### The Prize Pool
 
-On every market, outcome tokens may be minted in _full sets_ by users while the
+On every market, outcome tokens may be minted in _complete sets_ by users while the
 market is open (exactly one of each outcome token from the market) at the exact
 price of 1 ZTG (plus transaction fee). The ZTG paid for the mint is placed in
 the market's _prize pool_. _All outcome tokens are created by minting them in
-this fashion._ Full sets may also be destroyed. For every full set destroyed the
+this fashion._ Full sets may also be destroyed. For every complete set destroyed the
 user receives 1 ZTG back from the prize pool.
 
 When a market is created, the prize pool is empty, and the balance of the prize
-pool cannot be changed except by minting and burning full sets. These rules
-guarantee the prize pool contains exactly 1 ZTG for every full set of outcome
+pool cannot be changed except by minting and burning complete sets. These rules
+guarantee the prize pool contains exactly 1 ZTG for every complete set of outcome
 tokens in circulation. This was, the winning outcome token is backed 1:1 in ZTG.
 
 The prize pool should not be confused with the market's liquidity pool, which is
 described further below.
 
-For example, Alice has 3.7 ZTG in her wallet. She mints 3.5 full sets for the
+For example, Alice has 3.7 ZTG in her wallet. She mints 3.5 complete sets for the
 James Webb Space Telescope market, pays 3.5 ZTG (which goes into the prize pool
 of the JWST market) plus transaction fees, and receives 3.5 JWSTYES and 3.5
 JWSTNO.
 
 Bob, on the other hand, has 2.1 JWSTYES and 3.4 JWSTNO tokens. He decides to
-destroy 2.1 full sets (leaving him with only 1.3 JWSTNO) and receive 2.1 ZTG
-back from the prize pool. Note that Bob could not have destroyed any more full
+destroy 2.1 complete sets (leaving him with only 1.3 JWSTNO) and receive 2.1 ZTG
+back from the prize pool. Note that Bob could not have destroyed any more complete
 sets, as he owns no more JWSTYES.
 
 ### The Liquidity Pool
@@ -262,12 +262,12 @@ By default, a new market has no liquidity pool. Instead, the pool must either be
 deployed by the market creator, or by some external liquidity provider. After
 the pool is created, others may _join_ the liquidity pool by providing
 additional liquidity. When deploying liquidity into a pool, a liquidity provider
-will usually provide the same amount of full sets of outcome tokens as ZTG ($x$
+will usually provide the same amount of complete sets of outcome tokens as ZTG ($x$
 of each outcome token and $x$ ZTG). The current minimum for $x$ is 100, making a
 total value of 200 ZTG.
 
 For example, lets say the JWST market has no liquidity pool yet and Alice wishes
-to deploy a pool. First she mints 100 full sets of outcome tokens, so she pays
+to deploy a pool. First she mints 100 complete sets of outcome tokens, so she pays
 100 ZTG into the prize pool of the market and receives 100 JWSTYES and 100
 JWSTNO. Then she transfers these outcome tokens plus 100 ZTG into the pool. The
 whole endeavor costs her 200 ZTG plus transaction costs and earns her 100
