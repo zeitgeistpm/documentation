@@ -7,13 +7,20 @@ title: Using Zeitgeist Markets
 
 ### The ZTG Token and Other Currencies
 
-The native token on Zeitgeist is _ZTG_. On the Battery Station test network, this token is known as _ZBS_, but in SDK and CLI commands, and on this page, both ZTG and ZBS are called ZTG.
+The native token on Zeitgeist is _ZTG_. On the Battery Station test network,
+this token is known as _ZBS_, but in SDK and CLI commands, and on this page,
+both ZTG and ZBS are called ZTG.
 
-ZTG may be used as _collateral_ in prediction markets. This means it's used as liquidity and for placing bets (like USD in the examples of the previous chapters); outcome asset tokens will not redeem for \$1 when a market is resolved, but for 1 ZTG instead, and trading fees will be paid in ZTG. Other select foreign assets can be used as collateral as well.
+ZTG may be used as _collateral_ in prediction markets. This means it's used as
+liquidity and for placing bets (like USD in the examples of the previous
+chapters); outcome asset tokens will not redeem for \$1 when a market is
+resolved, but for 1 ZTG instead, and trading fees will be paid in ZTG. Other
+select foreign assets can be used as collateral as well.
 
-Other uses of ZTG include governance, staking for dispute resolution (particularly in the [Decentralized Court]) and
-collator selection, and bonding for various on-chain actions, most importantly
-market creation. _These actions require ZTG and ZTG only._ Details follow below.
+Other uses of ZTG include governance, staking for dispute resolution
+(particularly in the [Decentralized Court]) and collator selection, and bonding
+for various on-chain actions, most importantly market creation. _These actions
+require ZTG and ZTG only._ Details follow below.
 
 The total supply of ZTG at genesis was 100M. Each ZTG equal
 $10^{10} = 10,\!000,\!000,\!000$ _Pennocks_, the smallest unit of currency on
@@ -24,7 +31,11 @@ are specified in Pennocks.
 
 Recall that outcome asset tokens (or _outcome tokens_ for short) represent the
 possible outcomes of a future event. For example the prediction market
-"[James Webb Space Telescope](https://en.wikipedia.org/wiki/James_Webb_Space_Telescope) (JWST) launches on December 18" might have two outcome tokens, "Yes" and "No". A market on the winner of the [Kentucky Derby](https://en.wikipedia.org/wiki/Kentucky_Derby) would have an outcome token for each horse.
+"[James Webb Space Telescope](https://en.wikipedia.org/wiki/James_Webb_Space_Telescope)
+(JWST) launches on December 18" might have two outcome tokens, "Yes" and "No". A
+market on the winner of the
+[Kentucky Derby](https://en.wikipedia.org/wiki/Kentucky_Derby) would have an
+outcome token for each horse.
 
 ### Liquidity Shares
 
@@ -73,7 +84,7 @@ The market requires the following data...
   likely lose their stake and the oracle will go unpunished.
   :::
 
-- The _market dispute mechanism_ is used to resolve disputes between users. See
+- The _dispute mechanism_ is used to resolve disputes between users. See
   [disputes] for details.
 
 - The _scoring rule_ determines the automatic market maker that the market's
@@ -84,13 +95,31 @@ The market requires the following data...
   (in _milliseconds_ since epoch). The Zeitgeist application allows users to
   comfortably set the period using human-readable dates.
 
-The curret status of a market is described by the `status` field. The market's
-initial status depends on the creation type and scoring rule:
+- The _grace period_ (may be zero) specified the number of blocks after the
+  market has closed during which all activity on the market is halted. This
+  allows us to stop trading without immediately allowing the oracle to hand in a
+  report.
 
-- Advised markets are _proposed_ and are awaiting approval by the [Advisory
-  Committee].
-- Permissionless markets and approved advised markets are _active_ or _closed_
-  depending on what their period is.
+The curret status of a market is described by the `status` field. The market's
+initial status depends on the creation type. After their period has ended, all
+markets are first closed and then enter the second stage of their lifecycle
+where they undergo a grace period, if configured. During this grace period, all
+trading and market activity is suspended, allowing for a cooldown before the
+resolution process begins. Following this, the designated oracle is required to
+report the outcome of the market. This reported outcome is crucial, as it is the
+basis for the settlement of bets and trades that occurred within the market.
+
+However, this outcome is not necessarily final. There is an opportunity for
+disputes if participants believe the oracle's report is inaccurate or biased.
+The specific details of this dispute process are outlined in another section,
+focusing on the mechanics and timelines for raising and resolving disputes.
+
+Once the dispute period has elapsed without any successful challenges, or after
+any disputes have been conclusively resolved, the market reaches its final
+resolution stage. At this point, the outcome as reported by the oracle or as
+determined through the dispute resolution process is considered final.
+Participants can then redeem their outcome tokens based on this final result,
+effectively settling all positions taken in the market.
 
 ### Creation Type: Permissionless & Advised Markets
 
@@ -111,8 +140,8 @@ If the market is deemed valid according to the [market creation rules], the
 advisory bond is returned to the creator and liquidity pools may be deployed.
 If, on the other hand, the market violated the rules or is invalid, the advisory
 bond is slashed or the user is asked to change the market before it is approved.
-Should, for any reason, the Advisory Committee not reach a decision until the market
-ends, the advisory bond and oracle bond are both returned to the creator.
+Should, for any reason, the Advisory Committee not reach a decision until the
+market ends, the advisory bond and oracle bond are both returned to the creator.
 
 ### Market Lifecycle
 
@@ -223,7 +252,8 @@ and 120 ZTG. If the JWST did not launch on December 18, then she can redeem the
 89 JWSTNO for 89 ZTG from the prize pool. This means that she's made a gain of 9
 ZTG for supplying liquidity to the pool. If, on the other hand, the JWST does
 launch December 18, Alice is left holding 120 ZTG and 63 JWSTYES (redeemable for
-63 ZTG). As a result, Alice will incur a net loss of 17 ZTG, while many traders might realize a profit.
+63 ZTG). As a result, Alice will incur a net loss of 17 ZTG, while many traders
+might realize a profit.
 
 For example, if the pool contains 100 ZTG and 100 JWSTYES and Alice buys 3
 JWSTYES at 0.5 ZTG, then Alice transfers 1.5 ZTG into the pool and receives 3
