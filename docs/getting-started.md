@@ -33,6 +33,6 @@ Happy predicting!!! 🔮
 [decentralized court]: learn/court.md
 [futarchic organizations]: learn/futarchy.md
 [faqs]: faq.md
-[sdk docs]: build/sdk/introduction
+[sdk docs]: build/sdk/v2/introduction
 [contact us]: mailto:hi@zeitgeist.pm
 [guides]: learn/guide/app.md
