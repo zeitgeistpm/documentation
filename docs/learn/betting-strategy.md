@@ -202,13 +202,13 @@ they should be at according to their prediction. The traders then pay money to
 receive outcome tokens and shift the prediction to what they believe to be the
 correct probability distribution. If they get it right, the liquidity provider
 will incur a loss. But if the LPs initial prediction is correct, then their
-expected profit is non-negative (this is a hard calculation), and the farther
-the informants' probability distribution diverges from the LPs prediction and
-the more market noise that occurs while the price moves from the initial to the
-final prediction, the higher the LPs expected profit. Even if the final
-prediction is equal to the initial prediction, the LPs will still have collected
-fees. In particular, when you create a pool, you should always set the initial
-prices according to the probabilities that you predict.
+expected profit is non-negative (this isn't straightforward to prove); but the
+farther the informants' probability distribution diverges from the LPs
+prediction and the more market noise that occurs while the price moves from the
+initial to the final prediction, the higher the LPs expected profit. Even if the
+final prediction is equal to the initial prediction, the LPs will still have
+collected fees. In particular, when you create a pool, you should always set the
+initial prices according to the probabilities that you predict.
 
 By withdrawing some of their liquidity, on the other hand, an LP removes funds
 from their bet against the market. They might do this to take profits (including
@@ -222,12 +222,12 @@ informants that are active on Zeitgeist, as discussed above. This can be
 profitable if the liquidity providers have information which gives them an
 advantage over the traders.
 
-The other motivation is to gather information from the traders. This is the exact reversal
-of the situation above. The liquidity providers start off with as good a
-prediction they can muster (based on whatever they know about the topic), which
-is then corrected by the informants. If the market eventually yields a better
-prediction, this results in a loss for the liquidity providers, but they receive
-a better prediction as compensation.
+The other motivation is to gather information from the traders. This is the
+exact reversal of the situation above. The liquidity providers start off with as
+good a prediction they can muster (based on whatever they know about the topic),
+which is then corrected by the informants. If the market eventually yields a
+better prediction, this results in a loss for the liquidity providers, but they
+receive a better prediction as compensation.
 
 The question then is how the liquidity providers can minimize losses or maximize
 the quality of information they receive. The liquidity is key. If the pool is
