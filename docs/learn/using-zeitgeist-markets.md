@@ -11,7 +11,7 @@ The native token on Zeitgeist is _ZTG_. On the Battery Station test network,
 this token is known as _ZBS_, but in SDK and CLI commands, and on this page,
 both ZTG and ZBS are called ZTG.
 
-ZTG may be used as _collateral_ in prediction markets. This means it's used as
+ZTG may be used as _collateral_ (or _base asset_) in prediction markets. This means it's used as
 liquidity and for placing bets (like USD in the examples of the previous
 chapters); outcome asset tokens will not redeem for \$1 when a market is
 resolved, but for 1 ZTG instead, and trading fees will be paid in ZTG. Other
@@ -221,15 +221,15 @@ slashed.
 
 On every market, outcome tokens may be minted in _complete sets_ by users while the
 market is open (exactly one of each outcome token from the market) at the exact
-price of 1 ZTG (plus transaction fee). The ZTG paid for the mint is placed in
+price of one unit of the market's base asset (see [the ztg token and other currencies]). The collateral paid for the mint is placed in
 the market's _prize pool_. _All outcome tokens are created by minting them in
-this fashion._ Full sets may also be destroyed. For every complete set destroyed the
-user receives 1 ZTG back from the prize pool.
+this fashion._ Complete sets may also be destroyed. For every complete set destroyed the
+user receives one unit of collateral back from the prize pool.
 
 When a market is created, the prize pool is empty, and the balance of the prize
 pool cannot be changed except by minting and burning complete sets. These rules
 guarantee the prize pool contains exactly 1 ZTG for every complete set of outcome
-tokens in circulation. This was, the winning outcome token is backed 1:1 in ZTG.
+tokens in circulation. This way the winning outcome token is backed 1:1 in collateral.
 
 The prize pool should not be confused with the market's liquidity pool, which is
 described further below.
@@ -318,6 +318,7 @@ than 25 ZTG).
 [zeitgeist amms]: #zeitgeist-amms
 [prediction markets]: ./prediction-markets.md
 [decentralized court]: ./court.md
+[the ztg token and other currencies]: #the-ztg-token-and-other-currencies
 
 [^1] Abraham Othman, Tuomas Sandholm, David M. Pennock, Daniel M. Reeves,
 [A practical liquidity-sensitive automated market maker](https://www.researchgate.net/publication/221445031_A_practical_liquidity-sensitive_automated_market_maker),
