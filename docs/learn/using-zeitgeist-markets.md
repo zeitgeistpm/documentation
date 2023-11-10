@@ -11,11 +11,11 @@ The native token on Zeitgeist is _ZTG_. On the Battery Station test network,
 this token is known as _ZBS_, but in SDK and CLI commands, and on this page,
 both ZTG and ZBS are called ZTG.
 
-ZTG may be used as _collateral_ (or _base asset_) in prediction markets. This means it's used as
-liquidity and for placing bets (like USD in the examples of the previous
-chapters); outcome asset tokens will not redeem for \$1 when a market is
-resolved, but for 1 ZTG instead, and trading fees will be paid in ZTG. Other
-select foreign assets can be used as collateral as well.
+ZTG may be used as _collateral_ (or _base asset_) in prediction markets. This
+means it's used as liquidity and for placing bets (like USD in the examples of
+the previous chapters); outcome asset tokens will not redeem for \$1 when a
+market is resolved, but for 1 ZTG instead, and trading fees will be paid in ZTG.
+Other select foreign assets can be used as collateral as well.
 
 Other uses of ZTG include governance, staking for dispute resolution
 (particularly in the [Decentralized Court]) and collator selection, and bonding
@@ -136,8 +136,8 @@ be _removed from the app without warning_.
 If the user does not wish to place the validity bond, they may instead create
 the market as _advised_ and only place a smaller _advisory bond_. The [Advisory
 Committee] then decides if the market is valid. Until this decision is made, no
-liquidity pool may be deployed for the market and no complete sets may be bought or
-sold.
+liquidity pool may be deployed for the market and no complete sets may be bought
+or sold.
 
 If the market is deemed valid according to the [market creation rules], the
 advisory bond is returned to the creator and liquidity pools may be deployed.
@@ -200,9 +200,9 @@ immediately burned. Traders who hold winning tokens can now _redeem_ them for 1
 ZTG apiece by signing a transaction. There is no time limit for redeeming
 winning outcome tokens.
 
-For example, Alice holds 3 JWSTYES and Bob holds 5 JWSTNO. If the market
-resolves to JWSTNO, then Alice's 3 JWSTYES are burned and she is left with
-nothing, while Bob can redeem his 5 JWSTNO for 5 ZTG from the prize pool.
+For example, Alice holds 3 "Yes" and Bob holds 5 "No". If the market resolves to
+"No", then Alice's 3 "Yes" are burned and she is left with nothing, while Bob
+can redeem his 5 "No" for 5 ZTG from the prize pool.
 
 <!-- prettier-ignore -->
 :::important
@@ -219,30 +219,32 @@ slashed.
 
 ### The Prize Pool
 
-On every market, outcome tokens may be minted in _complete sets_ by users while the
-market is open (exactly one of each outcome token from the market) at the exact
-price of one unit of the market's base asset (see [the ztg token and other currencies]). The collateral paid for the mint is placed in
-the market's _prize pool_. _All outcome tokens are created by minting them in
-this fashion._ Complete sets may also be destroyed. For every complete set destroyed the
-user receives one unit of collateral back from the prize pool.
+On every market, outcome tokens may be minted in _complete sets_ by users while
+the market is open (exactly one of each outcome token from the market) at the
+exact price of one unit of the market's base asset (see [the ztg token and other
+currencies]). The collateral paid for the mint is placed in the market's _prize
+pool_. _All outcome tokens are created by minting them in this fashion._
+Complete sets may also be destroyed. For every complete set destroyed the user
+receives one unit of collateral back from the prize pool.
 
 When a market is created, the prize pool is empty, and the balance of the prize
 pool cannot be changed except by minting and burning complete sets. These rules
-guarantee the prize pool contains exactly 1 ZTG for every complete set of outcome
-tokens in circulation. This way the winning outcome token is backed 1:1 in collateral.
+guarantee the prize pool contains exactly one unit of the base asset for every
+complete set of outcome tokens in circulation. This way the winning outcome
+token is backed 1:1 in collateral.
 
 The prize pool should not be confused with the market's liquidity pool, which is
 described further below.
 
-For example, Alice has 3.7 ZTG in her wallet. She mints 3.5 complete sets for the
-James Webb Space Telescope market, pays 3.5 ZTG (which goes into the prize pool
-of the JWST market) plus transaction fees, and receives 3.5 JWSTYES and 3.5
-JWSTNO.
+For example, Alice has 3.7 ZTG in her wallet. She mints 3.5 complete sets for
+the James Webb Space Telescope market, pays 3.5 ZTG (which goes into the prize
+pool of the JWST market) plus transaction fees, and receives 3.5 "Yes" and 3.5
+"No".
 
-Bob, on the other hand, has 2.1 JWSTYES and 3.4 JWSTNO tokens. He decides to
-destroy 2.1 complete sets (leaving him with only 1.3 JWSTNO) and receive 2.1 ZTG
-back from the prize pool. Note that Bob could not have destroyed any more complete
-sets, as he owns no more JWSTYES.
+Bob, on the other hand, has 2.1 "Yes" and 3.4 "No" tokens. He decides to destroy
+2.1 complete sets (leaving him with only 1.3 "No") and receive 2.1 ZTG back from
+the prize pool. Note that Bob could not have destroyed any more complete sets,
+as he owns no more "Yes".
 
 ### The Liquidity Pool
 
@@ -262,42 +264,42 @@ By default, a new market has no liquidity pool. Instead, the pool must either be
 deployed by the market creator, or by some external liquidity provider. After
 the pool is created, others may _join_ the liquidity pool by providing
 additional liquidity. When deploying liquidity into a pool, a liquidity provider
-will usually provide the same amount of complete sets of outcome tokens as ZTG ($x$
-of each outcome token and $x$ ZTG). The current minimum for $x$ is 100, making a
-total value of 200 ZTG.
+will usually provide the same amount of complete sets of outcome tokens as ZTG
+($x$ of each outcome token and $x$ ZTG). The current minimum for $x$ is 100,
+making a total value of 200 ZTG.
 
 For example, lets say the JWST market has no liquidity pool yet and Alice wishes
-to deploy a pool. First she mints 100 complete sets of outcome tokens, so she pays
-100 ZTG into the prize pool of the market and receives 100 JWSTYES and 100
-JWSTNO. Then she transfers these outcome tokens plus 100 ZTG into the pool. The
+to deploy a pool. First she mints 100 complete sets of outcome tokens, so she
+pays 100 ZTG into the prize pool of the market and receives 100 "Yes" and 100
+"No". Then she transfers these outcome tokens plus 100 ZTG into the pool. The
 whole endeavor costs her 200 ZTG plus transaction costs and earns her 100
 liquidity shares.
 
 Suppose now that the market ends and the balances of the pool are the following:
-63 JWSTYES, 89 JWSTNO, and 120 ZTG. The balance of ZTG has increased from
-trading fees. After market close, Alice withdraws her funds: The outcome tokens
-and 120 ZTG. If the JWST did not launch on December 18, then she can redeem the
-89 JWSTNO for 89 ZTG from the prize pool. This means that she's made a gain of 9
-ZTG for supplying liquidity to the pool. If, on the other hand, the JWST does
-launch December 18, Alice is left holding 120 ZTG and 63 JWSTYES (redeemable for
-63 ZTG). As a result, Alice will incur a net loss of 17 ZTG, while many traders
-might realize a profit.
+63 "Yes", 89 "No", and 120 ZTG. The balance of ZTG has increased from trading
+fees. After market close, Alice withdraws her funds: The outcome tokens and 120
+ZTG. If the JWST did not launch on December 18, then she can redeem the 89 "No"
+for 89 ZTG from the prize pool. This means that she's made a gain of 9 ZTG for
+supplying liquidity to the pool. If, on the other hand, the JWST does launch
+December 18, Alice is left holding 120 ZTG and 63 "Yes" (redeemable for 63 ZTG).
+As a result, Alice will incur a net loss of 17 ZTG, while many traders might
+realize a profit.
 
-For example, if the pool contains 100 ZTG and 100 JWSTYES and Alice buys 3
-JWSTYES at 0.5 ZTG, then Alice transfers 1.5 ZTG into the pool and receives 3
-JWSTYES from the pool, leaving the pool with 101.5 ZTG and 97 JWSTYES (ignoring
-transaction cost, trading fees and slippage).
+For example, if the pool contains 100 ZTG and 100 "Yes" and Alice buys 3 "Yes"
+at 0.5 ZTG, then Alice transfers 1.5 ZTG into the pool and receives 3 "Yes" from
+the pool, leaving the pool with 101.5 ZTG and 97 "Yes" (ignoring transaction
+cost, trading fees and slippage).
 
 Let's pretend that the automated market maker has now adjusted the price of
-JWSTYES to 0.6 ZTG and Bob wants to sell 5 JWSTYES. He would receive 3 ZTG from
-the pool and add 5 JWSTYES, leaving the pool at 98.5 ZTG and 102 JWSTYES
-(ignoring transaction cost, trading fees and slippage).
+"Yes" to 0.6 ZTG and Bob wants to sell 5 "Yes". He would receive 3 ZTG from the
+pool and add 5 "Yes", leaving the pool at 98.5 ZTG and 102 "Yes" (ignoring
+transaction cost, trading fees and slippage).
 
 Note that this means that trading can only happen when the liquidity pool is
 sufficiently deep. If the pool is too shallow, some trades may be impossible
-(Alice cannot buy 150 JWSTYES from the pool above) or may suffer from excessive
-slippage (buying 50 JWSTYES from the pool above will most certainly cost more
-than 25 ZTG).
+(Alice cannot buy 150 "Yes" from the pool above) or may suffer from excessive
+slippage (buying 50 "Yes" from the pool above will most certainly cost more than
+25 ZTG).
 
 ## Further reading
 
