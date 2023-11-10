@@ -128,7 +128,7 @@ can create a new market, provided they place a _validity bond_ in ZTG. The
 purpose of the bond is to ensure that the market obeys the rules put in place by
 the Zeitgeist team. It is returned to the market creator after the market is
 resolved. A permissionless market that violates the [market creation rules] may
-be _deleted without warning_, destroying all associated funds.
+be _removed from the app without warning_.
 
 If the user does not wish to place the validity bond, they may instead create
 the market as _advised_ and only place a smaller _advisory bond_. The [Advisory
