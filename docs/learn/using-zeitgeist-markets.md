@@ -155,8 +155,8 @@ allowed to remove their liquidity now that it is no longer user.
 
 The oracle of the market is expected to submit which outcome actually occurred
 within a fixed frame of time, the _reporting period_. If the oracle fails to
-submit the report in time, the market creators stake will be slashed, and all
-addresses will be able to submit their report.
+submit the report in time, the market creators stake will be slashed, and any
+address will be able to submit a report as an outsider.
 
 Once the report is submitted, the status of the market changes from _closed_ to
 _reported_.
@@ -225,7 +225,7 @@ product market maker or CPMM on our platform, which is based on the
 $x \cdot y = \mathrm{const}$ formula which allows different assets to have
 different _weights_, which define their impact on price.
 
-This AMM's liquidity pool contains balances of ZTG and of all outcome tokens of
+This AMM's liquidity pool contains balances of the base asset (e. g. ZTG) and of all outcome tokens of
 the market. Users can trade their tokens with tokens stored in the pool: They
 can buy outcome tokens from the pool with ZTG which is then added to the pool,
 or sell outcome tokens to the pool for some of the pool's ZTG.
