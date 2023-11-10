@@ -8,7 +8,7 @@ title: Betting Strategies
 What follows is a short introduction to the basic strategies when dealing with
 prediction markets. It is by no means a complete guide.
 
-Recall that the asset prices in prediction markets as used to form a prediction
+Recall that the asset prices in prediction markets are used to form a prediction
 of future events, and the right AMMs are _proper_ in the sense that they
 incentivize the traders (which are in this context often referred to as
 _informants_) to change the prices so that they reflect their beliefs.
