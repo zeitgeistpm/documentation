@@ -264,9 +264,9 @@ By default, a new market has no liquidity pool. Instead, the pool must either be
 deployed by the market creator, or by some external liquidity provider. After
 the pool is created, others may _join_ the liquidity pool by providing
 additional liquidity. When deploying liquidity into a pool, a liquidity provider
-will usually provide the same amount of complete sets of outcome tokens as ZTG
-($x$ of each outcome token and $x$ ZTG). The current minimum for $x$ is 100,
-making a total value of 200 ZTG.
+will usually provide the same amount of complete sets of outcome tokens as
+collateral ($x$ of each outcome token and $x$ ZTG). The current minimum for $x$
+is $.1$ units of collateral, making a total value of $.2$ units of collateral.
 
 For example, lets say the JWST market has no liquidity pool yet and Alice wishes
 to deploy a pool. First she mints 100 complete sets of outcome tokens, so she
