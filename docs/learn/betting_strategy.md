@@ -188,7 +188,7 @@ liquidity providers' losses as payment for the informants' services.
 
 Increasing the liquidity of a pool by adding tokens does not change any of the
 prices, but it has the effect of making it harder for traders to move the
-prices. This is sometimes describes by saying that the market's thickness is
+prices. This is sometimes described by saying that the market's thickness is
 increased. As a result, traders as able to take greater risks by opening larger
 positions, incentivizing them more to give up what they know about future
 events. But from the LPs perspective, this is also a good thing, as it gives the
