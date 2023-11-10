@@ -8,7 +8,7 @@ title: Betting Strategies
 What follows is a short introduction to the basic strategies when dealing with
 prediction markets. It is by no means a complete guide.
 
-Recall that the asset prices in prediction markets as used to form a prediction
+Recall that the asset prices in prediction markets are used to form a prediction
 of future events, and the right AMMs are _proper_ in the sense that they
 incentivize the traders (which are in this context often referred to as
 _informants_) to change the prices so that they reflect their beliefs.
@@ -190,7 +190,7 @@ liquidity providers' losses as payment for the informants' services.
 
 Increasing the liquidity of a pool by adding tokens does not change any of the
 prices, but it has the effect of making it harder for traders to move the
-prices. This is sometimes describes by saying that the market's thickness is
+prices. This is sometimes described by saying that the market's thickness is
 increased. As a result, traders as able to take greater risks by opening larger
 positions, incentivizing them more to give up what they know about future
 events. But from the LPs perspective, this is also a good thing, as it gives the
@@ -222,7 +222,7 @@ informants that are active on Zeitgeist, as discussed above. This can be
 profitable if the liquidity providers have information which gives them an
 advantage over the traders.
 
-The other is to gather information from the traders. This is the exact reversal
+The other motivation is to gather information from the traders. This is the exact reversal
 of the situation above. The liquidity providers start off with as good a
 prediction they can muster (based on whatever they know about the topic), which
 is then corrected by the informants. If the market eventually yields a better
