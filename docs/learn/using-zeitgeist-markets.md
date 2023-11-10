@@ -207,7 +207,7 @@ can redeem his 5 "No" for 5 ZTG from the prize pool.
 <!-- prettier-ignore -->
 :::important
 Redeeming tokens is different from selling tokens. Tokens cannot be traded after
-market close, but they can be redeemed for 1 ZTG each once the market is resolved.
+market close, but they can be redeemed for one unit of collateral each once the market is resolved.
 :::
 
 Furthermore, as soon as the market is resolved, those who staked ZTG in a
@@ -254,11 +254,11 @@ product market maker or CPMM on our platform, which is based on the
 $x \cdot y = \mathrm{const}$ formula which allows different assets to have
 different _weights_, which define their impact on price.
 
-This AMM's liquidity pool contains balances of the base asset (e. g. ZTG) and of
+This AMM's liquidity pool contains balances of the base asset (e.g. ZTG) and of
 all outcome tokens of the market. Users can trade their tokens with tokens
-stored in the pool: They can buy outcome tokens from the pool with ZTG which is
-then added to the pool, or sell outcome tokens to the pool for some of the
-pool's ZTG.
+stored in the pool: They can buy outcome tokens from the pool with collateral
+which is then added to the pool, or sell outcome tokens to the pool for some of
+the pool's collateral.
 
 By default, a new market has no liquidity pool. Instead, the pool must either be
 deployed by the market creator, or by some external liquidity provider. After
