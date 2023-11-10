@@ -322,7 +322,7 @@ when they are entirely unreserved or slashed.
   is unreserved upon the market's resolution if the oracle provided an honest
   report, confirmed as true by dispute or undisputed. If the oracle failed to
   provide a report or if it submitted a false report that was later disputed,
-  the bond is transferred to the disputant or the outsider resp. (see below).
+  the bond is transferred to the disputant or the outsider, resp. (see below).
 
 - The _outsider bond_ is reserved by a user, referred to as the _outsider_, if
   they submit a report after the oracle failed to do so within the report period
