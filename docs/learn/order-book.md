@@ -36,14 +36,14 @@ user to use in other transactions.
 
 The crux of any trading activity is the completion of trades, which is
 facilitated by the `fill_order` function. This function is triggered when a
-taker matches a given maker order. The fill_order function will execute the
+taker matches a given maker order. The `fill_order` function will execute the
 trade, transferring the specified asset between parties at the agreed price, and
 update the order book to reflect the completion of the trade.
 
 The taker has the ability to partially fill the order for a given
 `maker_partial_fill` amount. This amount specifies the partial amount of what
 the maker wants to fill. The maker always wants to fill the `taker_amount` of
-the (in `place_order`) specified taker asset. Thus, the `maker_partial_fill` (if
+the specified taker asset (in `place_order`). Thus, the `maker_partial_fill` (if
 a partial fill is wanted) should be smaller than the `taker_amount` of the maker
 order.
 
