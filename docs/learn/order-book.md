@@ -23,7 +23,7 @@ their order, the quantity they wish to buy the `taker_asset` for `taker_amount`
 and sell the `maker_asset` for `maker_amount`. This order is then added to the
 order book, where it waits to be matched by taker(s).
 
-It is important to mention that the users of the Zeitgeist orderbook do specify
+It is important to mention that the users of the Zeitgeist order book do specify
 the price of the assets implicitly. This means that the `place_order` does not
 take a price as an argument, but rather the `taker_amount` and `maker_amount`.
 This means the caller of the `place_order` function does willingly sell the
