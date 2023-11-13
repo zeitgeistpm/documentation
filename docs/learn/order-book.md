@@ -14,6 +14,8 @@ In Zeitgeist, the order book contains trading pairs of outcome assets and the
 market's base asset (collateral). The order book can be set as the market's
 scoring rule. The operations within the order book are primarily managed through
 three fundamental functions: `place_order`, `remove_order`, and `fill_order`.
+It's important to mention that market creator fees are charged for each taken
+order.
 
 ### Place Order
 
@@ -55,3 +57,10 @@ a change in market strategy or a mistake in the order's details. The
 order. This function ensures that the order book remains up-to-date with only
 active intents to trade, thereby preserving market liquidity and participant
 interest.
+
+### Market Creator Fees
+
+As other trading mechanisms on Zeitgeist, the order book does also charge fees
+for the market creator. The fees are charged for each taken order in the
+market's base asset (collateral). As usual, the fee is specified by the market
+creator.
