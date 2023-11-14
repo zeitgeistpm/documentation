@@ -22,6 +22,7 @@ const sidebars = {
       items: [
         "learn/prediction-markets",
         "learn/liquidity",
+        "learn/parimutuel",
         "learn/using-zeitgeist-markets",
         "learn/betting-strategy",
         "learn/market-rules",
