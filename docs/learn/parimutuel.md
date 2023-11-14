@@ -26,11 +26,11 @@ horse they believe will win.
 Suppose that at this point, the total amount of money wagered on these horses is
 as follows:
 
--   A: $200
--   B: $300
--   C: $100
--   D: $250
--   E: $150
+- A: $200
+- B: $300
+- C: $100
+- D: $250
+- E: $150
 
 Altogether, the total pool of money that's been wagered is $1,000.
 
@@ -59,22 +59,22 @@ own liquidity" market maker.
 However, it does suffers several disadvantages compared to the other mechanisms
 on Zeitgeist:
 
--   The odds are not fixed when tokens are bought. For example, if an informants
-    fills an ask at a price of 0.33 on an order book, then they know that
-    they'll get a 300% payoff if they're right. That's not the case at a
-    parimutuel. If more people buy your outcome, your payoff gets worse. This
-    makes it impossible to properly reward traders that have moved the price in
-    the right direction and have done so early.
+- The odds are not fixed when tokens are bought. For example, if an informants
+  fills an ask at a price of 0.33 on an order book, then they know that they'll
+  get a 300% payoff if they're right. That's not the case at a parimutuel. If
+  more people buy your outcome, your payoff gets worse. This makes it impossible
+  to properly reward traders that have moved the price in the right direction
+  and have done so early.
 
-    A particularly vexing symptom of this problem is that, if a market becomes
-    trivialized (some outcome $X$ has materialized before the end of the market)
-    and at least two agents have bet on the winning outcome, then it's a winning
-    strategy to keep pumping more money into the market to dilute the other
-    agent's stake.
+  A particularly vexing symptom of this problem is that, if a market becomes
+  trivialized (some outcome $X$ has materialized before the end of the market)
+  and at least two agents have bet on the winning outcome, then it's a winning
+  strategy to keep pumping more money into the market to dilute the other
+  agent's stake.
 
--   No selling of contracts. Once you've bought a contract, you have to hold it.
-    You can't just take back your bet. This means that parimutuels are really
-    only suited for markets which resolve very quickly.
+- No selling of contracts. Once you've bought a contract, you have to hold it.
+  You can't just take back your bet. This means that parimutuels are really only
+  suited for markets which resolve very quickly.
 
 As such, parimutuel markets are perfectly suited for short-lived markets where
 the market's outcome is published at a predefined time.
@@ -119,13 +119,13 @@ expect to win once every $1/p$ times. For example, if you believe that
 $p = 0.25$, then fair odds would be 4:1. This means for every dollar you bet,
 you'd expect a return of $4 on a win.
 
-We consider a denote the amount wagered on each outcome $i$ by $w_i$.
-In the parimutuel system, the return for each dollar bet on $i$ is
-$r_i$ = \sum_k w_k /w_i$. For this return to be considered "fair" based on your
-belief about the outcome's probability, it should match the inverse of your
-believed probability. In other words, if you think there's a 25% chance of an
-outcome, you'd expect the system to give you 4:1 odds (or a return of $4 for
-every $1 bet) for it to be a fair bet.
+We consider a denote the amount wagered on each outcome $i$ by $w_i$. In the
+parimutuel system, the return for each dollar bet on $i$ is $r_i$ = \sum_k w_k
+/w_i$. For this return to be considered "fair" based on your belief about the
+outcome's probability, it should match the inverse of your believed probability.
+In other words, if you think there's a 25% chance of an outcome, you'd expect
+the system to give you 4:1 odds (or a return of $4 for every $1 bet) for it to
+be a fair bet.
 
 If the system offers odds that are better than your believed probability, then
 you'd consider the bet to have positive expected value (you expect to make a
@@ -143,9 +143,9 @@ prediction/spot price of $i$ is $p_i(w) = r_i(w)^{-1}$.
 
 ## Bibliography & Further Reading
 
--   Abraham Othman, Tuomas Sandholm, David M. Pennock, Daniel M. Reeves,
-    [A practical liquidity-sensitive automated market maker](https://www.researchgate.net/publication/221445031_A_practical_liquidity-sensitive_automated_market_maker),
-    ACM Transactions on Economics and Computation 1(3), pp. 377-386 (2010)
--   D. M. Pennock, "A dynamic pari-mutuel market for hedging, wagering, and
-    information aggregation," in Proceedings of the 5th ACM Conference, 2004.
-    DOI: 10.1145/988772.988799
+- Abraham Othman, Tuomas Sandholm, David M. Pennock, Daniel M. Reeves,
+  [A practical liquidity-sensitive automated market maker](https://www.researchgate.net/publication/221445031_A_practical_liquidity-sensitive_automated_market_maker),
+  ACM Transactions on Economics and Computation 1(3), pp. 377-386 (2010)
+- D. M. Pennock, "A dynamic pari-mutuel market for hedging, wagering, and
+  information aggregation," in Proceedings of the 5th ACM Conference, 2004. DOI:
+  10.1145/988772.988799
