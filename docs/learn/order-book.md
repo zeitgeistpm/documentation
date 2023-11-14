@@ -34,6 +34,27 @@ This means the caller of the `place_order` function does willingly sell the
 `maker_asset` is reserved for the order. This means it is not available for the
 user to use in other transactions.
 
+##### Price Example
+
+Let's assume you wish to purchase `42` outcome tokens, referred to as
+`taker_asset`. You decide to offer `7` ZTG, your `maker_asset`, for this
+transaction. Essentially, this means you're ready to exchange `7` ZTG for `42`
+outcome tokens. By doing so, you've implicitly set a rate of `6` outcome tokens
+per `1` ZTG (since `42` divided by `7` equals `6`). Therefore, if a taker agrees
+to your proposed rate, they need to supply `42` outcome tokens (or fewer, in the
+case of partial order fulfillment) and, in return, will get `7` ZTG from you (or
+less, depending on the partial fulfillment scenario).
+
+It's important to note that the market creator's fee is always deducted in the
+market's base currency, which in our example is ZTG. So, if the market creator
+charges a `1%` fee, the taker ends up receiving `6.3` ZTG, while the market
+creator gets `0.7` ZTG. However, the `taker_amount` you receive as the maker
+remains unchanged, as no fees are deducted from the outcome token. It might seem
+like the recipient of the base asset (in this case, ZTG) is always the one who
+pays the fee. But this perspective can vary because each order is unique and may
+already factor in the associated fees at the time of its creation, adjusting the
+price accordingly.
+
 ### Fill Order
 
 The crux of any trading activity is the completion of trades, which is
