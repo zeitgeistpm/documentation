@@ -122,12 +122,13 @@ $p = 0.25$, then fair odds would be 4:1. This means for every dollar you bet,
 you'd expect a return of $4 on a win.
 
 We consider a denote the amount wagered on each outcome $i$ by $w_i$. In the
-parimutuel system, the return for each dollar bet on $i$ is $r_i = \sum_k w_k
-/w_i$. For this return to be considered "fair" based on your belief about the
-outcome's probability, it should match the inverse of your believed probability.
-In other words, if you think there's a 25% chance of an outcome, you'd expect
-the system to give you 4:1 odds (or a return of $4 for every $1 bet) for it to
-be a fair bet.
+parimutuel system, the return for each dollar bet on $i$ is
+$r_i = \sum_k w_k
+/w_i$. For this return to be considered "fair" based on your
+belief about the outcome's probability, it should match the inverse of your
+believed probability. In other words, if you think there's a 25% chance of an
+outcome, you'd expect the system to give you 4:1 odds (or a return of $4 for
+every $1 bet) for it to be a fair bet.
 
 If the system offers odds that are better than your believed probability, then
 you'd consider the bet to have positive expected value (you expect to make a
