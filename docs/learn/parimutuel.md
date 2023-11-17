@@ -83,10 +83,10 @@ the market's outcome is published at a predefined time.
 
 ### Betting
 
-Every parimutuel market uses a special account as the pot. If an informant places a
-bet, they send `x` units of collateral to the pot and receive `x` units of the
-corresponding type of _parimutuel shares_. Informants must observe a minimum bet
-size defined in the parimutuel pallet when placing their bets.
+Every parimutuel market uses a special account as the pot. If an informant
+places a bet, they send `x` units of collateral to the pot and receive `x` units
+of the corresponding type of _parimutuel shares_. Informants must observe a
+minimum bet size defined in the parimutuel pallet when placing their bets.
 
 <!-- TODO External fees to be defined in the general section on Zeitgeist markets in a later PR. -->
 
@@ -99,11 +99,11 @@ size requirement.
 ### Claiming Rewards
 
 Suppose an informant holds $x$ units of the parimutuel share for the outcome
-$A$. If the market resolves to some outcome not equal to $A$, then the informants
-shares are completely worthless; if the market resolves to $A$, then the
-informant receives $xr$ units of collateral from the pot, where $r$ is the ratio
-between the amount wagered on $A$ and the total amount wagered on any outcome. A
-detailed outline of the math is presented further below.
+$A$. If the market resolves to some outcome not equal to $A$, then the
+informants shares are completely worthless; if the market resolves to $A$, then
+the informant receives $xr$ units of collateral from the pot, where $r$ is the
+ratio between the amount wagered on $A$ and the total amount wagered on any
+outcome. A detailed outline of the math is presented further below.
 
 If the unlikely event occurs that the winning token has a total issuance of zero
 but the pot is not empty, each informant can redeem _any_ parimutuel share for
