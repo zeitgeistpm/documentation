@@ -56,10 +56,10 @@ parimutuel market maker does not require any liquidity, and shares the property
 of AMM that it can fill any order at any time. It is essentially a "bring your
 own liquidity" market maker.
 
-However, it does suffers several disadvantages compared to the other mechanisms
+However, it does suffer several disadvantages compared to the other mechanisms
 on Zeitgeist:
 
-- The odds are not fixed when tokens are bought. For example, if an informants
+- The odds are not fixed when tokens are bought. For example, if an informant
   fills an ask at a price of 0.33 on an order book, then they know that they'll
   get a 300% payoff if they're right. That's not the case at a parimutuel. If
   more people buy your outcome, your payoff gets worse. This makes it impossible
@@ -83,7 +83,7 @@ the market's outcome is published at a predefined time.
 
 ### Betting
 
-Every parimutuel market uses an special account as pot. If an informant places a
+Every parimutuel market uses a special account as the pot. If an informant places a
 bet, they send `x` units of collateral to the pot and receive `x` units of the
 corresponding type of _parimutuel shares_. Informants must observe a minimum bet
 size defined in the parimutuel pallet when placing their bets.
@@ -99,7 +99,7 @@ size requirement.
 ### Claiming Rewards
 
 Suppose an informant holds $x$ units of the parimutuel share for the outcome
-$A$. If the market resolve to some outcome not equal to $A$, then the informants
+$A$. If the market resolves to some outcome not equal to $A$, then the informants
 shares are completely worthless; if the market resolves to $A$, then the
 informant receives $xr$ units of collateral from the pot, where $r$ is the ratio
 between the amount wagered on $A$ and the total amount wagered on any outcome. A
