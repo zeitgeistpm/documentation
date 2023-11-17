@@ -91,10 +91,10 @@ minimum bet size defined in the parimutuel pallet when placing their bets.
 <!-- TODO External fees to be defined in the general section on Zeitgeist markets in a later PR. -->
 
 External fees are paid when users buy parimutuel shares in the usual fashion: If
-Alice buys parimutuel shares for a certain amount, then the external fees are
-deducted from this amount before the rest of the transaction is executed. The
-amount Alice is left with after fees are deducted must satisfy the minimum bet
-size requirement.
+Alice buys parimutuel shares for a certain amount of collateral, then the
+external fees are deducted from this amount before the rest of the transaction
+is executed. The amount Alice is left with after fees are deducted must satisfy
+the minimum bet size requirement.
 
 ### Claiming Rewards
 
