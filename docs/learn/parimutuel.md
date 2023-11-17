@@ -64,9 +64,10 @@ on Zeitgeist:
   get a 300% payoff if they're right. That's not the case at a parimutuel. If
   more people buy your outcome, your payoff gets worse. This makes it impossible
   to properly reward traders that have moved the price in the right direction
-  and have done so early.
+  and have done so early and incentivizes informants to withhold information
+  until close to the end of the market.
 
-  A particularly vexing symptom of this problem is that, if a market becomes
+  But a particularly vexing symptom of this problem is that, if a market becomes
   trivialized (some outcome $X$ has materialized before the end of the market)
   and at least two agents have bet on the winning outcome, then it's a winning
   strategy to keep pumping more money into the market to dilute the other
@@ -77,7 +78,8 @@ on Zeitgeist:
   suited for markets which resolve very quickly.
 
 As such, parimutuel markets are perfectly suited for short-lived markets where
-the market's outcome is published at a predefined time.
+the market's outcome is published at a predefined time or where odds are
+considered comparatively stable.
 
 ## Parimutuel Markets on Zeitgeist
 
