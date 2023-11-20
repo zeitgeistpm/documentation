@@ -47,8 +47,8 @@ less, depending on the partial fulfillment scenario).
 
 It's important to note that the market creator's fee is always deducted in the
 market's base currency, which in our example is ZTG. So, if the market creator
-charges a `1%` fee, the taker ends up receiving `6.3` ZTG, while the market
-creator gets `0.7` ZTG. However, the `taker_amount` you receive as the maker
+charges a `1%` fee, the taker ends up receiving `6.93` ZTG, while the market
+creator gets `0.07` ZTG. However, the `taker_amount` you receive as the maker
 remains unchanged, as no fees are deducted from the outcome token. It might seem
 like the recipient of the base asset (in this case, ZTG) is always the one who
 pays the fee. But this perspective can vary because each order is unique and may
