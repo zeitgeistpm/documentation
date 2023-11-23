@@ -28,6 +28,7 @@ const sidebars = {
         "learn/market-rules",
         "learn/governance",
         "learn/court",
+        "learn/order-book",
         "learn/futarchy",
         "learn/comparisons",
         {
