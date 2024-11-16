@@ -145,6 +145,40 @@ extrinsic improve the welfare measure? Once the decision is made, the code is
 automatically executed or discarded. The laborious interpretation and
 enforcement of ambiguous policy is no longer required.
 
+## Futarchy on Zeitgeist
+
+The futarchy pallet zrml-futarchy is introduced in v0.6.0 of Zeitgeist and
+allows the Zeitgeist chain to govern itself using prediction markets. A
+governance proposal can be submitted to zrml-futarchy using the
+`submit_proposal` extrinsic. The only origin that is allowed to call this
+extrinsic at the moment is root. Therefore, one must first submit a governance
+proposal suggesting a call into zrml-futarchy's `submit_proposal` to
+pallet-democracy first and let the token holders decide before going forward
+with the proposal in zrml-futarchy. This ensures that the markets involved in
+the proposal are properly configured and the pool is deep enough to ensure a
+sane market.
+
+Suppose that $X$ is the call that a user wishes to make. To do so, they first
+create two markets:
+
+- $M_0$: _Will $X$ be enacted?_
+- $M_1$: _What's the welfare measure at time $T$?_
+
+Then they create a combinatorial pool from these two markets. The outcomes in
+the combinatorial pool will be:
+
+- $L_+$: _Welfare measure long if $X$ enacted_
+- $L_-$: _Welfare measure long if $X$ not enacted_
+- $S_+$: _Welfare measure short if $X$ enacted_
+- $S_-$: _Welfare measure short if $X$ not enacted_
+
+The outcomes $L_{\bullet}$ can be used to measure the predicted success or
+failure of the proposal: If the price of $L_+$ is greater than that of $L_-$,
+the proposal is expected to be successful. We call these the _positive_ and
+_negative outcomes_. When calling the `submit_proposal` extrinsic, this data is
+specified as the `oracle` parameter, whose fields are `pool_id`,
+`positive_outcome` and `negative_outcome`.
+
 ## Further Reading and Viewing
 
 - [What is Futarchy? - Trading on The Future - Friederike Ernst #TOA18](https://www.youtube.com/watch?v=XonwBPXpyJQ)
