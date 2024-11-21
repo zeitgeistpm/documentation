@@ -290,12 +290,15 @@ as he owns no more "Yes".
 
 ### The Liquidity Pool
 
-Zeitgeist supports a constant function market maker called DLMSR, which is based on Robin Hanson's DLMSR, a variation on the basic $x \cdot y = \mathrm{const}$ formula.
+Zeitgeist supports a constant function market maker called DLMSR, which is based
+on Robin Hanson's DLMSR, a variation on the basic $x \cdot y = \mathrm{const}$
+formula.
 
 By default, a new market has no liquidity pool. Instead, the pool must either be
 deployed by the market creator, or by some external liquidity provider. After
 the pool is created, others may _join_ the liquidity pool by providing
-additional liquidity. For details on the function of the liquidity pool, see https://github.com/zeitgeistpm/zeitgeist/blob/main/zrml/neo-swaps/README.md.
+additional liquidity. For details on the function of the liquidity pool, see
+https://github.com/zeitgeistpm/zeitgeist/blob/main/zrml/neo-swaps/README.md.
 
 Note that this means that trading can only happen when the liquidity pool is
 sufficiently deep. If the pool is too shallow, some trades may be impossible
