@@ -29,6 +29,7 @@ const sidebars = {
         "learn/governance",
         "learn/court",
         "learn/order-book",
+        "learn/combinatorial-tokens",
         "learn/futarchy",
         "learn/comparisons",
         {
