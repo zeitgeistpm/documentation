@@ -80,7 +80,7 @@ console.log(`Candidate pool size is: ${candidatePool.length}`);
 ## Leave Candidate Pool
 
 If you want to leave candidate pool, you need to first schedule a request to
-leave the pool and wait for an exit delay(10 blocks), after this delay you can
+leave the pool and wait for an exit delay (2 staking rounds), after this delay you can
 execute this request and stop working as a collator.
 
 We also support temporarily leaving the candidate pool without unbonding
