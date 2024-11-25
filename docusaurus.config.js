@@ -16,17 +16,6 @@ const config = {
   organizationName: "zeitgeistpm",
   projectName: "documentation", // Usually your repo name.
 
-  // support multi-languages
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en", "zh-CN", "ru"],
-    localeConfigs: {
-      en: {
-        htmlLang: "en-GB",
-      },
-    },
-  },
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({

@@ -290,52 +290,15 @@ as he owns no more "Yes".
 
 ### The Liquidity Pool
 
-Zeitgeist supports a constant mean market maker, also referred to as constant
-product market maker or CPMM on our platform, which is based on the
-[Balancer AMM](https://balancer.fi/whitepaper.pdf), a variation on the basic
-$x \cdot y = \mathrm{const}$ formula which allows different assets to have
-different _weights_, which define their impact on price.
-
-This AMM's liquidity pool contains balances of the base asset (e.g. ZTG) and of
-all outcome tokens of the market. Users can trade their tokens with tokens
-stored in the pool: They can buy outcome tokens from the pool with collateral
-which is then added to the pool, or sell outcome tokens to the pool for some of
-the pool's collateral.
+Zeitgeist supports a constant function market maker called DLMSR, which is based
+on Robin Hanson's DLMSR, a variation on the basic $x \cdot y = \mathrm{const}$
+formula.
 
 By default, a new market has no liquidity pool. Instead, the pool must either be
 deployed by the market creator, or by some external liquidity provider. After
 the pool is created, others may _join_ the liquidity pool by providing
-additional liquidity. When deploying liquidity into a pool, a liquidity provider
-will usually provide the same amount of complete sets of outcome tokens as
-collateral ($x$ of each outcome token and $x$ ZTG). The current minimum for $x$
-is $.1$ units of collateral, making a total value of $.2$ units of collateral.
-
-For example, lets say the JWST market has no liquidity pool yet and Alice wishes
-to deploy a pool. First she mints 100 complete sets of outcome tokens, so she
-pays 100 ZTG into the prize pool of the market and receives 100 "Yes" and 100
-"No". Then she transfers these outcome tokens plus 100 ZTG into the pool. The
-whole endeavor costs her 200 ZTG plus transaction costs and earns her 100
-liquidity shares.
-
-Suppose now that the market ends and the balances of the pool are the following:
-63 "Yes", 89 "No", and 120 ZTG. The balance of ZTG has increased from trading
-fees. After market close, Alice withdraws her funds: The outcome tokens and 120
-ZTG. If the JWST did not launch on December 18, then she can redeem the 89 "No"
-for 89 ZTG from the prize pool. This means that she's made a gain of 9 ZTG for
-supplying liquidity to the pool. If, on the other hand, the JWST does launch
-December 18, Alice is left holding 120 ZTG and 63 "Yes" (redeemable for 63 ZTG).
-As a result, Alice will incur a net loss of 17 ZTG, while many traders might
-realize a profit.
-
-For example, if the pool contains 100 ZTG and 100 "Yes" and Alice buys 3 "Yes"
-at 0.5 ZTG, then Alice transfers 1.5 ZTG into the pool and receives 3 "Yes" from
-the pool, leaving the pool with 101.5 ZTG and 97 "Yes" (ignoring transaction
-cost, trading fees and slippage).
-
-Let's pretend that the automated market maker has now adjusted the price of
-"Yes" to 0.6 ZTG and Bob wants to sell 5 "Yes". He would receive 3 ZTG from the
-pool and add 5 "Yes", leaving the pool at 98.5 ZTG and 102 "Yes" (ignoring
-transaction cost, trading fees and slippage).
+additional liquidity. For details on the function of the liquidity pool, see
+https://github.com/zeitgeistpm/zeitgeist/blob/main/zrml/neo-swaps/README.md.
 
 Note that this means that trading can only happen when the liquidity pool is
 sufficiently deep. If the pool is too shallow, some trades may be impossible
