@@ -138,7 +138,7 @@ A fundamental idea is that trades made on prediction markets are not so much
 absolute bets ("I bet $10 that Hillary will win at 1:1 odds"), but rather that
 trades are made to "correct" the forecast of the market by changing the prices
 of the outcome. The agent executing the trade pays a price to do so, but is
-rewarded if the prediction is closer to the truth that the current one.
+rewarded if the prediction is closer to the truth than the current one.
 
 One could say that the agent buying $H \Rightarrow D$ claims that $H \land D$ is
 undervalued and $H \land \bar D$ is overvalued, and that $\bar H \land D$ and
