@@ -152,9 +152,9 @@ undervalued), _sell_ (the assets the agent thinks are overvalued) and _keep_
 
 ## Bibliography
 
-- - [H03a] R. Hanson, "Logarithmic Market Scoring Rules for Modular
-    Combinatorial Information Aggregation," The Journal of Prediction Markets,
-    vol. 1, no. 1, 2003. [Online]. Available:
-    [https://doi.org/10.5750/jpm.v1i1.417](https://doi.org/10.5750/jpm.v1i1.417)
+- [H03a] R. Hanson, "Logarithmic Market Scoring Rules for Modular Combinatorial
+  Information Aggregation," The Journal of Prediction Markets, vol. 1, no.
+  1, 2003. [Online]. Available:
+  [https://doi.org/10.5750/jpm.v1i1.417](https://doi.org/10.5750/jpm.v1i1.417)
 - [H13] R. Hanson, "Shall We Vote on Values, But Bet on Beliefs?," The Journal
   of Political Philosophy, vol. 21, no. 2, pp. 151-178, 2013.
