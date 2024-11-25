@@ -128,7 +128,7 @@ defined by Hanson in [H03a]:
 > \$1 if $B$ holds and $A$ does not. [...] In general, depending on the
 > particular market scoring rule, such a bet might change any probability
 > estimate $p_i$, and thus change any event probability
-> $p(C) = \sum\_{i \in C} p_i$. It seems preferable, however, for this bet to
+> $p(C) = \sum_{i \in C} p_i$. It seems preferable, however, for this bet to
 > change as little as possible besides $p(A|B)$ (and of course
 > $p(\bar A|B) = 1 − p(A|B)$).
 
