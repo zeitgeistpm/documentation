@@ -47,20 +47,6 @@ const config = {
           {to: 'docs/category/learn', label: 'Learn', position: 'right'},
           {to: 'docs/category/build', label: 'Build', position: 'right'},
           {to: 'docs/faq', label: 'FAQ', position: 'right'},
-          {
-            type: 'search',
-            position: 'right',
-          },
-          {
-            type: "localeDropdown",
-            position: "right",
-            dropdownItemsAfter: [
-              {
-                href: "https://crowdin.com/project/zeitgeist-documentation",
-                label: "Help Us Translate",
-              },
-            ],
-          },
         ],
       },
       footer: {
@@ -238,16 +224,6 @@ const config = {
     //     };
     //   },
     // }),
-  ],
-
-  themes: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        hashed: true,
-        language: ["en", "zh"],
-      },
-    ],
   ],
 };
 
