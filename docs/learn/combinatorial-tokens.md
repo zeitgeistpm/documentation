@@ -101,7 +101,7 @@ Using splits, agents can now bet on correlations between the events $D$ and $H$.
 For example, to bet that the Dems win if Hillary is nominated, the agent would
 split their collateral into $x$ units of $H$ and $\bar H$, then split these
 units into $x$ units of $H \land D$ and $H \land \bar D$, then sell their units
-of $H \land \bar D$ for more $H \land D$. There are three possible outcomes:
+of $H \land \bar D$ to acquire more $H \land D$. There are three possible outcomes:
 
 - Hillary is nominated and wins the election. Each unit of $H \land D$ pays 1\$.
   The agent makes a profit as they own more than $x$ units.
