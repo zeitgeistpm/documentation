@@ -50,7 +50,7 @@ Merging is the opposite process. For example, `x` units of `(A|B)&(X|Y)` and
 
 If a user owns a position involving multiple markets, such as `(A|B)&X` and only
 one of the markets is resolved (say, the market with `A`, `B`, `C`), then they
-may want cash out the part of the position. This is where payout vectors come
+may want to cash out the part of the position. This is where payout vectors come
 in.
 
 The _payout vector_ of a resolved prediction market determines the value of each
