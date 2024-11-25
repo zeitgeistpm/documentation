@@ -4,7 +4,7 @@ Zeitgeist's combinatorial tokens allow users to combine outcome tokens of
 several markets and trade these combined tokens in a single liquidity pool.
 
 Much of Zeitgeist's implementation of combinatorial tokens is based on pioneer
-work done by Gnosis done
+work done by Gnosis
 [here (documentation)](https://docs.gnosis.io/conditionaltokens/) and
 [here (implementation)](https://github.com/gnosis/conditional-tokens-contracts).
 
