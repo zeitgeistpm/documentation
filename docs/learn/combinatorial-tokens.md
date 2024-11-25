@@ -77,8 +77,8 @@ units of `L&(X|Y)`, then we receive `.6` times `x` units of `(X|Y)`.
 
 Buying individual outcomes of a combinatorial market allows the user to bet on
 more specialized outcomes (A _and_ B will happen), but the true strength of
-combinatorial markets lies in making bets on contingencies (if A occurs, then
-so will B).
+combinatorial markets lies in making bets on contingencies (if A occurs, then so
+will B).
 
 The following example is taken from [H13]. Let $D$ denote the event that the
 Democratic Party wins the 2016 U.S. Presidential election and let $H$ denote the
@@ -101,7 +101,8 @@ Using splits, agents can now bet on correlations between the events $D$ and $H$.
 For example, to bet that the Dems win if Hillary is nominated, the agent would
 split their collateral into $x$ units of $H$ and $\bar H$, then split these
 units into $x$ units of $H \land D$ and $H \land \bar D$, then sell their units
-of $H \land \bar D$ to acquire more $H \land D$. There are three possible outcomes:
+of $H \land \bar D$ to acquire more $H \land D$. There are three possible
+outcomes:
 
 - Hillary is nominated and wins the election. Each unit of $H \land D$ pays 1\$.
   The agent makes a profit as they own more than $x$ units.
