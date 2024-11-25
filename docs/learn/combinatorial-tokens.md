@@ -30,7 +30,7 @@ both `A` _and_ `X` occur (we'll interpret the meaning of `A&X` in case one or
 both markets is a scalar market below in the section _Redeeming_).
 
 In fact, we can even go further and combine positions from both markets into
-_split positions such as `(A|B)&Z`, which signifies that `A` or `B` \_and_ `Z`
+_split positions_ such as `(A|B)&Z`, which signifies that `A` or `B` and `Z`
 will occur.
 
 Split collections are obtained by taking a position such as `(A|B)` of one of
