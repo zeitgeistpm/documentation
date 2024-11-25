@@ -127,9 +127,10 @@ defined by Hanson in [H03a]:
 > the form “Pays \$1 if $A$ and $B$ hold”, in trade for assets of the form “Pays
 > \$1 if $B$ holds and $A$ does not. [...] In general, depending on the
 > particular market scoring rule, such a bet might change any probability
-> estimate $p_i$, and thus change any event probability $p(C) = \sum\_{i \in C} p_i$.
-> It seems preferable, however, for this bet to change as little as possible
-> besides $p(A|B)$ (and of course $p(\bar A|B) = 1 − p(A|B)$).
+> estimate $p_i$, and thus change any event probability
+> $p(C) = \sum\_{i \in C} p_i$. It seems preferable, however, for this bet to
+> change as little as possible besides $p(A|B)$ (and of course
+> $p(\bar A|B) = 1 − p(A|B)$).
 
 (The market maker implemented in zrml-neo-swaps has that property.)
 
@@ -151,6 +152,9 @@ undervalued), _sell_ (the assets the agent thinks are overvalued) and _keep_
 
 ## Bibliography
 
-- - [H03a] R. Hanson, "Logarithmic Market Scoring Rules for Modular Combinatorial Information Aggregation," The Journal of Prediction Markets, vol. 1, no. 1, 2003. [Online]. Available: [https://doi.org/10.5750/jpm.v1i1.417](https://doi.org/10.5750/jpm.v1i1.417)
+- - [H03a] R. Hanson, "Logarithmic Market Scoring Rules for Modular
+    Combinatorial Information Aggregation," The Journal of Prediction Markets,
+    vol. 1, no. 1, 2003. [Online]. Available:
+    [https://doi.org/10.5750/jpm.v1i1.417](https://doi.org/10.5750/jpm.v1i1.417)
 - [H13] R. Hanson, "Shall We Vote on Values, But Bet on Beliefs?," The Journal
   of Political Philosophy, vol. 21, no. 2, pp. 151-178, 2013.
