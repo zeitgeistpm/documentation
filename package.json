@@ -24,7 +24,6 @@
     "@docusaurus/plugin-content-docs": "^2.0.0-beta.20",
     "@docusaurus/plugin-content-pages": "^2.0.0-beta.20",
     "@docusaurus/preset-classic": "^2.0.0-beta.20",
-    "@easyops-cn/docusaurus-search-local": "^0.25.0",
     "@mdx-js/react": "^1.6.21",
     "@polkadot/api": "^9.14.1",
     "@polkadot/util": "^10.4.1",
