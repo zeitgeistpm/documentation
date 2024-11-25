@@ -91,7 +91,7 @@ If you know how buying complete sets works on Zeitgeist, you already know one
 example of a split: The collateral token is split into a set of tokens which,
 when the markets resolves, will have the same value as the collateral token. By
 the same reasoning fashion, we can split non-collateral tokens like "Pays 1\$ if
-$D$" into "Pays 1\$ if $D$ and $H$" and $Pays 1\$ if $D$ and not $H$". For the
+$D$" into "Pays 1\$ if $D$ and $H$" and "Pays 1\$ if $D$ and not $H$". For the
 sake of simplicity, we denote these tokens by $D$, $D \land H$ and
 $D \land \bar H$, resp. By combining the two markets above, we create a new
 market with four assets: $D \land H$, $D \land \bar H$, $\bar D \land H$ and
@@ -127,9 +127,9 @@ defined by Hanson in [H03a]:
 > the form “Pays \$1 if $A$ and $B$ hold”, in trade for assets of the form “Pays
 > \$1 if $B$ holds and $A$ does not. [...] In general, depending on the
 > particular market scoring rule, such a bet might change any probability
-> estimate $p_i$, and thus change any event probability p(C) = \sum\_{i \in C}
-> p_i$. It seems preferable, however, for this bet to change as little as possible besides $p(A|B)$
-> (and of course $p(\bar A|B) = 1 − p(A|B)$).
+> estimate $p_i$, and thus change any event probability $p(C) = \sum\_{i \in C} p_i$.
+> It seems preferable, however, for this bet to change as little as possible
+> besides $p(A|B)$ (and of course $p(\bar A|B) = 1 − p(A|B)$).
 
 (The market maker implemented in zrml-neo-swaps has that property.)
 
@@ -151,5 +151,6 @@ undervalued), _sell_ (the assets the agent thinks are overvalued) and _keep_
 
 ## Bibliography
 
+- - [H03a] R. Hanson, "Logarithmic Market Scoring Rules for Modular Combinatorial Information Aggregation," The Journal of Prediction Markets, vol. 1, no. 1, 2003. [Online]. Available: [https://doi.org/10.5750/jpm.v1i1.417](https://doi.org/10.5750/jpm.v1i1.417)
 - [H13] R. Hanson, "Shall We Vote on Values, But Bet on Beliefs?," The Journal
   of Political Philosophy, vol. 21, no. 2, pp. 151-178, 2013.
