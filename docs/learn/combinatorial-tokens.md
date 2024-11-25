@@ -76,7 +76,7 @@ units of `L&(X|Y)`, then we receive `.6` times `x` units of `(X|Y)`.
 ## Combinatorial Betting
 
 Buying individual outcomes of a combinatorial market allows the user to bet on
-more specialzied outcomes (A _and_ B will happen), but the true strength of
+more specialized outcomes (A _and_ B will happen), but the true strength of
 combinatorial markets lies in making bets on contingencies (if A occurs, then
 so will B).
 
