@@ -34,6 +34,17 @@ a more optimized way and also need to interact with the chain itself.
 
 :::
 
+:::info
+
+If you are trying to import dependencies using CommonJS `require("")` syntax with `const { create, mainnet } = require("@zeitgeistpm/sdk")`, then it will not work. Instead you need to import with Modules (ESM) `await import("")` syntax. For example:
+```js
+(async () => {
+  const { create, mainnet } = await import("@zeitgeistpm/sdk")`
+})().catch(console.error).finally(() => process.exit());
+```
+
+:::
+
 ### Rpc Mode
 
 The rpc mode connects only to the rpc chain node and has a bit more limitations
@@ -141,7 +152,7 @@ import { create, createStorage } from "@zeitgeistpm/sdk";
 import { IPFS } from "@zeitgeistpm/web3.storage";
 
 const sdk: Sdk<RpcContext> = await create({
-  provider: "wss://localhost:9944",
+  provider: "ws://localhost:9944",
   storage: createStorage(
     IPFS.storage({
       node: { url: "localhost:5001" },
@@ -149,3 +160,9 @@ const sdk: Sdk<RpcContext> = await create({
   ),
 });
 ```
+
+:::note
+
+In production you are recommended to use `wss` (WebSocket Secure) instead of `ws`
+
+:::
