@@ -46,7 +46,7 @@ in polkadot.js/apps. Don't forget to press `Save`!
 If you cannot `Save` the new types and the input area remains pink, ensure that
 the object is strictly JSON formatted, for example by using Javascript's
 `JSON.stringify` method or
-[a formatting tool](https://www.freeformatter.com/json-formatter.html).
+[a JSON formatting tool](https://jsonviewertool.com/json-formatter).
 
 ### Accessing Zeitgeist through the [SDK](https://github.com/zeitgeistpm/tools)
 
